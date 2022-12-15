@@ -1,10 +1,9 @@
-import { checkQueryValues } from "./validators/checkQueryValues";
-
+import { createQuery } from "./validators/createQuery";
 
 export const getAllProducts = async (req, res) => {
   const { featured, name, brand, category, sort, fields, numFilter, page, limit } = req.query;
     
-  const products = await checkQueryValues({
+  const products = await createQuery({
     featured,
     name,
     brand,
