@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Smart-TV",
+    "price": 25,
+    "category": "electronics",
+    "brand": "sony",
+    "rating": 4
+  },
+  {
+    "name": "Harry Potter and the Sorcerer's Stone",
+    "price": 109,
+    "category": "books",
+    "brand": "potter-libray ",
+    "rating": 5
+  },
+  {
+    "name": "albany table",
+    "price": 309,
+    "category": "home",
+    "brand": "easy",
+    "rating": 4.9
+  },
+  {
+    "name": "playstation",
+    "price": 125,
+    "category": "electronics",
+    "brand": "sony",
+    "rating": 4.8
+  },
+  {
+    "name": "xbox",
+    "price": 40,
+    "category": "electronics",
+    "brand": "microsoft",
+    "rating": 4.6
+  },
+  {
+    "name": "freezer",
+    "price": 42,
+    "category": "home",
+    "brand": "phillips",
+    "rating": 4.55
+  },
+  {
+    "name": "bed",
+    "price": 23,
+    "category": "home",
+    "brand": "sanyo" 
+  },
+  {
+    "name": "hat",
+    "price": 59,
+    "featured": true,
+    "category": "men's clothing",
+    "brand": "gucci"
+  },
+  {
+    "name": "chopsticks",
+    "price": 39,
+    "featured": true,
+    "category": "foods",
+    "brand": "luccetti" 
+  },
+
+  {
+    "name": "sofa",
+    "price": 99,
+    "category": "home",
+    "brand": "sanyo"
+  },
+  {
+    "name": "lamp",
+    "price": 31,
+    "featured": true,
+    "category": "home",
+    "brand": "sanyo"
+  },
+  {
+    "name": "wireless mouse",
+    "price": 30,
+    "category": "electronics",
+    "brand": "sony"
+  },
+  {
+    "name": "notebook",
+    "price": 30,
+    "category": "electronics",
+    "brand": "lenovo"
+  },
+  {
+    "name": "chairs set",
+    "price": 109,
+    "category": "home",
+    "brand": "barrok"
+  },
+  {
+    "name": "smart-phone",
+    "price": 129,
+    "category": "electronics",
+    "brand": "sony"
+  },
+  {
+    "name": "notes's book",
+    "price": 15,
+    "category": "books",
+    "brand": "asamblea"
+  },
+  {
+    "name": "victory fragance",
+    "price": 79,
+    "featured": true,
+    "category": "beauty",
+    "brand": "dolce & gabanna"
+  },
+  {
+    "name": "invictus fragance",
+    "price": 120,
+    "featured": true,
+    "category": "beauty",
+    "brand": "paco rabbane"
+  },
+  {
+    "name": "cooler",
+    "price": 25,
+    "category": "home",
+    "brand": "wheerpool"
+  },
+  {
+    "name": "jogger pants",
+    "price": 15,
+    "category": "women's clothing",
+    "brand": "nike"
+  },
+  {
+    "name": "oversised hoodi",
+    "price": 40,
+    "category": "men's clothing",
+    "brand": "addidas"
+  },
+  {
+    "name": "sneakers",
+    "price": 23,
+    "featured": true,
+    "category": "men's clothing",
+    "brand": "nike"
+  },
+  {
+    "name": "shooes",
+    "price": 23,
+    "featured": true,
+    "category": "women's clothing",
+    "brand": "addidas"
+  }
+]
