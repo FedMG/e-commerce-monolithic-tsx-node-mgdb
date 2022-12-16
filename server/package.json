@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "node src/index",
-    "lint": "standard --fix"
+    "lint": "standard --fix",
+    "upload": "node src/utils/upload-data"
   },
   "keywords": [],
   "author": "",

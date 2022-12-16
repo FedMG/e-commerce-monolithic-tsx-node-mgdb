@@ -1,5 +1,5 @@
-import connectDB from "db/connect.js";
-import Product from "models/product.js";
+import connectDB from "../db/connect.js";
+import Product from "../models/product.js";
 
 import jsonProducts from "./products.json" assert { type: "json" };
 

@@ -9,6 +9,11 @@ const app = express()
 app.use(express.json())
 app.use(morgan('dev'))
 
+
+app.get('/', (_req, res) => {
+  res.send('<h1>Store API</h1>')
+})
+
 app.use('/api/v1/products', products)
 
 
