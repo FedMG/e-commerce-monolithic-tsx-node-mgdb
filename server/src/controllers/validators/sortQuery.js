@@ -1,4 +1,4 @@
-import { splitAndJoin } from '../../utils/functions'
+import { splitAndJoin } from '../../utils/functions.js'
 
 export const sortQuery = (result, sort) => {
   if (sort) {

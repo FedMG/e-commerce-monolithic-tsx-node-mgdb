@@ -1,8 +1,12 @@
+import 'express-async-errors'
 import express from 'express'
 import morgan from 'morgan'
 
 import connectDB from './db/connect.js'
 import products from './routes/products.js'
+
+import notFound from './middleware/notFound.js'
+import errorHandler from './middleware/errorHandler.js'
 
 const app = express()
 
@@ -14,6 +18,11 @@ app.get('/', (_req, res) => {
 })
 
 app.use('/api/v1/products', products)
+
+
+app.use(notFound)
+app.use(errorHandler)
+
 
 const PORT = 3000
 const start = async () => {
