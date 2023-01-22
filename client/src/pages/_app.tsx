@@ -2,6 +2,8 @@ import { AppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
 import { rtlCache } from 'rtl-cache';
 
+import { Layout } from '../components/layout';
+
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
   return (
@@ -12,8 +14,11 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         emotionCache={rtlCache}
       >
+        <Layout title='App - Home'>
         <Component {...pageProps} />
+        </Layout>
      </MantineProvider>
      </div>
   );
 }
+        
