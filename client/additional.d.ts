@@ -26,3 +26,33 @@ export interface CustomHeaderProps {
 export interface CustomDrawerProps extends CustomHeaderProps {
     collapse: CustomMethodsProps
 }
+
+export interface ProductCardProps {
+  element: {
+    name: string
+    rating: number
+    price: number
+  }
+}
+
+export interface CategoryServerSideProps {
+  params: {
+    category: string
+  }
+}
+
+export interface Products { 
+      _id: string
+      name: string,
+      category: string,
+      price: number,
+      featured?: boolean,
+      rating: number,
+      brand?: string,
+      createdAt: Date,
+      __v: number 
+}
+
+export interface CategoryProps {
+  products: Products[]
+}
