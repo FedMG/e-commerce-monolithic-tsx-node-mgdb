@@ -1,4 +1,4 @@
-import { Box, createStyles } from "@mantine/core";
+import { createStyles } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { HeaderActionProps } from "additional";
 
@@ -7,9 +7,12 @@ import { CustomHeader } from "./customHeader";
 
 export const HEADER_HEIGHT = 60;
 
-export const useHeaderStyles = createStyles((theme) => ({
+export const useHeaderStyles = createStyles((theme) => ({  
   header: {
     borderBottom: 0,
+    position: 'sticky',
+    top: 0,
+    marginBottom: 10
   },
   
   container: {
@@ -70,13 +73,13 @@ export const HeaderAction: React.FC<HeaderActionProps> = ({ links }) => {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
 
   return (
-    <Box pb={30}>
+    <>
       <CustomHeader drawer={[drawerOpened, toggleDrawer]} links={links} />
       <CustomDrawer
         drawer={[drawerOpened, closeDrawer]}
         collapse={[linksOpened, toggleLinks]}
         links={links}
       />
-    </Box>
+    </>
   );
 };
