@@ -5,7 +5,6 @@ import { createError } from '../errors/create-error.js'
 
 const getAllProducts = async (req, res) => {
   const {
-    featured,
     name,
     brand,
     category,
@@ -17,7 +16,6 @@ const getAllProducts = async (req, res) => {
   } = req.query
 
   const products = await createQuery({
-    featured,
     name,
     brand,
     category,
