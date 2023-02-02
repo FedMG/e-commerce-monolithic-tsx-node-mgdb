@@ -5,13 +5,12 @@ import { splitAndJoin } from '../../utils/functions.js'
 import { sortQuery } from './sortQuery.js'
 
 export const createQuery = (query) => {
-  const { featured, name, brand, category, numFilter, sort, fields, page, limit } =
+  const { name, brand, category, numFilter, sort, fields, page, limit } =
     query
 
   const queryConfig = {}
 
   const filters = [
-    { featured: [[featured], featured === 'true'] },
     { brand: [brand, brand] },
     { category: [category, category] },
     { name: [name, { $regex: name, $options: 'i' }] }
