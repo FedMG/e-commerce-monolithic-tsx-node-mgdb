@@ -1,7 +1,7 @@
 import Product from '../models/product.js'
 
 import { createQuery } from './validators/createQuery.js'
-import { createError } from '../errors/create-error.js'
+import { NotFoundError } from '../errors/customTypes.js'
 
 const getAllProducts = async (req, res) => {
   const {
@@ -39,7 +39,7 @@ const getProduct = async (req, res, next) => {
   const product = await Product.findOne({ _id: productId })
 
   if (!product) {
-    return next(createError(`There is not a product with id ${productId}`, 404))
+    throw new NotFoundError(`There is not a product with id ${productId}`)
   }
 
   res.status(200).json({ product })
@@ -50,7 +50,7 @@ const deleteProduct = async (req, res, next) => {
   const product = await Product.findOneAndDelete({ _id: productId })
 
   if (!product) {
-    return next(createError(`There is not a product with id ${productId}`, 404))
+    throw new NotFoundError(`There is not a product with id ${productId}`)
   }
   res.status(200).json({ product })
 }
@@ -64,7 +64,7 @@ const updateProduct = async (req, res, next) => {
   })
 
   if (!product) {
-    return next(createError(`There is not a product with id ${productId}`, 404))
+    throw new NotFoundError(`There is not a product with id ${productId}`)
   }
 
   res.status(200).json({})

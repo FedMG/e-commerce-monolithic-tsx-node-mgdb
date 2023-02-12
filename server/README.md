@@ -1,7 +1,8 @@
 # node-mongo-store-api
 
-A project done with Node.js v18.12.1
+Node.js v18.12.1
 
+[1]: https://www.youtube.com/watch?v=qwfE7fSVaZM
 
 
 ## How to use?
@@ -37,3 +38,6 @@ You can use the ampersand parameter `&` to chain multiple queries
 7. __page:__ Use it to get a page according to the default limit of products, example to use it: `?page=2`
 8. __limit:__ Use it to set the limit of products that can shows, example to use it: `?page=2`
 
+
+## Attribution
+This project is based on what I learned in the amazing [NodeJS & Express][1] Course developed by Jhon Smilga!

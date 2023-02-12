@@ -1,4 +1,4 @@
-import { CustomError } from '../errors/create-error.js'
+import { CustomError } from '../errors/customError.js'
 
 const errorHandler = (err, req, res, next) => {
   // this error handle an hexadecimal id with the same length
