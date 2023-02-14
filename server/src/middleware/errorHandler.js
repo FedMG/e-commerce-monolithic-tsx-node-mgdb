@@ -1,3 +1,4 @@
+import { StatusCodes } from 'http-status-codes'
 import { CustomError } from '../errors/customError.js'
 
 const errorHandler = (err, req, res, next) => {
@@ -5,7 +6,7 @@ const errorHandler = (err, req, res, next) => {
   if (err instanceof CustomError) {
     return res.status(err.statusCode).json({ msg: err.message })
   }
-  return res.status(500).json({ msg: 'Internal Server Error, please try again' })
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: 'Internal Server Error, please try again' })
 }
 
 export default errorHandler

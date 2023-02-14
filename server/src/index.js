@@ -1,3 +1,4 @@
+import { StatusCodes } from 'http-status-codes'
 import 'express-async-errors'
 import express from 'express'
 import morgan from 'morgan'
@@ -11,7 +12,7 @@ import errorHandler from './middleware/errorHandler.js'
 
 const corsConfig = {
   origin: ['https://ek5sqy-3000.preview.csb.app'],
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: StatusCodes.OK
 }
 
 const app = express()
@@ -29,7 +30,7 @@ app.use('/api/v1/products', products)
 app.use(notFound)
 app.use(errorHandler)
 
-const PORT = 3005
+const PORT = process.env.PORT || 3005
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI)
