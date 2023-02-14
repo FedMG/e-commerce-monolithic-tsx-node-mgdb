@@ -40,4 +40,4 @@ You can use the ampersand parameter `&` to chain multiple queries
 
 
 ## Attribution
-This project is based on what I learned in the amazing [NodeJS & Express][1] Course developed by Jhon Smilga!
+This project is based on what I learned in the amazing [NodeJS & Express][1] Course developed by John Smilga!
