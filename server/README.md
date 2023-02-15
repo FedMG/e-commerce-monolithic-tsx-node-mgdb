@@ -4,12 +4,29 @@ Node.js v18.12.1
 
 [1]: https://www.youtube.com/watch?v=qwfE7fSVaZM
 
+## URL and Endpoints
+
+The server is already up in `https://e-commerce-store-api.onrender.com/`
+
+### The endpoints currently available are:
+1. `api/v1/auth` to get user authentication and access into products.
+2. `api/v1/products` to get a list of products.
 
 ## How to use?
 
-0. Go to the page `...`.
-1. add the `api/v1/products` path.
-2. You can add the nexts queries properties to get the query results: `brand, category, sort, fields, numFilter, page, limit`
+### Get user authentication
+
+1. Go to the `URL` + `api/v1/auth` endpoint.
+2. Add `/register` route to register as a new user or add `\login` route to get user authentication and access in products endpoint.
+
+___
+NOTE: For now you can get authentication only from an API testing as Postman.
+___
+
+### Go to products endpoint
+
+0. Go to the `URL` + `api/v1/products` endpoint.
+1. You can add the nexts queries properties to get the query results: `brand, category, sort, fields, numFilter, page, limit`
 
 
 
