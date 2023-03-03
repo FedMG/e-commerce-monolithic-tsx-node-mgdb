@@ -1,22 +1,15 @@
 import mongoose from 'mongoose'
 
 const brands = [
-  'sony',
-  'microsoft',
   'addidas',
   'nike',
-  'wheerpool',
-  'phillips',
-  'sanyo',
-  'asamblea',
-  'barrok',
-  'dolce & gabanna',
-  'paco rabbane',
-  'easy',
+  'toppler',
   'gucci',
-  'lenovo',
-  'luccetti',
-  'potter-library'
+  'zara',
+  'calvin klein',
+  'versace',
+  'puma',
+  'channel',
 ]
 
 const productSchema = new mongoose.Schema({
@@ -24,16 +17,31 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, 'product name must be provided']
   },
+  description: { type: String, },
+  image: { 
+  type: String,
+  required: true
+   },
   category: {
     type: String,
     enum: {
-      values: ['electronics', 'books', 'beauty', 'home', 'foods', "men's clothing", "women's clothing"],
+      values: ['beauty', "men's clothing", "women's clothing", 'accessory', 'shoes'],
+      message: '{VALUE} is not supported'
+    }
+  },
+  brand: {
+    type: String,
+    enum: {
+      values: brands,
       message: '{VALUE} is not supported'
     }
   },
   price: {
     type: Number,
     required: [true, 'product price must be provided']
+  },
+  discount: {
+    type: Number,
   },
   rating: {
     type: Number,
@@ -42,13 +50,6 @@ const productSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now()
-  },
-  brand: {
-    type: String,
-    enum: {
-      values: brands,
-      message: '{VALUE} is not supported'
-    }
   }
 })
 
