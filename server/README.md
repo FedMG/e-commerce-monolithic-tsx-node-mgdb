@@ -27,8 +27,9 @@ ___
 
 0. Go to the `URL` + `api/v1/products` endpoint.
 1. You can add the nexts queries properties to get the query results: `brand, category, sort, fields, numFilter, page, limit`
-
-
+2. Add `/productID` to get a specific product.
+3. Add `/brands` to get a unique list of brands.
+4. Add `/categories` to get a unique list of categories.
 
 ## How to do a query?
 
