@@ -9,7 +9,7 @@ const brands = [
   'calvin klein',
   'versace',
   'puma',
-  'channel',
+  'channel'
 ]
 
 const productSchema = new mongoose.Schema({
@@ -17,15 +17,23 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, 'product name must be provided']
   },
-  description: { type: String, },
-  image: { 
-  type: String,
-  required: true
-   },
+  description: { type: String },
+  image: {
+    src: {
+      type: String,
+      required: true
+    }
+  },
   category: {
     type: String,
     enum: {
-      values: ['beauty', "men's clothing", "women's clothing", 'accessory', 'shoes'],
+      values: [
+        'beauty',
+        "men's clothing",
+        "women's clothing",
+        'accessory',
+        'shoes'
+      ],
       message: '{VALUE} is not supported'
     }
   },
@@ -41,7 +49,7 @@ const productSchema = new mongoose.Schema({
     required: [true, 'product price must be provided']
   },
   discount: {
-    type: Number,
+    type: Number
   },
   rating: {
     type: Number,

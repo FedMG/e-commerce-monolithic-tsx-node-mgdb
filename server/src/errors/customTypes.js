@@ -21,8 +21,16 @@ class UnauthenticatedError extends Error {
   }
 }
 
+class ServiceUnvailableError extends Error {
+  constructor (message) {
+    super(message)
+    this.statusCode = StatusCodes.SERVICE_UNAVAILABLE
+  }
+}
+
 export {
   NotFoundError,
   BadRequestError,
-  UnauthenticatedError
+  UnauthenticatedError,
+  ServiceUnvailableError
 }

@@ -1,20 +1,14 @@
 import Product from '../models/product.js'
 
-import { createQuery } from './validators/createQuery.js'
-import { NotFoundError } from '../errors/customTypes.js'
 import { StatusCodes } from 'http-status-codes'
+import { NotFoundError, BadRequestError } from '../errors/customTypes.js'
+
+import { createQuery } from './validators/createQuery.js'
+import { uploadImageToTheCloud } from '../cloud/controllers.js'
 
 const getAllProducts = async (req, res) => {
-  const {
-    name,
-    brand,
-    category,
-    sort,
-    fields,
-    numFilter,
-    page,
-    limit
-  } = req.query
+  const { name, brand, category, sort, fields, numFilter, page, limit } =
+    req.query
 
   const products = await createQuery({
     name,
@@ -31,7 +25,16 @@ const getAllProducts = async (req, res) => {
 }
 
 const createProduct = async (req, res) => {
-  const product = await Product.create(req.body)
+  const product = new Product({ ...req.body })
+
+  if (!req.file) throw new BadRequestError('image is required.')
+
+  const { buffer } = req.file
+  const image = `data:image/jpg;base64,${buffer.toString('base64')}`
+
+  product.image.src = await uploadImageToTheCloud(image)
+  product.save()
+
   res.status(StatusCodes.CREATED).json({ product })
 }
 
@@ -58,11 +61,7 @@ const deleteProduct = async (req, res, next) => {
 
 const updateProduct = async (req, res, next) => {
   const { id: productId } = req.params
-
-  const product = await Product.findOneAndUpdate({ _id: productId }, req.body, {
-    new: true,
-    runValidators: true
-  })
+  const product = await Product.findOne({ _id: productId })
 
   if (!product) {
     throw new NotFoundError(`There is not a product with id ${productId}`)

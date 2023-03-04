@@ -8,6 +8,8 @@ import cors from 'cors'
 import helmet from 'helmet'
 import rateLimiter from 'express-rate-limit'
 
+import cloudinary from 'cloudinary'
+
 import connectDB from './db/connect.js'
 import authenticateUser from './middleware/authentication.js'
 
@@ -16,16 +18,23 @@ import products from './routes/products.js'
 
 import notFound from './middleware/notFound.js'
 import errorHandler from './middleware/errorHandler.js'
+import { ServiceUnvailableError } from './errors/customTypes.js'
 
 const app = express()
 
-app.set('trust proxy', 1);
+app.set('trust proxy', 1)
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000,
-    max: 100,
+    max: 100
   })
-);
+)
+
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+})
 
 const corsConfig = {
   origin: ['https://ek5sqy-3000.preview.csb.app'],
@@ -43,13 +52,13 @@ app.use('/api/v1/products', authenticateUser, products)
 app.use(notFound)
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 3005
+const PORT = process.env.SEVER_PORT || 3005
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI)
     app.listen(PORT, () => console.log(`Listening port ${PORT}...`))
   } catch (error) {
-    console.log(error)
+    throw ServiceUnvailableError('The service connection has failed')
   }
 }
 
