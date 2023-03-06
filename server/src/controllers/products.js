@@ -1,24 +1,23 @@
 import Product from '../models/product.js'
 
-import { createQuery } from './validators/createQuery.js'
-import { NotFoundError } from '../errors/customTypes.js'
 import { StatusCodes } from 'http-status-codes'
+import { NotFoundError, BadRequestError } from '../errors/customTypes.js'
+
+import { createQuery } from './validators/createQuery.js'
+import {
+  uploadFileToTheCloud,
+  updateFileInTheCloud,
+  deleteFileInTheCloud
+} from '../cloud/controllers.js'
 
 const getAllProducts = async (req, res) => {
-  const {
-    name,
-    brand,
-    category,
-    sort,
-    fields,
-    numFilter,
-    page,
-    limit
-  } = req.query
+  const { name, brand, description, category, sort, fields, numFilter, page, limit } =
+    req.query
 
   const products = await createQuery({
     name,
     brand,
+    description,
     category,
     sort,
     fields,
@@ -31,7 +30,14 @@ const getAllProducts = async (req, res) => {
 }
 
 const createProduct = async (req, res) => {
-  const product = await Product.create(req.body)
+  const product = new Product({ ...req.body })
+
+  if (!req.file) throw new BadRequestError('image is required.')
+
+  const { buffer } = req.file
+  product.image.src = await uploadFileToTheCloud(buffer)
+  product.save()
+
   res.status(StatusCodes.CREATED).json({ product })
 }
 
@@ -48,25 +54,40 @@ const getProduct = async (req, res, next) => {
 
 const deleteProduct = async (req, res, next) => {
   const { id: productId } = req.params
-  const product = await Product.findOneAndDelete({ _id: productId })
+  const product = await Product.findOne({ _id: productId })
 
   if (!product) {
     throw new NotFoundError(`There is not a product with id ${productId}`)
   }
-  res.status(StatusCodes.OK).json({ product })
+
+  const secureURL = product.image.src
+  await deleteFileInTheCloud(secureURL)
+  await Product.deleteOne({ _id: productId })
+
+  res.status(StatusCodes.OK).json({})
 }
 
 const updateProduct = async (req, res, next) => {
   const { id: productId } = req.params
-
-  const product = await Product.findOneAndUpdate({ _id: productId }, req.body, {
-    new: true,
-    runValidators: true
-  })
+  const product = await Product.findOne({ _id: productId })
 
   if (!product) {
     throw new NotFoundError(`There is not a product with id ${productId}`)
   }
+
+  if (req.file) {
+    const secureURL = product.image.src
+    const { buffer } = req.file
+
+    product.set({
+      image: {
+        src: await updateFileInTheCloud(secureURL, buffer)
+      }
+    })
+  }
+
+  product.set({ ...req.body })
+  product.save({ runValidators: true })
 
   res.status(StatusCodes.OK).json({})
 }

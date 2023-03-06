@@ -1,147 +1,149 @@
 [
   {
-    "name": "Smart-TV",
+    "name": "black jogger",
+    "image": "temp",
     "price": 25,
-    "category": "electronics",
-    "brand": "sony",
+    "category": "men's clothing",
+    "brand": "toppler",
     "rating": 4
   },
   {
-    "name": "Harry Potter and the Sorcerer's Stone",
+    "name": "black joggin",
+    "image": "temp",
     "price": 109,
-    "category": "books",
-    "brand": "potter-library",
+    "category": "women's clothing",
+    "brand": "nike",
     "rating": 5
   },
   {
-    "name": "albany table",
+    "name": "yellow joggin",
+    "image": "temp",
     "price": 309,
-    "category": "home",
-    "brand": "easy",
+    "category": "women's clothing",
+    "brand": "nike",
     "rating": 4.9
   },
   {
-    "name": "playstation",
+    "name": "blue jean",
+    "image": "temp",
     "price": 125,
-    "category": "electronics",
-    "brand": "sony",
+    "category": "men's clothing",
+    "brand": "zara",
     "rating": 4.8
   },
   {
-    "name": "xbox",
+    "name": "white handbag",
+    "image": "temp",
     "price": 40,
-    "category": "electronics",
-    "brand": "microsoft",
+    "category": "accessory",
+    "brand": "gucci",
     "rating": 4.6
   },
   {
-    "name": "freezer",
+    "name": "yellow shoes",
+    "image": "temp",
     "price": 42,
-    "category": "home",
-    "brand": "phillips",
+    "category": "shoes",
+    "brand": "nike",
     "rating": 4.55
   },
   {
-    "name": "bed",
+    "name": "black shoes",
+    "image": "temp",
     "price": 23,
-    "category": "home",
-    "brand": "sanyo" 
+    "category": "shoes",
+    "brand": "nike"
   },
   {
-    "name": "hat",
+    "name": "sport shoes",
+    "image": "temp",
     "price": 59,
-    "category": "men's clothing",
-    "brand": "gucci"
+    "category": "shoes",
+    "brand": "addidas"
   },
   {
-    "name": "chopsticks",
+    "name": "white printed t-shirt",
+    "image": "temp",
     "price": 39,
-    "category": "foods",
-    "brand": "luccetti" 
+    "category": "men's clothing",
+    "brand": "puma"
   },
 
   {
-    "name": "sofa",
+    "name": "salmon printed shirt",
+    "image": "temp",
     "price": 99,
-    "category": "home",
-    "brand": "sanyo"
+    "category": "men's clothing",
+    "brand": "puma"
   },
   {
-    "name": "lamp",
+    "name": "black plain t-shirt",
+    "image": "temp",
     "price": 31,
-    "category": "home",
-    "brand": "sanyo"
+    "category": "men's clothing",
+    "brand": "calvin klein"
   },
   {
-    "name": "wireless mouse",
+    "name": "yellow sweatshirt",
+    "image": "temp",
     "price": 30,
-    "category": "electronics",
-    "brand": "sony"
+    "category": "women's clothing",
+    "brand": "nike"
   },
   {
-    "name": "notebook",
+    "name": "oversized black t-shirt",
+    "image": "temp",
     "price": 30,
-    "category": "electronics",
-    "brand": "lenovo"
+    "category": "men's clothing",
+    "brand": "zara"
   },
   {
-    "name": "chairs set",
+    "name": "black houdi",
+    "image": "temp",
     "price": 109,
-    "category": "home",
-    "brand": "barrok"
+    "category": "men's clothing",
+    "brand": "nike"
   },
   {
-    "name": "smart-phone",
+    "name": "sunglasses",
+    "image": "temp",
     "price": 129,
-    "category": "electronics",
-    "brand": "sony"
+    "category": "accessory",
+    "brand": "channel"
   },
   {
-    "name": "notes's book",
+    "name": "grey joggin",
+    "image": "temp",
     "price": 15,
-    "category": "books",
-    "brand": "asamblea"
+    "category": "women's clothing",
+    "brand": "addidas"
   },
   {
-    "name": "victory fragance",
+    "name": "black sweatshirt",
+    "image": "temp",
     "price": 79,
-    "category": "beauty",
-    "brand": "dolce & gabanna"
+    "category": "women's clothing",
+    "brand": "zara"
   },
   {
-    "name": "invictus fragance",
+    "name": "yellow jacket",
+    "image": "temp",
     "price": 120,
-    "category": "beauty",
-    "brand": "paco rabbane"
+    "category": "women's clothing",
+    "brand": "versace"
   },
   {
-    "name": "cooler",
+    "name": "black jacket",
+    "image": "temp",
     "price": 25,
-    "category": "home",
-    "brand": "wheerpool"
+    "category": "men's clothing",
+    "brand": "zara"
   },
   {
-    "name": "jogger pants",
+    "name": "white hat",
+    "image": "temp",
     "price": 15,
-    "category": "women's clothing",
-    "brand": "nike"
-  },
-  {
-    "name": "oversised hoodi",
-    "price": 40,
-    "category": "men's clothing",
-    "brand": "addidas"
-  },
-  {
-    "name": "sneakers",
-    "price": 23,
-    "category": "men's clothing",
-    "brand": "nike"
-  },
-  {
-    "name": "shooes",
-    "price": 23,
-    "category": "women's clothing",
-    "brand": "addidas"
+    "category": "accessory",
+    "brand": "gucci"
   }
 ]

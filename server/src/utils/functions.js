@@ -1,3 +1,6 @@
 export const splitAndJoin = (value) => value.split(',').join(' ')
 
-// const regexFinder = (prop) => ({$regex: prop , $options: 'i'})
+export const getPublicID = (secureURL) => {
+  const publicID = secureURL.match(/\/([^/]+)\/([^/]+)\.[^/.]+$/)
+  return publicID[1] + '/' + publicID[2]
+}

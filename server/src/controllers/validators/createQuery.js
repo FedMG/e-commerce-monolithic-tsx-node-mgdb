@@ -5,29 +5,23 @@ import { splitAndJoin } from '../../utils/functions.js'
 import { sortQuery } from './sortQuery.js'
 
 export const createQuery = (query) => {
-  const { name, brand, category, numFilter, sort, fields, page, limit } =
-    query
+  const { numFilter, sort, fields, page, limit } = query
 
   const queryConfig = {}
+  const queryTuple = ['name', 'brand', 'category', 'description']
 
-  const filters = [
-    { brand: [brand, brand] },
-    { category: [category, category] },
-    { name: [name, { $regex: name, $options: 'i' }] }
-  ]
-
-  for (const validator of filters) {
-    const prop = Object.keys(validator)
-    if (validator[prop][0]) {
-      queryConfig[prop] = validator[prop][1]
+  queryTuple.forEach((key) => {
+    if (query[key]) {
+      console.log(query[key])
+      queryConfig[key] = { $regex: query[key], $options: 'i' }
     }
-  }
+  })
 
   const condition = numFilter
     ? numericFilter(queryConfig, numFilter)
     : queryConfig
-  let result = Product.find(condition)
 
+  let result = Product.find(condition)
   result = sortQuery(result, sort)
 
   if (fields) {

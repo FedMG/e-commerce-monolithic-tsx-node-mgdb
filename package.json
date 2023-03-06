@@ -4,7 +4,8 @@
   "description": "A project done with Node.js v18.12.1",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "backend":"cd server && npm run dev",
+    "frontend":"cd client && npm run dev"
   },
   "repository": {
     "type": "git",
