@@ -19,7 +19,7 @@ const uploadFileToTheCloud = cloudErrorHandler(async (buffer) => {
 const updateFileInTheCloud = cloudErrorHandler(async (secureURL, buffer) => {
   const publicID = getPublicID(secureURL)
 
-  const image = `data:image/jpg;base64,${buffer.toString('base64')}` 
+  const image = `data:image/jpg;base64,${buffer.toString('base64')}`
   const updatedImage = await cloudinary.v2.uploader.upload(image, {
     public_id: publicID,
     overwrite: true,
@@ -30,7 +30,7 @@ const updateFileInTheCloud = cloudErrorHandler(async (secureURL, buffer) => {
   return updatedImage.secure_url
 })
 
-const deleteFileInTheCloud = cloudErrorHandler( async (secureURL) => {
+const deleteFileInTheCloud = cloudErrorHandler(async (secureURL) => {
   const publicID = getPublicID(secureURL)
   cloudinary.v2.uploader.destroy(publicID)
 })
