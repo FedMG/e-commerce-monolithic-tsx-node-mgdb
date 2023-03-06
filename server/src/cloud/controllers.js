@@ -1,28 +1,42 @@
 import cloudinary from 'cloudinary'
-import { BadRequestError } from '../errors/customTypes.js'
+import { cloudErrorHandler } from '../errors/cloudErrorHandler.js'
+import { getPublicID } from '../utils/functions.js'
 
-export const uploadImageToTheCloud = async (image) => {
-  try {
-    const uploadedImage = await cloudinary.v2.uploader.upload(image, {
-      folder: 'e-commerce-assets',
-      use_filename: false,
-      unique_filename: false,
-      overwrite: false,
-      invalidate: true,
-      format: 'webp'
-    })
+const uploadFileToTheCloud = cloudErrorHandler(async (buffer) => {
+  const image = `data:image/jpg;base64,${buffer.toString('base64')}`
+  const uploadedImage = await cloudinary.v2.uploader.upload(image, {
+    folder: 'e-commerce-assets',
+    unique_filename: true,
+    use_filename: false,
+    overwrite: false,
+    invalidate: true,
+    format: 'webp'
+  })
 
-    console.log(uploadedImage)
-    return uploadedImage.secure_url
-  } catch (err) {
-    const { error: { code } } = err
+  return uploadedImage.secure_url
+})
 
-    if (code === 'ENAMETOOLONG') {
-      throw new BadRequestError(
-        'There was an issue with the upload file process. The file must be a valid format.'
-      )
-    }
+const updateFileInTheCloud = cloudErrorHandler(async (secureURL, buffer) => {
+  const publicID = getPublicID(secureURL)
 
-    throw err
-  }
+  const image = `data:image/jpg;base64,${buffer.toString('base64')}` 
+  const updatedImage = await cloudinary.v2.uploader.upload(image, {
+    public_id: publicID,
+    overwrite: true,
+    invalidate: true,
+    format: 'webp'
+  })
+
+  return updatedImage.secure_url
+})
+
+const deleteFileInTheCloud = cloudErrorHandler( async (secureURL) => {
+  const publicID = getPublicID(secureURL)
+  cloudinary.v2.uploader.destroy(publicID)
+})
+
+export {
+  uploadFileToTheCloud,
+  updateFileInTheCloud,
+  deleteFileInTheCloud
 }
