@@ -37,7 +37,7 @@ cloudinary.v2.config({
 })
 
 const corsConfig = {
-  origin: ['https://ek5sqy-3000.preview.csb.app'],
+  origin: ['https://1et100-3000.preview.csb.app'],
   optionsSuccessStatus: StatusCodes.OK
 }
 
