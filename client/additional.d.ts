@@ -1,3 +1,5 @@
+import { ChangeEvent, FormEvent } from 'react'
+
 export interface RootLayout {
   children: React.ReactNode;
   title: string;
@@ -55,4 +57,25 @@ export interface Products {
 
 export interface CategoryProps {
   products: Products[]
+}
+
+
+// User Session
+export type SessionMode = "login" | "register";
+
+export interface FormTypes {
+  name?: string;
+  email: string;
+  password: string;
+}
+
+export interface SessionRequestProps {
+  form: FormTypes;
+  mode: SessionMode;
+}
+
+export interface UserSessionTools {
+    form: FormTypes,
+    setInput: (event: ChangeEvent<HTMLInputElement>) => void
+    setSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>
 }
