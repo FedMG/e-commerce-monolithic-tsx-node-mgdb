@@ -29,6 +29,13 @@ export interface CustomDrawerProps extends CustomHeaderProps {
     collapse: CustomMethodsProps
 }
 
+export interface FooterLinksProps {
+  data: {
+    title: string;
+    links: { label: string; link: string }[];
+  }[];
+}
+
 export interface ProductCardProps {
   element: {
     name: string
