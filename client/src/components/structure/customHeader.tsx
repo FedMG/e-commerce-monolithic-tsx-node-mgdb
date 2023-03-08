@@ -1,4 +1,4 @@
-import { Header, Menu, Center, Container, Group, Button, Burger, UnstyledButton} from "@mantine/core";
+import { Header, Menu, Center, Container, Group, Burger, UnstyledButton} from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
 import { CustomHeaderProps, HeaderLinks } from "additional";
 import Link from "next/link";
@@ -62,8 +62,8 @@ export const CustomHeader: React.FC<CustomHeaderProps> = ({ drawer, links }) => 
             {getLinks(links, classes)}
           </Group>
           <Group position="center" px="sm">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Link href='/user/login'>Sign In </Link>
+            <Link href='/user/register'>Sign Up </Link>
           </Group>
         </Container>
       </Header>
