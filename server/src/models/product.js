@@ -9,7 +9,8 @@ const brands = [
   'calvin klein',
   'versace',
   'puma',
-  'channel'
+  'channel',
+  'converse'
 ]
 
 const productSchema = new mongoose.Schema({

@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node --watch src/index.js",
     "lint": "standard --fix",
-    "upload": "node src/utils/upload-data"
+    "upload-products": "node src/utils/upload-products",
+    "upload-files": "node src/utils/upload-files"
   },
   "keywords": [],
   "author": "Fedmg",

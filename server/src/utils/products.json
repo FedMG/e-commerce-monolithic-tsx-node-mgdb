@@ -1,47 +1,29 @@
 [
   {
     "name": "black jogger",
-    "image": "temp",
-    "price": 25,
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/wfpvjkuxtmhcf67o5rz4.webp"
+    },
+    "price": 75,
     "category": "men's clothing",
-    "brand": "toppler",
+    "brand": "zara",
     "rating": 4
   },
   {
-    "name": "black joggin",
-    "image": "temp",
-    "price": 109,
-    "category": "women's clothing",
+    "name": "white sports shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/wzq941hjbdiyqzohkucs.webp"
+    },
+    "price": 85,
+    "category": "shoes",
     "brand": "nike",
-    "rating": 5
-  },
-  {
-    "name": "yellow joggin",
-    "image": "temp",
-    "price": 309,
-    "category": "women's clothing",
-    "brand": "nike",
-    "rating": 4.9
-  },
-  {
-    "name": "blue jean",
-    "image": "temp",
-    "price": 125,
-    "category": "men's clothing",
-    "brand": "zara",
-    "rating": 4.8
-  },
-  {
-    "name": "white handbag",
-    "image": "temp",
-    "price": 40,
-    "category": "accessory",
-    "brand": "gucci",
-    "rating": 4.6
+    "rating": 4
   },
   {
     "name": "yellow shoes",
-    "image": "temp",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/zg0nscieiyl3ezmsl7vk.webp"
+    },
     "price": 42,
     "category": "shoes",
     "brand": "nike",
@@ -49,101 +31,545 @@
   },
   {
     "name": "black shoes",
-    "image": "temp",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/gqa3ow8xi2r393nnmtbd.webp"
+    },
     "price": 23,
     "category": "shoes",
-    "brand": "nike"
+    "brand": "nike",
+    "rating": 4
   },
   {
-    "name": "sport shoes",
-    "image": "temp",
-    "price": 59,
-    "category": "shoes",
-    "brand": "addidas"
-  },
-  {
-    "name": "white printed t-shirt",
-    "image": "temp",
+    "name": "burgundy printed t-shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/qwjzatc4o6evszfuz18a.webp"
+    },
     "price": 39,
     "category": "men's clothing",
+    "brand": "puma",
+    "rating": 4
+  },
+
+  {
+    "name": "white printed shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/oek4b4prtwwomksgagyl.webp"
+    },
+    "price": 76,
+    "category": "men's clothing",
+    "brand": "puma",
+    "rating": 4
+  },
+
+  {
+    "name": "pink waterproof jacket",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/n6az9agfctp38gjqi4ht.webp"
+    },
+    "price": 93,
+    "category": "women's clothing",
+    "brand": "channel",
+    "rating": 3
+  },
+
+  {
+    "name": "orange sunglasses",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/e6wu3sgd6iqz1qxwzdeh.webp"
+    },
+    "price": 85,
+    "category": "accessory",
+    "brand": "addidas",
+    "rating": 3
+  },
+
+  {
+    "name": "grey lightweight jacket",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/e6wu3sgd6iqz1qxwzdeh.webp"
+    },
+    "price": 62,
+    "category": "men's clothing",
+    "brand": "toppler",
+    "rating": 4
+  },
+
+  {
+    "name": "street colors shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/fgesrc6eyqncmiivdnkm.webp"
+    },
+    "price": 95,
+    "category": "shoes",
+    "brand": "nike",
+    "rating": 4
+  },
+
+  {
+    "name": "white printed shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/u1sczbedsollzbbjykkz.webp"
+    },
+    "price": 63,
+    "category": "men's clothing",
+    "brand": "puma",
+    "rating": 4
+  },
+
+  {
+    "name": "dark ocean blue t-shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/y8lebwoqysok6vg4ycns.webp"
+    },
+    "price": 31,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "calvin klein"
+  },
+  {
+    "name": "oversized black t-shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/v7oiibfja17ek1qlozqf.webp"
+    },
+    "price": 30,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "zara"
+  },
+
+  {
+    "name": "oversized black t-shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/nzd830zmqk8rjxdv7rp4.webp"
+    },
+    "price": 80,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "zara"
+  },
+
+  {
+    "name": "blue jean jacket",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/g1txxm4z1ltn6yeazbcx.webp"
+    },
+    "price": 67,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "gucci"
+  },
+
+  {
+    "name": "street white shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/g1txxm4z1ltn6yeazbcx.webp"
+    },
+    "price": 86,
+    "category": "shoes",
+    "rating": 4,
+    "brand": "addidas"
+  },
+
+  {
+    "name": "slim black jean",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/g1txxm4z1ltn6yeazbcx.webp"
+    },
+    "price": 91,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "calvin klein"
+  },
+
+  {
+    "name": "black lightweight hoodie",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/g1txxm4z1ltn6yeazbcx.webp"
+    },
+    "price": 69,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "zara"
+  },
+
+  {
+    "name": "autumn sweater",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/kxy1uibhprcamyn2b8pz.webp"
+    },
+    "price": 46,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "calvin klein"
+  },
+
+  {
+    "name": "black borcegos",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/kxy1uibhprcamyn2b8pz.webp"
+    },
+    "price": 105,
+    "category": "shoes",
+    "rating": 4,
+    "brand": "gucci"
+  },
+
+  {
+    "name": "grey hat",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/kxy1uibhprcamyn2b8pz.webp"
+    },
+    "price": 55,
+    "category": "accessory",
+    "rating": 4,
+    "brand": "channel"
+  },
+
+  {
+    "name": "blue jean",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/kxy1uibhprcamyn2b8pz.webp"
+    },
+    "price": 95,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "calvin klein"
+  },
+
+  {
+    "name": "black jacket",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/iir4wstbk69unzuzumrb.webp"
+    },
+    "price": 30,
+    "category": "men's clothing",
+    "rating": 3,
+    "brand": "zara"
+  },
+  {
+    "name": "yellow jumpsuit",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/ceq1uqukeuqxmbpdobsp.webp"
+    },
+    "price": 109,
+    "category": "women's clothing",
+    "rating": 5,
+    "brand": "channel"
+  },
+
+  {
+    "name": "yellow jogging",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/ceq1uqukeuqxmbpdobsp.webp"
+    },
+    "price": 113,
+    "category": "women's clothing",
+    "rating": 4,
+    "brand": "channel"
+  },
+
+  {
+    "name": "white heels",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/ceq1uqukeuqxmbpdobsp.webp"
+    },
+    "price": 116,
+    "category": "shoes",
+    "rating": 5,
+    "brand": "versace"
+  },
+
+  {
+    "name": "pink jogger",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/kdhe1dvdhphzsvrmv93l.webp"
+    },
+    "price": 109,
+    "category": "women's clothing",
+    "rating": 4,
+    "brand": "nike"
+  },
+
+  {
+    "name": "red sunglasses",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/kwwmj1nt9hgaxwplzznl.webp"
+    },
+    "price": 129,
+    "category": "accessory",
+    "rating": 5,
     "brand": "puma"
   },
 
   {
-    "name": "salmon printed shirt",
-    "image": "temp",
-    "price": 99,
-    "category": "men's clothing",
-    "brand": "puma"
-  },
-  {
-    "name": "black plain t-shirt",
-    "image": "temp",
-    "price": 31,
-    "category": "men's clothing",
-    "brand": "calvin klein"
-  },
-  {
-    "name": "yellow sweatshirt",
-    "image": "temp",
-    "price": 30,
+    "name": "white printed t-shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/kwwmj1nt9hgaxwplzznl.webp"
+    },
+    "price": 66,
     "category": "women's clothing",
-    "brand": "nike"
+    "rating": 4,
+    "brand": "gucci"
   },
+
   {
-    "name": "oversized black t-shirt",
-    "image": "temp",
-    "price": 30,
-    "category": "men's clothing",
-    "brand": "zara"
+    "name": "white shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/kwwmj1nt9hgaxwplzznl.webp"
+    },
+    "price": 76,
+    "category": "shoes",
+    "rating": 5,
+    "brand": "toppler"
   },
-  {
-    "name": "black houdi",
-    "image": "temp",
-    "price": 109,
-    "category": "men's clothing",
-    "brand": "nike"
-  },
+
   {
     "name": "sunglasses",
-    "image": "temp",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/y8lebwoqysok6vg4ycns.webp"
+    },
     "price": 129,
     "category": "accessory",
-    "brand": "channel"
+    "rating": 3,
+    "brand": "toppler"
   },
   {
-    "name": "grey joggin",
-    "image": "temp",
-    "price": 15,
+    "name": "black sports shorts",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/pwkguiwyif7armyoyx0w.webp"
+    },
+    "price": 85,
     "category": "women's clothing",
+    "rating": 4,
     "brand": "addidas"
   },
   {
-    "name": "black sweatshirt",
-    "image": "temp",
-    "price": 79,
-    "category": "women's clothing",
-    "brand": "zara"
+    "name": "white sports shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/pwkguiwyif7armyoyx0w.webp"
+    },
+    "price": 95,
+    "category": "shoes",
+    "rating": 4,
+    "brand": "toppler"
   },
   {
-    "name": "yellow jacket",
-    "image": "temp",
-    "price": 120,
+    "name": "pink printed t-shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/pwkguiwyif7armyoyx0w.webp"
+    },
+    "price": 125,
     "category": "women's clothing",
-    "brand": "versace"
+    "rating": 5,
+    "brand": "toppler"
   },
+
   {
-    "name": "black jacket",
-    "image": "temp",
-    "price": 25,
+    "name": "beige houdie",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/c4pr7zgj1qr3rjqraya6.webp"
+    },
+    "price": 93,
     "category": "men's clothing",
+    "rating": 4,
+    "brand": "nike"
+  },
+
+  {
+    "name": "black jean",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/c4pr7zgj1qr3rjqraya6.webp"
+    },
+    "price": 132,
+    "category": "men's clothing",
+    "rating": 5,
     "brand": "zara"
   },
+
+  {
+    "name": "white shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/c4pr7zgj1qr3rjqraya6.webp"
+    },
+    "price": 105,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "converse"
+  },
+
+  {
+    "name": "pink printed t-shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/c4pr7zgj1qr3rjqraya6.webp"
+    },
+    "price": 96,
+    "category": "women's clothing",
+    "rating": 4,
+    "brand": "toppler"
+  },
+
+  {
+    "name": "white jumpsuit",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/wtnop7abug1sgqx2lzdi.webp"
+    },
+    "price": 87,
+    "category": "women's clothing",
+    "rating": 5,
+    "brand": "addidas"
+  },
+
+  {
+    "name": "street red-white shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/pbpcjtrpial0dgtyf8tf.webp"
+    },
+    "price": 108,
+    "category": "shoes",
+    "rating": 3,
+    "brand": "nike"
+  },
+
+  {
+    "name": "street white shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/jhppq5cj9cj14moalv2g.webp"
+    },
+    "price": 98,
+    "category": "shoes",
+    "rating": 4,
+    "brand": "nike"
+  },
+
+  {
+    "name": "street black hoodie",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/jhppq5cj9cj14moalv2g.webp"
+    },
+    "price": 115,
+    "category": "women's clothing",
+    "rating": 4,
+    "brand": "zara"
+  },
+
+  {
+    "name": "street black jogging",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/jhppq5cj9cj14moalv2g.webp"
+    },
+    "price": 99,
+    "category": "women's clothing",
+    "rating": 4,
+    "brand": "zara"
+  },
+
   {
     "name": "white hat",
-    "image": "temp",
-    "price": 15,
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/r0m649bfrsz2kio7bs0y.webp"
+    },
+    "price": 124,
     "category": "accessory",
+    "rating": 4,
     "brand": "gucci"
+  },
+
+  {
+    "name": "slim white jogger",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/r0m649bfrsz2kio7bs0y.webp"
+    },
+    "price": 154,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "gucci"
+  },
+
+  {
+    "name": "fashion sunglasses",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/jkyt3u0xaaojeluxhjgl.webp"
+    },
+    "price": 134,
+    "category": "accessory",
+    "rating": 3,
+    "brand": "channel"
+  },
+
+  {
+    "name": "fashion yellow jacket",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/jkyt3u0xaaojeluxhjgl.webp"
+    },
+    "price": 164,
+    "category": "women's clothing",
+    "rating": 4,
+    "brand": "channel"
+  },
+
+  {
+    "name": "orange jumpsuit",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/b3gjoauk04nh7tuozpvj.webp"
+    },
+    "price": 94,
+    "category": "men's clothing",
+    "rating": 5,
+    "brand": "puma"
+  },
+
+  {
+    "name": "street grey jogging",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/d8gzbhkmuxpeuevzwlda.webp"
+    },
+    "price": 136,
+    "category": "women's clothing",
+    "rating": 4,
+    "brand": "zara"
+  },
+
+  {
+    "name": "styled black shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/d8gzbhkmuxpeuevzwlda.webp"
+    },
+    "price": 120,
+    "category": "shoes",
+    "rating": 4,
+    "brand": "nike"
+  },
+
+  {
+    "name": "dark blue t-shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/d8gzbhkmuxpeuevzwlda.webp"
+    },
+    "price": 79,
+    "category": "women's clothing",
+    "rating": 4,
+    "brand": "zara"
+  },
+
+  {
+    "name": "dark blue t-shirt",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/r0m649bfrsz2kio7bs0y.webp"
+    },
+    "price": 104,
+    "category": "men's clothing",
+    "rating": 4,
+    "brand": "versace"
+  },
+
+  {
+    "name": "street colors shoes",
+    "image": {
+      "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1678530687/e-commerce-assets/phndhck7mkbnj77ygcb6.webp"
+    },
+    "price": 93,
+    "category": "shoes",
+    "rating": 4,
+    "brand": "addidas"
   }
 ]
