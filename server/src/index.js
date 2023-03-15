@@ -11,7 +11,6 @@ import rateLimiter from 'express-rate-limit'
 import cloudinary from 'cloudinary'
 
 import connectDB from './db/connect.js'
-import authenticateUser from './middleware/authentication.js'
 
 import session from './routes/session.js'
 import products from './routes/products.js'
@@ -48,7 +47,7 @@ app.use(cors(corsConfig))
 app.use(helmet())
 
 app.use('/api/v1/auth', session)
-app.use('/api/v1/products', authenticateUser, products)
+app.use('/api/v1/products', products)
 
 app.use(notFound)
 app.use(errorHandler)
