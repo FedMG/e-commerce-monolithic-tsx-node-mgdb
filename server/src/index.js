@@ -11,7 +11,6 @@ import rateLimiter from 'express-rate-limit'
 import cloudinary from 'cloudinary'
 
 import connectDB from './db/connect.js'
-import authenticateUser from './middleware/authentication.js'
 
 import session from './routes/session.js'
 import products from './routes/products.js'
@@ -33,11 +32,12 @@ app.use(
 cloudinary.v2.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET
+  api_secret: process.env.API_SECRET,
+  secure: true
 })
 
 const corsConfig = {
-  origin: ['https://ek5sqy-3000.preview.csb.app'],
+  origin: ['https://1et100-3000.preview.csb.app'],
   optionsSuccessStatus: StatusCodes.OK
 }
 
@@ -47,7 +47,7 @@ app.use(cors(corsConfig))
 app.use(helmet())
 
 app.use('/api/v1/auth', session)
-app.use('/api/v1/products', authenticateUser, products)
+app.use('/api/v1/products', products)
 
 app.use(notFound)
 app.use(errorHandler)

@@ -1,8 +1,10 @@
-import { Box, Button, Center, Collapse, Divider } from "@mantine/core";
-import { Drawer, Group, ScrollArea, UnstyledButton } from "@mantine/core";
-import { IconChevronDown } from "@tabler/icons";
-import { CustomDrawerProps } from "additional";
 import Link from "next/link";
+
+import { Drawer, Group, ScrollArea, UnstyledButton } from "@mantine/core";
+import { Box, Center, Collapse, Divider } from "@mantine/core";
+import { IconChevronDown } from "@tabler/icons";
+
+import { CustomDrawerProps } from "additional";
 import { useHeaderStyles } from "./Header";
 
 export const CustomDrawer: React.FC<CustomDrawerProps> = ({ drawer, collapse, links }) => {
@@ -63,8 +65,8 @@ export const CustomDrawer: React.FC<CustomDrawerProps> = ({ drawer, collapse, li
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />
           <Group position="center" grow pb="md" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Link href='/user/login'>Sign In </Link>
+            <Link href='/user/register'>Sign Up </Link>
           </Group>
         </ScrollArea>
       </Drawer>

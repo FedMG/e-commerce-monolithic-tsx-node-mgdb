@@ -2,7 +2,7 @@
 
 Node.js v18.12.1
 
-[1]: https://www.youtube.com/watch?v=qwfE7fSVaZM
+
 
 ## URL and Endpoints
 
@@ -30,6 +30,7 @@ ___
 2. Add `/productID` to get a specific product.
 3. Add `/brands` to get a unique list of brands.
 4. Add `/categories` to get a unique list of categories.
+5. Add `/productID/image` to get a image object of a specific product.
 
 ## How to do a query?
 
@@ -50,12 +51,15 @@ You can use the ampersand parameter `&` to chain multiple queries
 1. __name:__ accepts a regex value, example to use it: `?name=^a` 
 2. __brand:__  only accepts brands values, example to use it: `?brand=sony`
 3. __category:__ only accepts category values, example to use it: `?category=electronics`
-4. __sort:__ Use it to sort the products acording to a property, example to use it: `?sort=price`
-5. __fields:__ Use it to get the products acording to a properties selected, example to use it: `?fields=price,name`
-6. __numFilter:__ Use it to filter the products according to price or rating, example to use it: `?numFilter=price>100,rating=4`
-7. __page:__ Use it to get a page according to the default limit of products, example to use it: `?page=2`
-8. __limit:__ Use it to set the limit of products that can shows, example to use it: `?page=2`
+4. __description:__ only accepts category values, example to use it: `?description=jogger`
+5. __sort:__ Use it to sort the products acording to a property, example to use it: `?sort=price`
+6. __fields:__ Use it to get the products acording to a properties selected, example to use it: `?fields=price,name`
+7. __numFilter:__ Use it to filter the products according to price or rating, example to use it: `?numFilter=price>100,rating=4`
+8. __page:__ Use it to get a page according to the default limit of products, example to use it: `?page=2`
+9. __limit:__ Use it to set the limit of products that can shows, example to use it: `?page=2`
 
 
 ## Attribution
-This project is based on what I learned in the amazing [NodeJS & Express][1] Course developed by John Smilga!
+I applied some of the knowledge from [NodeJS & Express][1] Course developed by John Smilga!
+
+[1]: https://www.youtube.com/watch?v=qwfE7fSVaZM
