@@ -3,7 +3,7 @@ export const setRequestToTheAPI = async (
   requestOptions?: RequestInit
 ): Promise<Response> => {
   const res = await fetch(endpoint, requestOptions);
-  return res;
+  return res.json();
 };
 
 export const getAPIData = async (endpoint: string) => {
