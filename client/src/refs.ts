@@ -1,3 +1,94 @@
+import { HeaderLinks } from "additional";
+
+export const headerLinks: HeaderLinks[] = [
+    {
+      "path": "/",
+      "label": "Home"
+    },
+    {
+      "path": "/about",
+      "label": "About"
+    },
+    {
+      "path": "#categories",
+      "label": "Categories",
+      "links": [
+        {
+          "path": "/men's clothing",
+          "label": "Men's clothing"
+        },
+        {
+          "path": "/women's clothing",
+          "label": "Women's clothing"
+        },
+        {
+          "path": "/beauty",
+          "label": "Beauty"
+        },
+      ]
+    }
+  ]
+
+
+export const footer = {
+  data: [
+    {
+      title: "About",
+      links: [
+        {
+          label: "Features",
+          link: "#",
+        },
+        {
+          label: "Pricing",
+          link: "#",
+        },
+        {
+          label: "Payments methods",
+          link: "#",
+        },
+      ],
+    },
+    {
+      title: "Policy",
+      links: [
+        {
+          label: "Privacy Policy",
+          link: "#",
+        },
+        {
+          label: "Terms of Service",
+          link: "#",
+        },
+        {
+          label: "Consumer Rights",
+          link: "#",
+        },
+      ],
+    },
+    {
+      title: "Help",
+      links: [
+        {
+          label: "Common Questions",
+          link: "#",
+        },
+        {
+          label: "Support",
+          link: "#",
+        },
+        {
+          label: "Contact us",
+          link: "#",
+        },
+      ],
+    },
+  ],
+};
+
+
+
+
 export const blobs = [
   {
     d: "M13.3,-23.2C17.6,-18,21.7,-14.9,26.2,-10.4C30.8,-5.9,35.8,0,35.3,5.2C34.7,10.3,28.5,14.8,23.7,20.9C19,27,15.7,34.8,10.6,36.6C5.4,38.4,-1.7,34.2,-7.2,30.1C-12.7,26,-16.6,21.8,-22.7,17.9C-28.8,14,-37.2,10.3,-38.5,5.2C-39.8,0.1,-34,-6.4,-29.7,-12.6C-25.4,-18.9,-22.6,-24.9,-17.9,-29.9C-13.2,-34.9,-6.6,-38.9,-1.1,-37.2C4.5,-35.6,9,-28.4,13.3,-23.2Z",
