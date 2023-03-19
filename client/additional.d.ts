@@ -86,3 +86,9 @@ export interface UserSessionTools {
     setInput: (event: ChangeEvent<HTMLInputElement>) => void
     setSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>
 }
+
+export interface CreateBlockProps {
+  d: string;
+  className: string;
+  alt: string;
+}
