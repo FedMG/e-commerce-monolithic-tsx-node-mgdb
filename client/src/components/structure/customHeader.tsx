@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Header, Menu, Center, Container, Group, Burger, UnstyledButton} from "@mantine/core";
@@ -57,6 +58,7 @@ export const CustomHeader: React.FC<CustomHeaderProps> = ({ drawer, links }) => 
               className={classes.hiddenDesktop}
               size="sm"
             />
+            <Image src="e-cart.svg" width={45} height={45} alt='A cart logo of the e-commerce' draggable={"false"} />
           </Group>
           <Group spacing={5} className={classes.links}>
             {getLinks(links, classes)}
