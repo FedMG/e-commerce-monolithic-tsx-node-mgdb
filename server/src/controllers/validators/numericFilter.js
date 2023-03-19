@@ -13,7 +13,7 @@ export const numericFilter = (queryConfig, number) => {
   for (const item of filters.split(',')) {
     const [field, operator, value] = item.split('-')
 
-    if (['price', 'rating'].includes(field)) {
+    if (['price', 'rating', 'discount'].includes(field)) {
       queryConfig[field] = { [operator]: Number(value) }
     }
   }
