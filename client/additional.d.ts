@@ -87,6 +87,11 @@ export interface UserSessionTools {
     setSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>
 }
 
+export interface BackgroundWrapperProps {
+  children: React.ReactElement;
+  padTop: number;
+}
+
 export interface CreateBlockProps {
   d: string;
   className: string;
