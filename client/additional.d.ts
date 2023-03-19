@@ -86,3 +86,14 @@ export interface UserSessionTools {
     setInput: (event: ChangeEvent<HTMLInputElement>) => void
     setSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>
 }
+
+export interface BackgroundWrapperProps {
+  children: React.ReactElement;
+  padTop: number;
+}
+
+export interface CreateBlockProps {
+  d: string;
+  className: string;
+  alt: string;
+}
