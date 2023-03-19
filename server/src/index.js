@@ -19,6 +19,8 @@ import notFound from './middleware/notFound.js'
 import errorHandler from './middleware/errorHandler.js'
 import { ServiceUnvailableError } from './errors/customTypes.js'
 
+import { VALID_DOMAIN } from './environment.js'
+
 const app = express()
 
 app.set('trust proxy', 1)
@@ -36,8 +38,9 @@ cloudinary.v2.config({
   secure: true
 })
 
+console.log(VALID_DOMAIN)
 const corsConfig = {
-  origin: ['https://1et100-3000.preview.csb.app'],
+  origin: [`https://${VALID_DOMAIN}`],
   optionsSuccessStatus: StatusCodes.OK
 }
 
@@ -52,7 +55,7 @@ app.use('/api/v1/products', products)
 app.use(notFound)
 app.use(errorHandler)
 
-const PORT = process.env.SEVER_PORT || 3005
+const PORT = process.env.SERVER_PORT || 3005
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI)
