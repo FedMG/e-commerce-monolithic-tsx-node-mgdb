@@ -5,6 +5,7 @@ import { ProductsCard } from "@/components/cards";
 import { getEndpoint } from "./api/utils";
 import { CategoryProps, CategoryServerSideProps } from "additional";
 
+import { VALID_DOMAIN } from "src/environment"
 
 const Category: React.FC<CategoryProps> = ({ products }) => {
   const router = useRouter();
@@ -45,7 +46,7 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
   );
 };
 
-const getProducts = getEndpoint('ek5sqy-3005.preview.csb.app/api/v1/products?category=')
+const getProducts = getEndpoint(`${VALID_DOMAIN}/api/v1/products?category=`)
 
 export async function getServerSideProps({ params }: CategoryServerSideProps) {
   const products = await getProducts(params.category)

@@ -2,11 +2,22 @@ import { ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+import CryptoJS from 'crypto-js'
+import crypto from 'crypto'
+
 import { FormTypes, SessionRequestProps, UserSessionTools } from "additional";
 import { setRequestToTheAPI } from "@/pages/api/utils";
 
+export const KEY_TOKEN = 'ecommercencrypt' + Math.random().toString(36).substring(2, 15);
+export const SECRET_KEY = crypto.randomBytes(32).toString('hex');
+
+const route = {
+  'login': 'login',
+  'register': '/',
+}
+
 const getSessionRequests = ({ form, mode }: SessionRequestProps) => ({
-  url: `https://1et100-3005.preview.csb.app/api/v1/auth/${mode}/`,
+  url: `https://xpbw7h-3005.csb.app/api/v1/auth/${mode}/`,
   requestOptions: {
     method: "POST",
     headers: {
@@ -34,23 +45,17 @@ const useUserSessionData = ({
   };
 
   const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(form);
-
-    const res = await setCredentials({ form, mode });
-    console.log("res:", res);
-    if (res.ok) {
-      setForm(defaultForm);
-      console.log(res);
-      //   const {} = res
-      //   localStorage.setItem('token', user.token )
-
-      const isLogin = mode === "login" ? "/" : "login";
-      router.push(`auth/${isLogin}`);
-    } else {
-      setForm(defaultForm);
-      localStorage.removeItem("token");
+    event.preventDefault();    
+    const { token } = await setCredentials({ form, mode });
+    
+    if (!token) {
+      return setForm(defaultForm)
     }
+    setForm(defaultForm)
+    
+    const encryptedToken = CryptoJS.AES.encrypt(JSON.stringify(token), SECRET_KEY).toString()
+    localStorage.setItem(KEY_TOKEN, encryptedToken)
+    router.push(route[mode]);
   };
 
   return { form: form, setInput: inputsFormHandler, setSubmit: submitHandler };
