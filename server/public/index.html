@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>node-mongo-store-api</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+      }
+      
+      header {
+        background-color: #007ACC;
+        color: white;
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 36px;
+        margin: 0;
+      }
+      
+      h2 {
+        font-size: 24px;
+        margin: 0;
+      }
+      
+      section {
+        padding: 20px;
+      }
+      
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      li {
+        margin-bottom: 10px;
+      }
+      
+      a {
+        color: #007ACC;
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      code {
+        background-color: #f0f0f0;
+        font-family: Consolas, monospace;
+        padding: 2px;
+      }
+      
+      note {
+        font-style: italic;
+      }
+      
+      table {
+        border-collapse: collapse;
+        margin: 20px 0;
+        width: 100%;
+      }
+      
+      th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      
+      th {
+        background-color: #f0f0f0;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>node-mongo-store-api</h1>
+      <p>Node.js v18.12.1</p>
+    </header>
+    
+    <section>
+      <h2>URL and Endpoints</h2>
+      <p>The server is already up in <code>https://e-commerce-store-api.onrender.com/</code></p>
+      <h3>The endpoints currently available are:</h3>
+      <ul>
+        <li><code>api/v1/auth</code> to get user authentication and access into products.</li>
+        <li><code>api/v1/products</code> to get a list of products.</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>How to use?</h2>
+      <h3>Get user authentication</h3>
+      <ol>
+        <li>Go to the <code>URL</code> + <code>api/v1/auth</code> endpoint.</li>
+        <li>Add <code>/register</code> route to register as a new user or add <code>\login</code> route to get user authentication and access in products endpoint.</li>
+      </ol>
+      <note>For now you can get authentication only from an API testing as Postman.</note>
+      <h3>Go to products endpoint</h3>
+      <ol>
+        <li>Go to the <code>URL</code> + <code>api/v1/products</code> endpoint.</li>
+        <li>You can add the nexts queries properties to get the query results: <code>brand</code>, <code>category</code>, <code>sort</code>, <code>fields</code>, <code>numFilter</code>, <code>page</code>, <code>limit</code></li>
+        <li>Add <code>/productID</code> to get a specific product.</li>
+        <li>Add <code>/brands</code> to get a unique list of brands.</li>
+        <li>Add <code>/categories</code> to get a unique list of categories.</li>
+        <li>Add <code>/productID/image</code> to get an image object of a specific product.</li>
+      </ol>
+      <li>
+        <h3>How to do a query?</h3>
+        <p>You can use the query parameter <code>?</code> to chain a query property in a link.</p>
+        <p><em>Example:</em> <code>.../api/v1/products</code> + <code>?</code> + <code><property></code></p>
+      </li>
+      <li>
+        <h3>How to chain more than one query?</h3>
+        <p>You can use the ampersand parameter <code>&</code> to chain multiple queries</p>
+        <p><em>Example:</em> <code>.../api/v1/products</code> + <code>?</code> + <code><property></code> + <code>&</code> + <code><property></code> ----> <code>.../api/v1/products?name=^a&brand=x</code></p>
+      </li>
+      <li>
+      <h3>Properties description</h3>
+      <ol>
+        <li><strong>name:</strong> accepts a regex value, example to use it: <code>?name=^a</code></li>
+        <li><strong>brand:</strong> only accepts brands values, example to use it: <code>?brand=nike</code></li>
+        <li><strong>category:</strong> only accepts category values, example to use it: <code>?category=shoes</code></li>
+        <li><strong>description:</strong> accepts regex value to match description content, example to use it: <code>?description=jogger</code></li>
+        <li><strong>sort:</strong> Use it to sort the products according to a property, example to use it: <code>?sort=price</code></li>
+        <li><strong>fields:</strong> Use it to get the products according to properties selected, example to use it: <code>?fields=price,name</code></li>
+        <li><strong>numFilter:</strong> Use it to filter the products according to price or rating, example to use it: <code>?numFilter=price>100,rating=4,discount=15</code></li>
+        <li><strong>page:</strong> Use it to get a page according to the default limit of products, example to use it: <code>?page=2</code></li>
+        <li><strong>limit:</strong> Use it to set the limit of products that can be shown, example to use it: <code>`?page=2`</code></li>
+     <ol>
+  </body>
+</html>
