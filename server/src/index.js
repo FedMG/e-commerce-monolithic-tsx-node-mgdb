@@ -54,6 +54,7 @@ app.use(morgan('dev'))
 app.use(cors(corsConfig))
 app.use(helmet())
 
+app.use('/', express.static(path.join(__dirname, '../public')));
 app.use('/api/v1/auth', session)
 app.use('/api/v1/products', products)
 
