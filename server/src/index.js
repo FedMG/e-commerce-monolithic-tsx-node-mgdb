@@ -1,7 +1,11 @@
 import { StatusCodes } from 'http-status-codes'
 import 'express-async-errors'
 
+import path from 'path'
+import { fileURLToPath } from 'url';
 import express from 'express'
+
+import favicon from 'serve-favicon'
 import morgan from 'morgan'
 
 import cors from 'cors'
@@ -9,7 +13,6 @@ import helmet from 'helmet'
 import rateLimiter from 'express-rate-limit'
 
 import cloudinary from 'cloudinary'
-
 import connectDB from './db/connect.js'
 
 import session from './routes/session.js'
@@ -38,12 +41,14 @@ cloudinary.v2.config({
   secure: true
 })
 
-console.log(VALID_DOMAIN)
 const corsConfig = {
   origin: [`https://${VALID_DOMAIN}`],
   optionsSuccessStatus: StatusCodes.OK
 }
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+app.use(favicon(path.join(__dirname, '../public', 'e-cart.ico')));
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(cors(corsConfig))
