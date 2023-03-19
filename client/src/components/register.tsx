@@ -1,4 +1,5 @@
 import { useUserSessionData } from "@/hooks/useUserSessionData";
+import { formStyles } from "@/styles/matine";
 
 const registerForm = {
   name: "",
@@ -8,12 +9,16 @@ const registerForm = {
 
 export const RegisterForm = () => {
   const { form, setInput, setSubmit } = useUserSessionData({ form: registerForm, mode: 'register'});
-
+  const { classes } = formStyles()
+  
   return (
-    <form onSubmit={setSubmit}>
-      <div>
-        <label htmlFor="name">Name:</label>
+    <form className={classes.form} onSubmit={setSubmit}>
+      <div className={classes.formGroup}>
+        <label className={classes.label} htmlFor="name">
+          Name:
+        </label>
         <input
+          className={classes.input}
           type="text"
           id="name"
           name="name"
@@ -22,9 +27,12 @@ export const RegisterForm = () => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="email">Email:</label>
+      <div className={classes.formGroup}>
+        <label className={classes.label} htmlFor="email">
+          Email:
+        </label>
         <input
+          className={classes.input}
           type="email"
           id="email"
           name="email"
@@ -33,9 +41,12 @@ export const RegisterForm = () => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="password">Password:</label>
+      <div className={classes.formGroup}>
+        <label className={classes.label} htmlFor="password">
+          Password:
+        </label>
         <input
+          className={classes.input}
           type="password"
           id="password"
           name="password"
@@ -44,7 +55,9 @@ export const RegisterForm = () => {
           required
         />
       </div>
-      <button type="submit">Register</button>
-    </form>
+      <button className={classes.button} type="submit">
+        Register
+      </button>
+    </form>    
   );
 };

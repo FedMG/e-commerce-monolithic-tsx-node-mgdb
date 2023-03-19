@@ -1,23 +1,17 @@
 import { RegisterForm } from '@/components/register';
-import React from 'react';
+import { formPage } from '@/styles/matine';
 
 const RegisterPage = () => {
+  const { classes } = formPage()
+  
   return (
-  <div style={{ display: 'grid', placeContent: 'center', textAlign:'center'}}>      
-      <h1>Register</h1>
+     <>
+      <h2 className={classes.title}>Register</h2>
+      <div className={classes.containerForm}>
       <RegisterForm />
     </div>
+    </>
   );
 };
-
-// export async function getServerSideProps({ params }) {
-//   console.log(params)
-//   // const products = await getProducts(params.category)
-//   return {
-//     props: {
-//       // ...products,
-//     },
-//   }
-// }
 
 export default RegisterPage
