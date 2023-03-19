@@ -1,9 +1,12 @@
-import { Header, Menu, Center, Container, Group, Burger, UnstyledButton} from "@mantine/core";
-import { IconChevronDown } from "@tabler/icons";
-import { CustomHeaderProps, HeaderLinks } from "additional";
+import Image from "next/image";
 import Link from "next/link";
 
-import { HEADER_HEIGHT, useHeaderStyles } from "./Header";
+import { Header, Menu, Center, Container, Group, Burger, UnstyledButton} from "@mantine/core";
+import { IconChevronDown } from "@tabler/icons";
+
+import { CustomHeaderProps, HeaderLinks } from "additional";
+import { HEADER_HEIGHT, useHeaderStyles } from "@/styles/matine";
+
 
 const getLinks: React.FC<HeaderLinks[]> = (links, classes) => {  
   const items = links.map(({ path, label, links }) => {
@@ -42,7 +45,6 @@ const getLinks: React.FC<HeaderLinks[]> = (links, classes) => {
 };
 
 
-
 export const CustomHeader: React.FC<CustomHeaderProps> = ({ drawer, links }) => {
     const { classes } = useHeaderStyles()
     
@@ -56,14 +58,14 @@ export const CustomHeader: React.FC<CustomHeaderProps> = ({ drawer, links }) => 
               className={classes.hiddenDesktop}
               size="sm"
             />
-            <div style={{ width: '40px' }}>LOGO</div>
+            <Image src="e-cart.svg" width={45} height={45} alt='A cart logo of the e-commerce' draggable={"false"} />
           </Group>
           <Group spacing={5} className={classes.links}>
             {getLinks(links, classes)}
           </Group>
-          <Group position="center" px="sm">
-            <Link href='/user/login'>Sign In </Link>
-            <Link href='/user/register'>Sign Up </Link>
+          <Group className={classes.links} position="center" px="sm">
+            <Link href='/user/login' className={classes.buttonLinks}>Sign In </Link>
+            <Link href='/user/register' className={classes.buttonLinks}>Sign Up </Link>
           </Group>
         </Container>
       </Header>

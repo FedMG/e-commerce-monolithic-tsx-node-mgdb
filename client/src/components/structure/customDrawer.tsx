@@ -5,7 +5,7 @@ import { Box, Center, Collapse, Divider } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
 
 import { CustomDrawerProps } from "additional";
-import { useHeaderStyles } from "./Header";
+import { useHeaderStyles } from "@/styles/matine";
 
 export const CustomDrawer: React.FC<CustomDrawerProps> = ({ drawer, collapse, links }) => {
   const { classes, theme } = useHeaderStyles();
@@ -55,7 +55,7 @@ export const CustomDrawer: React.FC<CustomDrawerProps> = ({ drawer, collapse, li
             }
             
             return (
-              <Link key={path} href={path} className={classes.link}>
+              <Link key={path} href={path} className={classes.link} onClick={drawer[1]}>
                 {label}
               </Link>
             );
@@ -65,8 +65,8 @@ export const CustomDrawer: React.FC<CustomDrawerProps> = ({ drawer, collapse, li
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />
           <Group position="center" grow pb="md" px="md">
-            <Link href='/user/login'>Sign In </Link>
-            <Link href='/user/register'>Sign Up </Link>
+            <Link href='/user/login' className={classes.buttonLinks}>Sign In </Link>
+            <Link href='/user/register' className={classes.buttonLinks}>Sign Up </Link>
           </Group>
         </ScrollArea>
       </Drawer>
