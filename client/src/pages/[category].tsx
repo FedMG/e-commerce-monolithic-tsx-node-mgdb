@@ -1,6 +1,6 @@
 import { Grid } from "@mantine/core";
 
-import { ProductsCard } from "@/components/cards";
+import { ProductsCard } from "@/components/productCard";
 import { getEndpoint } from "./api/utils";
 
 import { CategoryProps, CategoryServerSideProps, Products } from "additional";
@@ -16,11 +16,12 @@ const renderProducts: FC<Products> = ({
   price,
   rating,
   image,
+  discount,
   ...element
 }): ReactElement => {
   return (
     <Grid.Col span={4} sm={3} md={3} key={element["_id"]}>
-      <ProductsCard element={{ name, price, rating, image }} />
+      <ProductsCard element={{ name, price, rating, image, discount }} />
     </Grid.Col>
   );
 };
@@ -40,12 +41,6 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
 
 export async function getServerSideProps({ params }: CategoryServerSideProps) {
   if (typeof params.category !== "string") return { props: {} };
-  let category = params.category;
-
-  // the query category parameters must not has spaces, only hyphens-scores
-  if (category.split("-").length > 0) {
-    category = params.category.split("-").join(" ");
-  }
 
   const getProducts = getEndpoint(`${VALID_DOMAIN}/api/v1/products?category=`);
   const products = await getProducts(params.category);
