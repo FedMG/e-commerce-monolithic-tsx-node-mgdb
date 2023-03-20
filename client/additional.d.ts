@@ -52,13 +52,17 @@ export interface CategoryServerSideProps {
 
 export interface Products { 
       _id: string
-      name: string,
-      category: string,
-      price: number,
-      featured?: boolean,
-      rating: number,
-      brand?: string,
-      createdAt: Date,
+      name: string
+      image: {
+        src: string
+      }
+      category: string
+      description?: string
+      price: number
+      discount?: number
+      rating: number
+      brand?: string
+      createdAt: Date
       __v: number 
 }
 
