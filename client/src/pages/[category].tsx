@@ -8,6 +8,8 @@ import { FC, ReactElement } from "react";
 
 import { VALID_DOMAIN } from "src/environment";
 
+const isThereProduct = (products: Products[]) =>
+  Array.isArray(products) && products.length > 0;
 
 const renderProducts: FC<Products> = ({
   name,
@@ -30,7 +32,7 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
         {<h3>Filters</h3>}
       </Grid.Col>
       <Grid.Col span={12} lg={10} display="flex" style={{ flexWrap: "wrap" }}>
-        {products.map(renderProducts)}
+        {isThereProduct(products) && products.map(renderProducts)}
       </Grid.Col>
     </Grid>
   );
