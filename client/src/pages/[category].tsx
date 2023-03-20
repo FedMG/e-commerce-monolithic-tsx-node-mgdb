@@ -4,37 +4,43 @@ import { ProductsCard } from "@/components/productCard";
 import { getEndpoint } from "./api/utils";
 
 import { CategoryProps, CategoryServerSideProps, Products } from "additional";
-import { FC, ReactElement } from "react";
-
 import { VALID_DOMAIN } from "src/environment";
 
 const isThereProduct = (products: Products[]) =>
   Array.isArray(products) && products.length > 0;
 
-const renderProducts: FC<Products> = ({
-  name,
-  price,
-  rating,
-  image,
-  discount,
-  ...element
-}): ReactElement => {
+const CategoryFilters = () => {
   return (
-    <Grid.Col span={4} sm={3} md={3} key={element["_id"]}>
-      <ProductsCard element={{ name, price, rating, image, discount }} />
+    <Grid.Col span={0} lg={2}>
+      {<h3 style={{ width: "100%" }}>Filters</h3>}
+    </Grid.Col>
+  );
+};
+
+const CategoryProducts: React.FC<CategoryProps> = ({ products }) => {
+  return (
+    <Grid.Col span={12} lg={10} display="flex" style={{ flexWrap: "wrap" }}>
+      {isThereProduct(products) &&
+        products.map(({ name, price, rating, image, discount, ...element }) => (
+          <Grid.Col span={6} xs={4} sm={3} md={3} key={element["_id"]}>
+            <ProductsCard element={{ name, price, rating, image, discount }} />
+          </Grid.Col>
+        ))}
     </Grid.Col>
   );
 };
 
 const Category: React.FC<CategoryProps> = ({ products }) => {
   return (
-    <Grid gutter={6} gutterXs={16} gutterSm={20} gutterXl={24}>
-      <Grid.Col span={0} lg={2}>
-        {<h3>Filters</h3>}
-      </Grid.Col>
-      <Grid.Col span={12} lg={10} display="flex" style={{ flexWrap: "wrap" }}>
-        {isThereProduct(products) && products.map(renderProducts)}
-      </Grid.Col>
+    <Grid
+      style={{ width: "100%" }}
+      gutter={9}
+      gutterXs={16}
+      gutterSm={16}
+      gutterXl={24}
+    >
+      <CategoryFilters />
+      <CategoryProducts products={products} />
     </Grid>
   );
 };
