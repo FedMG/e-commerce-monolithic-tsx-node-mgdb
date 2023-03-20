@@ -41,6 +41,8 @@ export interface ProductCardProps {
     name: string
     rating: number
     price: number
+    discount?: number
+    image: { src: string }
   }
 }
 
