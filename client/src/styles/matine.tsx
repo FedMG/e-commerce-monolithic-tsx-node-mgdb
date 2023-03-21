@@ -249,7 +249,7 @@ export const useProductCardStyles = createStyles((theme) => ({
       backgroundColor: theme.colorScheme === "dark" ? theme.black[6] : theme.colors.gray[3],
       boxShadow: "0.15px 0.15px 1.1965px #777777",
       transition: 'transform 0.1s ease-in-out',
-      transform: 'scale(1.01)'
+      transform: 'scale(1.03)'
     },    
   },
   
@@ -274,10 +274,16 @@ export const useProductCardStyles = createStyles((theme) => ({
     width: '100%',
 
     padding: "0.6em",
+    paddingTop: 0,
     paddingBottom: "1em",
-    
+    [theme.fn.smallerThan("md")]: {
+      padding: "0.5em",
+      paddingTop: 0,
+      paddingBottom: "1.1em",
+    },    
     [theme.fn.smallerThan("sm")]: {
-      padding: '2px',
+      padding: '0.3em',
+      paddingTop: 0,
       paddingBottom: "1em",
     }
     
@@ -306,10 +312,11 @@ export const useProductCardStyles = createStyles((theme) => ({
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
-    alignItems:'center'
+    alignItems:'center',
   },
 
   price: {
+    fontWeight: 700,
     fontSize: theme.fontSizes.lg,
     color: theme.colorScheme === "dark" ? theme.white : theme.colors.dark,
     
@@ -317,10 +324,35 @@ export const useProductCardStyles = createStyles((theme) => ({
       fontSize: theme.fontSizes.md,
     }
   },
-  
+  originalPrice: {
+    marginBottom: -5,
+    marginRight: -4,
+    userSelect: 'none',
+    color: theme.colorScheme === "dark" ? theme.colors.gray[3] : theme.colors.gray[7],
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+  },
+  discountInfoContainer: {
+    width: '100%',
+    position: 'relative',
+  },
+  discount: {
+    paddingRight: '4px',
+    color: theme.colorScheme === "dark" ? theme.colors.green[5] : theme.colors.green[8],
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+    [theme.fn.smallerThan("md")]: {
+      fontSize: theme.fontSizes.xs,    
+    }
+  },
   rating: {
     color: theme.colorScheme === "dark" ? theme.white : theme.colors.dark,
     lineHeight: 1,
+    fontWeight: 500,
+    fontSize: theme.fontSizes.lg,
+    [theme.fn.smallerThan("sm")]: {
+      fontSize: theme.fontSizes.md,
+    }
   },
   star: {
     color: "orange",

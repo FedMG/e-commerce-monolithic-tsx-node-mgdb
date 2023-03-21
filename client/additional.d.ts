@@ -103,3 +103,15 @@ export interface CreateBlockProps {
   className: string;
   alt: string;
 }
+
+export interface DiscountInfoProps {
+  children: ReactElement[];
+  discount?: number;
+  price: number;
+  classes: {
+    priceRatingContainer: string;
+    discountInfoContainer: string;
+    originalPrice: string;
+    discount: string;
+  };
+}
