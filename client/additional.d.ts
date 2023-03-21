@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from 'react'
+import { ChangeEvent, FormEvent, ReactElement, SetStateAction } from 'react'
 
 export interface RootLayout {
   children: React.ReactNode;
@@ -70,6 +70,7 @@ export interface Products {
 
 export interface CategoryProps {
   products: Products[]
+  message?: string
 }
 
 
@@ -94,7 +95,7 @@ export interface UserSessionTools {
 }
 
 export interface BackgroundWrapperProps {
-  children: React.ReactElement;
+  children: ReactElement;
   padTop: number;
 }
 
@@ -114,4 +115,13 @@ export interface DiscountInfoProps {
     originalPrice: string;
     discount: string;
   };
+}
+
+export type productSearchHandler = {
+  target: { value: SetStateAction<string> }
+}
+
+export interface CategoryFiltersProps {
+  onSearch: (e: productSearchHandler) => void
+  inValue: string
 }

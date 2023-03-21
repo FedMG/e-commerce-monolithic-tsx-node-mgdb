@@ -1,23 +1,28 @@
+import { useMemo, useState } from "react";
+
 import { Grid } from "@mantine/core";
 
 import { ProductsCard } from "@/components/productCard";
 import { getEndpoint } from "./api/utils";
 
-import { CategoryProps, CategoryServerSideProps, Products } from "additional";
+import { CategoryFiltersProps, CategoryProps, CategoryServerSideProps, Products, productSearchHandler } from "additional";
 import { VALID_DOMAIN } from "src/environment";
+
 
 const isThereProduct = (products: Products[]) =>
   Array.isArray(products) && products.length > 0;
 
-const CategoryFilters = () => {
+
+const CategoryFilters: React.FC<CategoryFiltersProps> = ({ onSearch, inValue }) => {
   return (
     <Grid.Col span={0} lg={2}>
-      {<h3 style={{ width: "100%" }}>Filters</h3>}
+      <input value={inValue} onChange={onSearch} />
     </Grid.Col>
   );
 };
 
-const CategoryProducts: React.FC<CategoryProps> = ({ products }) => {
+
+const CategoryProducts: React.FC<CategoryProps> = ({ products }) => {   
   return (
     <Grid.Col span={12} lg={10} display="flex" style={{ flexWrap: "wrap" }}>
       {isThereProduct(products) &&
@@ -30,7 +35,19 @@ const CategoryProducts: React.FC<CategoryProps> = ({ products }) => {
   );
 };
 
+
 const Category: React.FC<CategoryProps> = ({ products }) => {
+  const [productSearch, setSearch] = useState('')
+  
+ const searchItems = useMemo(() => products.filter(({ name }) => {
+   const productName = name.toLowerCase()
+   return productName.includes(productSearch.toLowerCase())
+ }),[productSearch])
+  
+  const productSearchHandler = (e: productSearchHandler) => {
+    setSearch(e.target.value)
+  }
+  
   return (
     <Grid
       style={{ width: "100%" }}
@@ -39,11 +56,12 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
       gutterSm={16}
       gutterXl={24}
     >
-      <CategoryFilters />
-      <CategoryProducts products={products} />
+      <CategoryFilters onSearch={productSearchHandler} inValue={productSearch} />
+      <CategoryProducts products={searchItems} />
     </Grid>
   );
 };
+
 
 export async function getServerSideProps({ params }: CategoryServerSideProps) {
   if (typeof params.category !== "string") return { props: {} };
