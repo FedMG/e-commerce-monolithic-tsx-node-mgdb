@@ -70,7 +70,6 @@ export interface Products {
 
 export interface CategoryProps {
   products: Products[]
-  message?: string
 }
 
 

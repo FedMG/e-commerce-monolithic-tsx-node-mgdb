@@ -64,15 +64,19 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
 
 
 export async function getServerSideProps({ params }: CategoryServerSideProps) {
-  if (typeof params.category !== "string") return { props: {} };
+  const serverObject = { props: {} }
+  if (typeof params.category !== "string") return serverObject
+  const getProducts = getEndpoint(`${VALID_DOMAIN}/api/v1/products?category=`)
+  
+  return await getProducts(params.category)
+  .then((products) => {
+    serverObject.props = { ...products }
+    return serverObject
 
-  const getProducts = getEndpoint(`${VALID_DOMAIN}/api/v1/products?category=`);
-  const products = await getProducts(params.category);
-  return {
-    props: {
-      ...products,
-    },
-  };
+  }).catch(()=> {
+    serverObject.props = { products: [] }
+    return serverObject
+  })
 }
 
 export default Category;
