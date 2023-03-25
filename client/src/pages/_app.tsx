@@ -3,6 +3,7 @@ import { MantineProvider } from '@mantine/core';
 import { rtlCache } from 'rtl-cache';
 
 import { Layout } from '../components/layout';
+import '@/styles/globals.css'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -18,7 +19,7 @@ export default function App(props: AppProps) {
         <Component {...pageProps} />
         </Layout>
      </MantineProvider>
-     </div>
+    </div>
   );
 }
         
