@@ -17,3 +17,5 @@ export function getEndpoint(endpoint: string) {
     return await getAPIData(`https://${endpoint}${extra}`);
   };
 }
+
+export const setUpperCase = (name: string) => name[0].toLocaleUpperCase() + name.slice(1)

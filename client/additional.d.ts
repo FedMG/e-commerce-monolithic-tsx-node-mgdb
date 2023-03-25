@@ -1,14 +1,6 @@
 import { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
 
-type Brand = {
-  _id: string
-  name: string
-}
-
-type Category = {
-  _id: string
-  name: string 
-}
+type FilterFunction = ((product: Products) => boolean)
 
 type CustomMethodsProps = [boolean, (() => void)]
 export type SessionMode = "login" | "register";
@@ -76,15 +68,14 @@ export interface Products {
       price: number
       discount?: number
       rating: number
-      brand?: string
+      brand: string
       createdAt: Date
       __v: number 
 }
 
 export interface CategoryProps {
   products: Products[]
-  categories: Category[]
-  brands: Brand[]
+  brands: string[]
 }
 
 // User Session
@@ -134,17 +125,15 @@ export interface CategoryFiltersProps {
 }
 
 export interface CategoryNextFilterProps {
-  onChange: (name: string) => void
+  onChange: (filter: FilterFunction | null) => void
   currentCategory?: string | string[]
 }
 
-
 export interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
-  brands: Brand[]
+  brands: string[]
 }
 
 export interface Filters {
-  name: null | string
-  brand: null | string
-  category: null | string
+  name: null | FilterFunction
+  brand: null | FilterFunction
 }

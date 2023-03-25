@@ -3,10 +3,15 @@ import { CategoryNextFilterProps } from "additional"
 
 export const CategorySearchFilter: React.FC<CategoryNextFilterProps> = ({ onChange, currentCategory }) => {
   const [productSearch, setSearch] = useState('')
-  
+
   const productSearchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value)
-    onChange(e.target.value)
+    const userInput = e.target.value
+    setSearch(userInput)
+
+    onChange((product) => {
+       const productName = product.name.toLowerCase()
+       return productName.includes(userInput.toLowerCase())
+    })
   }
   
   useEffect(() => {

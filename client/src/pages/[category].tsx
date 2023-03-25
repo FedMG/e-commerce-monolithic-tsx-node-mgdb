@@ -6,11 +6,13 @@ import { Grid } from "@mantine/core";
 
 import { ProductsCard } from "@/components/productCard";
 import { CategorySearchFilter } from "@/components/searchFilters";
+import { CategoryBrandFilter } from "@/components/brandFilter";
+
 import { getEndpoint } from "./api/utils";
 import { isThereProduct } from "@/utils";
-
-import { CategoryFiltersProps, CategoryProps, CategoryServerSideProps, Filters } from "additional";
 import { filterStructure } from "@/refs";
+
+import { CategoryFiltersProps, CategoryProps, CategoryServerSideProps, FilterFunction } from "additional";
 
 const CategoryFilters: FC<CategoryFiltersProps> = ({ children }) => {
   return (    
@@ -37,18 +39,28 @@ const CategoryProducts: FC<Pick<CategoryProps, 'products'>> = ({ products }) => 
 }
 
 
-const Category: FC<CategoryProps> = ({ products, categories, brands }) => {
-  const [filters, setFilters] = useState<Filters>(filterStructure)
+const Category: FC<CategoryProps> = ({ products, brands }) => {
+  const [filters, setFilters] = useState<Record<string, null | FilterFunction>>(filterStructure)
   const router = useRouter()
   const { query } = router
 
-  const searchItems = useMemo(() => products.filter(({ name }) => {
-    if (!filters.name) return products
-    const productName = name.toLowerCase()
-    return productName.includes(filters.name.toLowerCase())
-}),[filters.name, query.category])
 
-  const setChanges = (name: string) => setFilters(filters => ({ ...filters, name }))
+  const searchItems = useMemo(() => {
+    if (!filters.name && !filters.brand) return products
+  
+    const filterFunctions = Object.values(filters).filter(Boolean)
+    let matches = products
+
+    filterFunctions.forEach((callback) => {
+      matches = matches.filter(callback!)
+    })
+    
+    return matches
+  }, [products, filters])
+
+  const updateNameFilter = (name: FilterFunction | null) => setFilters(filters => ({ ...filters, name }))
+  const updateBrandFilter = (brand: FilterFunction | null) => setFilters(filters => ({ ...filters, brand }))
+  
   
   useEffect(() => {
     setFilters({ ...filterStructure })
@@ -63,13 +75,13 @@ const Category: FC<CategoryProps> = ({ products, categories, brands }) => {
       gutterXl={24}
     >
       <CategoryFilters>
-        <CategorySearchFilter onChange={setChanges} currentCategory={query.category} />
+        <CategorySearchFilter onChange={updateNameFilter} currentCategory={query.category} />
+        <CategoryBrandFilter onChange={updateBrandFilter} currentCategory={query.category} brands={brands}/>
       </CategoryFilters>
       <CategoryProducts products={searchItems} />
     </Grid>
   );
 };
-
 
 
 export async function getServerSideProps({ params }: CategoryServerSideProps) {
@@ -80,11 +92,10 @@ export async function getServerSideProps({ params }: CategoryServerSideProps) {
 
   return await Promise.all([
     getProductData('/brands'), // static-data
-    getProductData('/categories'), // static-data
-    getProductData(`?category=${params.category}`)
+    getProductData(`?category=${params.category}&limit=100`)
     
-  ]).then(([brands, categories, products]) => {
-    serverObject.props = { ...products, ...categories, ...brands }
+  ]).then(([brands, products]) => {
+    serverObject.props = { ...products, ...brands }
     return serverObject
 
   }).catch(()=> {
