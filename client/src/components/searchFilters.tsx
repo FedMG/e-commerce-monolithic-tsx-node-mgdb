@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { CategorySearchProps } from "additional"
+import { CategoryNextFilterProps } from "additional"
 
-export const CategorySearchFilter: React.FC<CategorySearchProps> = ({ onChange, currentCategory }) => {
+export const CategorySearchFilter: React.FC<CategoryNextFilterProps> = ({ onChange, currentCategory }) => {
   const [productSearch, setSearch] = useState('')
   
   const productSearchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

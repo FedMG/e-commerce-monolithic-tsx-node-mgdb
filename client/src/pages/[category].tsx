@@ -1,6 +1,6 @@
 import { VALID_DOMAIN } from "src/environment";
 
-import { useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import { Grid } from "@mantine/core";
 
@@ -12,8 +12,7 @@ import { isThereProduct } from "@/utils";
 import { CategoryFiltersProps, CategoryProps, CategoryServerSideProps, Filters } from "additional";
 import { filterStructure } from "@/refs";
 
-
-const CategoryFilters: React.FC<CategoryFiltersProps> = ({ children }) => {
+const CategoryFilters: FC<CategoryFiltersProps> = ({ children }) => {
   return (    
     <Grid.Col span={0} lg={2.5} className='my-2'>
       <div className='px-2 rounded-sm bg-[#F1F3F5] h-full shadow-[0_15px_0_15px_1_165px_#777777] text-gray-700 border-4 border-solid border-[#f5f5f5]'>
@@ -24,7 +23,7 @@ const CategoryFilters: React.FC<CategoryFiltersProps> = ({ children }) => {
 }
 
 
-const CategoryProducts: React.FC<CategoryProps> = ({ products }) => {   
+const CategoryProducts: FC<Pick<CategoryProps, 'products'>> = ({ products }) => {   
   return (
     <Grid.Col span={12} lg={9.5} display="flex" style={{ flexWrap: "wrap" }}>
       {isThereProduct(products) &&
@@ -38,9 +37,8 @@ const CategoryProducts: React.FC<CategoryProps> = ({ products }) => {
 }
 
 
-const Category: React.FC<CategoryProps> = ({ products }) => {
+const Category: FC<CategoryProps> = ({ products, categories, brands }) => {
   const [filters, setFilters] = useState<Filters>(filterStructure)
-  
   const router = useRouter()
   const { query } = router
 
@@ -49,6 +47,8 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
     const productName = name.toLowerCase()
     return productName.includes(filters.name.toLowerCase())
 }),[filters.name, query.category])
+
+  const setChanges = (name: string) => setFilters(filters => ({ ...filters, name }))
   
   useEffect(() => {
     setFilters({ ...filterStructure })
@@ -63,7 +63,7 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
       gutterXl={24}
     >
       <CategoryFilters>
-        <CategorySearchFilter onChange={(name) => setFilters(filters => ({ ...filters, name }))} currentCategory={query.category} />
+        <CategorySearchFilter onChange={setChanges} currentCategory={query.category} />
       </CategoryFilters>
       <CategoryProducts products={searchItems} />
     </Grid>
@@ -71,14 +71,20 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
 };
 
 
+
 export async function getServerSideProps({ params }: CategoryServerSideProps) {
   const serverObject = { props: {} }
   if (typeof params.category !== "string") return serverObject
-  const getProducts = getEndpoint(`${VALID_DOMAIN}/api/v1/products?category=`)
-  
-  return await getProducts(params.category)
-  .then((products) => {
-    serverObject.props = { ...products }
+
+  const getProductData = getEndpoint(`${VALID_DOMAIN}/api/v1/products`)
+
+  return await Promise.all([
+    getProductData('/brands'), // static-data
+    getProductData('/categories'), // static-data
+    getProductData(`?category=${params.category}`)
+    
+  ]).then(([brands, categories, products]) => {
+    serverObject.props = { ...products, ...categories, ...brands }
     return serverObject
 
   }).catch(()=> {

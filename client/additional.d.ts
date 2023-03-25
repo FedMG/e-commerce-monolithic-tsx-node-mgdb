@@ -1,7 +1,20 @@
-import { ChangeEvent, FormEvent, ReactElement, SetStateAction } from 'react'
+import { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
+
+type Brand = {
+  _id: string
+  name: string
+}
+
+type Category = {
+  _id: string
+  name: string 
+}
+
+type CustomMethodsProps = [boolean, (() => void)]
+export type SessionMode = "login" | "register";
 
 export interface RootLayout {
-  children: React.ReactNode;
+  children: ReactNode;
   title: string;
 }
 
@@ -18,7 +31,7 @@ export interface HeaderActionProps {
   links: HeaderLinks[]
 }
 
-type CustomMethodsProps = [boolean, (() => void)]
+
 
 export interface CustomHeaderProps {
     drawer: CustomMethodsProps
@@ -70,11 +83,11 @@ export interface Products {
 
 export interface CategoryProps {
   products: Products[]
+  categories: Category[]
+  brands: Brand[]
 }
 
-
 // User Session
-export type SessionMode = "login" | "register";
 
 export interface FormTypes {
   name?: string;
@@ -120,11 +133,18 @@ export interface CategoryFiltersProps {
   children: React.ReactNode
 }
 
-export interface CategorySearchProps {
+export interface CategoryNextFilterProps {
   onChange: (name: string) => void
   currentCategory?: string | string[]
 }
 
+
+export interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
+  brands: Brand[]
+}
+
 export interface Filters {
-  name: null | string 
+  name: null | string
+  brand: null | string
+  category: null | string
 }
