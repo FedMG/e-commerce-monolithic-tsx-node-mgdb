@@ -104,3 +104,8 @@ export const blobs = [
 
 //   },
 ];
+
+
+export const filterStructure = {
+  name: null
+}

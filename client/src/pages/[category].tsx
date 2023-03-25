@@ -1,25 +1,25 @@
-import { useMemo, useState } from "react";
+import { VALID_DOMAIN } from "src/environment";
 
+import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 import { Grid } from "@mantine/core";
 
 import { ProductsCard } from "@/components/productCard";
+import { CategorySearchFilter } from "@/components/searchFilters";
 import { getEndpoint } from "./api/utils";
+import { isThereProduct } from "@/utils";
 
-import { CategoryFiltersProps, CategoryProps, CategoryServerSideProps, Products, productSearchHandler } from "additional";
-import { VALID_DOMAIN } from "src/environment";
-
-
-const isThereProduct = (products: Products[]) =>
-  Array.isArray(products) && products.length > 0;
+import { CategoryFiltersProps, CategoryProps, CategoryServerSideProps, Filters } from "additional";
+import { filterStructure } from "@/refs";
 
 
-const CategoryFilters: React.FC<CategoryFiltersProps> = ({ onSearch, inValue }) => {
+const CategoryFilters: React.FC<CategoryFiltersProps> = ({ children }) => {
   return (
     <Grid.Col span={0} lg={2}>
-      <input value={inValue} onChange={onSearch} />
+      {children}
     </Grid.Col>
-  );
-};
+  )
+}
 
 
 const CategoryProducts: React.FC<CategoryProps> = ({ products }) => {   
@@ -33,21 +33,25 @@ const CategoryProducts: React.FC<CategoryProps> = ({ products }) => {
         ))}
     </Grid.Col>
   );
-};
+}
 
 
 const Category: React.FC<CategoryProps> = ({ products }) => {
-  const [productSearch, setSearch] = useState('')
+  const [filters, setFilters] = useState<Filters>(filterStructure)
   
- const searchItems = useMemo(() => products.filter(({ name }) => {
-   const productName = name.toLowerCase()
-   return productName.includes(productSearch.toLowerCase())
- }),[productSearch])
+  const router = useRouter()
+  const { query } = router
+
+  const searchItems = useMemo(() => products.filter(({ name }) => {
+    if (!filters.name) return products
+    const productName = name.toLowerCase()
+    return productName.includes(filters.name.toLowerCase())
+}),[filters.name, query.category])
   
-  const productSearchHandler = (e: productSearchHandler) => {
-    setSearch(e.target.value)
-  }
-  
+  useEffect(() => {
+    setFilters({ ...filterStructure })
+  },[query.category])
+       
   return (
     <Grid
       style={{ width: "100%" }}
@@ -56,7 +60,9 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
       gutterSm={16}
       gutterXl={24}
     >
-      <CategoryFilters onSearch={productSearchHandler} inValue={productSearch} />
+      <CategoryFilters>
+        <CategorySearchFilter onChange={(name) => setFilters(filters => ({ ...filters, name }))} currentCategory={query.category} />
+      </CategoryFilters>
       <CategoryProducts products={searchItems} />
     </Grid>
   );

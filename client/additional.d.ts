@@ -116,11 +116,15 @@ export interface DiscountInfoProps {
   };
 }
 
-export type productSearchHandler = {
-  target: { value: SetStateAction<string> }
+export interface CategoryFiltersProps {
+  children: React.ReactNode
 }
 
-export interface CategoryFiltersProps {
-  onSearch: (e: productSearchHandler) => void
-  inValue: string
+export interface CategorySearchProps {
+  onChange: (name: string) => void
+  currentCategory?: string | string[]
+}
+
+export interface Filters {
+  name: null | string 
 }
