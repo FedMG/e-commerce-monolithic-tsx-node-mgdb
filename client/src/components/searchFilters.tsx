@@ -12,6 +12,11 @@ export const CategorySearchFilter: React.FC<CategorySearchProps> = ({ onChange, 
   useEffect(() => {
     setSearch('')
   },[currentCategory])
-  
-  return <input value={productSearch} onChange={productSearchHandler} />
+
+  return (
+    <div className='pt-3'>
+      <label htmlFor='product-search'>Search</label>
+      <input className='w-full py-2 px-1 border' id='product-search' value={productSearch} onChange={productSearchHandler} />
+    </div>
+  )
 }

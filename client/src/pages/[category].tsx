@@ -14,9 +14,11 @@ import { filterStructure } from "@/refs";
 
 
 const CategoryFilters: React.FC<CategoryFiltersProps> = ({ children }) => {
-  return (
-    <Grid.Col span={0} lg={2}>
+  return (    
+    <Grid.Col span={0} lg={2.5} className='my-2'>
+      <div className='px-2 rounded-sm bg-[#F1F3F5] h-full shadow-[0_15px_0_15px_1_165px_#777777] text-gray-700 border-4 border-solid border-[#f5f5f5]'>
       {children}
+      </div>
     </Grid.Col>
   )
 }
@@ -24,7 +26,7 @@ const CategoryFilters: React.FC<CategoryFiltersProps> = ({ children }) => {
 
 const CategoryProducts: React.FC<CategoryProps> = ({ products }) => {   
   return (
-    <Grid.Col span={12} lg={10} display="flex" style={{ flexWrap: "wrap" }}>
+    <Grid.Col span={12} lg={9.5} display="flex" style={{ flexWrap: "wrap" }}>
       {isThereProduct(products) &&
         products.map(({ name, price, rating, image, discount, ...element }) => (
           <Grid.Col span={6} xs={4} sm={3} md={3} key={element["_id"]}>
