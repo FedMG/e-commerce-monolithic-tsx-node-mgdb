@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { setUpperCase } from "@/pages/api/utils";
-import { CategoryBrandsFilterProps } from "additional";
+import type { CategoryBrandsFilterProps } from "additional";
 
 
 export const CategoryBrandFilter: React.FC<CategoryBrandsFilterProps> = ({ brands, onChange, currentCategory }) => {

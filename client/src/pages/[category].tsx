@@ -41,14 +41,17 @@ const CategoryProducts: FC<Pick<CategoryProps, 'products'>> = ({ products }) => 
   );
 }
 
+
 export const sortFunctions: Record<string, ProductSortFunction> = {
   [SortBy.DATE]: (a, b) => { 
     const dateOfA = new Date(a.createdAt).getTime()
     const dateOfB = new Date(b.createdAt).getTime()
     return  dateOfA - dateOfB
   },
-  [SortBy.RATING]: (a, b) => b.rating - a.rating
+  [SortBy.RATING]: (a, b) => b.rating - a.rating,
+  [SortBy.PRICE]: (a, b) => a.price - b.price
 }
+
 
 const Category: FC<CategoryProps> = ({ products, brands }) => {
   const [filters, setFilters] = useState<Record<string, null | FilterFunction>>(filterStructure)
@@ -72,12 +75,11 @@ const Category: FC<CategoryProps> = ({ products, brands }) => {
   const updateNameFilter = (name: FilterFunction | null) => setFilters(filters => ({ ...filters, name }))
   const updateBrandFilter = (brand: FilterFunction | null) => setFilters(filters => ({ ...filters, brand }))
   const updateRatingFilter = (sortType: SortBy) => setSortBy(sortType)
-  
-  
+
   useEffect(() => {
     setFilters({ ...filterStructure })
     setSortBy(SortBy.RATING)
-  },[query.category])
+  },[products])
        
   return (
     <Grid

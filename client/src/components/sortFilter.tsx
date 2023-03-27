@@ -17,8 +17,9 @@ export const CategoryRatingFilter: React.FC<CategorySortFilterProps> = ({ onChan
             value={sortBy}
             onChange={productSortedHandler}
           >
-        <option value={SortBy.DATE}>Date</option>
-        <option value={SortBy.RATING}>Rating</option>
+        <option value={SortBy.DATE}>Most recents</option>
+        <option value={SortBy.RATING}>Most voted</option>
+        <option value={SortBy.PRICE}>Cheaper prices</option>
       </select>
     </div>
   );
