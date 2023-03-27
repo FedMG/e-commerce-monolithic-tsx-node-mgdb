@@ -42,8 +42,7 @@ const DiscountInfo: FC<DiscountInfoProps> = ({
 
 export const ProductsCard: React.FC<ProductCardProps> = ({ element }) => {
   const { classes } = useProductCardStyles();
-  const { name, image, price, rating } = element;
-  const discount = 15; // discount temporal
+  const { name, image, price, discount, rating } = element;
 
   return (
     <div className={classes.card}>
