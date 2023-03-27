@@ -1,6 +1,6 @@
-import { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
+import type { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
+import { SortBy } from 'enums';
 
-type FilterFunction = ((product: Products) => boolean)
 
 type CustomMethodsProps = [boolean, (() => void)]
 export type SessionMode = "login" | "register";
@@ -57,7 +57,7 @@ export interface CategoryServerSideProps {
   }
 }
 
-export interface Products { 
+export interface Product { 
       _id: string
       name: string
       image: {
@@ -74,7 +74,7 @@ export interface Products {
 }
 
 export interface CategoryProps {
-  products: Products[]
+  products: Product[]
   brands: string[]
 }
 
@@ -108,20 +108,13 @@ export interface CreateBlockProps {
   alt: string;
 }
 
-export interface DiscountInfoProps {
-  children: ReactElement[];
-  discount?: number;
-  price: number;
-  classes: {
-    priceRatingContainer: string;
-    discountInfoContainer: string;
-    originalPrice: string;
-    discount: string;
-  };
-}
+
+// Category component
+export type ProductSortFunction = (a: Product, b: Product) => number
+type FilterFunction = ((product: Product) => boolean)
 
 export interface CategoryFiltersProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export interface CategoryNextFilterProps {
@@ -133,7 +126,21 @@ export interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
   brands: string[]
 }
 
-export interface Filters {
-  name: null | FilterFunction
-  brand: null | FilterFunction
+export interface CategorySortFilterProps {
+  onChange: (sortType: SortBy) => void
+  sortBy: SortBy
+}
+
+
+// Category product cards
+export interface DiscountInfoProps {
+  children: ReactElement[];
+  discount?: number;
+  price: number;
+  classes: {
+    priceRatingContainer: string;
+    discountInfoContainer: string;
+    originalPrice: string;
+    discount: string;
+  };
 }
