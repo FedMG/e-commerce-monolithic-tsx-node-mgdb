@@ -5,15 +5,21 @@ import { splitAndJoin } from '../../utils/functions.js'
 import { sortQuery } from './sortQuery.js'
 
 export const createQuery = (query) => {
-  const { numFilter, sort, fields, page, limit } = query
+  const { numFilter, sort, fields, page, limit, category, brand, name, description } = query
 
   const queryConfig = {}
   const queryTuple = ['name', 'brand', 'category', 'description']
+  
+  const matches = {
+    'name': { $regex: name, $options: 'i' },
+    'brand': brand,
+    'category': category,
+    'description': { $regex: description, $options: 'i' },
+  }
 
   queryTuple.forEach((key) => {
     if (query[key]) {
-      console.log(query[key])
-      queryConfig[key] = { $regex: query[key], $options: 'i' }
+      queryConfig[key] = matches[key]
     }
   })
 
