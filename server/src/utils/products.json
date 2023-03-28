@@ -63,7 +63,7 @@
     "price": 76,
     "category": "men's clothing",
     "brand": "puma",
-    "discount": 0,
+
     "rating": 4
   },
 
@@ -75,7 +75,6 @@
     "price": 93,
     "category": "women's clothing",
     "brand": "channel",
-    "discount": 0,
     "rating": 3
   },
 
@@ -134,7 +133,7 @@
     },
     "price": 31,
     "category": "men's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "calvin klein"
   },
@@ -145,7 +144,7 @@
     },
     "price": 60,
     "category": "men's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "zara"
   },
@@ -229,7 +228,7 @@
     },
     "price": 105,
     "category": "shoes",
-    "discount": 0,
+
     "rating": 4,
     "brand": "gucci"
   },
@@ -241,7 +240,7 @@
     },
     "price": 55,
     "category": "accessory",
-    "discount": 0,
+
     "rating": 4,
     "brand": "channel"
   },
@@ -253,7 +252,7 @@
     },
     "price": 95,
     "category": "men's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "calvin klein"
   },
@@ -265,7 +264,7 @@
     },
     "price": 30,
     "category": "men's clothing",
-    "discount": 0,
+
     "rating": 3,
     "brand": "zara"
   },
@@ -276,7 +275,7 @@
     },
     "price": 109,
     "category": "women's clothing",
-    "discount": 0,
+
     "rating": 5,
     "brand": "channel"
   },
@@ -288,7 +287,7 @@
     },
     "price": 113,
     "category": "women's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "channel"
   },
@@ -300,7 +299,7 @@
     },
     "price": 116,
     "category": "shoes",
-    "discount": 0,
+
     "rating": 5,
     "brand": "versace"
   },
@@ -312,7 +311,7 @@
     },
     "price": 109,
     "category": "women's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "nike"
   },
@@ -336,7 +335,7 @@
     },
     "price": 66,
     "category": "women's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "gucci"
   },
@@ -348,7 +347,7 @@
     },
     "price": 76,
     "category": "shoes",
-    "discount": 0,
+
     "rating": 5,
     "brand": "toppler"
   },
@@ -360,7 +359,7 @@
     },
     "price": 129,
     "category": "accessory",
-    "discount": 0,
+
     "rating": 3,
     "brand": "toppler"
   },
@@ -371,7 +370,7 @@
     },
     "price": 85,
     "category": "women's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "addidas"
   },
@@ -382,7 +381,7 @@
     },
     "price": 95,
     "category": "shoes",
-    "discount": 0,
+    "discount": 15,
     "rating": 4,
     "brand": "toppler"
   },
@@ -501,7 +500,7 @@
     },
     "price": 99,
     "category": "women's clothing",
-    "discount": 0,
+    "discount": 5,
     "rating": 4,
     "brand": "zara"
   },
@@ -689,7 +688,7 @@
     "price": 76,
     "category": "men's clothing",
     "brand": "puma",
-    "discount": 0,
+    "discount": 6,
     "rating": 4
   },
 
@@ -701,7 +700,7 @@
     "price": 93,
     "category": "women's clothing",
     "brand": "channel",
-    "discount": 0,
+    "discount": 5,
     "rating": 3
   },
 
@@ -760,7 +759,7 @@
     },
     "price": 31,
     "category": "men's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "calvin klein"
   },
@@ -771,7 +770,7 @@
     },
     "price": 60,
     "category": "men's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "zara"
   },
@@ -855,7 +854,7 @@
     },
     "price": 105,
     "category": "shoes",
-    "discount": 0,
+
     "rating": 4,
     "brand": "gucci"
   },
@@ -867,7 +866,7 @@
     },
     "price": 55,
     "category": "accessory",
-    "discount": 0,
+
     "rating": 4,
     "brand": "channel"
   },
@@ -879,7 +878,7 @@
     },
     "price": 95,
     "category": "men's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "calvin klein"
   },
@@ -891,7 +890,7 @@
     },
     "price": 30,
     "category": "men's clothing",
-    "discount": 0,
+
     "rating": 3,
     "brand": "zara"
   },
@@ -902,7 +901,7 @@
     },
     "price": 109,
     "category": "women's clothing",
-    "discount": 0,
+    "discount": 10,
     "rating": 5,
     "brand": "channel"
   },
@@ -914,7 +913,7 @@
     },
     "price": 113,
     "category": "women's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "channel"
   },
@@ -926,7 +925,7 @@
     },
     "price": 116,
     "category": "shoes",
-    "discount": 0,
+
     "rating": 5,
     "brand": "versace"
   },
@@ -938,7 +937,7 @@
     },
     "price": 109,
     "category": "women's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "nike"
   },
@@ -962,7 +961,7 @@
     },
     "price": 66,
     "category": "women's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "gucci"
   },
@@ -974,7 +973,7 @@
     },
     "price": 76,
     "category": "shoes",
-    "discount": 0,
+
     "rating": 5,
     "brand": "toppler"
   },
@@ -986,7 +985,7 @@
     },
     "price": 129,
     "category": "accessory",
-    "discount": 0,
+    "discount": 15,
     "rating": 3,
     "brand": "toppler"
   },
@@ -997,7 +996,7 @@
     },
     "price": 85,
     "category": "women's clothing",
-    "discount": 0,
+
     "rating": 4,
     "brand": "addidas"
   },
@@ -1008,7 +1007,7 @@
     },
     "price": 95,
     "category": "shoes",
-    "discount": 0,
+
     "rating": 4,
     "brand": "toppler"
   },
@@ -1127,7 +1126,6 @@
     },
     "price": 99,
     "category": "women's clothing",
-    "discount": 0,
     "rating": 4,
     "brand": "zara"
   },
