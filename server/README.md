@@ -24,9 +24,10 @@ The server is already up in `https://e-commerce-store-api.onrender.com/`
 0. Go to the `URL` + `api/v1/products` endpoint.
 1. You can add the nexts queries properties to get the query results: `brand, category, sort, fields, numFilter, page, limit`
 2. Add `/productID` to get a specific product.
-3. Add `/brands` to get a unique list of brands.
+3. Add `/brands` to get a unique brands.
 4. Add `/categories` to get a unique list of categories.
-5. Add `/productID/image` to get a image object of a specific product.
+5. Add `/:productID/image` to get a image object of a specific product.
+6. Add `/:category/discounts` to get an array of unique discounts according to the category.
 
 ## How to do a query?
 
