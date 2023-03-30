@@ -1,7 +1,12 @@
-import { ChangeEvent, FormEvent } from 'react'
+import type { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
+import { SortBy } from 'enums';
+
+
+type CustomMethodsProps = [boolean, (() => void)]
+export type SessionMode = "login" | "register";
 
 export interface RootLayout {
-  children: React.ReactNode;
+  children: ReactNode;
   title: string;
 }
 
@@ -18,7 +23,7 @@ export interface HeaderActionProps {
   links: HeaderLinks[]
 }
 
-type CustomMethodsProps = [boolean, (() => void)]
+
 
 export interface CustomHeaderProps {
     drawer: CustomMethodsProps
@@ -41,6 +46,8 @@ export interface ProductCardProps {
     name: string
     rating: number
     price: number
+    discount?: number
+    image: { src: string }
   }
 }
 
@@ -50,25 +57,29 @@ export interface CategoryServerSideProps {
   }
 }
 
-export interface Products { 
+export interface Product { 
       _id: string
-      name: string,
-      category: string,
-      price: number,
-      featured?: boolean,
-      rating: number,
-      brand?: string,
-      createdAt: Date,
+      name: string
+      image: {
+        src: string
+      }
+      category: string
+      description?: string
+      price: number
+      discount?: number
+      rating: number
+      brand: string
+      createdAt: Date
       __v: number 
 }
 
 export interface CategoryProps {
-  products: Products[]
+  products: Product[]
+  discounts: number[]
+  brands: string[]
 }
 
-
 // User Session
-export type SessionMode = "login" | "register";
 
 export interface FormTypes {
   name?: string;
@@ -88,7 +99,7 @@ export interface UserSessionTools {
 }
 
 export interface BackgroundWrapperProps {
-  children: React.ReactElement;
+  children: ReactElement;
   padTop: number;
 }
 
@@ -96,4 +107,48 @@ export interface CreateBlockProps {
   d: string;
   className: string;
   alt: string;
+}
+
+
+// Category component
+export type ProductSortFunction = (a: Product, b: Product) => number
+type FilterFunction = ((product: Product) => boolean)
+
+export interface CategoryFiltersProps {
+  children: ReactNode
+}
+
+export interface CategoryNextFilterProps {
+  onChange: (filter: FilterFunction | null) => void
+  currentCategory?: string | string[]
+}
+
+export interface CategorySearchFilterProps extends CategoryNextFilterProps {
+  productsNumber: number
+}
+
+export interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
+  brands: string[]
+}
+
+export interface CategorySortFilterProps {
+  onChange: (sortType: SortBy) => void
+  sortBy: SortBy
+}
+
+export interface CategoryDiscountsFilterProps extends CategoryNextFilterProps {
+  discounts: number[]
+}
+
+// Category product cards
+export interface DiscountInfoProps {
+  children: ReactElement[];
+  discount?: number;
+  price: number;
+  classes: {
+    priceRatingContainer: string;
+    discountInfoContainer: string;
+    originalPrice: string;
+    discount: string;
+  };
 }
