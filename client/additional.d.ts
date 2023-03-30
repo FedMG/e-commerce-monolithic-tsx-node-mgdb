@@ -75,6 +75,7 @@ export interface Product {
 
 export interface CategoryProps {
   products: Product[]
+  discounts: number[]
   brands: string[]
 }
 
@@ -122,6 +123,10 @@ export interface CategoryNextFilterProps {
   currentCategory?: string | string[]
 }
 
+export interface CategorySearchFilterProps extends CategoryNextFilterProps {
+  productsNumber: number
+}
+
 export interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
   brands: string[]
 }
@@ -131,6 +136,9 @@ export interface CategorySortFilterProps {
   sortBy: SortBy
 }
 
+export interface CategoryDiscountsFilterProps extends CategoryNextFilterProps {
+  discounts: number[]
+}
 
 // Category product cards
 export interface DiscountInfoProps {

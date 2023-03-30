@@ -3,6 +3,7 @@ import { HeaderLinks } from "additional";
 export const filterStructure = {
   name: null,
   brand: null,
+  discount: null
 }
 
 export const headerLinks: HeaderLinks[] = [
