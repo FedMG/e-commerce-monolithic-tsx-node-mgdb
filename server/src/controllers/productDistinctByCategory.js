@@ -11,7 +11,6 @@ export const getAllDistinctByCategory = async (req, res) => {
   }
   
   const { category: productCategory, distinct } = req.params
-  console.log(productCategory, distinct)
   
   if (!distinct || !productCategory) {
     throw BadRequestError('The distinct and category parameters has not been provided.')
