@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { setUpperCase } from "@/pages/api/utils";
+import { setUpperCase } from "@/utils";
 import type { CategoryBrandsFilterProps } from "additional";
 
 
@@ -16,7 +16,12 @@ export const CategoryBrandFilter: React.FC<CategoryBrandsFilterProps> = ({ brand
         selectedBrands.delete(brandName)
     }
     
-    onChange(( selectedBrands.size ? product => selectedBrands.has(product.brand): null))
+    if (selectedBrands.size) {
+      onChange(product => selectedBrands.has(product.brand))
+      setSelected(selectedBrands)
+      return null
+    }
+    onChange(null)
     setSelected(selectedBrands)
  };
  
@@ -26,6 +31,7 @@ export const CategoryBrandFilter: React.FC<CategoryBrandsFilterProps> = ({ brand
 
   return (
     <div className='flex flex-col'>
+      <span className='text-gray-700 font-semibold mb-2'>Brands</span>
       {brands.map((name) => (
         <div key={name} className='flex align-center'>
           <input type="checkbox" id={name} name='brand' value={name} onChange={(e) => handleChange(name, e.target.checked)} className='mr-3' checked={selecteds.has(name)} />
