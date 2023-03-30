@@ -236,15 +236,15 @@ export const useHeaderStyles = createStyles((theme) => ({
 
 export const useProductCardStyles = createStyles((theme) => ({
   card: {
+    maxHeight: '430px',
+    height: "100%",
+
     display: "flex",
     flexDirection: 'column',
     backgroundColor: theme.colorScheme === "dark" ? theme.black[6] : theme.colors.gray[1],
     boxShadow: "0.15px 0.15px 1.165px #777777",
     border: "1px solid #f5f5f5",
     borderRadius: theme.radius.xs,
-    
-    height: "100%",
-    
     "&:hover": {
       backgroundColor: theme.colorScheme === "dark" ? theme.black[6] : theme.colors.gray[3],
       boxShadow: "0.15px 0.15px 1.1965px #777777",
@@ -257,22 +257,35 @@ export const useProductCardStyles = createStyles((theme) => ({
     display: 'flex',
     alignItems:'center',
     backgroundImage: theme.fn.gradient({ from: 'white', to: 'grey', deg: 45 }),
-
-    height: "100%",
     margin: '4px',
     borderBottom: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
     
+    height: '100%',
+    maxHeight: '310px',
+    
+    [theme.fn.smallerThan("xl")]: {
+      maxHeight: '295px',      
+    },
+    [theme.fn.smallerThan("lg")]: {
+      maxHeight: '300px',
+    },
     [theme.fn.smallerThan("md")]: {
       margin: 0.6,
-    }
+      maxHeight: '255px',
+    },
+    [theme.fn.smallerThan("sm")]: {
+     maxHeight: '240px',
+    },
+    [theme.fn.smallerThan("xs")]: {
+     maxHeight: '310px',
+    },
   },
   
   infoSection: {
     alignSelf: 'flex-end',
     width: '100%',
-
     padding: "0.6em",
     paddingTop: 0,
     paddingBottom: "1em",
@@ -290,22 +303,10 @@ export const useProductCardStyles = createStyles((theme) => ({
   },
 
   image: {
-    height: '320px',
+    height: '100%',
+    maxHeight: '310px',
     userSelect: "none",
-    overflow: 'hidden',
-
-    [theme.fn.smallerThan("lg")]: {
-      height: '290px', 
-    },
-    
-    [theme.fn.smallerThan("md")]: {
-      height: '100%',
-    },
-
-    [theme.fn.smallerThan("sm")]: {
-      height: '100%',
-    },
-    
+    overflow: 'hidden',    
   },
   
   priceRatingContainer: {
