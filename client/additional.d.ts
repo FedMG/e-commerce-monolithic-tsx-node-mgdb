@@ -1,65 +1,55 @@
 import type { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
 import { SortBy } from 'enums';
 
-// Refactor all this types with maps and utilities
-type CustomMethodsProps = [boolean, (() => void)]
-export type SessionMode = "login" | "register";
 
-export interface HeaderLinks {
-  path: string;
-  label: string;
-  links?: {
-    path: string;
-    label: string;
-  }[];
+// Header
+type Links = {
+  path: string
+  label: string
 }
+
+export type HeaderLinks = Links & { links?: Links[] }
+
 
 export interface HeaderActionProps {
   links: HeaderLinks[]
 }
 
+type HeaderMethods = [boolean, (() => void)]
 
-
-export interface CustomHeaderProps {
-    drawer: CustomMethodsProps
-    links: HeaderLinks[]
+export type CustomHeaderProps = HeaderActionProps & {
+  drawer: HeaderMethods
 }
 
-export interface CustomDrawerProps extends CustomHeaderProps {
-    collapse: CustomMethodsProps
+export type CustomDrawerProps = CustomHeaderProps & {
+  collapse: HeaderMethods
 }
 
 export interface FooterLinksProps {
   data: {
-    title: string;
-    links: { label: string; link: string }[];
-  }[];
+    title: string
+    links: { label: string; link: string }[]
+  }[]
 }
 
 export interface ProductCardProps {
-  element: {
-    name: string
-    rating: number
-    price: number
-    discount?: number
-    image: { src: string }
-  }
+  element: Pick<Product, 'name' | 'rating' | 'price' | 'discount' | 'image'>
 }
 
 export interface Product { 
-      _id: string
-      name: string
-      image: {
-        src: string
-      }
-      category: string
-      description?: string
-      price: number
-      discount?: number
-      rating: number
-      brand: string
-      createdAt: Date
-      __v: number 
+  _id: string
+  name: string
+  image: {
+    src: string
+  }
+  category: string
+  description?: string
+  price: number
+  discount?: number
+  rating: number
+  brand: string
+  createdAt: Date
+  __v: number
 }
 
 export interface CategoryProps {
@@ -72,8 +62,8 @@ export interface ProductProps {
   product: Product
 }
 
-
 // User Session
+export type SessionMode = "login" | "register"
 
 export interface FormTypes {
   name?: string;
@@ -82,15 +72,17 @@ export interface FormTypes {
 }
 
 export interface SessionRequestProps {
-  form: FormTypes;
-  mode: SessionMode;
+  form: FormTypes
+  mode: SessionMode
 }
 
 export interface UserSessionTools {
-    form: FormTypes,
-    setInput: (event: ChangeEvent<HTMLInputElement>) => void
-    setSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>
+  form: FormTypes
+  setInput: (event: ChangeEvent<HTMLInputElement>) => void
+  setSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>
 }
+
+type Id<T> = T extends string ? StringId : NumberId
 
 export interface BackgroundWrapperProps {
   children: ReactElement;
