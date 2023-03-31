@@ -8,8 +8,7 @@ import { NextPageWithLayout } from "_app-types";
   );
 }
 
-Home.getLayout = function getLayout (page, pageProps) {
-  console.log('home pageProps ----------------', pageProps)
+Home.getLayout = function getLayout (page, _pageProps) {
   return <Layout title='Home'>{page}</Layout>
 }
 
