@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { Grid } from "@mantine/core";
 
 import { ProductsCard } from "@/components/productCard";
+import { CategoryDiscountFilter } from "@/components/discountFilter";
 import { CategorySearchFilter } from "@/components/searchFilters";
 import { CategoryBrandFilter } from "@/components/brandFilter";
 import { CategoryRatingFilter } from "@/components/sortFilter";
@@ -13,9 +14,10 @@ import { getEndpoint } from "./api/utils";
 import { isThereProduct } from "@/utils";
 import { filterStructure } from "@/refs";
 
-import type { CategoryFiltersProps, CategoryProps, CategoryServerSideProps, FilterFunction, ProductSortFunction } from "additional";
+import type { CategoryFiltersProps, CategoryProps, FilterFunction, ProductSortFunction } from "additional";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+import { GetServerSidePropsContext } from "next";
 import { SortBy } from "enums";
-import { CategoryDiscountFilter } from "@/components/discountFilter";
 
 
 const CategoryFilters: FC<CategoryFiltersProps> = ({ children }) => {
@@ -103,9 +105,9 @@ const Category: FC<CategoryProps> = ({ products, discounts, brands }) => {
 };
 
 
-export async function getServerSideProps({ params }: CategoryServerSideProps) {
+export async function getServerSideProps({ params }: GetServerSidePropsContext<Params>) {
+  if (!params || !params.category) return { notFound: true }  
   const serverObject = { props: {} }
-  if (typeof params.category !== "string") return serverObject
 
   const encodedParameter = encodeURI(params.category)
   const getProductData = getEndpoint(`${VALID_DOMAIN}/api/v1/products`)
