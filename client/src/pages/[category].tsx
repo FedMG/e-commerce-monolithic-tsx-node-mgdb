@@ -3,7 +3,9 @@ import { VALID_DOMAIN } from "src/environment";
 import { FC, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import { Grid } from "@mantine/core";
+import Link from "next/link";
 
+import { Layout } from "@/components/layout";
 import { ProductsCard } from "@/components/productCard";
 import { CategoryDiscountFilter } from "@/components/discountFilter";
 import { CategorySearchFilter } from "@/components/searchFilters";
@@ -15,8 +17,9 @@ import { isThereProduct } from "@/utils";
 import { filterStructure } from "@/refs";
 
 import type { CategoryFiltersProps, CategoryProps, FilterFunction, ProductSortFunction } from "additional";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { GetServerSidePropsContext } from "next";
+import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+import type { GetServerSidePropsContext } from "next";
+import type { NextPageWithLayout } from "_app-types";
 import { SortBy } from "enums";
 
 
@@ -35,9 +38,11 @@ const CategoryProducts: FC<Pick<CategoryProps, 'products'>> = ({ products }) => 
   return (
     <Grid.Col span={12} lg={9.5} display="flex" style={{ flexWrap: "wrap" }}>
       {isThereProduct(products) &&
-        products.map(({ name, price, rating, image, discount, ...element }) => (
-          <Grid.Col span={6} xs={4} sm={3} md={3} key={element["_id"]}>
-            <ProductsCard element={{ name, price, rating, image, discount }} />
+        products.map(({ _id, name, price, category, rating, image, discount }) => (
+          <Grid.Col span={6} xs={4} sm={3} md={3} key={_id}>
+            <Link href="/[category]/[productId]" as={`/${category}/${_id}`}>
+              <ProductsCard element={{ name, price, rating, image, discount }} />
+            </Link>
           </Grid.Col>
         ))}
     </Grid.Col>
@@ -56,7 +61,7 @@ export const sortFunctions: Record<string, ProductSortFunction> = {
 }
 
 
-const Category: FC<CategoryProps> = ({ products, discounts, brands }) => {
+const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands }) => {
   const [filters, setFilters] = useState<Record<string, null | FilterFunction>>(filterStructure)
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.RATING)
   const router = useRouter()
@@ -101,12 +106,18 @@ const Category: FC<CategoryProps> = ({ products, discounts, brands }) => {
       </CategoryFilters>
       <CategoryProducts products={searchItems} />        
     </Grid>
-  );
-};
+  )
+}
 
+
+Category.getLayout = function getLayout (page, _pageProps) {
+  const router = useRouter()
+  const { query } = router
+  return <Layout title={'Category'} section={query.category as string} >{page}</Layout>
+}
 
 export async function getServerSideProps({ params }: GetServerSidePropsContext<Params>) {
-  if (!params || !params.category) return { notFound: true }  
+  if (!params || !params.category) return { notFound: true }
   const serverObject = { props: {} }
 
   const encodedParameter = encodeURI(params.category)

@@ -1,14 +1,9 @@
 import type { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
 import { SortBy } from 'enums';
 
-
+// Refactor all this types with maps and utilities
 type CustomMethodsProps = [boolean, (() => void)]
 export type SessionMode = "login" | "register";
-
-export interface RootLayout {
-  children: ReactNode;
-  title: string;
-}
 
 export interface HeaderLinks {
   path: string;
@@ -51,12 +46,6 @@ export interface ProductCardProps {
   }
 }
 
-export interface CategoryServerSideProps {
-  params: {
-    category: string
-  }
-}
-
 export interface Product { 
       _id: string
       name: string
@@ -78,6 +67,11 @@ export interface CategoryProps {
   discounts: number[]
   brands: string[]
 }
+
+export interface ProductProps {
+  product: Product
+}
+
 
 // User Session
 
