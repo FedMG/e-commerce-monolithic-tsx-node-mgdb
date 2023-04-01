@@ -130,13 +130,7 @@ export interface CategoryDiscountsFilterProps extends CategoryNextFilterProps {
 
 // Category product cards
 export interface DiscountInfoProps {
-  children: ReactElement[];
-  discount?: number;
-  price: number;
-  classes: {
-    priceRatingContainer: string;
-    discountInfoContainer: string;
-    originalPrice: string;
-    discount: string;
-  };
+  children: ReactElement[]
+  discount?: number
+  price: number
 }
