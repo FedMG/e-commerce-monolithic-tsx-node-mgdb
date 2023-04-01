@@ -1,6 +1,13 @@
 import type { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
 import { SortBy } from 'enums';
 
+export type ChildrenElement = {
+  children: ReactElement
+}
+
+export type ChildrenNode = {
+  children: ReactNode
+}
 
 // Header
 type Links = {
@@ -84,9 +91,8 @@ export interface UserSessionTools {
 
 type Id<T> = T extends string ? StringId : NumberId
 
-export interface BackgroundWrapperProps {
-  children: ReactElement;
-  padTop: number;
+export interface BackgroundWrapperProps extends ChildrenElement {
+  padTop: number
 }
 
 export interface CreateBlockProps {
@@ -99,10 +105,6 @@ export interface CreateBlockProps {
 // Category component
 export type ProductSortFunction = (a: Product, b: Product) => number
 type FilterFunction = ((product: Product) => boolean)
-
-export interface CategoryFiltersProps {
-  children: ReactNode
-}
 
 export interface CategoryNextFilterProps {
   onChange: (filter: FilterFunction | null) => void

@@ -16,14 +16,14 @@ import { getEndpoint } from "./api/utils";
 import { isThereProduct } from "@/utils";
 import { filterStructure } from "@/refs";
 
-import type { CategoryFiltersProps, CategoryProps, FilterFunction, ProductSortFunction } from "additional";
+import type { CategoryProps, ChildrenNode, FilterFunction, ProductSortFunction } from "additional";
 import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import type { GetServerSidePropsContext } from "next";
 import type { NextPageWithLayout } from "_app-types";
 import { SortBy } from "enums";
 
 
-const CategoryFilters: FC<CategoryFiltersProps> = ({ children }) => {
+const CategoryFilters: FC<ChildrenNode> = ({ children }) => {
   return (    
     <Grid.Col span={0} lg={2.5} className='my-2'>
       <div className='lg:flex lg:flex-col gap-y-6 px-2 rounded-sm bg-[#F1F3F5] h-full shadow-[0_15px_0_15px_1_165px_#777777] text-gray-700 border-1 border-solid border-[#f5f5f5]'>
