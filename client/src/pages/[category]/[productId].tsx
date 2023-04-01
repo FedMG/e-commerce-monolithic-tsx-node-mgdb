@@ -101,6 +101,24 @@ const ProductMainInfo: FC<Pick<Product, "name" | "price" | "rating" | "discount"
 }
 
 
+const ProductDetails: FC<Pick<Product, 'description'>> = ({ description }) => {
+  return (
+    <div className='col-span-2 p-2 rounded-xl'>
+      <div className="col-span-2 bg-gray-50 px-4 py-8 rounded-xl">
+        <div className='my-3'><span className='text-gray-800 text-md md:text-lg lg:text-xl font-medium'>Description</span></div>
+        <p className='text-md text-gray-600'>
+          forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem 
+          forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem 
+          forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem 
+          forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem 
+          forem forem forem forem forem forem forem forem forem forem forem forem form
+        </p>
+    </div>   
+   </div>   
+  )
+}
+
+
 const Product: NextPageWithLayout<ProductProps> = ({ product }) => {
   const { brand, category, image, name, price, rating, description, discount } = product
 
@@ -110,6 +128,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }) => {
       <div className="grid grid-cols-2 gap-4 bg-gray-100 rounded-xl">
         <ProductImage image={image} name={name} />
         <ProductMainInfo { ...{name, rating, price, discount} } />
+        <ProductDetails description={description} />
       </div>
     </div>
   )
