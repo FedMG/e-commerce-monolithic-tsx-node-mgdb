@@ -1,5 +1,7 @@
 import { VALID_DOMAIN } from "@/environment"
 
+import Image from "next/image"
+
 import { Layout } from "@/components/layout"
 import { BreadCrumbs } from "@/components/breadCrumbs"
 
@@ -27,6 +29,23 @@ const ProductHeader: FC<Pick<Product, 'category' | 'brand' | 'name'>> = ({ categ
 }
 
 
+const ProductImage: FC<Pick<Product, 'image' | 'name'>> = ({ image, name }) => {
+  return (
+    <div className="col-span-1 grid grid-rows-1 gap-4 p-2">
+      <div className="bg-gray-50 p-4 flex justify-center align-items rounded-xl">
+        <Image
+          src={image.src}
+          width={410}
+          height={0}
+          alt={name}
+          className='rounded-xl'
+        />
+      </div>
+    </div>
+  )
+}
+
+
 const Product: NextPageWithLayout<ProductProps> = ({ product }) => {
   const { brand, category, image, name, price, rating, description, discount } = product
 
@@ -34,6 +53,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }) => {
     <div className="py-4 px-10 bg-gray-100">
       <ProductHeader { ...{category, brand, name} } />
     <div className="grid grid-cols-2 gap-4 bg-gray-100 rounded-xl">
+      <ProductImage image={image} name={name} />
     </div>
     </div>
   )
