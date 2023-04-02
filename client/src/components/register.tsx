@@ -6,6 +6,7 @@ const registerForm = {
   password: "",
 }
 
+// refactor later
 export const RegisterForm = () => {
   const { form, setInput, setSubmit } = useUserSessionData({ form: registerForm, mode: 'register'})
   
@@ -15,7 +16,7 @@ export const RegisterForm = () => {
         <label className='text-start mb-2 text-lg font-medium' htmlFor="name">
           Name:
         </label>
-        <input        
+        <input
           className='p-3 rounded-md border-2 border-solid border-gray-300'
           type="text"
           id="name"
@@ -24,6 +25,7 @@ export const RegisterForm = () => {
           value={form.name}
           onChange={setInput}
           required
+          autoComplete="username"
         />
       </div>
       <div className='flex flex-col mb-5'>
@@ -39,6 +41,7 @@ export const RegisterForm = () => {
           value={form.email}
           onChange={setInput}
           required
+          autoComplete="email"
         />
       </div>
       <div className='flex flex-col mb-5'>
@@ -53,6 +56,7 @@ export const RegisterForm = () => {
           value={form.password}
           onChange={setInput}
           required
+          autoComplete="current-password"
         />
       </div>
       <button className='p-4 w-full rounded-md dark:bg-white bg-black dark:text-black text-white border-none cursor-pointer hover:dark:bg-gray-400 hover:bg-gray-900 active:dark:bg-white active:bg-black' type="submit">
