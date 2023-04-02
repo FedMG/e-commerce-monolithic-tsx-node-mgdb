@@ -1,13 +1,12 @@
 import Head from 'next/head'
 
-import { HeaderAction } from './structure/Header'
-import { FooterLinks } from "./structure/Footer";
+import { Header } from './structure/Header'
+import { FooterLinks } from "./structure/Footer"
 
-import { footer, headerLinks } from '@/refs';
-import { isString, setUpperCase } from '@/utils';
+import { footer, headerLinks } from '@/refs'
+import { isString, setUpperCase } from '@/utils'
 
-import type { RootLayout } from '_app-types';
-
+import type { RootLayout } from '_app-types'
 
 export const Layout: React.FC<RootLayout> = ({ children, title, section }) => {
   const isTitleWithSection = isString(section) ? `${title} | ${setUpperCase(section as string)}`: `${title}`
@@ -21,9 +20,9 @@ export const Layout: React.FC<RootLayout> = ({ children, title, section }) => {
         <title>{isTitleWithSection}</title>
       </Head>
       <div className='bg-gray-50'>
-      <HeaderAction links={headerLinks} />
-      <main>{children}</main>
-      <FooterLinks data={footer.data} />
+        <Header links={headerLinks} />
+        <main>{children}</main>
+        <FooterLinks data={footer.data} />
       </div>
     </>
   )

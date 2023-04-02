@@ -11,7 +11,7 @@ module.exports = {
         "gray-300-opacity-45": "rgba(222, 226, 230, 0.45)",
       },
       keyframes: {
-      "bounces": {
+        bounces: {
           "0%": {
             transform: "translateX(0) scale(1)",
           },
@@ -23,11 +23,25 @@ module.exports = {
           },
           "100%": {
             transform: "translateX(0) scale(1)",
-          },          
+          },
         },
       },
       animation: {
-        "bounces": "bounces 7000ms ease-in-out infinite"
+        bounces: "bounces 7000ms ease-in-out infinite",
+      },
+      colors: {
+        primary: {
+          50: "#eff6ff",
+          100: "#dbeafe",
+          200: "#bfdbfe",
+          300: "#93c5fd",
+          400: "#60a5fa",
+          500: "#3b82f6",
+          600: "#2563eb",
+          700: "#1d4ed8",
+          800: "#1e40af",
+          900: "#1e3a8a",
+        },
       },
     },
   },

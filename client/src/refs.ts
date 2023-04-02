@@ -7,30 +7,30 @@ export const filterStructure = {
 }
 
 
-export const headerLinks: HeaderLinks[] = [
+export const headerLinks: HeaderLinks[] =  [
     {
       "path": "/",
-      "label": "Home"
+      "name": "Home"
     },
     {
       "path": "/about",
-      "label": "About"
+      "name": "About"
     },
     {
       "path": "#categories",
-      "label": "Categories",
-      "links": [
+      "name": "Categories",
+      "dropdown": [
         {
           "path": "/men's clothing",
-          "label": "Men's clothing"
+          "name": "Men's clothing"
         },
         {
           "path": "/women's clothing",
-          "label": "Women's clothing"
+          "name": "Women's clothing"
         },
         {
           "path": "/beauty",
-          "label": "Beauty"
+          "name": "Beauty"
         },
       ]
     }
