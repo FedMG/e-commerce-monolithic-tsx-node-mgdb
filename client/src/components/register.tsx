@@ -1,63 +1,67 @@
-import { useUserSessionData } from "@/hooks/useUserSessionData";
-import { formStyles } from "@/styles/matine";
+import { useUserSessionData } from "@/hooks/useUserSessionData"
 
 const registerForm = {
   name: "",
   email: "",
   password: "",
-};
+}
 
+// refactor later
 export const RegisterForm = () => {
-  const { form, setInput, setSubmit } = useUserSessionData({ form: registerForm, mode: 'register'});
-  const { classes } = formStyles()
+  const { form, setInput, setSubmit } = useUserSessionData({ form: registerForm, mode: 'register'})
   
   return (
-    <form className={classes.form} onSubmit={setSubmit}>
-      <div className={classes.formGroup}>
-        <label className={classes.label} htmlFor="name">
+    <form className='w-full' onSubmit={setSubmit}>
+      <div className='flex flex-col mb-5'>
+        <label className='text-start mb-2 text-lg font-medium' htmlFor="name">
           Name:
         </label>
         <input
-          className={classes.input}
+          className='p-3 rounded-md border-2 border-solid border-gray-300'
           type="text"
           id="name"
           name="name"
+          placeholder="Your name"
           value={form.name}
           onChange={setInput}
           required
+          autoComplete="username"
         />
       </div>
-      <div className={classes.formGroup}>
-        <label className={classes.label} htmlFor="email">
+      <div className='flex flex-col mb-5'>
+        <label className='text-start mb-2 text-lg font-medium' htmlFor="email">
           Email:
         </label>
         <input
-          className={classes.input}
+          placeholder="example@email.com"
+          className='p-3 rounded-md border-2 border-solid border-gray-300'
           type="email"
           id="email"
           name="email"
           value={form.email}
           onChange={setInput}
           required
+          autoComplete="email"
         />
       </div>
-      <div className={classes.formGroup}>
-        <label className={classes.label} htmlFor="password">
+      <div className='flex flex-col mb-5'>
+        <label className='text-start mb-2 text-lg font-medium' htmlFor="password">
           Password:
         </label>
         <input
-          className={classes.input}
+          className='p-3 rounded-md border-2 border-solid border-gray-300'
           type="password"
           id="password"
           name="password"
           value={form.password}
           onChange={setInput}
           required
+          autoComplete="current-password"
         />
       </div>
-      <button className={classes.button} type="submit">
+      <button className='p-4 w-full rounded-md dark:bg-white bg-black dark:text-black text-white border-none cursor-pointer hover:dark:bg-gray-400 hover:bg-gray-900 active:dark:bg-white active:bg-black' type="submit">
         Register
       </button>
-    </form>    
-  );
-};
+    </form>
+  )
+}

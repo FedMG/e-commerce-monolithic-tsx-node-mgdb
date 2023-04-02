@@ -1,12 +1,13 @@
-import { AppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
 import { rtlCache } from 'rtl-cache';
 
-import { Layout } from '../components/layout';
+import { AppPropsWithLayout } from '_app-types';
 import '@/styles/globals.css'
 
-export default function App(props: AppProps) {
-  const { Component, pageProps } = props;
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page)
+    
   return (
     <div dir="ltr">
       <MantineProvider
@@ -15,11 +16,8 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         emotionCache={rtlCache}
       >
-        <Layout title='App - Home'>
-        <Component {...pageProps} />
-        </Layout>
+       {getLayout(<Component {...pageProps} />, pageProps)}
      </MantineProvider>
     </div>
   );
 }
-        
