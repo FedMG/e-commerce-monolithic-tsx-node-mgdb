@@ -13,7 +13,7 @@ import { CategoryBrandFilter } from "@/components/brandFilter";
 import { CategoryRatingFilter } from "@/components/sortFilter";
 
 import { getEndpoint } from "./api/utils";
-import { isThereProduct } from "@/utils";
+import { isArrayOfObjects } from "@/utils";
 import { filterStructure } from "@/refs";
 
 import type { CategoryProps, ChildrenNode, FilterFunction, ProductSortFunction } from "additional";
@@ -37,7 +37,7 @@ const CategoryFilters: FC<ChildrenNode> = ({ children }) => {
 const CategoryProducts: FC<Pick<CategoryProps, 'products'>> = ({ products }) => {   
   return (
     <Grid.Col span={12} lg={9.5} display="flex" style={{ flexWrap: "wrap" }}>
-      {isThereProduct(products) &&
+      {isArrayOfObjects(products) &&
         products.map(({ _id, name, price, category, rating, image, discount }) => (
           <Grid.Col span={6} xs={4} sm={3} md={3} key={_id}>
             <Link href="/[category]/[productId]" as={`/${category}/${_id}`}>
