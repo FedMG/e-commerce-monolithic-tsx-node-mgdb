@@ -20,9 +20,11 @@ export const Layout: React.FC<RootLayout> = ({ children, title, section }) => {
         <link rel='icon' href='/e-cart.ico' />
         <title>{isTitleWithSection}</title>
       </Head>
+      <div className='bg-gray-50'>
       <HeaderAction links={headerLinks} />
       <main>{children}</main>
       <FooterLinks data={footer.data} />
+      </div>
     </>
   )
 }
