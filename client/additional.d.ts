@@ -1,10 +1,6 @@
 import type { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
 import { SortBy } from 'enums';
 
-export type ChildrenElement = {
-  children: ReactElement
-}
-
 export type ChildrenNode = {
   children: ReactNode
 }
@@ -91,14 +87,13 @@ export interface UserSessionTools {
 
 type Id<T> = T extends string ? StringId : NumberId
 
-export interface BackgroundWrapperProps extends ChildrenElement {
-  padTop: number
+export interface SVGPathProps {
+  d: string
 }
 
-export interface CreateBlockProps {
-  d: string;
-  className: string;
-  alt: string;
+export interface CreateBlobProps  {
+  children: ReactElement
+  className: string
 }
 
 

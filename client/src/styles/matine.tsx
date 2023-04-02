@@ -1,4 +1,4 @@
-import { createStyles } from "@mantine/core";
+import { createStyles } from "@mantine/core"
 
 export const formPage = createStyles((theme) => ({
   pageContainer: {},
@@ -10,7 +10,7 @@ export const formPage = createStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
-}));
+}))
 
 export const formStyles = createStyles((theme) => ({
   form: {
@@ -58,97 +58,6 @@ export const formStyles = createStyles((theme) => ({
   },
 }));
 
-export const useBackgroundWrapperStyles = createStyles((theme) => ({
-  blobsContainer: {
-    position: "relative",
-  },
-  blob: {
-    position: "absolute",
-    zIndex: -1,
-
-    animation: "bounce 7s ease-in-out infinite",
-    animationFillMode: "forwards",
-
-    "@keyframes bounce": {
-      "0%": {
-        transform: "translateX(0) scale(1)",
-      },
-      "50%": {
-        transform: "translateX(-4px) scale(1.03)",
-      },
-      "75%": {
-        transform: "translateX(-2px) scale(1.03)",
-      },
-      "100%": {
-        transform: "translateX(0) scale(1)",
-      },
-    },
-
-    "&:first-child": {
-      top: 25,
-      left: 44,
-      width: 580,
-      height: 580,
-
-      [theme.fn.smallerThan("md")]: {
-        width: 180,
-        height: 180,
-      },
-    },
-
-    "&:nth-child(2)": {
-      top: 405,
-      left: 444,
-      width: 580,
-      height: 580,
-
-      [theme.fn.smallerThan("md")]: {
-        width: 280,
-        height: 280,
-      },
-      [theme.fn.smallerThan("sm")]: {
-        left: 170,
-        width: 280,
-        height: 280,
-      },
-    },
-  },
-}));
-
-export const useAboutStyles = createStyles((theme) => ({
-  container: {
-    maxWidth: "800px",
-    margin: "0 auto",
-    padding: theme.spacing.xl,
-    backdropFilter: "blur(5px)",
-    WebkitBackdropFilter: "blur(5px)",
-    borderRadius: theme.radius.sm,
-    borderBottomLeftRadius: theme.radius.xl,
-    borderTopRightRadius: theme.radius.xl,
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? "rgba(55, 58, 64, 0.45)"
-        : "rgba(222, 226, 230, 0.45)",
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-  },
-  title: {
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    fontSize: "1.3em",
-    fontWeight: "bold",
-  },
-  description: {
-    fontsize: "2rem",
-  },
-  fragment: {
-    display: "block",
-    paddingBottom: 30,
-  },
-  span: {
-    display: "block",
-    paddingBottom: theme.spacing.xs,
-    paddingTop: 5,
-  },
-}));
 
 export const HEADER_HEIGHT = 60;
 
