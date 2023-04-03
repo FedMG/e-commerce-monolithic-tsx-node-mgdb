@@ -63,7 +63,6 @@ export interface FooterProps {
 
 interface FooterLinkIconProps {
   path: string
-  size: number
   d: string
   alt: string
 }

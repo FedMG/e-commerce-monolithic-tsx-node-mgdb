@@ -1,53 +1,48 @@
-import { VALID_DOMAIN } from "src/environment";
+import { VALID_DOMAIN } from "src/environment"
 
-import { FC, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/router";
-import { Grid } from "@mantine/core";
-import Link from "next/link";
+import { FC, useEffect, useMemo, useState } from "react"
+import { useRouter } from "next/router"
+import Link from "next/link"
 
-import { Layout } from "@/components/layout";
-import { ProductsCard } from "@/components/productCard";
-import { CategoryDiscountFilter } from "@/components/discountFilter";
-import { CategorySearchFilter } from "@/components/searchFilters";
-import { CategoryBrandFilter } from "@/components/brandFilter";
-import { CategoryRatingFilter } from "@/components/sortFilter";
+import { Layout } from "@/components/layout"
+import { ProductsCard } from "@/components/productCard"
+import { CategoryDiscountFilter } from "@/components/discountFilter"
+import { CategorySearchFilter } from "@/components/searchFilters"
+import { CategoryBrandFilter } from "@/components/brandFilter"
+import { CategoryRatingFilter } from "@/components/sortFilter"
 
-import { getEndpoint } from "./api/utils";
-import { isArrayOfObjects } from "@/utils";
-import { filterStructure } from "@/refs";
+import { getEndpoint } from "./api/utils"
+import { isArrayOfObjects } from "@/utils"
+import { filterStructure } from "@/refs"
 
-import type { CategoryProps, ChildrenNode, FilterFunction, ProductSortFunction } from "additional";
-import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import type { GetServerSidePropsContext } from "next";
-import type { NextPageWithLayout } from "_app-types";
-import { SortBy } from "enums";
-
-
-const CategoryFilters: FC<ChildrenNode> = ({ children }) => {
-  return (    
-    <Grid.Col span={0} lg={2.5} className='my-2'>
-      <div className='lg:flex lg:flex-col gap-y-6 px-2 rounded-sm bg-[#F1F3F5] h-full shadow-[0_15px_0_15px_1_165px_#777777] text-gray-700 border-1 border-solid border-[#f5f5f5]'>
-      {children}
-      </div>
-    </Grid.Col>
-  )
-}
+import type { CategoryProps, ChildrenNode, FilterFunction, ProductSortFunction } from "additional"
+import type { Params } from "next/dist/shared/lib/router/utils/route-matcher"
+import type { GetServerSidePropsContext } from "next"
+import type { NextPageWithLayout } from "_app-types"
+import { SortBy } from "enums"
 
 
-const CategoryProducts: FC<Pick<CategoryProps, 'products'>> = ({ products }) => {   
-  return (
-    <Grid.Col span={12} lg={9.5} display="flex" style={{ flexWrap: "wrap" }}>
-      {isArrayOfObjects(products) &&
-        products.map(({ _id, name, price, category, rating, image, discount }) => (
-          <Grid.Col span={6} xs={4} sm={3} md={3} key={_id}>
-            <Link href="/[category]/[productId]" as={`/${category}/${_id}`}>
-              <ProductsCard element={{ name, price, rating, image, discount }} />
-            </Link>
-          </Grid.Col>
-        ))}
-    </Grid.Col>
-  );
-}
+const CategoryFilters: FC<ChildrenNode> = ({ children }) => (    
+  <div className="col-span-12 lg:col-span-3 my-3 border border-solid border-gray-200">
+    <div className='lg:flex lg:flex-col gap-y-7 pb-8 pl-6 pr-4 rounded-sm bg-[#F1F3F5] h-full shadow-[0_15px_0_15px_1_165px_#777777] text-gray-700 border-1 border-solid border-[#f5f5f5]'>
+    {children}
+    </div>
+  </div>
+)
+
+const CategoryProducts: FC<Pick<CategoryProps, 'products'>> = ({ products }) => (
+  <div className="col-span-12 lg:col-span-9 flex flex-wrap">
+    {isArrayOfObjects(products) &&
+      products.map(({ _id, name, price, category, rating, image, discount }) => (
+        //
+      <div key={_id} className="p-3  w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/4 xl:w-1/4">
+          <Link href="/[category]/[productId]" as={`/${category}/${_id}`}>
+            <ProductsCard element={{ name, price, rating, image, discount }} />
+          </Link>
+        </div>
+      ))}
+  </div>
+)
 
 
 export const sortFunctions: Record<string, ProductSortFunction> = {
@@ -60,7 +55,7 @@ export const sortFunctions: Record<string, ProductSortFunction> = {
   [SortBy.PRICE]: (a, b) => a.price - b.price
 }
 
-
+// refactor later with a custom hook
 const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands }) => {
   const [filters, setFilters] = useState<Record<string, null | FilterFunction>>(filterStructure)
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.RATING)
@@ -91,13 +86,7 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
   },[products])
        
   return (
-    <Grid
-      className='w-full'
-      gutter={9}
-      gutterXs={16}
-      gutterSm={16}
-      gutterXl={24}
-    >
+    <div className="grid grid-cols-12 gap-6 lg:gap-10 w-full">
       <CategoryFilters>
         <CategorySearchFilter onChange={updateNameFilter} currentCategory={query.category} productsNumber={searchItems.length} />
         <CategoryBrandFilter onChange={updateBrandFilter} currentCategory={query.category} brands={brands}/>
@@ -105,7 +94,7 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
         <CategoryRatingFilter onChange={updateRatingFilter} sortBy={sortBy} />
       </CategoryFilters>
       <CategoryProducts products={searchItems} />        
-    </Grid>
+    </div>
   )
 }
 
@@ -115,6 +104,7 @@ Category.getLayout = function getLayout (page, _pageProps) {
   const { query } = router
   return <Layout title={'Category'} section={query.category as string} >{page}</Layout>
 }
+
 
 export async function getServerSideProps({ params }: GetServerSidePropsContext<Params>) {
   if (!params || !params.category) return { notFound: true }
@@ -143,4 +133,4 @@ export async function getServerSideProps({ params }: GetServerSidePropsContext<P
   })
 }
 
-export default Category;
+export default Category

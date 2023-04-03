@@ -41,9 +41,10 @@ export const ProductsCard: React.FC<ProductCardProps> = ({ element }) => {
   const { name, image, price, discount, rating } = element
 
   return (
-    <div className='h-full max-h-430 flex flex-col dark:bg-slate-700 bg-gray-100 rounded-sm shadow-[0_15px_0_15px_1_16px_#777777] border-2 border-solid border-[#f5f5f5] border-radius-xs hover:dark:bg-slate-600 hover:bg-gray-300 transition transform duration-[100ms] easy-in-out hover:scale-[1.03]'>
-      <div className='aspect-[2/3] h-full xl:max-h-310 lg:max-h-295 md:max-h-300 sm:max-h-255 xs:max-h-240 max-h-310 m-0.5 md:m-1 flex items-center from-white to-gray-300 bg-gradient-to-br border-b-1 border-gray-200 dark:border:bg-gray-800'>
-        <Image height={290} width={300} sizes='100vw' className='h-full w-auto max-h-310 select-none overflow-hidden' src={image.src} alt={`${name} card product`} />
+    <div className='h-full max-h-[430px] flex flex-col dark:bg-slate-700 bg-gray-200 rounded-sm shadow-[0_15px_0_15px_1_16px_#777777] border border-solid border-gray-300 rounded-sm hover:dark:bg-slate-600 hover:bg-gray-300 transition transform duration-[100ms] easy-in-out hover:scale-[1.03]'>
+      <div className='aspect-[2/3] h-full xl:max-h-[310px] lg:max-h-[295px] md:max-h-[300px] sm:max-h-[255px] xs:max-h-[240px] max-h-[310px] m-0.5 md:m-1 flex items-center from-white to-gray-300 bg-gradient-to-br border-b border-gray-300 dark:border:bg-gray-800'>
+        {/* later put the "width-auto" to the image */}
+        <Image height={290} width={300} sizes='100vw' className='h-full max-h-[310px] select-none overflow-hidden' src={image.src} alt={`${name} card product`} />
       </div>
 
       <div className='w-full p-[0.3em] pt-0 pb-1 sm:p-[0.5em] sm:pt-0 sm:pb-1.1 md:p-[0.6em] md:pt-1 md:pb-2 flex-end  '>
