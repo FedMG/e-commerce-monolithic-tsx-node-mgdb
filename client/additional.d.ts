@@ -50,11 +50,22 @@ export interface HeaderDropdownProps extends Pick<HeaderProps, 'links'> {
 
 
 // Footer
-export interface FooterLinksProps {
-  data: {
-    title: string
-    links: { label: string; link: string }[]
-  }[]
+type FooterLinkItem = {
+  name: string
+  path: string
+}
+
+export type FooterLinks = FooterLinkItem & { links?: FooterLinkItem[] }
+
+export interface FooterProps {
+  links: FooterLinks[]
+}
+
+interface FooterLinkIconProps {
+  path: string
+  size: number
+  d: string
+  alt: string
 }
 
 

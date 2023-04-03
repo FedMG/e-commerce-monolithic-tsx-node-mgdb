@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
 import { Header } from './structure/Header'
-import { FooterLinks } from "./structure/Footer"
+import { Footer } from "./structure/Footer"
 
-import { footer, headerLinks } from '@/refs'
+import { footerLinks, headerLinks } from '@/refs'
 import { isString, setUpperCase } from '@/utils'
 
 import type { RootLayout } from '_app-types'
@@ -22,7 +22,7 @@ export const Layout: React.FC<RootLayout> = ({ children, title, section }) => {
       <div className='bg-gray-50'>
         <Header links={headerLinks} />
         <main>{children}</main>
-        <FooterLinks data={footer.data} />
+        <Footer links={footerLinks} />
       </div>
     </>
   )

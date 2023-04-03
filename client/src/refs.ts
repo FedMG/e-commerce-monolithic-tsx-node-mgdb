@@ -1,4 +1,4 @@
-import { HeaderLinks } from "additional";
+import { FooterLinks, HeaderLinks } from "additional";
 
 export const filterStructure = {
   name: null,
@@ -36,59 +36,59 @@ export const headerLinks: HeaderLinks[] =  [
     }
   ]
 
-
-export const footer = {
-  data: [
+export const footerLinks: FooterLinks[] = [
     {
-      title: "About",
+      name: "About",
+      path: '',
       links: [
         {
-          label: "Features",
-          link: "#",
+          name: "Features",
+          path: '#',
         },
         {
-          label: "Pricing",
-          link: "#",
+          name: "Pricing",
+          path: "#",
         },
         {
-          label: "Payments methods",
-          link: "#",
+          name: "Payments methods",
+          path: "#",
         },
       ],
     },
     {
-      title: "Policy",
+      name: "Policy",
+      path: '',
       links: [
         {
-          label: "Privacy Policy",
-          link: "#",
+          name: "Privacy Policy",
+          path: "#",
         },
         {
-          label: "Terms of Service",
-          link: "#",
+          name: "Terms of Service",
+          path: "#",
         },
         {
-          label: "Consumer Rights",
-          link: "#",
+          name: "Consumer Rights",
+          path: "#",
         },
       ],
     },
     {
-      title: "Help",
+      name: "Help",
+      path: '',
       links: [
         {
-          label: "Common Questions",
-          link: "#",
+          name: "Common Questions",
+          path: "#",
         },
         {
-          label: "Support",
-          link: "#",
+          name: "Support",
+          path: "#",
         },
         {
-          label: "Contact us",
-          link: "#",
+          name: "Contact us",
+          path: "#",
         },
       ],
     },
-  ],
-};
+  ]
