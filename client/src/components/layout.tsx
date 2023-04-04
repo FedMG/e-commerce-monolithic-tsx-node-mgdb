@@ -19,7 +19,7 @@ export const Layout: React.FC<RootLayout> = ({ children, title, section }) => {
         <link rel='icon' href='/e-cart.ico' />
         <title>{isTitleWithSection}</title>
       </Head>
-      <div className='bg-gray-50 h-full relative'>
+      <div className='bg-gray-50 h-full relative pb-20'>
         <Header links={headerLinks} />
         <main className='h-full min-h-screen max-h-full'>{children}</main>
         <Footer links={footerLinks} />
