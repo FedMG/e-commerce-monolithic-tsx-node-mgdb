@@ -124,6 +124,7 @@ export interface CategoryProps {
   products: Product[]
   discounts: number[]
   brands: string[]
+  currentCategory: string
 }
 
 export interface CategoryNextFilterProps {

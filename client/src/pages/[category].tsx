@@ -1,7 +1,6 @@
 import { VALID_DOMAIN } from "src/environment"
 
 import { FC, useEffect, useMemo, useState } from "react"
-import { useRouter } from "next/router"
 import Link from "next/link"
 
 import { Layout } from "@/components/layout"
@@ -56,11 +55,9 @@ export const sortFunctions: Record<string, ProductSortFunction> = {
 }
 
 // refactor later with a custom hook
-const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands }) => {
+const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands, currentCategory }) => {
   const [filters, setFilters] = useState<Record<string, null | FilterFunction>>(filterStructure)
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.RATING)
-  const router = useRouter()
-  const { query } = router
 
   const searchItems = useMemo(() => {
     if (!filters.name && !filters.brand && !filters.discount) return [...products].sort(sortFunctions[sortBy])
@@ -88,9 +85,9 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
   return (
     <div className="grid grid-cols-12 gap-6 lg:gap-10 w-full">
       <CategoryFilters>
-        <CategorySearchFilter onChange={updateNameFilter} currentCategory={query.category} productsNumber={searchItems.length} />
-        <CategoryBrandFilter onChange={updateBrandFilter} currentCategory={query.category} brands={brands}/>
-        <CategoryDiscountFilter onChange={updateDiscountFilter} currentCategory={query.category} discounts={discounts} />
+        <CategorySearchFilter onChange={updateNameFilter} currentCategory={currentCategory} productsNumber={searchItems.length} />
+        <CategoryBrandFilter onChange={updateBrandFilter} currentCategory={currentCategory} brands={brands}/>
+        <CategoryDiscountFilter onChange={updateDiscountFilter} currentCategory={currentCategory} discounts={discounts} />
         <CategoryRatingFilter onChange={updateRatingFilter} sortBy={sortBy} />
       </CategoryFilters>
       <CategoryProducts products={searchItems} />        
@@ -100,9 +97,7 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
 
 
 Category.getLayout = function getLayout (page, _pageProps) {
-  const router = useRouter()
-  const { query } = router
-  return <Layout title={'Category'} section={query.category as string} >{page}</Layout>
+  return <Layout title={'Category'} section={page?.props?.currentCategory as string} >{page}</Layout>
 }
 
 
@@ -123,7 +118,8 @@ export async function getServerSideProps({ params }: GetServerSidePropsContext<P
     serverObject.props = { 
       ...products,
       discounts: [...discounts.uniqueValues],
-      brands: [...brands.uniqueValues]
+      brands: [...brands.uniqueValues],
+      currentCategory: params.category
     }
     return serverObject
     
