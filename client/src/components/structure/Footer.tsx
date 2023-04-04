@@ -67,7 +67,7 @@ const CopyrightAndSocialIcons = () => (
 
 export const Footer: React.FC<FooterProps> = ({ links }) => {
   return (
-    <footer className="mt-20 bg-gray-100 dark:bg-slate-600 border-t dark:border-slate-500 border-gray-200">
+    <footer className="absolute top-full left-0 w-full mt-20 bg-gray-100 dark:bg-slate-600 border-t dark:border-slate-500 border-gray-200">
       <div className="mt-5 hidden sm:flex w-full justify-around">
         <FooterColumnLinks links={links} />
       </div>
