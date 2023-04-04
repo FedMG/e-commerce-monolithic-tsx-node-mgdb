@@ -1,28 +1,31 @@
-import { FC, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 
 import { isArrayOfObjects } from "@/utils"
 import type { HeaderDropdownProps, HeaderProps } from "additional"
 
 
-const HeaderDropdown: FC<HeaderDropdownProps> = ({ label, links }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  
+const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
+
   return (
-    <div>
+    <div className="relative bg-inherit">
       <button
+        aria-label="select an option"
+        aria-haspopup="true"
+        aria-expanded='false'
         id="dropdownDefaultButton"
         data-dropdown-toggle="dropdown"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className='flex w-full block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'
+        className='py-3 px-5 lg:px-2 lg:py-3 flex items-center bg-inherit hover:bg-gray-300 active:bg-gray-200 w-full block font-sans text-sm xl:text-md font-medium text-gray-700 hover:text-primary-700 border-b border-gray-100 lg:border-0 lg:rounded-md'
         type="button"
       >
-        <span className='font-sans font-medium text-gray-700'>
+        <span>
           {label}
         </span>
         <svg
-          className="w-4 h-4 ml-2"
-          aria-hidden="true"
+           className={`w-4 h-4 ml-2 ${isDropdownOpen ? '-rotate-90' : 'rotate-0'}`}
+         aria-hidden="true"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -36,12 +39,9 @@ const HeaderDropdown: FC<HeaderDropdownProps> = ({ label, links }) => {
           ></path>
         </svg>
       </button>
-      <div id="dropdown" className={`z-10 ${isDropdownOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
-        <ul
-          className="py-2 text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="dropdownDefaultButton"
-        >
-          <HeaderMenuList links={links} />
+      <div id="dropdown" role="menu" aria-hidden="true" className={`z-10 ${isDropdownOpen ? 'block' : 'hidden'} w-full lg:w-44 bg-inherit absolute top-full left-0 right-0 max-h-calc rounded-lg lg:shadow`}>
+        <ul aria-labelledby="dropdownDefaultButton" className='pl-2 lg:pl-0'>
+         <HeaderMenuList links={links} />
         </ul>
       </div>
     </div>
@@ -49,7 +49,7 @@ const HeaderDropdown: FC<HeaderDropdownProps> = ({ label, links }) => {
 }
 
 
-export const HeaderMenuList: React.FC<HeaderProps> = ({ links }) => {
+export const HeaderMenuList: React.FC<HeaderProps> = ({ links, bgColor }) => {
   if (!isArrayOfObjects(links)) return null
 
   return (
@@ -57,17 +57,17 @@ export const HeaderMenuList: React.FC<HeaderProps> = ({ links }) => {
       {links.map(({ name, path, dropdown }) => {
         if (dropdown) {
           return (
-              <li key={name}>
-                <HeaderDropdown label={name} links={dropdown } />
+            <li key={name} className={`w-full ${bgColor}`}>
+              <HeaderDropdown label={name} links={dropdown} />
             </li>
           )
         }
+
         return (
-          <li key={name}>
-            <Link
-              href={path}
-              className='block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'
-              aria-current="page"
+           <li key={name} className='w-full bg-inherit hover:bg-gray-300 active:bg-gray-200 lg:rounded-md'>
+           <Link href={path}
+               className='py-3 px-5 lg:px-2 lg:py-3 block text-gray-700 hover:text-primary-700 text-sm xl:text-md font-medium border-b border-gray-100 lg:border-0'
+             aria-current="page" // implement later the logic to apply aria-current dynamicly
             >
               {name}
             </Link>

@@ -30,6 +30,7 @@ export type HeaderLinks = Links & { dropdown?: Links[] }
 
 export interface HeaderProps {
   links: HeaderLinks[]
+  bgColor?: string
 }
 
 export interface HeaderButtonsProps {
@@ -39,14 +40,15 @@ export interface HeaderButtonsProps {
 
 export interface HeaderLogoProps {
   name: string
-  pathLogo: string 
+  pathLogo: string
 }
 
-export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'>
+export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'> & Pick<HeaderProps, 'bgColor'>
 
 export interface HeaderDropdownProps extends Pick<HeaderProps, 'links'> {
   label: string
 }
+
 
 
 // Footer
