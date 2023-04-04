@@ -3,16 +3,17 @@ import { FC, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { SVGicon, SVGPath } from "../svgUtilities"
-import type { HeaderButtonsProps, HeaderLogoProps, HeaderNavigationProps, HeaderProps } from "additional"
 import { HeaderMenuList } from "../headerMenu"
+import { SVGicon, SVGPath } from "../svgUtilities"
+
+import type { HeaderButtonsProps, HeaderLogoProps, HeaderNavigationProps, HeaderProps } from "additional"
 
 
 const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
-  <div className="flex items-center">
+  <Link href='/' className="flex items-center">
     <Image
       src={pathLogo}
-      className="mr-3 h-6 sm:h-9"
+      className="mr-3 h-6 sm:h-9 w-auto"
       width={45}
       height={45}
       alt="A cart logo of the e-commerce"
@@ -21,7 +22,7 @@ const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
       {name}
     </span>
-  </div>
+  </Link>
 )
 
 
