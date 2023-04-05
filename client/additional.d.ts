@@ -1,8 +1,8 @@
-import type { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
-import { SortBy } from 'enums';
+import type { ChangeEvent, FormEvent, ReactElement, ReactNode } from 'react'
+import { SortBy } from 'enums'
 
 // utils
-export type ChildrenNode = {
+export interface ChildrenNode {
   children: ReactNode
 }
 
@@ -20,9 +20,8 @@ export interface SVGPathProps {
   d: string
 }
 
-
 // Header
-type Links = {
+interface Links {
   path: string
   name: string
 }
@@ -49,10 +48,8 @@ export interface HeaderDropdownProps extends Pick<HeaderProps, 'links'> {
   label: string
 }
 
-
-
 // Footer
-type FooterLinkItem = {
+interface FooterLinkItem {
   name: string
   path: string
 }
@@ -69,14 +66,13 @@ interface FooterLinkIconProps {
   alt: string
 }
 
-
 // User session page
-export type SessionMode = "login" | "register"
+export type SessionMode = 'login' | 'register'
 
 export interface FormTypes {
-  name?: string;
-  email: string;
-  password: string;
+  name?: string
+  email: string
+  password: string
 }
 
 export interface SessionRequestProps {
@@ -87,19 +83,17 @@ export interface SessionRequestProps {
 export interface UserSessionTools {
   form: FormTypes
   setInput: (event: ChangeEvent<HTMLInputElement>) => void
-  setSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>
+  setSubmit: (event: FormEvent<HTMLFormElement>) => void
 }
 
-
 // About page
-export interface CreateBlobProps  {
+export interface CreateBlobProps {
   children: ReactElement
   className: string
 }
 
-
 // Product item
-export interface Product { 
+export interface Product {
   _id: string
   name: string
   image: {
@@ -114,7 +108,6 @@ export interface Product {
   createdAt: Date
   __v: number
 }
-
 
 // Category page
 export type ProductSortFunction = (a: Product, b: Product) => number
@@ -149,12 +142,10 @@ export interface CategoryDiscountsFilterProps extends CategoryNextFilterProps {
   discounts: number[]
 }
 
-
 // Product id page
 export interface ProductProps {
   product: Product
 }
-
 
 // Product cards
 export interface ProductCardProps {
@@ -167,4 +158,18 @@ export interface DiscountInfoProps {
   price: number
 }
 
+// api/utils
+export type GetEndpointResponse = (extra: string) => Promise<any>
 
+export interface GetSessionRequestsResponse {
+  url: string
+  requestOptions: {
+    method: string
+    headers: {
+      'Content-Type': string
+    }
+    body: string
+  }
+}
+
+export interface APIResponse { token: string, user?: object }

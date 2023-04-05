@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ts-lint": "ts-standard --fix"    
   },
   "dependencies": {
     "@next/font": "13.1.2",
@@ -25,6 +26,15 @@
     "eslint-config-next": "13.1.2",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",
+    "ts-standard": "^12.0.2",
     "typescript": "4.9.4"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "./node_modules/ts-standard/eslintrc.json"
+    ]
   }
 }

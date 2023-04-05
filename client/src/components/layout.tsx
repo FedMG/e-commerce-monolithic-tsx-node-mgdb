@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import { Header } from './structure/Header'
-import { Footer } from "./structure/Footer"
+import { Footer } from './structure/Footer'
 
 import { footerLinks, headerLinks } from '@/refs'
 import { isString, setUpperCase } from '@/utils'
@@ -9,7 +9,7 @@ import { isString, setUpperCase } from '@/utils'
 import type { RootLayout } from '_app-types'
 
 export const Layout: React.FC<RootLayout> = ({ children, title, section }) => {
-  const isTitleWithSection = isString(section) ? `${title} | ${setUpperCase(section as string)}`: `${title}`
+  const isTitleWithSection = isString(section) ? `${title} | ${setUpperCase(section as string)}` : `${title}`
 
   return (
     <>

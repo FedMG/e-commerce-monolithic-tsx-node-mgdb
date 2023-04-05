@@ -1,22 +1,23 @@
-import Image from "next/image";
-import { getPriceWithDiscount } from "@/utils";
+import Image from 'next/image'
+import { getPriceWithDiscount } from '@/utils'
 
-import type { DiscountInfoProps, ProductCardProps } from "additional";
-import type{ FC, ReactElement } from "react";
+import type { DiscountInfoProps, ProductCardProps } from 'additional'
+import type { FC, ReactElement } from 'react'
 
+const DiscountInfo: FC<DiscountInfoProps> = ({ children, discount, price }): ReactElement | null => {
+  if (children == null) return null
 
-const DiscountInfo: FC<DiscountInfoProps> = ({ children, discount, price}): ReactElement | null => {
-  if (!children) return null
-  if (!discount)
+  if (discount === 0 || discount === undefined) {
     return (
       <div className='w-full relative'>
-      <span className='apect-ratio -ml-1'></span>
-      <div className='w-full flex justify-between items-center'>
-        {children[0]}
-        {children[1]}
+        <span className='apect-ratio -ml-1' />
+        <div className='w-full flex justify-between items-center'>
+          {children[0]}
+          {children[1]}
+        </div>
       </div>
-      </div>
-    );
+    )
+  }
 
   return (
     <div className='w-full relative'>
@@ -27,7 +28,7 @@ const DiscountInfo: FC<DiscountInfoProps> = ({ children, discount, price}): Reac
         <div className='flex items-center'>
           {children[0]}
           <span className='pb-[0.3rem] pl-0.5 lg:pl-3 text-green-600 dark:text-green-500 light:text-green-700 text-xs lg:text-sm font-medium'>
-            {" "}
+            {' '}
             -{discount}% OFF
           </span>
         </div>
@@ -58,7 +59,7 @@ export const ProductsCard: React.FC<ProductCardProps> = ({ element }) => {
             {rating}
           </span>
         </DiscountInfo>
-        
+
         <p className='leading-normal text-md xs:max-lg:text-md lg:text-lg dark:text-white light:text-gray-700 pt-3 h-full line-clamp-2 truncate'>
           {name}
         </p>

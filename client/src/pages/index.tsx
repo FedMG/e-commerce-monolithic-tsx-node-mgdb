@@ -1,11 +1,10 @@
-import { Layout } from "@/components/layout";
-import type { NextPageWithLayout } from "_app-types";
+import { Layout } from '@/components/layout'
+import type { NextPageWithLayout } from '_app-types'
 
- const Home: NextPageWithLayout = () => {
+const Home: NextPageWithLayout = () => {
   return (
-    <div>
-    </div>
-  );
+    <div />
+  )
 }
 
 Home.getLayout = function getLayout (page, _pageProps) {
