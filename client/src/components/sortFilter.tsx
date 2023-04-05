@@ -1,26 +1,26 @@
-import type { CategorySortFilterProps } from "additional";
-import { SortBy } from "enums";
+import type { CategorySortFilterProps } from 'additional'
+import { SortBy } from 'enums'
 
-export const CategoryRatingFilter: React.FC<CategorySortFilterProps> = ({ onChange, sortBy }) => {  
-  const productSortedHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+export const CategoryRatingFilter: React.FC<CategorySortFilterProps> = ({ onChange, sortBy }) => {
+  const productSortedHandler = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const userInput = e.target.value as SortBy
     onChange(userInput)
   }
 
   return (
-    <div className="flex items-center w-full">
-        <label htmlFor="sort-products-by" className="mr-4 whitespace-nowrap">Sort By:</label>
-          <select
-          className="border border-gray-400 rounded p-1 w-full"
-            name="sort-products-by"
-            id="sort-products-by"
-            value={sortBy}
-            onChange={productSortedHandler}
-          >
+    <div className='flex items-center w-full'>
+      <label htmlFor='sort-products-by' className='mr-4 whitespace-nowrap'>Sort By:</label>
+      <select
+        className='border border-gray-400 rounded p-1 w-full'
+        name='sort-products-by'
+        id='sort-products-by'
+        value={sortBy}
+        onChange={productSortedHandler}
+      >
         <option value={SortBy.DATE}>Most recents</option>
         <option value={SortBy.RATING}>Most voted</option>
         <option value={SortBy.PRICE}>Cheapest</option>
       </select>
     </div>
-  );
+  )
 }

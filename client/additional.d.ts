@@ -1,45 +1,99 @@
-import type { ChangeEvent, FormEvent, ReactElement, ReactNode, SetStateAction } from 'react'
-import { SortBy } from 'enums';
+import type { ChangeEvent, FormEvent, ReactElement, ReactNode } from 'react'
+import { SortBy } from 'enums'
 
-export type ChildrenNode = {
+// utils
+export interface ChildrenNode {
   children: ReactNode
 }
 
+interface ConstantProps {
+  className: string
+  name: string
+}
+
+// type Id<T> = T extends string ? StringId : NumberId
+
+// SVG
+export type SVGIconProps = ChildrenNode & Pick<ConstantProps, 'className'>
+
+export interface SVGPathProps {
+  d: string
+}
+
 // Header
-type Links = {
+interface Links {
   path: string
+  name: string
+}
+export type HeaderLinks = Links & { dropdown?: Links[] }
+
+export interface HeaderProps {
+  links: HeaderLinks[]
+  bgColor?: string
+}
+
+export interface HeaderButtonsProps {
+  setIsMenuOpen: (isOpen: boolean) => void
+  isMenuOpen: boolean
+}
+
+export interface HeaderLogoProps {
+  name: string
+  pathLogo: string
+}
+
+export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'> & Pick<HeaderProps, 'bgColor'>
+
+export interface HeaderDropdownProps extends Pick<HeaderProps, 'links'> {
   label: string
 }
 
-export type HeaderLinks = Links & { links?: Links[] }
-
-
-export interface HeaderActionProps {
-  links: HeaderLinks[]
+// Footer
+interface FooterLinkItem {
+  name: string
+  path: string
 }
 
-type HeaderMethods = [boolean, (() => void)]
+export type FooterLinks = FooterLinkItem & { links?: FooterLinkItem[] }
 
-export type CustomHeaderProps = HeaderActionProps & {
-  drawer: HeaderMethods
+export interface FooterProps {
+  links: FooterLinks[]
 }
 
-export type CustomDrawerProps = CustomHeaderProps & {
-  collapse: HeaderMethods
+interface FooterLinkIconProps {
+  path: string
+  d: string
+  alt: string
 }
 
-export interface FooterLinksProps {
-  data: {
-    title: string
-    links: { label: string; link: string }[]
-  }[]
+// User session page
+export type SessionMode = 'login' | 'register'
+
+export interface FormTypes {
+  name?: string
+  email: string
+  password: string
 }
 
-export interface ProductCardProps {
-  element: Pick<Product, 'name' | 'rating' | 'price' | 'discount' | 'image'>
+export interface SessionRequestProps {
+  form: FormTypes
+  mode: SessionMode
 }
 
-export interface Product { 
+export interface UserSessionTools {
+  form: FormTypes
+  setInput: (event: ChangeEvent<HTMLInputElement>) => void
+  setSubmit: (event: FormEvent<HTMLFormElement>) => void
+}
+
+// About page
+export interface CreateBlobProps {
+  children: ReactElement
+  className: string
+}
+
+// Product item
+export interface Product {
   _id: string
   name: string
   image: {
@@ -55,51 +109,16 @@ export interface Product {
   __v: number
 }
 
+// Category page
+export type ProductSortFunction = (a: Product, b: Product) => number
+type FilterFunction = ((product: Product) => boolean)
+
 export interface CategoryProps {
   products: Product[]
   discounts: number[]
   brands: string[]
+  currentCategory: string
 }
-
-export interface ProductProps {
-  product: Product
-}
-
-// User Session
-export type SessionMode = "login" | "register"
-
-export interface FormTypes {
-  name?: string;
-  email: string;
-  password: string;
-}
-
-export interface SessionRequestProps {
-  form: FormTypes
-  mode: SessionMode
-}
-
-export interface UserSessionTools {
-  form: FormTypes
-  setInput: (event: ChangeEvent<HTMLInputElement>) => void
-  setSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>
-}
-
-type Id<T> = T extends string ? StringId : NumberId
-
-export interface SVGPathProps {
-  d: string
-}
-
-export interface CreateBlobProps  {
-  children: ReactElement
-  className: string
-}
-
-
-// Category component
-export type ProductSortFunction = (a: Product, b: Product) => number
-type FilterFunction = ((product: Product) => boolean)
 
 export interface CategoryNextFilterProps {
   onChange: (filter: FilterFunction | null) => void
@@ -123,9 +142,34 @@ export interface CategoryDiscountsFilterProps extends CategoryNextFilterProps {
   discounts: number[]
 }
 
-// Category product cards
+// Product id page
+export interface ProductProps {
+  product: Product
+}
+
+// Product cards
+export interface ProductCardProps {
+  element: Pick<Product, 'name' | 'rating' | 'price' | 'discount' | 'image'>
+}
+
 export interface DiscountInfoProps {
   children: ReactElement[]
   discount?: number
   price: number
 }
+
+// api/utils
+export type GetEndpointResponse = (extra: string) => Promise<any>
+
+export interface GetSessionRequestsResponse {
+  url: string
+  requestOptions: {
+    method: string
+    headers: {
+      'Content-Type': string
+    }
+    body: string
+  }
+}
+
+export interface APIResponse { token: string, user?: object }

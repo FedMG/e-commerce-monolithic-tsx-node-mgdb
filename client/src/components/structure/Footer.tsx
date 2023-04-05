@@ -1,163 +1,73 @@
-import {
-  createStyles,
-  Text,
-  Container,
-  ActionIcon,
-  Group,
-} from "@mantine/core"
-import {
-  IconBrandTwitter,
-  IconBrandYoutube,
-  IconBrandInstagram,
-} from "@tabler/icons"
+import { isArrayOfObjects } from '@/utils'
+import type { FooterLinkIconProps, FooterProps } from 'additional'
 
-import { FooterLinksProps } from "additional";
+const FooterLinkIcon: React.FC<FooterLinkIconProps> = ({ path = '#', d, alt }) => (
+  <a href={path} className='w-full h-full max-h-[35px] max-w-[35px] text-white hover:bg-gray-50 hover:text-black p-1 rounded-md active:bg-black active:text-white'>
+    <svg
+      fill='currentColor'
+      viewBox='0 0 24 24'
+      aria-hidden='true'
+      role='img'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        fillRule='evenodd'
+        d={d}
+        clipRule='evenodd'
+      />
+    </svg>
+    <span className='sr-only'>{alt}</span>
+  </a>
+)
 
-const useStyles = createStyles((theme) => ({
-  footer: {
-    marginTop: 120,
-    paddingTop: theme.spacing.xl * 2,
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[0],
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
-    }`,
-  },
-  inner: {
-    display: "flex",    
-    [theme.fn.smallerThan("sm")]: {
-      flexDirection: "column",
-      alignItems: "center",
-    },
-  },
-
-  groups: {
-    display: "flex",
-    width: '100%',
-    justifyContent: "space-around",
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
-    },
-  },
-
-  wrapper: {
-    paddingLeft: theme.spacing.lg,
-    paddingRight: theme.spacing.lg
-  },
-
-  link: {
-    display: "block",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[1]
-        : theme.colors.gray[6],
-    fontSize: theme.fontSizes.lg,
-    paddingTop: 3,
-    paddingBottom: 3,
-
-    "&:hover": {
-      textDecoration: "underline",
-    },
-    [theme.fn.smallerThan("md")]: {
-      fontSize: theme.fontSizes.md,
-    }
-  },
-
-  title: {
-    fontSize: theme.fontSizes.lg,
-    fontWeight: 700,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    marginBottom: theme.spacing.xs / 2,
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-  },
-
-  afterFooter: {
-    backgroundColor: "#000000",
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    marginTop: theme.spacing.xl,
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.xl,
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]
-    }`,
-
-    [theme.fn.smallerThan("sm")]: {
-      flexDirection: "column",
-    },
-  },
-
-  social: {
-    [theme.fn.smallerThan("sm")]: {
-      marginTop: theme.spacing.xs,
-    },
-  },
-}));
-
-export function FooterLinks({ data }: FooterLinksProps) {
-  const { classes } = useStyles();
-
-  const groups = data.map((group) => {
-    const links = group.links.map((link, index) => (
-      <Text<"a">
-        key={index}
-        className={classes.link}
-        component="a"
-        href={link.link}
-        onClick={(event) => event.preventDefault()}
-      >
-        {link.label}
-      </Text>
-    ));
-
-    return (
-      <div className={classes.wrapper} key={group.title}>
-        <Text className={classes.title}>{group.title}</Text>
-        {links}
-      </div>
-    );
-  });
-
+const FooterColumnLinks: React.FC<FooterProps> = ({ links }) => {
+  if (!isArrayOfObjects(links)) return null
   return (
-    <footer className={classes.footer}>
-      <Container className={classes.inner} fluid>
-        <div className={classes.groups}>{groups}</div>
-      </Container>
-      <Container className={classes.afterFooter} fluid>
-        <Text color="#f5f5f5" size="sm">
-          © 2022 Copyright example
-        </Text>
+    <>
+      {links.map(({ name, path, links }) => {
+        if (links != null) {
+          return (
+            <div className='px-8 py-2 inline-block' key={name}>
+              <h2 className='mb-4 text-lg font-bold font-sans text-gray-900 dark:text-white'>
+                {name}
+              </h2>
+              <ul>
+                <FooterColumnLinks links={links} />
+              </ul>
+            </div>
+          )
+        }
+        return (
+          <li key={name} className='pb-3 text-md font-medium text-gray-600 dark:text-gray-50'>
+            <a href={path} className='hover:underline'>
+              {name}
+            </a>
+          </li>
+        )
+      })}
+    </>
+  )
+}
 
-        <Group spacing={0} className={classes.social} position="right" noWrap>
-          <ActionIcon size="lg">
-            <IconBrandTwitter
-              size={30}
-              stroke={1.5}
-              fill="black"
-              color="#f5f5f5"
-            />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandYoutube
-              size={30}
-              stroke={1.5}
-              fill="black"
-              color="#f5f5f5"
-            />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandInstagram
-              size={30}
-              stroke={1.5}
-              fill="black"
-              color="#f5f5f5"
-            />
-          </ActionIcon>
-        </Group>
-      </Container>
+const CopyrightAndSocialIcons = (): React.ReactElement => (
+  <div className='p-8 mt-5 w-full bg-black flex flex-col sm:flex-row space-around items-center border-t dark:border-slate-400 border-gray-200'>
+    <p className='text-sm text-white sm:w-full'>
+      © 2023 AstraShop™. Copyright example.
+    </p>
+    <div className='flex flex-nowrap justify-end gap-0 space-x-2 my-4 sm:w-full sm:my-0'>
+      <FooterLinkIcon path='#' alt='LinkedIn page' d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' />
+      <FooterLinkIcon path='#' alt='GitHub page' d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z' />
+    </div>
+  </div>
+)
+
+export const Footer: React.FC<FooterProps> = ({ links }) => {
+  return (
+    <footer className='absolute top-full w-full bg-gray-100 dark:bg-slate-600 border-t dark:border-slate-500 border-gray-200'>
+      <div className='mt-5 hidden sm:flex w-full justify-around'>
+        <FooterColumnLinks links={links} />
+      </div>
+      <CopyrightAndSocialIcons />
     </footer>
-  );
+  )
 }

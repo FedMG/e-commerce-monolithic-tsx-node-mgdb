@@ -1,4 +1,4 @@
-import { HeaderLinks } from "additional";
+import { FooterLinks, HeaderLinks } from 'additional'
 
 export const filterStructure = {
   name: null,
@@ -6,89 +6,88 @@ export const filterStructure = {
   discount: null
 }
 
-
 export const headerLinks: HeaderLinks[] = [
-    {
-      "path": "/",
-      "label": "Home"
-    },
-    {
-      "path": "/about",
-      "label": "About"
-    },
-    {
-      "path": "#categories",
-      "label": "Categories",
-      "links": [
-        {
-          "path": "/men's clothing",
-          "label": "Men's clothing"
-        },
-        {
-          "path": "/women's clothing",
-          "label": "Women's clothing"
-        },
-        {
-          "path": "/beauty",
-          "label": "Beauty"
-        },
-      ]
-    }
-  ]
+  {
+    path: '/',
+    name: 'Home'
+  },
+  {
+    path: '/about',
+    name: 'About'
+  },
+  {
+    path: '#categories',
+    name: 'Categories',
+    dropdown: [
+      {
+        path: "/men's clothing",
+        name: "Men's clothing"
+      },
+      {
+        path: "/women's clothing",
+        name: "Women's clothing"
+      },
+      {
+        path: '/beauty',
+        name: 'Beauty'
+      }
+    ]
+  }
+]
 
-
-export const footer = {
-  data: [
-    {
-      title: "About",
-      links: [
-        {
-          label: "Features",
-          link: "#",
-        },
-        {
-          label: "Pricing",
-          link: "#",
-        },
-        {
-          label: "Payments methods",
-          link: "#",
-        },
-      ],
-    },
-    {
-      title: "Policy",
-      links: [
-        {
-          label: "Privacy Policy",
-          link: "#",
-        },
-        {
-          label: "Terms of Service",
-          link: "#",
-        },
-        {
-          label: "Consumer Rights",
-          link: "#",
-        },
-      ],
-    },
-    {
-      title: "Help",
-      links: [
-        {
-          label: "Common Questions",
-          link: "#",
-        },
-        {
-          label: "Support",
-          link: "#",
-        },
-        {
-          label: "Contact us",
-          link: "#",
-        },
-      ],
-    },
-  ],
-};
+export const footerLinks: FooterLinks[] = [
+  {
+    name: 'About',
+    path: '',
+    links: [
+      {
+        name: 'Features',
+        path: '#'
+      },
+      {
+        name: 'Pricing',
+        path: '#'
+      },
+      {
+        name: 'Payments methods',
+        path: '#'
+      }
+    ]
+  },
+  {
+    name: 'Policy',
+    path: '',
+    links: [
+      {
+        name: 'Privacy Policy',
+        path: '#'
+      },
+      {
+        name: 'Terms of Service',
+        path: '#'
+      },
+      {
+        name: 'Consumer Rights',
+        path: '#'
+      }
+    ]
+  },
+  {
+    name: 'Help',
+    path: '',
+    links: [
+      {
+        name: 'Common Questions',
+        path: '#'
+      },
+      {
+        name: 'Support',
+        path: '#'
+      },
+      {
+        name: 'Contact us',
+        path: '#'
+      }
+    ]
+  }
+]
