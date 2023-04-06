@@ -1,7 +1,6 @@
 # node-mongo-store-api
 
-Node.js v18.12.1
-
+Node.js v18.15.0
 
 
 ## URL and Endpoints
@@ -11,6 +10,10 @@ The server is already up in `https://e-commerce-store-api.onrender.com/`
 ### The endpoints currently available are:
 1. `api/v1/auth` to get user authentication and access into products.
 2. `api/v1/products` to get a list of products.
+
+___
+NOTE: to use POST, PATCH, DELETE request you need an API key.
+___
 
 ## How to use?
 
@@ -34,7 +37,6 @@ You can use the query parameter `?` to chain a query property in a link.
 * Example:  `.../api/v1/products` + `?` + `<property>`
 
 
-
 ## How to chain more than one query?
 
 You can use the ampersand parameter `&` to chain multiple queries
@@ -56,6 +58,6 @@ You can use the ampersand parameter `&` to chain multiple queries
 
 
 ## Attribution
-I applied some of the knowledge from [NodeJS & Express][1] Course developed by John Smilga!
+I applied some tricks learned from [NodeJS & Express][1] Course developed by John Smilga!
 
 [1]: https://www.youtube.com/watch?v=qwfE7fSVaZM
