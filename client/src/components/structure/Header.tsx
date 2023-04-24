@@ -19,7 +19,7 @@ const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
       alt='A cart logo of the e-commerce'
       draggable='false'
     />
-    <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
+    <span className='self-center text-xl font-semibold whitespace-nowrap'>
       {name}
     </span>
   </Link>
@@ -30,7 +30,7 @@ const HeaderButtons: FC<HeaderButtonsProps> = ({ setIsMenuOpen, isMenuOpen }) =>
     <div className='flex items-center lg:order-2'>
       <Link
         href='/user/login'
-        className='hover:text-primary-700 text-gray-800 dark:text-white hover:bg-gray-300 active:bg-gray-200 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none'
+        className='hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none'
       >
         Sign In
       </Link>
@@ -44,7 +44,7 @@ const HeaderButtons: FC<HeaderButtonsProps> = ({ setIsMenuOpen, isMenuOpen }) =>
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         data-collapse-toggle='mobile-menu-2'
         type='button'
-        className='inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none dark:text-gray-400'
+        className='inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none'
         aria-controls='mobile-menu-2'
         aria-expanded='false'
       >
@@ -66,7 +66,7 @@ const HeaderNavigation: FC<HeaderNavigationProps> = ({ children, isMenuOpen, bgC
     <div
       className={`${
         isMenuOpen ? 'block' : 'hidden'
-      } ${isString(bgColor) ? bgColor as string : ''} z-10 absolute lg:relative top-full lg:top-0 left-0 right-0 overflow-y-auto lg:overflow-visible lg:max-h-0 lg:flex justify-between items-center w-full lg:w-auto lg:order-1`}
+      } ${isString(bgColor) ? bgColor as string : ''} z-10 absolute lg:relative top-full lg:top-0 left-0 right-0 lg:overflow-visible lg:max-h-0 lg:flex justify-between items-center w-full lg:w-auto lg:order-1`}
       id='mobile-menu-2'
     >
       <ul className='bg-inherit flex items-center flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0'>
@@ -78,15 +78,17 @@ const HeaderNavigation: FC<HeaderNavigationProps> = ({ children, isMenuOpen, bgC
 
 export const Header: React.FC<HeaderProps> = ({ links, bgColor = 'bg-gray-100' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
-
+  
+  const selectOption = (): void => setIsMenuOpen(false)
+  
   return (
     <header className={`${bgColor}`}>
-      <nav className='relative border-b border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800'>
+      <nav className='relative border-b border-gray-200 px-9 py-2.5'>
         <div className='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl'>
           <HeaderLogo name='AstraShop' pathLogo='/e-cart.svg' />
           <HeaderButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
           <HeaderNavigation isMenuOpen={isMenuOpen} bgColor={bgColor}>
-            <HeaderMenuList links={links} bgColor={bgColor} />
+            <HeaderMenuList links={links} bgColor={bgColor} selectOption={selectOption} />
           </HeaderNavigation>
         </div>
       </nav>

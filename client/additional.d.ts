@@ -44,8 +44,14 @@ export interface HeaderLogoProps {
 
 export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'> & Pick<HeaderProps, 'bgColor'>
 
+export type HeaderMenuListProps = HeaderProps & {
+  selectOption: () => void
+}
+
+
 export interface HeaderDropdownProps extends Pick<HeaderProps, 'links'> {
   label: string
+  selectOption: () => void
 }
 
 // Footer
