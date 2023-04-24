@@ -9,6 +9,7 @@ import { SVGicon, SVGPath } from '../svgUtilities'
 import type { HeaderButtonsProps, HeaderLogoProps, HeaderNavigationProps, HeaderProps } from 'additional'
 import { isString } from '@/utils'
 
+// later refactor this code
 const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
   <Link href='/' className='flex items-center'>
     <Image
@@ -30,13 +31,13 @@ const HeaderButtons: FC<HeaderButtonsProps> = ({ setIsMenuOpen, isMenuOpen }) =>
     <div className='flex items-center lg:order-2'>
       <Link
         href='/user/login'
-        className='hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none'
+        className='hidden lg:block hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none'
       >
         Sign In
       </Link>
       <Link
         href='/user/register'
-        className='text-white bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none'
+        className='hidden lg:block text-white bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none'
       >
         Sign Up
       </Link>
@@ -66,10 +67,24 @@ const HeaderNavigation: FC<HeaderNavigationProps> = ({ children, isMenuOpen, bgC
     <div
       className={`${
         isMenuOpen ? 'block' : 'hidden'
-      } ${isString(bgColor) ? bgColor as string : ''} z-10 absolute lg:relative top-full lg:top-0 left-0 right-0 lg:overflow-visible lg:max-h-0 lg:flex justify-between items-center w-full lg:w-auto lg:order-1`}
+      } ${isString(bgColor) ? bgColor as string : ''} z-10 absolute lg:relative top-full lg:top-0 left-0 right-0 lg:overflow-visible lg:max-h-0 lg:flex justify-between items-center w-full lg:w-auto lg:order-1 shadow shadow-gray-300`}
       id='mobile-menu-2'
     >
       <ul className='bg-inherit flex items-center flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0'>
+        <div aria-label='hidden' className='lg:hidden p-2 w-full border-y border-gray-200 px-10 flex'>
+          <Link
+            href='/user/login'
+            className='w-full font-medium rounded-lg text-sm px-4 py-2 mr-2 focus:outline-none hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 border text-center'
+          >
+            Sign In
+          </Link>
+          <Link
+            href='/user/register'
+            className='w-full font-medium rounded-lg text-sm px-4 py-2 mr-2 focus:outline-none text-white bg-primary-700 hover:bg-primary-800 border text-center'
+          >
+            Sign Up
+          </Link>
+        </div>
         {children}
       </ul>
     </div>
