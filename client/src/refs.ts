@@ -28,8 +28,12 @@ export const headerLinks: HeaderLinks[] = [
         name: "Women's clothing"
       },
       {
-        path: '/beauty',
-        name: 'Beauty'
+        path: '/shoes',
+        name: 'Shoes'
+      },
+      {
+        path: '/accessory',
+        name: 'Accesories'
       }
     ]
   }
