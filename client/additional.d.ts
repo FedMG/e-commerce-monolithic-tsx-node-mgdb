@@ -73,6 +73,27 @@ interface FooterLinkIconProps {
 }
 
 // User session page
+export interface InputProps {
+ value?: string
+ onChange: (e: ChangeEvent<HTMLInputElement>) => void
+ auto: string
+ placeholder?: string
+ type: 'text' | 'email' | 'password'
+}
+
+export type LabelProps = {
+  id: 'name' | 'email' | 'password'
+  name: string
+}
+
+export interface SessionPageProps {
+  session: {
+    title: string
+    linkName: string
+    linkText: string
+  }
+}
+
 export type SessionMode = 'login' | 'register'
 
 export interface FormTypes {
