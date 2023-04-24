@@ -1,6 +1,13 @@
 import { Layout } from '@/components/layout'
 import { CreateBlob, SVGBlobPath } from '@/components/createBlobs'
 
+import { Inter } from '@next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
 import type { NextPageWithLayout } from '_app-types'
 
 const About: NextPageWithLayout = () => {
@@ -16,9 +23,9 @@ const About: NextPageWithLayout = () => {
       </div>
       <div className='flex items-center justify-center'>
         <div className='max-w-[800px] mx-0 my-auto p-10 backdrop-blur-[5px] rounded-lg border-b-xl bg-gray-300-opacity-45'>
-          <h2 className='text-xl font-bold dark:text-white text-slate-800'>Who are us?</h2>
+          <h2 className={`text-xl font-bold dark:text-white text-slate-800 ${inter.variable} font-custom-sans`}>Who are us?</h2>
           <hr />
-          <p className='text-md text-slate-900 font-medium font-sans'>
+          <p className={`text-md text-slate-800 font-medium ${inter.variable} font-custom-sans`}>
             <span className='block pb-10'>
               <span className='block py-1'>
                 Welcome to our ecommerce store!
