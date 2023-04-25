@@ -22,7 +22,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links, selectOpt
         id='dropdownDefaultButton'
         data-dropdown-toggle='dropdown'
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className='py-3 px-10 lg:px-2 lg:py-3 flex items-center bg-inherit hover:bg-gray-300 active:bg-gray-200 w-full block font-sans text-sm xl:text-md font-medium text-gray-700 hover:text-primary-700 border-b border-gray-100 lg:border-0 lg:rounded-md'
+        className='py-3 px-7 sm:px-12 lg:px-2 lg:py-3 flex items-center bg-inherit hover:bg-gray-300 active:bg-gray-200 w-full block font-sans text-sm xl:text-md font-medium text-gray-700 hover:text-primary-700 border-b border-gray-100 lg:border-0 lg:rounded-md'
         type='button'
       >
         <span>
@@ -45,15 +45,15 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links, selectOpt
         </svg>
       </button>
       <div id='dropdown' role='menu' aria-hidden='true' className={`z-10 ${isDropdownOpen ? 'block' : 'hidden'} w-full lg:w-44 bg-inherit absolute top-full left-0 right-0 rounded-lg lg:shadow`}>
-        <ul aria-labelledby='dropdownDefaultButton' className='pl-2 lg:pl-0'>
-          <HeaderMenuList links={links} selectOption={selectDropdownOption} />
+        <ul aria-labelledby='dropdownDefaultButton' className=''>
+          <HeaderMenuList links={links} selectOption={selectDropdownOption} spacing />
         </ul>
       </div>
     </div>
   )
 }
 
-export const HeaderMenuList: React.FC<HeaderMenuListProps> = ({ links, bgColor, selectOption }) => {
+export const HeaderMenuList: React.FC<HeaderMenuListProps> = ({ links, bgColor, selectOption, spacing }) => {
   if (!isArrayOfObjects(links)) return null
 
   return (
@@ -71,10 +71,10 @@ export const HeaderMenuList: React.FC<HeaderMenuListProps> = ({ links, bgColor, 
           <li key={name} className='w-full bg-inherit hover:bg-gray-300 active:bg-gray-200 lg:rounded-md' onClick={selectOption}>
             <Link
               href={path}
-              className='py-3 px-10 lg:px-2 lg:py-3 block text-gray-700 hover:text-primary-700 text-sm xl:text-md font-medium border-b border-gray-100 lg:border-0'
+              className='py-3 px-7 sm:px-12 lg:px-2 lg:py-3 block text-gray-700 hover:text-primary-700 text-sm xl:text-md font-medium border-b border-gray-100 lg:border-0'
               aria-current='page'
             >
-              {name}
+              <span className={`${spacing === true ? 'pl-4 border-l border-gray-300' : ''} py-1 h-full`}> {name}</span>
             </Link>
           </li>
         )

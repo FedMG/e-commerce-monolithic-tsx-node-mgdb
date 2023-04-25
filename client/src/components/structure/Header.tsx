@@ -13,6 +13,7 @@ import { isString } from '@/utils'
 const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
   <Link href='/' className='flex items-center'>
     <Image
+      priority
       src={pathLogo}
       className='mr-3 h-6 sm:h-9 w-auto'
       width={45}
@@ -71,7 +72,7 @@ const HeaderNavigation: FC<HeaderNavigationProps> = ({ children, isMenuOpen, bgC
       id='mobile-menu-2'
     >
       <ul className='bg-inherit flex items-center flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0'>
-        <div aria-label='hidden' className='lg:hidden p-2 w-full border-y border-gray-200 px-10 flex'>
+        <div aria-label='hidden' className='lg:hidden p-2 w-full border-y border-gray-200 px-3 sm:px-12 flex'>
           <Link
             href='/user/login'
             className='w-full font-medium rounded-lg text-sm px-4 py-2 mr-2 focus:outline-none hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 border text-center'
@@ -100,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({ links, bgColor = 'bg-gray-100' }
   
   return (
     <header className={`${bgColor}`}>
-      <nav className='relative border-b border-gray-200 px-9 py-2.5'>
+      <nav className='relative border-b border-gray-200 px-3 sm:px-10 lg:px-16 xl:px-24 py-2.5'>
         <div className='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl'>
           <HeaderLogo name='AstraShop' pathLogo='/e-cart.svg' />
           <HeaderButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

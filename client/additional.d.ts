@@ -49,9 +49,11 @@ export interface HeaderLogoProps {
 }
 
 export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'> & Pick<HeaderCommonProps, 'bgColor' | 'selectOption'>
-export type HeaderMenuListProps = HeaderCommonProps
+export type HeaderMenuListProps = HeaderCommonProps & {
+  spacing?: boolean
+}
 
-export interface HeaderDropdownProps extends Pick<HeaderCommonProps, 'links'> {
+export interface HeaderDropdownProps extends Pick<HeaderCommonProps, 'links' | 'selectOption'> {
   label: string
 }
 
