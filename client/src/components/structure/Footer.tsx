@@ -39,7 +39,7 @@ const FooterColumnLinks: React.FC<FooterProps> = ({ links }) => {
           )
         }
         return (
-          <li key={name} className='pb-3 text-md font-medium text-gray-600 dark:text-gray-50'>
+          <li key={name} className='pb-3 text-md font-medium text-gray-600'>
             <a href={path} className='hover:underline'>
               {name}
             </a>
