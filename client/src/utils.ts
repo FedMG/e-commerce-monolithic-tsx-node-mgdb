@@ -11,4 +11,4 @@ export const isArrayOfPrimitives = (arr: string[] | number[]): boolean => isVali
 export const setUpperCase = (name: string): string => name[0].toLocaleUpperCase() + name.slice(1)
 export const isNumber = (num: unknown): boolean => num !== null && typeof num === 'number'
 export const isString = (string: unknown): boolean => (string !== null || string !== undefined) && typeof string === 'string'
-export const isValidNumber = (num: unknown): boolean => typeof num === 'number' && num > 0 && num <= 5
+export const isValidNumber = (num: unknown): boolean => !Number.isNaN(num) && typeof num === 'number' && (num >= 0 && num <= 5)
