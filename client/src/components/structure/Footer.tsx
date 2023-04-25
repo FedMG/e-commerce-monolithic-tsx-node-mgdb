@@ -51,7 +51,7 @@ const FooterColumnLinks: React.FC<FooterProps> = ({ links }) => {
 }
 
 const CopyrightAndSocialIcons = (): React.ReactElement => (
-  <div className='p-8 px-14 mt-5 w-full bg-black flex flex-col sm:flex-row space-around items-center border-t border-gray-200'>
+  <div className='py-8 px-14 sm:px-10 lg:px-16 xl:px-24 mt-5 w-full bg-black flex flex-col sm:flex-row space-around items-center border-t border-gray-200'>
     <p className='text-sm text-white sm:w-full sm:order-none order-2'>
       © 2023 AstraShop™. Copyright example.
     </p>
@@ -64,7 +64,7 @@ const CopyrightAndSocialIcons = (): React.ReactElement => (
 
 export const Footer: React.FC<FooterProps> = ({ links }) => {
   return (
-    <footer className='absolute pb-8 top-full w-full bg-gray-100 border-t border-gray-200'>
+    <footer className='absolute top-full w-full bg-gray-100 border-t border-gray-200'>
       <div className='mt-5 hidden sm:flex w-full justify-around'>
         <FooterColumnLinks links={links} />
       </div>
