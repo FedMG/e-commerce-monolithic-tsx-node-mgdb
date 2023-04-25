@@ -62,7 +62,7 @@ const HeaderButtons: FC<HeaderButtonsProps> = ({ setIsMenuOpen, isMenuOpen }) =>
   )
 }
 
-const HeaderNavigation: FC<HeaderNavigationProps> = ({ children, isMenuOpen, bgColor }) => {
+const HeaderNavigation: FC<HeaderNavigationProps> = ({ children, isMenuOpen, bgColor, selectOption }) => {
   return (
     <div
       className={`${
@@ -75,12 +75,14 @@ const HeaderNavigation: FC<HeaderNavigationProps> = ({ children, isMenuOpen, bgC
           <Link
             href='/user/login'
             className='w-full font-medium rounded-lg text-sm px-4 py-2 mr-2 focus:outline-none hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 border text-center'
+            onClick={selectOption}
           >
             Sign In
           </Link>
           <Link
             href='/user/register'
             className='w-full font-medium rounded-lg text-sm px-4 py-2 mr-2 focus:outline-none text-white bg-primary-700 hover:bg-primary-800 border text-center'
+            onClick={selectOption}
           >
             Sign Up
           </Link>
@@ -102,7 +104,7 @@ export const Header: React.FC<HeaderProps> = ({ links, bgColor = 'bg-gray-100' }
         <div className='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl'>
           <HeaderLogo name='AstraShop' pathLogo='/e-cart.svg' />
           <HeaderButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-          <HeaderNavigation isMenuOpen={isMenuOpen} bgColor={bgColor}>
+          <HeaderNavigation isMenuOpen={isMenuOpen} bgColor={bgColor} selectOption={selectOption}>
             <HeaderMenuList links={links} bgColor={bgColor} selectOption={selectOption} />
           </HeaderNavigation>
         </div>

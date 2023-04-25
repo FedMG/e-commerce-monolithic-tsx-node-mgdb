@@ -32,6 +32,12 @@ export interface HeaderProps {
   bgColor?: string
 }
 
+export interface HeaderCommonProps extends HeaderProps {
+  selectOption: () => void
+  links: HeaderLinks[]
+  bgColor?: string
+}
+
 export interface HeaderButtonsProps {
   setIsMenuOpen: (isOpen: boolean) => void
   isMenuOpen: boolean
@@ -42,16 +48,11 @@ export interface HeaderLogoProps {
   pathLogo: string
 }
 
-export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'> & Pick<HeaderProps, 'bgColor'>
+export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'> & Pick<HeaderCommonProps, 'bgColor' | 'selectOption'>
+export type HeaderMenuListProps = HeaderCommonProps
 
-export type HeaderMenuListProps = HeaderProps & {
-  selectOption: () => void
-}
-
-
-export interface HeaderDropdownProps extends Pick<HeaderProps, 'links'> {
+export interface HeaderDropdownProps extends Pick<HeaderCommonProps, 'links'> {
   label: string
-  selectOption: () => void
 }
 
 // Footer
