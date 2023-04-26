@@ -197,6 +197,7 @@ export type ProductButtonProps = AddOptional<ChildrenNode> & {
 }
 
 export type ClothingSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type ProductVariants = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 950'
 
 // api/utils
 export type GetEndpointResponse = (extra: string) => Promise<any>

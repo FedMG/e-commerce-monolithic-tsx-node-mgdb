@@ -8,10 +8,12 @@ import { BreadCrumbs } from '@/components/breadCrumbs'
 import { ProductRating } from '@/components/productRating'
 import { ProductDiscountPrice } from '@/components/productDiscount'
 import { ProductClothingSizes } from '@/components/productClothingSizes'
+import { ProductClothingColors } from '@/components/productClothingColors'
 import { ProductButton } from '@/components/productButton'
 
 import { setUpperCase } from '@/utils'
 import { getEndpoint } from '../api/utils'
+import { productColors } from '@/refs'
 
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
@@ -51,10 +53,6 @@ const ProductImage: FC<Pick<ProductObject, 'image' | 'name'>> = ({ image, name }
   )
 }
 
-
-
-
-
 const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'discount'>> = ({ name, price, rating, discount }): ReactElement => {
   return (
     <div className='col-span-1 grid grid-rows-1 gap-4'>
@@ -69,6 +67,8 @@ const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'dis
         <ProductRating num={rating} />
         {/* use temporal before the implementation in the backend */}
         <ProductClothingSizes sizes={['xs', 'sm', 'md', 'lg', 'xl']} />
+        {/* use temporal before the implementation in the backend */}
+        <ProductClothingColors colors={productColors.slice(3, 8)} />
         <ProductDiscountPrice price={price} discount={discount} />
         <div className='flex flex-col gap-3 justify-end h-full'>
           <ProductButton name='Buy now' />
