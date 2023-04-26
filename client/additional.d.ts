@@ -5,6 +5,10 @@ import { SortBy } from 'enums'
 export interface ChildrenNode {
   children: ReactNode
 }
+type AddOptional<Type> = { 
+  [Property in keyof Type ]+?: Type[Property]
+}
+
 
 interface ConstantProps {
   className: string
@@ -187,6 +191,12 @@ export interface DiscountInfoProps {
   discount?: number
   price: number
 }
+
+export type ProductButtonProps = AddOptional<ChildrenNode> & {
+  name: string
+}
+
+export type ClothingSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 // api/utils
 export type GetEndpointResponse = (extra: string) => Promise<any>

@@ -7,6 +7,7 @@ import { Heart } from '@/components/heart'
 import { BreadCrumbs } from '@/components/breadCrumbs'
 import { ProductRating } from '@/components/productRating'
 import { ProductDiscountPrice } from '@/components/productDiscount'
+import { ProductClothingSizes } from '@/components/productClothingSizes'
 import { ProductButton } from '@/components/productButton'
 
 import { setUpperCase } from '@/utils'
@@ -52,6 +53,8 @@ const ProductImage: FC<Pick<ProductObject, 'image' | 'name'>> = ({ image, name }
 
 
 
+
+
 const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'discount'>> = ({ name, price, rating, discount }): ReactElement => {
   return (
     <div className='col-span-1 grid grid-rows-1 gap-4'>
@@ -64,6 +67,8 @@ const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'dis
          {/* <span className="sm:hidden text-end">brand</span> */}
         </div>
         <ProductRating num={rating} />
+        {/* use temporal before the implementation in the backend */}
+        <ProductClothingSizes sizes={['xs', 'sm', 'md', 'lg', 'xl']} />
         <ProductDiscountPrice price={price} discount={discount} />
         <div className='flex flex-col gap-3 justify-end h-full'>
           <ProductButton name='Buy now' />
