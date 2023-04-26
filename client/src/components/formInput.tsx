@@ -24,7 +24,7 @@ export const Input: React.FC<InputProps> = ({ value, onChange, auto, placeholder
   />
 )
 
-export const Button: React.FC<{ name: string }> = ({ name }) => (
+export const FormButton: React.FC<{ name: string }> = ({ name }) => (
   <button className='p-3 w-full rounded-md bg-black text-white border-none font-semibold cursor-pointer hover:bg-gray-900  active:bg-primary-600 bg-primary-700 hover:bg-primary-800' type='submit'>
   {name}
  </button>

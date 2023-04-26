@@ -3,11 +3,13 @@ import { VALID_DOMAIN } from '@/environment'
 import Image from 'next/image'
 
 import { Layout } from '@/components/layout'
+import { Heart } from '@/components/heart'
 import { BreadCrumbs } from '@/components/breadCrumbs'
 import { ProductRating } from '@/components/productRating'
-import { Heart } from '@/components/heart'
+import { ProductDiscountPrice } from '@/components/productDiscount'
+import { ProductButton } from '@/components/productButton'
 
-import { getPriceWithDiscount, setUpperCase } from '@/utils'
+import { setUpperCase } from '@/utils'
 import { getEndpoint } from '../api/utils'
 
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
@@ -19,8 +21,8 @@ import type { FC, ReactElement } from 'react'
 const ProductHeader: FC<Pick<ProductObject, 'category' | 'brand' | 'name'>> = ({ category, brand, name }): ReactElement => {
   return (
     <div className='col-span-2 pb-4 sm:pb-6'>
-      <div className='flex bg-gray-200 rounded-xl'>
-        <div className='bg-gray-100 p-4 rounded-xl flex-1'>
+      <div className='flex rounded-xl'>
+        <div className='bg-gray-100 p-4 rounded-xl sm:rounded-r-none sm:rounded-l-xl flex-1'>
           <BreadCrumbs category={category} brand={brand} name={name} />
         </div>
         <div className='p-3 rounded-r-xl bg-gradient-to-t from-gray-400 via-gray-600 to-gray-700 hidden sm:flex items-center'>
@@ -38,7 +40,7 @@ const ProductImage: FC<Pick<ProductObject, 'image' | 'name'>> = ({ image, name }
         <Image
           priority
           src={image.src}
-          width={410}
+          width={390}
           height={0}
           alt={name}
           className='rounded-xl w-auto'
@@ -49,46 +51,23 @@ const ProductImage: FC<Pick<ProductObject, 'image' | 'name'>> = ({ image, name }
 }
 
 
+
 const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'discount'>> = ({ name, price, rating, discount }): ReactElement => {
   return (
     <div className='col-span-1 grid grid-rows-1 gap-4'>
       <div className='col-span-1 flex flex-col gap-1 bg-gray-100 rounded-xl p-2 sm:p-3 md:p-6'>
         <div className='pt-2 sm:pt-0 flex flex-row'>
-          <h3 className='text-xl lg:text-3xl xl:text-3xl font-medium leading-tight flex-1'>
+          <h3 className='text-gray-900 text-xl lg:text-3xl xl:text-3xl font-medium leading-tight flex-1'>
             {setUpperCase(name)}
           </h3>
           <Heart />
          {/* <span className="sm:hidden text-end">brand</span> */}
         </div>
         <ProductRating num={rating} />
-        <div className='px-3 py-2 sm:px-4'>
-          <div className='w-full relative'>
-            <p className='-ml-2 text-gray-600 text-sm sm:text-md lg:text-xl font-medium'>
-              <del>${price}</del>
-            </p>
-            <div className='flex w-full justify-content align-items'>
-              <div className='flex gap-1 sm:gap-3'>
-                <span className='font-semibold text-lg md:text-2xl lg:text-3xl'>
-                  ${getPriceWithDiscount(discount, price)}
-                </span>
-                <span className='text-green-600 font-medium text-sm sm:text-md lg:text-lg xl:text-xl'>
-                  -{discount}% OFF
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ProductDiscountPrice price={price} discount={discount} />
         <div className='flex flex-col gap-3 justify-end h-full'>
-          <button
-            type='button'
-            className='md:px-5 md:py-3 px-4 py-3 mr-2 text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-600 font-medium rounded-lg text-sm md:text-md lg:text-lg text-center inline-flex items-center justify-center'
-          >
-            Buy now
-          </button>
-          <button
-            type='button'
-            className='md:px-5 md:py-3 px-4 py-3 mr-2 text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-600 font-medium rounded-lg text-sm md:text-md lg:text-lg text-center inline-flex items-center justify-center'
-          >
+          <ProductButton name='Buy now' />
+          <ProductButton name='Add to cart'>
             <svg
               aria-hidden='true'
               className='w-5 h-5 mr-2 -ml-1'
@@ -99,8 +78,7 @@ const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'dis
               <title className='sr-only'>Cart icon of the button</title>
               <path d='M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z' />
             </svg>
-            Add to cart
-          </button>
+          </ProductButton>
         </div>
       </div>
     </div>
@@ -129,10 +107,10 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }): ReactElement =>
 
   return (
     <div className='py-4 px-3 sm:px-10 lg:px-16 xl:px-24'>
-      <ProductHeader {...{ category, brand, name }} />
+      <ProductHeader name={name} brand={brand} category={category} />
       <div className='grid grid-cols-2 sm:gap-4 gap-1 gap-y-4 rounded-xl'>
         <ProductImage image={image} name={name} />
-        <ProductMainInfo {...{ name, rating, price, discount }} />
+        <ProductMainInfo name={name} rating={rating} price={price} discount={discount} />
         <ProductDetails description={description} />
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useUserSessionData } from '@/hooks/useUserSessionData'
-import { Button, FormRow, Input, Label } from './formInput'
+import { FormButton, FormRow, Input, Label } from './formInput'
 
 const loginForm = {
   email: '',
@@ -21,7 +21,7 @@ export const LoginForm = (): React.ReactElement => {
         <Input type='password' value={form.password} onChange={setInput} auto='current-password' />
       </FormRow>
 
-      <Button name="Login" />
+      <FormButton name="Login" />
     </form>
   )
 }

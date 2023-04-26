@@ -1,5 +1,5 @@
 import { useUserSessionData } from '@/hooks/useUserSessionData'
-import { Button, FormRow, Input, Label } from './formInput'
+import { FormButton, FormRow, Input, Label } from './formInput'
 
 const registerForm = {
   name: '',
@@ -27,7 +27,7 @@ export const RegisterForm = (): React.ReactElement => {
         <Input type='password' value={form.password} onChange={setInput} auto='current-password' />
       </FormRow>
 
-      <Button name="Register" />
+      <FormButton name="Register" />
     </form>
   )
 }
