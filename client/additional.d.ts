@@ -5,17 +5,34 @@ import { SortBy } from 'enums'
 export interface ChildrenNode {
   children: ReactNode
 }
-type AddOptional<Type> = { 
-  [Property in keyof Type ]+?: Type[Property]
-}
-
 
 interface ConstantProps {
   className: string
   name: string
 }
 
-// type Id<T> = T extends string ? StringId : NumberId
+interface CallbackEvents {
+  onClick: () => void
+  onMouseDown: () => void
+  onMouseUpLeave: () => void
+}
+
+// utilities
+type AddOptional<Type> = { 
+  [Property in keyof Type ]+?: Type[Property]
+}
+
+type AddCallback<Type, T> = {
+  [Property in keyof Type ]+?: Callback<T>
+}
+
+type CallbackWithoutParams = () => void
+type CallbackWith<T> = (params: T) => void
+type Callback<T> = T extends void ? CallbackWithoutParams : CallbackWith<T>
+
+// It does inference of callback types passed through T and return (P) the parameters types
+type InferParamsType<T> = T extends (...args: infer P) => void ? P : T
+
 
 // SVG
 export type SVGIconProps = ChildrenNode & Pick<ConstantProps, 'className'>
@@ -37,7 +54,7 @@ export interface HeaderProps {
 }
 
 export interface HeaderCommonProps extends HeaderProps {
-  selectOption: () => void
+  selectOption: Callback<void>
   links: HeaderLinks[]
   bgColor?: string
 }
@@ -192,12 +209,23 @@ export interface DiscountInfoProps {
   price: number
 }
 
-export type ProductButtonProps = AddOptional<ChildrenNode> & {
-  name: string
+export type ProductButtonProps = AddOptional<ChildrenNode> & AddOptional<CallbackEvents> & {
+  name?: string
+  rounded?: string
 }
 
 export type ClothingSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type ProductVariants = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 950'
+
+export interface ProductsNumberInputProps {
+  itemsNumber: number
+}
+
+export interface NumberSVGInputProps {
+  strokeWidth: number
+  d: string
+  srOnly: string
+}
 
 // api/utils
 export type GetEndpointResponse = (extra: string) => Promise<any>
@@ -214,3 +242,13 @@ export interface GetSessionRequestsResponse {
 }
 
 export interface APIResponse { token: string, user?: object }
+
+// hooks
+export interface useNumberInputResult {
+  addItem: Callback<void>,
+  dropItem: Callback<void>,
+  reset: Callback<void>,
+  result: number
+}
+
+

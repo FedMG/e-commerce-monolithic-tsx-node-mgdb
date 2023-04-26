@@ -9,6 +9,7 @@ import { ProductRating } from '@/components/productRating'
 import { ProductDiscountPrice } from '@/components/productDiscount'
 import { ProductClothingSizes } from '@/components/productClothingSizes'
 import { ProductClothingColors } from '@/components/productClothingColors'
+import { ProductsNumberInput } from '@/components/productNumberInput'
 import { ProductButton } from '@/components/productButton'
 
 import { setUpperCase } from '@/utils'
@@ -65,11 +66,12 @@ const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'dis
          {/* <span className="sm:hidden text-end">brand</span> */}
         </div>
         <ProductRating num={rating} />
+        <ProductDiscountPrice price={price} discount={discount} />
         {/* use temporal before the implementation in the backend */}
         <ProductClothingSizes sizes={['xs', 'sm', 'md', 'lg', 'xl']} />
         {/* use temporal before the implementation in the backend */}
         <ProductClothingColors colors={productColors.slice(3, 8)} />
-        <ProductDiscountPrice price={price} discount={discount} />
+        <ProductsNumberInput itemsNumber={10} />
         <div className='flex flex-col gap-3 justify-end h-full'>
           <ProductButton name='Buy now' />
           <ProductButton name='Add to cart'>
