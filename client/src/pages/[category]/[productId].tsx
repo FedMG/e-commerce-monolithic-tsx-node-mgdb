@@ -39,8 +39,9 @@ const ProductHeader: FC<Pick<ProductObject, 'category' | 'brand' | 'name'>> = ({
 
 const ProductImage: FC<Pick<ProductObject, 'image' | 'name'>> = ({ image, name }): ReactElement => {
   return (
-    <div className='col-span-1 grid grid-rows-1 select-none'>
-      <div className='bg-gray-100 flex justify-center align-items rounded-xl'>
+    <div className='col-span-1 lg:col-span-3 grid lg:grid-cols-4 bg-gray-100 rounded-xl grid-rows-1 select-none'>
+      {/* lg:col-start-2 lg:col-end-5 */}
+      <div className='lg:col-start-2 lg:col-end-4 lg:col-span-2 flex justify-center align-items'>
         <Image
           priority
           src={image.src}
@@ -56,7 +57,7 @@ const ProductImage: FC<Pick<ProductObject, 'image' | 'name'>> = ({ image, name }
 
 const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'discount'>> = ({ name, price, rating, discount }): ReactElement => {
   return (
-    <div className='col-span-1 grid grid-rows-1 gap-4'>
+    <div className='col-span-1 lg:col-span-2 grid grid-rows-1 gap-4'>
       <div className='col-span-1 flex flex-col gap-1 bg-gray-100 rounded-xl p-2 sm:p-3 md:p-6'>
         <div className='pt-2 sm:pt-0 flex flex-row'>
           <h3 className='text-gray-900 text-xl lg:text-3xl xl:text-3xl font-medium leading-tight flex-1'>
@@ -68,11 +69,11 @@ const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'dis
         <ProductRating num={rating} />
         <ProductDiscountPrice price={price} discount={discount} />
         {/* use temporal before the implementation in the backend */}
-        <ProductClothingSizes sizes={['xs', 'sm', 'md', 'lg', 'xl']} />
+        <ProductClothingSizes sizes={['S', 'M', 'L', 'XL', 'XXL']} />
         {/* use temporal before the implementation in the backend */}
         <ProductClothingColors colors={productColors.slice(3, 8)} />
         <ProductsNumberInput itemsNumber={10} />
-        <div className='flex flex-col gap-3 justify-end h-full'>
+        <div className='flex flex-col pt-2 gap-2 md:gap-3 justify-end h-full'>
           <ProductButton name='Buy now' />
           <ProductButton name='Add to cart'>
             <svg
@@ -94,15 +95,20 @@ const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'dis
 
 const ProductDetails: FC<Pick<ProductObject, 'description'>> = ({ description }): ReactElement => {
   return (
-    <div className='col-span-2 rounded-xl'>
+    <div className='col-span-2 lg:col-span-5 rounded-xl'>
       <div className='col-span-2 bg-gray-100 p-4 rounded-xl'>
-        <div className='my-3'><span className='text-gray-800 text-md md:text-lg lg:text-xl font-medium'>Description</span></div>
+        <div className='my-3'><span className='text-gray-800 text-md md:text-lg lg:text-xl font-semibold'>Description</span></div>
         <p className='text-md text-gray-600'>
           {description}
-          forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem
-          forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem
-          forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem forem
-          forem forem forem forem forem forem forem forem forem forem
+          <span className='block pb-5'>
+            Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.
+          </span>
+          <span className='block pb-5'>
+            The <span className='font-semibold'>yellow jogging</span> pants are crafted from a comfortable and breathable fabric that moves with your body, allowing you to enjoy your workout without any restrictions. The elasticated waistband and adjustable drawstring ensure a snug and secure fit, while the tapered legs provide a modern and flattering silhouette.
+          </span>
+          <span className='block pb-5'>
+            Our yellow jogging pants, yellow jumpsuit, and white shoes set is perfect for any woman who wants to feel stylish, comfortable, and confident. Whether you're running errands or hitting the gym, this set will keep you looking and feeling your best.
+          </span>
         </p>
       </div>
     </div>
@@ -115,7 +121,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }): ReactElement =>
   return (
     <div className='py-4 px-3 sm:px-10 lg:px-16 xl:px-24'>
       <ProductHeader name={name} brand={brand} category={category} />
-      <div className='grid grid-cols-2 sm:gap-4 gap-1 gap-y-4 rounded-xl'>
+      <div className='grid grid-cols-2 lg:grid-cols-5 sm:gap-4 gap-1 gap-y-4 rounded-xl'>
         <ProductImage image={image} name={name} />
         <ProductMainInfo name={name} rating={rating} price={price} discount={discount} />
         <ProductDetails description={description} />

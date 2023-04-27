@@ -214,7 +214,7 @@ export type ProductButtonProps = AddOptional<ChildrenNode> & AddOptional<Callbac
   rounded?: string
 }
 
-export type ClothingSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
 export type ProductVariants = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 950'
 
 export interface ProductsNumberInputProps {
