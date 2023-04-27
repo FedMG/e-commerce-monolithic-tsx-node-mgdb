@@ -74,7 +74,7 @@ export const HeaderMenuList: React.FC<HeaderMenuListProps> = ({ links, bgColor, 
               className='py-3 px-7 sm:px-12 lg:px-2 lg:py-3 block text-gray-700 hover:text-primary-700 text-sm xl:text-md font-medium border-b border-gray-100 lg:border-0'
               aria-current='page'
             >
-              <span className={`${spacing === true ? 'pl-4 border-l border-gray-300' : ''} py-1 h-full`}> {name}</span>
+              <span className={`${spacing === true ? 'pl-4 lg:pl-2 border-l border-gray-300 lg:border-none' : ''} py-1 h-full`}> {name}</span>
             </Link>
           </li>
         )

@@ -15,7 +15,7 @@ const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
     <Image
       priority
       src={pathLogo}
-      className='mr-3 h-6 sm:h-9 w-auto'
+      className='mr-3 h-6 sm:h-9 w-auto select-none'
       width={45}
       height={45}
       alt='A cart logo of the e-commerce'
@@ -29,16 +29,16 @@ const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
 
 const HeaderButtons: FC<HeaderButtonsProps> = ({ setIsMenuOpen, isMenuOpen }) => {
   return (
-    <div className='flex items-center lg:order-2'>
+    <div className='flex items-center lg:order-2 gap-2'>
       <Link
         href='/user/login'
-        className='hidden lg:block hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none'
+        className='hidden lg:block hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none'
       >
         Sign In
       </Link>
       <Link
         href='/user/register'
-        className='hidden lg:block text-white bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none'
+        className='hidden lg:block text-white bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none'
       >
         Sign Up
       </Link>
@@ -72,17 +72,17 @@ const HeaderNavigation: FC<HeaderNavigationProps> = ({ children, isMenuOpen, bgC
       id='mobile-menu-2'
     >
       <ul className='bg-inherit flex items-center flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0'>
-        <div aria-label='hidden' className='lg:hidden p-2 w-full border-y border-gray-200 px-3 sm:px-12 flex'>
+        <div aria-label='hidden' className='lg:hidden p-2 w-full border-y border-gray-200 px-3 sm:px-12 flex gap-2'>
           <Link
             href='/user/login'
-            className='w-full font-medium rounded-lg text-sm px-4 py-2 mr-2 focus:outline-none hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 border text-center'
+            className='w-full font-medium rounded-lg text-sm px-4 py-2 focus:outline-none hover:text-primary-700 text-gray-800 hover:bg-gray-300 active:bg-gray-200 border text-center'
             onClick={selectOption}
           >
             Sign In
           </Link>
           <Link
             href='/user/register'
-            className='w-full font-medium rounded-lg text-sm px-4 py-2 mr-2 focus:outline-none text-white bg-primary-700 hover:bg-primary-800 border text-center'
+            className='w-full font-medium rounded-lg text-sm px-4 py-2 focus:outline-none text-white bg-primary-700 hover:bg-primary-800 border text-center'
             onClick={selectOption}
           >
             Sign Up
