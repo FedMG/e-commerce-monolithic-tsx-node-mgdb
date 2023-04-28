@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "custom-sans": ['var(--font-inter)', ...fontFamily.sans],
+        'custom-sans': ['var(--font-inter)', ...fontFamily.sans]
       },
       backgroundColor: {
         'gray-300-opacity-45': 'rgba(222, 226, 230, 0.45)'

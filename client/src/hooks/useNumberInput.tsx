@@ -1,5 +1,5 @@
-import { useRef, useState } from "react"
-import type { Callback, useNumberInputResult } from "additional"
+import { useRef, useState } from 'react'
+import type { Callback, useNumberInputResult } from 'additional'
 
 const MINIMUM_RANGE = 0
 const STEP = 1
@@ -12,7 +12,7 @@ export const useNumberInput = (itemsNumber: number): useNumberInputResult => {
     callback()
     heldButtonInterval.current = setInterval(callback, 200)
   }
-  
+
   const handleMouseUpAndLeave = (): void => {
     if (heldButtonInterval.current !== null) return clearInterval(heldButtonInterval.current)
     heldButtonInterval.current = null
@@ -23,12 +23,12 @@ export const useNumberInput = (itemsNumber: number): useNumberInputResult => {
   }
 
   const handleDropItem = (): void => {
-    return setItemsNumber(item =>  item - STEP < MINIMUM_RANGE ? MINIMUM_RANGE : item - STEP)
+    return setItemsNumber(item => item - STEP < MINIMUM_RANGE ? MINIMUM_RANGE : item - STEP)
   }
-  
+
   return {
-    addItem:() => handleMouseDown(handleAddItem),
-    dropItem:() => handleMouseDown(handleDropItem),
+    addItem: () => handleMouseDown(handleAddItem),
+    dropItem: () => handleMouseDown(handleDropItem),
     reset: handleMouseUpAndLeave,
     result: items
   }

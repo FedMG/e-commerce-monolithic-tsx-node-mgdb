@@ -27,7 +27,6 @@ const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
   </Link>
 )
 
-
 const HeaderButtons: FC<HeaderButtonsProps> = ({ setIsMenuOpen, isMenuOpen }) => {
   return (
     <div className='flex items-center lg:order-2 gap-2'>
@@ -96,9 +95,9 @@ const HeaderNavigation: FC<HeaderNavigationProps> = ({ children, isMenuOpen, bgC
 
 export const Header: React.FC<HeaderProps> = ({ links, bgColor = 'bg-gray-100' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
-  
+
   const selectOption = (): void => setIsMenuOpen(false)
-  
+
   return (
     <header className={`${bgColor}`}>
       <nav className='relative border-b border-gray-200 px-3 sm:px-10 lg:px-16 xl:px-24 py-2.5'>

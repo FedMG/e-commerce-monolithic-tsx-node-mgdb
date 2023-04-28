@@ -8,13 +8,12 @@ import type { HeaderDropdownProps, HeaderMenuListProps } from 'additional'
 
 const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links, selectOption }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
-  
+
   const selectDropdownOption = (): void => {
     setIsDropdownOpen(false)
     selectOption()
-    return
   }
-  
+
   return (
     <div className='relative bg-inherit'>
       <button
@@ -35,7 +34,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links, selectOpt
           strokeCurrent
           vBox={24}
         >
-          <PathElement d='M19 9l-7 7-7-7'/>
+          <PathElement d='M19 9l-7 7-7-7' />
         </SVGElement>
       </button>
       <div id='dropdown' role='menu' aria-hidden='true' className={`z-10 ${isDropdownOpen ? 'block' : 'hidden'} w-full lg:w-44 bg-inherit absolute top-full left-0 right-0 rounded-lg lg:shadow`}>

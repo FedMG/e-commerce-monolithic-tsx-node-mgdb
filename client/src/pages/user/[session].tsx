@@ -7,7 +7,7 @@ import { RegisterForm } from '@/components/register'
 import { sessions, SESSIONS } from '@/refs'
 
 import type { NextPageWithLayout } from '_app-types'
-import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import type { SessionPageProps } from 'additional'
 
@@ -17,7 +17,7 @@ const SessionPage: NextPageWithLayout<SessionPageProps> = ({ session }) => {
       <h2 className='text-center text-2xl font-semibold py-3'>{session.title}</h2>
       <div className='flex justify-center'>
         <div className='text-center w-full max-w-[36em] min-w-[18em] border-2 border-solid border-gray-200 bg-gray-100 rounded-md px-8 py-5'>
-          { SESSIONS.LOGIN === session.title ? <LoginForm /> : <RegisterForm />}
+          {SESSIONS.LOGIN === session.title ? <LoginForm /> : <RegisterForm />}
           <Link href={`/user/${session.linkName}`}>
             <p className='py-2 font-medium text-lg hover:text-gray-600'>
               {session.linkText}
@@ -29,13 +29,11 @@ const SessionPage: NextPageWithLayout<SessionPageProps> = ({ session }) => {
   )
 }
 
-
 SessionPage.getLayout = function getLayout (page, _pageProps) {
-  return <Layout title={_pageProps?.session?.title }>{page}</Layout>
+  return <Layout title={_pageProps?.session?.title}>{page}</Layout>
 }
 
-
-export async function getStaticPaths () {
+export async function getStaticPaths (): Promise<GetStaticPathsResult> {
   return {
     paths: [
       '/user/login/',
@@ -45,15 +43,15 @@ export async function getStaticPaths () {
   }
 }
 
-
 export async function getStaticProps ({ params }: GetStaticPropsContext<Params>): Promise<GetStaticPropsResult<SessionPageProps>> {
   if (SESSIONS.LOGIN === params?.session) {
-    return { props: { session: { ...sessions[SESSIONS.LOGIN]} } }
+    return { props: { session: { ...sessions[SESSIONS.LOGIN] } } }
   }
-  
+
   if (SESSIONS.REGISTER === params?.session) {
-    return { props: { session: {...sessions[SESSIONS.REGISTER]} } }  }
-  
+    return { props: { session: { ...sessions[SESSIONS.REGISTER] } } }
+  }
+
   return { notFound: true }
 }
 

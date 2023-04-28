@@ -26,10 +26,10 @@ export const BreadCrumbs: React.FC<Pick<Product, 'category' | 'brand' | 'name'>>
             </SVGElement>
             <Link
               href={`/${category}`}
-               className='ml-1 text-sm md:text-md font-medium text-gray-700 hover:text-blue-600 md:ml-2'
-           >
-                <span className='hidden md:inline-block'>Products /</span>{' '}{setUpperCase(category)}
-          </Link>
+              className='ml-1 text-sm md:text-md font-medium text-gray-700 hover:text-blue-600 md:ml-2'
+            >
+              <span className='hidden md:inline-block'>Products /</span>{' '}{setUpperCase(category)}
+            </Link>
           </div>
         </li>
         <li aria-current='page'>

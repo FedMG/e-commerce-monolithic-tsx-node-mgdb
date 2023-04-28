@@ -19,34 +19,36 @@ export const sessions = {
   }
 }
 
-
 // use temporal before the implementation in the backend
 export const productColors = [
-'rose 500',
-'orange 600',
-'yellow 400',
-'lime 400',
-'green 500',
-'cyan 600',
-'violet 600',
-'fuchsia 500',
-'pink 600',
-'neutral 950'
+  'rose 500',
+  'orange 600',
+  'yellow 400',
+  'lime 400',
+  'green 500',
+  'cyan 600',
+  'violet 600',
+  'fuchsia 500',
+  'pink 600',
+  'neutral 600',
+  'neutral 900',
+  'slate 900'
 ]
 
 export const productColor: Record<ProductColors, string> = Object.freeze({
-    [ProductColors.ROSE_500] : 'bg-rose-500',
-    [ProductColors.ORANGE_600] : 'bg-orange-600',
-    [ProductColors.YELLOW_400] : 'bg-yellow-400',
-    [ProductColors.LIME_400] : 'bg-lime-400',
-    [ProductColors.GREEN_600] : 'bg-green-600',
-    [ProductColors.CYAN_600] : 'bg-cyan-600',
-    [ProductColors.VIOLET_600] : 'bg-violet-600',
-    [ProductColors.FUCHSIA_500] : 'bg-fuchsia-500 ',
-    [ProductColors.PINK_600] : 'bg-pink-600',
-    [ProductColors.NEUTRAL_950] : 'bg-neutral-950',
+  [ProductColors.ROSE_500]: 'bg-rose-500',
+  [ProductColors.ORANGE_600]: 'bg-orange-600',
+  [ProductColors.YELLOW_400]: 'bg-yellow-400',
+  [ProductColors.LIME_400]: 'bg-lime-400',
+  [ProductColors.GREEN_600]: 'bg-green-600',
+  [ProductColors.CYAN_600]: 'bg-cyan-600',
+  [ProductColors.VIOLET_600]: 'bg-violet-600',
+  [ProductColors.FUCHSIA_500]: 'bg-fuchsia-500 ',
+  [ProductColors.PINK_600]: 'bg-pink-600',
+  [ProductColors.NEUTRAL_900]: 'bg-neutral-900',
+  [ProductColors.STONE_600]: 'bg-stone-600',
+  [ProductColors.SLATE_900]: 'bg-slate-900'
 })
-
 
 export const filterStructure = {
   name: null,

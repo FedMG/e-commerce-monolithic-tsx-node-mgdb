@@ -19,13 +19,13 @@ export const SVGElement: React.FC<SVGElementProps> = ({ children, className, ari
 export const PathElement: React.FC<PathElementProps> = ({ d }) => (
   <path
     d={d}
-    strokeLinecap="round"
-    strokeLinejoin="round"
+    strokeLinecap='round'
+    strokeLinejoin='round'
     fillRule='evenodd'
     clipRule='evenodd'
   />
 )
 
 export const TitleElement: React.FC<TitleElementProps> = ({ srOnly, title }) => (
-  <title className={srOnly === true ? 'sr-only': ''}>{title}</title>
+  <title className={srOnly === true ? 'sr-only' : ''}>{title}</title>
 )

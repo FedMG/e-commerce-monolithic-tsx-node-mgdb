@@ -27,7 +27,7 @@ export const RegisterForm = (): React.ReactElement => {
         <Input type='password' value={form.password} onChange={setInput} auto='current-password' />
       </FormRow>
 
-      <FormButton name="Register" />
+      <FormButton name='Register' />
     </form>
   )
 }

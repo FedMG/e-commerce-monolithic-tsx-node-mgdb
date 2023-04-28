@@ -17,7 +17,6 @@ import { setUpperCase } from '@/utils'
 import { getEndpoint } from '../api/utils'
 import { productColors } from '@/refs'
 
-
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import type { Product as ProductObject, ProductProps } from 'additional'
@@ -66,7 +65,7 @@ const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'dis
             {setUpperCase(name)}
           </h3>
           <Heart />
-         {/* <span className="sm:hidden text-end">brand</span> */}
+          {/* <span className="sm:hidden text-end">brand</span> */}
         </div>
         <ProductRating num={rating} />
         <ProductDiscountPrice price={price} discount={discount} />
@@ -103,7 +102,7 @@ const ProductDetails: FC<Pick<ProductObject, 'description'>> = ({ description })
             The <span className='font-semibold'>yellow jogging</span> pants are crafted from a comfortable and breathable fabric that moves with your body, allowing you to enjoy your workout without any restrictions. The elasticated waistband and adjustable drawstring ensure a snug and secure fit, while the tapered legs provide a modern and flattering silhouette.
           </span>
           <span className='block pb-5'>
-            Our yellow jogging pants, yellow jumpsuit, and white shoes set is perfect for any woman who wants to feel stylish, comfortable, and confident. Whether you're running errands or hitting the gym, this set will keep you looking and feeling your best.
+            Our yellow jogging pants, yellow jumpsuit, and white shoes set is perfect for any woman who wants to feel stylish, comfortable, and confident. Whether you&apos;re running errands or hitting the gym, this set will keep you looking and feeling your best.
           </span>
         </p>
       </div>

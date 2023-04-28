@@ -3,12 +3,12 @@ import { CreateBlob, SVGBlobPath } from '@/components/createBlobs'
 
 import { Inter } from '@next/font/google'
 
+import type { NextPageWithLayout } from '_app-types'
+
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-inter'
 })
-
-import type { NextPageWithLayout } from '_app-types'
 
 const About: NextPageWithLayout = () => {
   return (
