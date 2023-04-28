@@ -1,22 +1,14 @@
+import { SVGElement, PathElement } from '@/components/svgElements'
+
 import { isArrayOfObjects } from '@/utils'
 import type { FooterLinkIconProps, FooterProps } from 'additional'
 
 // later refactor this code
 const FooterLinkIcon: React.FC<FooterLinkIconProps> = ({ path = '#', d, alt }) => (
   <a href={path} className='w-full h-full max-h-[35px] max-w-[35px] text-white hover:bg-gray-50 hover:text-black p-1 rounded-md active:bg-black active:text-white'>
-    <svg
-      fill='currentColor'
-      viewBox='0 0 24 24'
-      aria-hidden='true'
-      role='img'
-      xmlns='http://www.w3.org/2000/svg'
-    >
-      <path
-        fillRule='evenodd'
-        d={d}
-        clipRule='evenodd'
-      />
-    </svg>
+    <SVGElement vBox={24} role='img' fillCurrent>
+      <PathElement d={d} />
+    </SVGElement>
     <span className='sr-only'>{alt}</span>
   </a>
 )

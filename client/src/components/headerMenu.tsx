@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
+import { SVGElement, PathElement } from '@/components/svgElements'
+
 import { isArrayOfObjects, isString } from '@/utils'
 import type { HeaderDropdownProps, HeaderMenuListProps } from 'additional'
 
@@ -28,21 +30,13 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links, selectOpt
         <span>
           {label}
         </span>
-        <svg
-          className={`w-4 h-4 ml-2 ${isDropdownOpen ? '-rotate-90' : 'rotate-0'}`}
-          aria-hidden='true'
-          fill='none'
-          stroke='currentColor'
-          viewBox='0 0 24 24'
-          xmlns='http://www.w3.org/2000/svg'
+        <SVGElement
+          className={`w-4 h-4 ml-2 fill-none stroke-2 ${isDropdownOpen ? '-rotate-90' : 'rotate-0'}`}
+          strokeCurrent
+          vBox={24}
         >
-          <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            strokeWidth='2'
-            d='M19 9l-7 7-7-7'
-          />
-        </svg>
+          <PathElement d='M19 9l-7 7-7-7'/>
+        </SVGElement>
       </button>
       <div id='dropdown' role='menu' aria-hidden='true' className={`z-10 ${isDropdownOpen ? 'block' : 'hidden'} w-full lg:w-44 bg-inherit absolute top-full left-0 right-0 rounded-lg lg:shadow`}>
         <ul aria-labelledby='dropdownDefaultButton' className=''>

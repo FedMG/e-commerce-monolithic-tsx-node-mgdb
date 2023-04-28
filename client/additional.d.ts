@@ -1,7 +1,7 @@
 import type { ChangeEvent, FormEvent, ReactElement, ReactNode } from 'react'
 import { SortBy } from 'enums'
 
-// utils
+// CONSTANTS
 export interface ChildrenNode {
   children: ReactNode
 }
@@ -35,10 +35,24 @@ type InferParamsType<T> = T extends (...args: infer P) => void ? P : T
 
 
 // SVG
-export type SVGIconProps = ChildrenNode & Pick<ConstantProps, 'className'>
+export interface SVGElementProps {
+  children: ReactNode
+  onClick?: () => void
+  vBox?: number
+  role?: string
+  className?: string
+  fillCurrent?: true
+  strokeCurrent?: true
+  ariaHidden?: boolean
+}
 
-export interface SVGPathProps {
+export interface PathElementProps {
   d: string
+}
+
+export interface TitleElementProps {
+  srOnly?: boolean
+  title: string
 }
 
 // Header
@@ -219,12 +233,6 @@ export type ProductVariants = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 4
 
 export interface ProductsNumberInputProps {
   itemsNumber: number
-}
-
-export interface NumberSVGInputProps {
-  strokeWidth: number
-  d: string
-  srOnly: string
 }
 
 // api/utils
