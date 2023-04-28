@@ -1,7 +1,7 @@
 import type { ChangeEvent, FormEvent, ReactElement, ReactNode } from 'react'
 import { SortBy } from 'enums'
 
-// utils
+// CONSTANTS
 export interface ChildrenNode {
   children: ReactNode
 }
@@ -11,13 +11,47 @@ interface ConstantProps {
   name: string
 }
 
-// type Id<T> = T extends string ? StringId : NumberId
+interface CallbackEvents {
+  onClick: () => void
+  onMouseDown: () => void
+  onMouseUpLeave: () => void
+}
+
+// utilities
+type AddOptional<Type> = {
+  [Property in keyof Type ]+?: Type[Property]
+}
+
+type AddCallback<Type, T> = {
+  [Property in keyof Type ]+?: Callback<T>
+}
+
+type CallbackWithoutParams = () => void
+type CallbackWith<T> = (params: T) => void
+type Callback<T> = T extends unknown ? CallbackWithoutParams : CallbackWith<T>
+
+// It does inference of callback types passed through T and return (P) the parameters types
+type InferParamsType<T> = T extends (...args: infer P) => void ? P : T
 
 // SVG
-export type SVGIconProps = ChildrenNode & Pick<ConstantProps, 'className'>
+export interface SVGElementProps {
+  children: ReactNode
+  onClick?: () => void
+  vBox?: number
+  role?: string
+  className?: string
+  fillCurrent?: true
+  strokeCurrent?: true
+  ariaHidden?: boolean
+}
 
-export interface SVGPathProps {
+export interface PathElementProps {
   d: string
+}
+
+export interface TitleElementProps {
+  srOnly?: boolean
+  title: string
 }
 
 // Header
@@ -32,6 +66,12 @@ export interface HeaderProps {
   bgColor?: string
 }
 
+export interface HeaderCommonProps extends HeaderProps {
+  selectOption: Callback<void>
+  links: HeaderLinks[]
+  bgColor?: string
+}
+
 export interface HeaderButtonsProps {
   setIsMenuOpen: (isOpen: boolean) => void
   isMenuOpen: boolean
@@ -42,9 +82,12 @@ export interface HeaderLogoProps {
   pathLogo: string
 }
 
-export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'> & Pick<HeaderProps, 'bgColor'>
+export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'> & Pick<HeaderCommonProps, 'bgColor' | 'selectOption'>
+export type HeaderMenuListProps = HeaderCommonProps & {
+  spacing?: boolean
+}
 
-export interface HeaderDropdownProps extends Pick<HeaderProps, 'links'> {
+export interface HeaderDropdownProps extends Pick<HeaderCommonProps, 'links' | 'selectOption'> {
   label: string
 }
 
@@ -67,6 +110,27 @@ interface FooterLinkIconProps {
 }
 
 // User session page
+export interface InputProps {
+  value?: string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  auto: string
+  placeholder?: string
+  type: 'text' | 'email' | 'password'
+}
+
+export interface LabelProps {
+  id: 'name' | 'email' | 'password'
+  name: string
+}
+
+export interface SessionPageProps {
+  session: {
+    title: string
+    linkName: string
+    linkText: string
+  }
+}
+
 export type SessionMode = 'login' | 'register'
 
 export interface FormTypes {
@@ -158,6 +222,18 @@ export interface DiscountInfoProps {
   price: number
 }
 
+export type ProductButtonProps = AddOptional<ChildrenNode> & AddOptional<CallbackEvents> & {
+  name?: string
+  rounded?: string
+}
+
+export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
+export type ProductVariants = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 900' | 'stone 600' | 'slate 900'
+
+export interface ProductsNumberInputProps {
+  itemsNumber: number
+}
+
 // api/utils
 export type GetEndpointResponse = (extra: string) => Promise<any>
 
@@ -173,3 +249,11 @@ export interface GetSessionRequestsResponse {
 }
 
 export interface APIResponse { token: string, user?: object }
+
+// hooks
+export interface useNumberInputResult {
+  addItem: Callback<void>
+  dropItem: Callback<void>
+  reset: Callback<void>
+  result: number
+}

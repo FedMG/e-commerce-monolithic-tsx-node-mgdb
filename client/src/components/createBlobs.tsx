@@ -1,6 +1,6 @@
-import type { CreateBlobProps, SVGPathProps } from 'additional'
+import type { CreateBlobProps } from 'additional'
 
-export const SVGBlobPath: React.FC<SVGPathProps> = ({ d }) => (
+export const SVGBlobPath: React.FC<{ d: string }> = ({ d }) => (
   <path
     d={d}
     fill='url(#sw-gradient)'
@@ -13,7 +13,7 @@ export const SVGBlobPath: React.FC<SVGPathProps> = ({ d }) => (
 
 export const CreateBlob: React.FC<CreateBlobProps> = ({ children, className }) => (
   <svg
-    id='sw-js-blob-svg'
+    // id='sw-js-blob-svg'
     viewBox='0 0 100 100'
     xmlns='http://www.w3.org/2000/svg'
     version='1.1'
