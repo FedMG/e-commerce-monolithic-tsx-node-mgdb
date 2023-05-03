@@ -3,7 +3,7 @@ import Product from '../models/product.js'
 import { StatusCodes } from 'http-status-codes'
 import { NotFoundError, BadRequestError } from '../errors/customTypes.js'
 
-import { createQuery } from './validators/createQuery.js'
+import { setProductQuery } from './queries/setProductQuery.js'
 import {
   uploadFileToTheCloud,
   updateFileInTheCloud,
@@ -14,7 +14,7 @@ const getAllProducts = async (req, res) => {
   const { name, brand, description, category, sort, fields, numFilter, page, limit } =
     req.query
 
-  const products = await createQuery({
+  const products = await setProductQuery({
     name,
     brand,
     description,

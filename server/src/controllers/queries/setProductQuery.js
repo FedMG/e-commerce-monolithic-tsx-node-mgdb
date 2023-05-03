@@ -1,30 +1,31 @@
 import Product from '../../models/product.js'
-import { numericFilter } from './numericFilter.js'
-import { setPageAndLimit } from './setPageAndLimit.js'
-import { splitAndJoin } from '../../utils/functions.js'
-import { sortQuery } from './sortQuery.js'
 
-export const createQuery = (query) => {
+import { splitAndJoin } from '../../utils/functions.js'
+import { numericFilter } from './filters/numericFilter.js'
+import { setPageAndLimit } from './filters/setPageAndLimit.js'
+import { sortQuery } from './filters/sortQuery.js'
+
+const NUMERIC_PROPERTIES = ['price', 'rating', 'discount']
+
+export const setProductQuery = (query) => {
   const { numFilter, sort, fields, page, limit, category, brand, name, description } = query
 
   const queryConfig = {}
-  const queryTuple = ['name', 'brand', 'category', 'description']
-  
   const matches = {
     'name': { $regex: name, $options: 'i' },
     'brand': brand,
     'category': category,
     'description': { $regex: description, $options: 'i' },
   }
-
-  queryTuple.forEach((key) => {
+  
+  Object.keys(matches).forEach((key) => {
     if (query[key]) {
       queryConfig[key] = matches[key]
     }
   })
 
   const condition = numFilter
-    ? numericFilter(queryConfig, numFilter)
+    ? numericFilter(queryConfig, numFilter, NUMERIC_PROPERTIES)
     : queryConfig
 
   let result = Product.find(condition)

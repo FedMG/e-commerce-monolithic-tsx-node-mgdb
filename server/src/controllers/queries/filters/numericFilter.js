@@ -1,4 +1,5 @@
-const operatorMap = {
+const REGEX_FILTER = /\b(<|>|>=|=|<|<=)\b/g
+const OPERATORS = {
   '>': '$gt',
   '>=': '$gte',
   '=': '$eq',
@@ -6,14 +7,13 @@ const operatorMap = {
   '<=': '$lte'
 }
 
-export const numericFilter = (queryConfig, number) => {
-  const regEx = /\b(<|>|>=|=|<|<=)\b/g
-  const filters = number.replace(regEx, (match) => `-${operatorMap[match]}-`)
+export const numericFilter = (queryConfig, number, NUMERIC_PROPERTIES) => {
+  const filters = number.replace(REGEX_FILTER, (match) => `-${OPERATORS[match]}-`)
 
   for (const item of filters.split(',')) {
     const [field, operator, value] = item.split('-')
 
-    if (['price', 'rating', 'discount'].includes(field)) {
+    if (NUMERIC_PROPERTIES.includes(field)) {
       queryConfig[field] = { [operator]: Number(value) }
     }
   }

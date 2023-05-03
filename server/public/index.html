@@ -1,145 +1,176 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <meta name="author" content="FedMG">
+    <meta name="keywords" content="AstraShop-API">
+    <meta name="description" content="The e-commerce API of the AstraShop Application">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f7f7">
     <meta charset="UTF-8">
-    <title>node-mongo-store-api</title>
-    <style>
-      body {
-        font-family: sans-serif, sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
-        margin: 0;
-        padding: 0;
-      }
-      
-      header {
-        background-color: #007ACC;
-        color: white;
-        padding: 20px;
-      }
-      
-      h1 {
-        font-size: 36px;
-        margin: 0;
-      }
-      
-      h2 {
-        font-size: 24px;
-        margin: 0;
-      }
-      
-      section {
-        padding: 20px;
-      }
-      
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-      
-      li {
-        margin-bottom: 10px;
-      }
-      
-      a {
-        color: #007ACC;
-        text-decoration: none;
-      }
-      
-      a:hover {
-        text-decoration: underline;
-      }
-      
-      code {
-        background-color: #f0f0f0;
-        font-family: Consolas, monospace;
-        padding: 2px;
-      }
-      
-      note {
-        font-style: italic;
-      }
-      
-      table {
-        border-collapse: collapse;
-        margin: 20px 0;
-        width: 100%;
-      }
-      
-      th, td {
-        border: 1px solid #ccc;
-        padding: 8px;
-        text-align: left;
-      }
-      
-      th {
-        background-color: #f0f0f0;
-      }
-      
-      tr:nth-child(even) {
-        background-color: #f0f0f0;
-      }
-    </style>
+    <title>AstraShop API</title>
   </head>
-  <body>
-    <header>
-      <h1>node-mongo-store-api</h1>
-      <p>Node.js v18.15.0</p>
+  <body id='index'>
+    <header class='header'>
+      <div class='header-content'>
+        <h1 class='header-title'>E-commerce API</h1>
+        <p class='header-subtitle'>Development by Node.js v18.14.0</p>
+      </div>
     </header>
     
-    <section>
-      <h2>URL and Endpoints</h2>
-      <p>The server is already up in <code>Render</code></p>
-      <h3>The endpoints currently available are:</h3>
-      <ul>
-        <li><code>api/v1/auth</code> to get user authentication and access into products.</li>
-        <li><code>api/v1/products</code> to get a list of products.</li>
-      </ul>
-      
-      <p><code>NOTE: to use POST, PATCH, DELETE request you need an API key.</code></p>
-    </section>
-    
-    <section>
-      <h2>How to use?</h2>
-      <h3>Get user authentication</h3>
-      <ol>
-        <li>Go to the <code>URL</code> + <code>api/v1/auth</code> endpoint.</li>
-        <li>Add <code>/register</code> route to register as a new user or add <code>\login</code> route to get user authentication and access in products endpoint.</li>
-      </ol>
-      <note>For now you can get authentication only from an API testing as Postman.</note>
-      <h3>Go to products endpoint</h3>
-      <ol>
-        <li>Go to the <code>URL</code> + <code>api/v1/products</code> endpoint.</li>
-        <li>You can add the nexts queries properties to get the query results: <code>brand</code>, <code>category</code>, <code>sort</code>, <code>fields</code>, <code>numFilter</code>, <code>page</code>, <code>limit</code></li>
-        <li>Add <code>/productID</code> to get a specific product.</li>
-        <li>Add <code>/:category/:distinct</code> to get an array of unique values according to the category, for example: <code>/shoes/brand</code></li>
-        <li>Add <code>/categories</code> to get a unique list of categories.</li>
-        <li>Add <code>/productID/image</code> to get an image object of a specific product.</li>
-      </ol>
-      <li>
-        <h3>How to do a query?</h3>
-        <p>You can use the query parameter <code>?</code> to chain a query property in a link.</p>
-        <p><em>Example:</em> <code>.../api/v1/products</code> + <code>?</code> + <code><property></code></p>
-      </li>
-      <li>
-        <h3>How to chain more than one query?</h3>
-        <p>You can use the ampersand parameter <code>&</code> to chain multiple queries</p>
-        <p><em>Example:</em> <code>.../api/v1/products</code> + <code>?</code> + <code><property></code> + <code>&</code> + <code><property></code> ----> <code>.../api/v1/products?name=^a&brand=x</code></p>
-      </li>
-      <li>
-      <h3>Properties description</h3>
-      <ol>
-        <li><strong>name:</strong> accepts a regex value, example to use it: <code>?name=^a</code></li>
-        <li><strong>brand:</strong> only accepts brands values, example to use it: <code>?brand=nike</code></li>
-        <li><strong>category:</strong> only accepts category values, example to use it: <code>?category=shoes</code></li>
-        <li><strong>description:</strong> accepts regex value to match description content, example to use it: <code>?description=jogger</code></li>
-        <li><strong>sort:</strong> Use it to sort the products according to a property, example to use it: <code>?sort=price</code></li>
-        <li><strong>fields:</strong> Use it to get the products according to properties selected, example to use it: <code>?fields=price,name</code></li>
-        <li><strong>numFilter:</strong> Use it to filter the products according to price or rating, example to use it: <code>?numFilter=price>100,rating=4,discount=15</code></li>
-        <li><strong>page:</strong> Use it to get a page according to the default limit of products, example to use it: <code>?page=2</code></li>
-        <li><strong>limit:</strong> Use it to set the limit of products that can be shown, example to use it: <code>`?page=2`</code></li>
-     <ol>
-    </section>
+    <div class='body-content'>
+        <aside class='body-index'>
+          <div class='index-content'>
+            <span class='index-titles'>Index</span>
+            <ul class='index-uls'>
+              <li><a href="#brief-description">Brief Description</a></li>
+              <li><a href="#url-and-endpoints">URL and Endpoints</a></li>
+              <li>
+              <div>
+                <span class='index-titles'>Usage</span>
+                <ul class='index-uls'>
+                  <li><a href="#get-user-authentication">Get User Authentication</a></li>
+                  <li><a href="#go-to-endpoint">Go to an Endpoint</a></li>
+                  <li><a href="#query-properties">Query Properties</a></li>
+                  <li><a href="#query-parameters">Query Parameters</a></li>
+                  <li><a href="#how-to-query">How to Do a Query?</a></li>
+                  <li><a href="#chaining-queries">How to Chain More Than One Query?</a></li>
+                  <li><a href="#properties-description">Properties Description</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          </div>
+        </aside>
+
+      <div class='body-docs'>
+        <section class='section-separation'>
+          <h2><a href='#index'>Brief description</a></h2>
+          <p>
+            I built a <strong>Node-Express</strong> server with different endpoints to consume the store API services.<br><br>
+
+            Implemented a <strong>RESTful API</strong> architecture to handle CRUD requests.
+            Feature to use query parameters to filter products in GET requests.
+            Added data persistence with <strong>MongoDB and Mongoose</strong>.
+            Created cloud controllers for product image data persistence in <strong>Cloudinary</strong>.
+            Configured user authentication endpoints with <strong>JWT</strong> to allow user login and registration.
+            Enforced <strong>security measures</strong> such as API rate limiting, CORS, query validators, etc.
+            Used <strong>Postman</strong> to test requests.<br><br>
+
+            The server is already up in <strong>Render</strong>
+          </p>
+        </section>
+        
+        <section class='section-separation' id='url-and-endpoints'>
+          <h2><a href='#index'>URL and Endpoints</a></h2>
+
+          <h3>The endpoints currently available are:</h3>
+          <ul>
+            <li><code>api/v1/auth</code> to get user authentication and access into products.</li>
+            <li><code>api/v1/products</code> to get a list of products.</li>
+            <li><code>api/v1/covers</code> to get a list of covers.</li>
+          </ul>
+          
+          <p><code>NOTE: to use POST, PATCH, DELETE request you need an API key.</code></p>
+        </section>
+        
+        <section class='section-separation'>
+          <h2>Usage</h2>
+
+          <div class='section-separation' id='get-user-authentication'>
+            <h3><a href='#index'>Get user authentication</a></h3>
+            <ul>
+              <li>Go to the <code>URL</code> + <code>api/v1/auth</code> endpoint.</li>
+              <li>Add <code>/register</code> route to register as a new user or add <code>\login</code> route to get user authentication and access in products endpoint.</li>
+            </ul>
+          </div>
+
+          <div class='section-separation' id='go-to-endpoint'>
+            <h3><a href='#index'>Go to an endpoint</a></h3>
+            <ul>
+              <li>Go to the <code>URL</code> + <code>api/v1/products</code> endpoint.</li>
+              <li>Go to the <code>URL</code> + <code>api/v1/covers</code> endpoint.</li>
+            </ul>
+          </div>
+          
+          <div class='section-separation' id='query-properties'>
+            <h4><a href='#index'>Query properties</a></h4>
+            <p>You can add one of the following properties to get the differents results:</p>
+
+            <div class='section-separation'>
+              <h5>Covers</h5>
+              <p>
+              <ul>
+                Properties: <code>brand, category, sort, fields, numFilter</code>.<br>
+                Example: <code>URL</code> + <code>api/v1/covers</code> + <code>?</code> + <code>category</code>.
+              </p>
+            </div>
+
+            <div class='section-separation'>
+              <h5>Products</h5>
+              <p>
+                Properties: <code>brand, category, sort, fields, numFilter, page, limit</code>.<br>
+                Example: <code>URL</code> + <code>api/v1/product</code> + <code>?</code> + <code>brand</code>.
+              </p>
+            </div>
+          </div>
+          
+          <div class='section-separation' id='query-parameters'>
+            <h4><a href='#index'>Query parameters</a></h4>
+            
+            <div class='section-separation'>
+              <h5>Covers</h5>
+              <ul>
+                <li>Add <code>/coverID</code> to get a specific cover<li>
+              </ul>
+            </div>
+            <div class='section-separation'>
+              <h5>Products</h5>
+              <ul>
+                <li>Add <code>/productID</code> to get a specific product.</li>
+                <li>Add <code>/:category/:distinct</code> to get an array of unique values according to the category, for example: <code>/shoes/brand</code></li>
+                <li>Add <code>/categories</code> to get a unique list of categories.</li>
+                <li>Add <code>/productID/image</code> to get an image object of a specific product.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class='section-separation' id='how-to-query'>
+            <div class='section-separation'>
+              <h3><a href='#index'>How to do a query?</a></h3>
+              <p>
+                You can use the query parameter <code>?</code> to chain a query property in a link.<br>
+                <em>Example:</em> <code>.../api/v1/products</code> + <code>?</code> + <code>property</code>
+              </p>
+            </div>
+            <div class='section-separation' id='chaining-queries'>
+              <h3><a href='#index'>How to chain more than one query?</a></h3>
+              <p>
+                You can use the ampersand parameter <code>&</code> to chain multiple queries<br>
+                <em>Example:</em> <code>.../api/v1/products</code> + <code>?</code> + <code>property</code> + <code>&</code> + <code>property</code> ----> <code>.../api/v1/products?name=^a&brand=x</code>
+              </p>
+            </div>
+          </div>
+          
+          <div class='section-separation' id='properties-description'>
+            <h3><a href='#index'>Properties description</a></h3>
+            <ul>
+              <li><strong>name:</strong> accepts a regex value, example to use it: <code>?name=^a</code></li>
+              <li><strong>brand:</strong> only accepts brands values, example to use it: <code>?brand=nike</code></li>
+              <li><strong>category:</strong> only accepts category values, example to use it: <code>?category=shoes</code></li>
+              <li><strong>description:</strong> accepts regex value to match description content, example to use it: <code>?description=jogger</code></li>
+              <li><strong>sort:</strong> Use it to sort the products according to a property, example to use it: <code>?sort=price</code></li>
+              <li><strong>fields:</strong> Use it to get the products according to properties selected, example to use it: <code>?fields=price,name</code></li>
+              <li><strong>numFilter:</strong> Use it to filter the products according to price or rating, example to use it: <code>?numFilter=price>100, rating=4, discount=15</code></li>
+              <li><strong>page:</strong> Use it to get a page according to the default limit of products, example to use it: <code>?page=2</code></li>
+              <li><strong>limit:</strong> Use it to set the limit of products that can be shown, example to use it: <code>`?page=2`</code></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
   </body>
 </html>
