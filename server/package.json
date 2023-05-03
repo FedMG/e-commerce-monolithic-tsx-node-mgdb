@@ -8,6 +8,7 @@
     "dev": "node --watch src/index.js",
     "lint": "standard --fix",
     "upload-products": "node src/utils/upload-products",
+    "upload-covers": "node src/utils/upload-covers",
     "upload-files": "node src/utils/upload-files"
   },
   "keywords": [],

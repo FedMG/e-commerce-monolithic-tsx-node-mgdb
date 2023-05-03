@@ -1,0 +1,47 @@
+[
+  {
+    "brand": "Puma",
+    "image": {
+        "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1683041441/e-commerce-assets/ehj6zlvswhwihulai7vi.webp"
+    },
+    "alt": "A cover with three pictures, each one with the same man with differents t-shirts colors.",
+    "discount": 15,
+    "category": "men's clothing"
+  },
+  {
+    "brand": "Nike & Channel",
+    "image": {
+        "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1683041441/e-commerce-assets/f38kkaqy9vfwo7xrrize.webp"
+    },
+    "alt": "A cover with three pictures, one with a yellow sports shoes, the second with a yellow jumpsuit and jogging, and a white shoes. The third with a yellow jacket and a fashion red sunglasses.",
+    "discount": 13,
+    "category": "women's clothing" 
+  },
+  {
+    "brand": "Nike",
+    "image": {
+        "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1683041441/e-commerce-assets/u7j2p8caag93xj0hsajm.webp"
+    },
+    "alt": "A cover with three pictures, each one with the same woman with a sports clothing set. Two image she has gray pants, and black shoes and a brown handbag, black sunglasses, and a dark blue t-shirt. The second image, with a black set with white shoes.",
+    "discount": 7,
+    "category": "women's clothing"
+  },
+  {
+    "brand": "Gucci",
+    "image": {
+        "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1683041441/e-commerce-assets/f7u1lqq0h6tonc88jiwu.webp"
+    },
+    "alt": "A cover with three pictures, each one with a man with differents clothing sets. The first and third, he has a white hat, gray pants and jacket, and an orange jumpsuit. The second image, he has a white pants, hat and shoes, also a red handbag and a black t-shirt.",
+    "discount": 17,
+    "category": "men's clothing" 
+  },
+  {
+    "brand": "Zara",
+    "image": {
+        "src": "https://res.cloudinary.com/dgwvlhihb/image/upload/v1683041441/e-commerce-assets/zhhlu17kz47iflbzmp0x.webp"
+    },
+    "alt": "A cover with three pictures, two with differents men and the third with the two men, all pictures has a clothing black set, with jacket, jumpsuit, oversised t-shirt.",
+    "discount": 10,
+    "category": "men's clothing" 
+  }
+]
