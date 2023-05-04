@@ -47,7 +47,7 @@ ___
 You can add one of the following properties to get the differents results:
 
 ##### Covers
-Properties: `brand, category, sort, fields, numFilter`.<br>
+Properties: `brand, category, alt, sort, fields`.<br>
 Example: `URL` + `api/v1/covers` + `?` + `category`.<br><br>
 
 ##### Products
