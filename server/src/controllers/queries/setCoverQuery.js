@@ -1,7 +1,7 @@
 import Cover from '../../models/Cover.js'
 
 import { splitAndJoin } from '../../utils/functions.js'
-import { sortQuery } from './filters/sortQuery.js'
+import { setSortQuery } from './filters/setSortQuery.js'
 
 export const setCoverQuery = (query) => {
   const { sort, fields, category, brand, alt } = query
@@ -20,7 +20,7 @@ export const setCoverQuery = (query) => {
   })
 
   let result = Cover.find(queryConfig)
-  result = sortQuery(result, sort)
+  result = setSortQuery(result, sort)
 
   if (fields) {
     const list = splitAndJoin(fields)

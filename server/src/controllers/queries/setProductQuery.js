@@ -1,35 +1,24 @@
 import Product from '../../models/product.js'
 
-import { splitAndJoin } from '../../utils/functions.js'
-import { numericFilter } from './filters/numericFilter.js'
+import { setTextFilter } from './setTextFilter.js'
+import { setNumericFilter } from './filters/setNumericFilter.js'
 import { setPageAndLimit } from './filters/setPageAndLimit.js'
-import { sortQuery } from './filters/sortQuery.js'
+import { setSortQuery } from './filters/setSortQuery.js'
 
-const NUMERIC_PROPERTIES = ['price', 'rating', 'discount']
+import { splitAndJoin } from '../../utils/functions.js'
+import { NUMERIC_PROPERTIES, TEXT_PROPERTIES } from './refs.js'
+
 
 export const setProductQuery = (query) => {
-  const { numFilter, sort, fields, page, limit, category, brand, name, description } = query
+  const { numFilter, sort, fields, page, limit, text } = query
+  let queryConfig = text ? setTextFilter(text, TEXT_PROPERTIES) : {}
 
-  const queryConfig = {}
-  const matches = {
-    'name': { $regex: name, $options: 'i' },
-    'brand': brand,
-    'category': category,
-    'description': { $regex: description, $options: 'i' },
+  if (numFilter) {
+    queryConfig = { ...setNumericFilter(numFilter, NUMERIC_PROPERTIES), ...queryConfig }
   }
-  
-  Object.keys(matches).forEach((key) => {
-    if (query[key]) {
-      queryConfig[key] = matches[key]
-    }
-  })
 
-  const condition = numFilter
-    ? numericFilter(queryConfig, numFilter, NUMERIC_PROPERTIES)
-    : queryConfig
-
-  let result = Product.find(condition)
-  result = sortQuery(result, sort)
+  let result = Product.find(queryConfig)
+  result = setSortQuery(result, sort)
 
   if (fields) {
     const list = splitAndJoin(fields)
