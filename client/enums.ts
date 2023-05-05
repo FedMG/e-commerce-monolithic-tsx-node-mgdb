@@ -17,4 +17,6 @@ export enum ProductColors {
   NEUTRAL_900 = 'neutral 900',
   STONE_600 = 'stone 600',
   SLATE_900 = 'slate 900',
+  WHITE = 'white',
+  BLACK = 'black'
 }

@@ -15,7 +15,6 @@ import { ProductButton } from '@/components/productButton'
 
 import { setUpperCase } from '@/utils'
 import { getEndpoint } from '../api/utils'
-import { productColors } from '@/refs'
 
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
@@ -56,7 +55,7 @@ const ProductImage: FC<Pick<ProductObject, 'image' | 'name'>> = ({ image, name }
   )
 }
 
-const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'discount'>> = ({ name, price, rating, discount }): ReactElement => {
+const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'discount' | 'sizes' | 'colors' | 'stock'>> = ({ name, price, rating, discount, sizes, colors, stock }): ReactElement => {
   return (
     <div className='col-span-1 lg:col-span-2 grid grid-rows-1 gap-4'>
       <div className='col-span-1 flex flex-col gap-1 bg-gray-100 rounded-xl p-2 sm:p-3 md:p-6'>
@@ -67,20 +66,18 @@ const ProductMainInfo: FC<Pick<ProductObject, 'name' | 'price' | 'rating' | 'dis
           <Heart />
           {/* <span className="sm:hidden text-end">brand</span> */}
         </div>
-        <ProductRating num={rating} />
+        <ProductRating stars={rating?.stars} votes={rating?.votes} />
         <ProductDiscountPrice price={price} discount={discount} />
-        {/* use temporal before the implementation in the backend */}
-        <ProductClothingSizes sizes={['S', 'M', 'L', 'XL', 'XXL']} />
-        {/* use temporal before the implementation in the backend */}
-        <ProductClothingColors colors={productColors.slice(3, 8)} />
-        <ProductsNumberInput itemsNumber={10} />
+        <ProductClothingSizes sizes={sizes} />
+        <ProductClothingColors colors={colors} />
+        <ProductsNumberInput stock={stock} />
         <div className='flex flex-col pt-2 gap-2 md:gap-3 justify-end h-full'>
           <ProductButton name='Buy now' />
           <ProductButton name='Add to cart'>
             <SVGElement className='w-5 h-5 mr-2 -ml-1' fillCurrent>
-              <span className='sr-only'>Cart icon of the button</span>
               <PathElement d='M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z' />
             </SVGElement>
+            <span className='sr-only'>Cart icon of the button</span>
           </ProductButton>
         </div>
       </div>
@@ -94,15 +91,14 @@ const ProductDetails: FC<Pick<ProductObject, 'description'>> = ({ description })
       <div className='col-span-2 bg-gray-100 p-4 rounded-xl'>
         <div className='my-3'><span className='text-gray-800 text-md md:text-lg lg:text-xl font-semibold'>Description</span></div>
         <p className='text-md text-gray-600'>
-          {description}
           <span className='block pb-5'>
-            Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.
+            {description.introduction}
           </span>
           <span className='block pb-5'>
-            The <span className='font-semibold'>yellow jogging</span> pants are crafted from a comfortable and breathable fabric that moves with your body, allowing you to enjoy your workout without any restrictions. The elasticated waistband and adjustable drawstring ensure a snug and secure fit, while the tapered legs provide a modern and flattering silhouette.
+            {description.body}
           </span>
           <span className='block pb-5'>
-            Our yellow jogging pants, yellow jumpsuit, and white shoes set is perfect for any woman who wants to feel stylish, comfortable, and confident. Whether you&apos;re running errands or hitting the gym, this set will keep you looking and feeling your best.
+            {description.conclusion}
           </span>
         </p>
       </div>
@@ -111,14 +107,14 @@ const ProductDetails: FC<Pick<ProductObject, 'description'>> = ({ description })
 }
 
 const Product: NextPageWithLayout<ProductProps> = ({ product }): ReactElement => {
-  const { brand, category, image, name, price, rating, description, discount } = product
+  const { name, brand, category, description, image, colors, sizes, stock, price, discount, rating } = product
 
   return (
     <div className='py-4 px-3 sm:px-10 lg:px-16 xl:px-24'>
       <ProductHeader name={name} brand={brand} category={category} />
       <div className='grid grid-cols-2 lg:grid-cols-5 sm:gap-4 gap-1 gap-y-4 rounded-xl'>
         <ProductImage image={image} name={name} />
-        <ProductMainInfo name={name} rating={rating} price={price} discount={discount} />
+        <ProductMainInfo name={name} rating={rating} price={price} discount={discount} sizes={sizes} colors={colors} stock={stock} />
         <ProductDetails description={description} />
       </div>
     </div>

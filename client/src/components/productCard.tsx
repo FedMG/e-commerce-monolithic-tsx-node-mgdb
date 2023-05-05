@@ -56,11 +56,11 @@ export const ProductsCard: React.FC<ProductCardProps> = ({ element }) => {
 
           <span className='leading-normal dark:text-white light:text-gray-900 text-gray-800 font-medium text-md md:text-lg'>
             <span className='text-orange-600'>⭐</span>
-            {rating}
+            {rating.stars}
           </span>
         </DiscountInfo>
 
-        <p className='leading-normal text-md xs:max-lg:text-md lg:text-lg dark:text-white light:text-gray-700 pt-3 h-full line-clamp-2 truncate'>
+        <p className='leading-normal text-md xs:max-lg:text-md lg:text-lg dark:text-white light:text-gray-700 pt-3 line-clamp-2 truncate'>
           {name}
         </p>
       </div>
