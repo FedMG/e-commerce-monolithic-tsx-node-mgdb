@@ -22,7 +22,7 @@ const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
       draggable='false'
     />
     <span className='self-center text-xl font-semibold whitespace-nowrap'>
-      {name}
+      <span className='text-orange-500 font-medium'>{name}</span><span>Shop</span>
     </span>
   </Link>
 )
@@ -102,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({ links, bgColor = 'bg-gray-100' }
     <header className={`${bgColor}`}>
       <nav className='relative border-b border-gray-200 px-3 sm:px-10 lg:px-16 xl:px-24 py-2.5'>
         <div className='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl'>
-          <HeaderLogo name='AstraShop' pathLogo='/e-cart.svg' />
+          <HeaderLogo name='Astra' pathLogo='/e-cart.svg' />
           <HeaderButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
           <HeaderNavigation isMenuOpen={isMenuOpen} bgColor={bgColor} selectOption={selectOption}>
             <HeaderMenuList links={links} bgColor={bgColor} selectOption={selectOption} />

@@ -1,13 +1,14 @@
 import { SVGElement, PathElement, TitleElement } from '@/components/svgElements'
 import { isValidNumber } from '@/utils'
 
+import type { ProductRatingProps } from 'additional'
 import type { ReactElement, FC } from 'react'
 
 const MAX_STARS_LENGTH = 5
 
-export const ProductRating: FC<{ num: number }> = ({ num }): ReactElement | null => {
-  if (!isValidNumber(num)) return null
-  const ratingNum = Math.round(num)
+export const ProductRating: FC<ProductRatingProps> = ({ stars, votes }): ReactElement | null => {
+  if (!isValidNumber(stars)) return null
+  const ratingNum = Math.round(stars)
 
   const setFilledStars = (_: number, index: number): ReactElement => (
     <SVGElement key={index} ariaHidden className='w-5 h-5 lg:w-6 lg:h-6 fill-yellow-400 hover:fill-yellow-300'>
@@ -26,6 +27,7 @@ export const ProductRating: FC<{ num: number }> = ({ num }): ReactElement | null
   return (
     <div className='flex items-center'>
       {Array(ratingNum).fill(0).map(setFilledStars).concat([...Array(MAX_STARS_LENGTH - ratingNum)].map(setUnfilledStars))}
+      <span className='pl-2 text-sm md:text-md font-medium text-gray-600 hover:text-primary-700'>({votes} votes)</span>
     </div>
   )
 }

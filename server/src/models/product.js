@@ -18,7 +18,6 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, 'product name must be provided']
   },
-  description: { type: String },
   image: {
     src: {
       type: String,
@@ -53,8 +52,41 @@ const productSchema = new mongoose.Schema({
     type: Number
   },
   rating: {
+    stars: {
+      type: Number,
+      default: 4
+    },
+    votes: {
+      type: Number,
+      default: 105,
+    }
+  },
+  description: {
+    introduction: {
+      type: String,
+      required: [true, 'introduction of description must be provided']
+    },
+    body: {
+      type: String,
+      required: [true, 'body of description must be provided']
+    },
+    conclusion: {
+      type: String,
+      required: [true, 'conclusion of description must be provided']
+    }
+  },
+  colors: {
+    type: [String],
+    required: [true, 'product colors must be provided']
+  },
+  sizes: {
+    type: [String],
+    required: [true, 'product sizes must be provided']
+  },
+  stock: {
     type: Number,
-    default: 4
+    default: 104,
+    required: [true, 'product stock must be provided']
   },
   createdAt: {
     type: Date,

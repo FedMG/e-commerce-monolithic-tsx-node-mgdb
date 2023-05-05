@@ -11,20 +11,8 @@ import {
 } from '../cloud/controllers.js'
 
 const getAllProducts = async (req, res) => {
-  const { name, brand, description, category, sort, fields, numFilter, page, limit } =
-    req.query
-
-  const products = await setProductQuery({
-    name,
-    brand,
-    description,
-    category,
-    sort,
-    fields,
-    numFilter,
-    page,
-    limit
-  })
+  const { text, sort, fields, numFilter, page, limit } = req.query
+  const products = await setProductQuery({ text, sort, fields, numFilter, page, limit })
 
   res.status(StatusCodes.OK).json({ products, numHits: products.length })
 }

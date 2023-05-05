@@ -47,7 +47,7 @@ export const sortFunctions: Record<string, ProductSortFunction> = {
     const dateOfB = new Date(b.createdAt).getTime()
     return dateOfA - dateOfB
   },
-  [SortBy.RATING]: (a, b) => b.rating - a.rating,
+  [SortBy.RATING]: (a, b) => b.rating?.stars - a.rating?.stars,
   [SortBy.PRICE]: (a, b) => a.price - b.price
 }
 
@@ -109,7 +109,7 @@ export async function getServerSideProps ({ params }: GetServerSidePropsContext<
     const [brands, discounts, products] = await Promise.all([
       getProductData(`/${encodedParameter}/brand`),
       getProductData(`/${encodedParameter}/discount`),
-      getProductData(`?category=${encodedParameter}&limit=100`)
+      getProductData(`?text=category=${encodedParameter}&limit=30`)
     ])
 
     return {

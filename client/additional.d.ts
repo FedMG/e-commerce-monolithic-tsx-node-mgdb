@@ -156,6 +156,8 @@ export interface CreateBlobProps {
   className: string
 }
 
+type StarsRange = 1 | 2 | 3 | 4 | 5
+
 // Product item
 export interface Product {
   _id: string
@@ -164,10 +166,17 @@ export interface Product {
     src: string
   }
   category: string
-  description?: string
+  description: {
+    introduction: string
+    body: string
+    conclusion: string
+  }
+  stock: number
   price: number
   discount?: number
-  rating: number
+  colors: ProductColors[]
+  sizes: ClothingSizes[]
+  rating: ProductRatingProps
   brand: string
   createdAt: Date
   __v: number
@@ -228,10 +237,15 @@ export type ProductButtonProps = AddOptional<ChildrenNode> & AddOptional<Callbac
 }
 
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
-export type ProductVariants = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 900' | 'stone 600' | 'slate 900'
+export type ProductColors = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 900' | 'stone 600' | 'slate 900' | 'white' | 'black'
 
-export interface ProductsNumberInputProps {
-  itemsNumber: number
+// export interface ProductsNumberInputProps {
+//   itemsNumber: number
+// }
+
+export interface ProductRatingProps {
+  stars: StarsRange
+  votes: number
 }
 
 // api/utils

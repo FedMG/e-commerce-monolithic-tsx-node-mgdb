@@ -20,34 +20,48 @@
         <p class='header-subtitle'>Development by Node.js v18.14.0</p>
       </div>
     </header>
-    
-    <div class='body-content'>
-        <aside class='body-index'>
-          <div class='index-content'>
-            <span class='index-titles'>Index</span>
-            <ul class='index-uls'>
-              <li><a href="#brief-description">Brief Description</a></li>
-              <li><a href="#url-and-endpoints">URL and Endpoints</a></li>
-              <li>
+
+    <main class='body-content'>
+      <aside class='body-index'>
+        <nav class='index-content'>
+          <span class='index-titles'>Index</span>
+          <ul class='border-left left-spacing' type='none'>
+            <li><a href="#brief-description">Brief Description</a></li>
+            <li><a href="#endpoints">Endpoints</a></li>
+            <li><a href="#get-user-authentication">Get User Authentication</a></li>
+            <li>
               <div>
                 <span class='index-titles'>Usage</span>
-                <ul class='index-uls'>
-                  <li><a href="#get-user-authentication">Get User Authentication</a></li>
-                  <li><a href="#go-to-endpoint">Go to an Endpoint</a></li>
-                  <li><a href="#query-properties">Query Properties</a></li>
-                  <li><a href="#query-parameters">Query Parameters</a></li>
-                  <li><a href="#how-to-query">How to Do a Query?</a></li>
-                  <li><a href="#chaining-queries">How to Chain More Than One Query?</a></li>
-                  <li><a href="#properties-description">Properties Description</a></li>
+                <ul class='border-left left-spacing' type='none'>
+                  <li><a href="#go-to-endpoint">1- Go to an Endpoint</a></li>
+                  <li>
+                    <div>
+                     <a href='#add-requests'>2- Add requests</a>
+                      <ul class='border-left left-spacing' type='none'>
+                        <li><a href="#request-queries">Request queries</a></li>
+                        <li><a href="#request-paramters">Request parameters</a></li>
+                      </ul>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </li>
-          </ul>
-          </div>
-        </aside>
+            <li>
+              <div>
+                <span class='index-titles'>How to</span>
+                <ul class='border-left left-spacing' type='none'>
+                  <li><a href="#how-to-query">How to make a Request query?</a></li>
+                  <li><a href="#how-to-chain-queries">How to chain more than one Query?</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a href="#descriptions-of-query-requests-and-properties">Descriptions of Query Requests and properties</a></li>
+        </ul>
+        </nav>
+      </aside>
 
-      <div class='body-docs'>
-        <section class='section-separation'>
+      <article class='body-docs'>
+        <section class='section-separation' id='brief-description'>
           <h2><a href='#index'>Brief description</a></h2>
           <p>
             I built a <strong>Node-Express</strong> server with different endpoints to consume the store API services.<br><br>
@@ -64,113 +78,166 @@
           </p>
         </section>
         
-        <section class='section-separation' id='url-and-endpoints'>
-          <h2><a href='#index'>URL and Endpoints</a></h2>
-
-          <h3>The endpoints currently available are:</h3>
-          <ul>
+        <section class='section-separation' id='endpoints'>
+          <h2><a href='#index'>Endpoints</a></h2>
+          <ul type='none'>
             <li><code>api/v1/auth</code> to get user authentication and access into products.</li>
             <li><code>api/v1/products</code> to get a list of products.</li>
             <li><code>api/v1/covers</code> to get a list of covers.</li>
           </ul>
           
-          <p><code>NOTE: to use POST, PATCH, DELETE request you need an API key.</code></p>
+          <p class='note'><strong>Note:</strong> to use POST, PATCH, DELETE request you need an API key.</p>
         </section>
+        
+        <section class='section-separation' id='get-user-authentication'>
+          <h2><a href='#index'>Get user authentication</a></h2>
+          <ul type='none'>
+            <li>Go to the <code>URL</code> + <code>api/v1/auth</code> endpoint.</li>
+            <li>Add <code>/register</code> route to register as a new user or add <code>\login</code> route to get user authentication and access in products endpoint.</li>
+          </ul>
+        </section>
+
         
         <section class='section-separation'>
           <h2>Usage</h2>
 
-          <div class='section-separation' id='get-user-authentication'>
-            <h3><a href='#index'>Get user authentication</a></h3>
-            <ul>
-              <li>Go to the <code>URL</code> + <code>api/v1/auth</code> endpoint.</li>
-              <li>Add <code>/register</code> route to register as a new user or add <code>\login</code> route to get user authentication and access in products endpoint.</li>
-            </ul>
-          </div>
-
-          <div class='section-separation' id='go-to-endpoint'>
-            <h3><a href='#index'>Go to an endpoint</a></h3>
-            <ul>
+          <section class='section-separation' id='go-to-endpoint'>
+            <h3><a href='#index'>1- Go to an endpoint</a></h3>
+            <ul type='none'>
               <li>Go to the <code>URL</code> + <code>api/v1/products</code> endpoint.</li>
               <li>Go to the <code>URL</code> + <code>api/v1/covers</code> endpoint.</li>
             </ul>
-          </div>
+          </section>
           
-          <div class='section-separation' id='query-properties'>
-            <h4><a href='#index'>Query properties</a></h4>
-            <p>You can add one of the following properties to get the differents results:</p>
+          <section id='add-requests'>
+            <h3><a href='#index'>2- Add request queries or request parameters to get the differents results</a></h3>
 
-            <div class='section-separation'>
-              <h5>Covers</h5>
-              <p>
-              <ul>
-                Properties: <code>brand, category, sort, fields, numFilter</code>.<br>
-                Example: <code>URL</code> + <code>api/v1/covers</code> + <code>?</code> + <code>category</code>.
-              </p>
-            </div>
+            <section class='section-separation' id='request-queries'>
+              <h4><a href='#index'>Request queries</a></h4>
 
-            <div class='section-separation'>
-              <h5>Products</h5>
-              <p>
-                Properties: <code>brand, category, sort, fields, numFilter, page, limit</code>.<br>
-                Example: <code>URL</code> + <code>api/v1/product</code> + <code>?</code> + <code>brand</code>.
-              </p>
-            </div>
-          </div>
-          
-          <div class='section-separation' id='query-parameters'>
-            <h4><a href='#index'>Query parameters</a></h4>
-            
-            <div class='section-separation'>
-              <h5>Covers</h5>
-              <ul>
-                <li>Add <code>/coverID</code> to get a specific cover<li>
-              </ul>
-            </div>
-            <div class='section-separation'>
-              <h5>Products</h5>
-              <ul>
-                <li>Add <code>/productID</code> to get a specific product.</li>
-                <li>Add <code>/:category/:distinct</code> to get an array of unique values according to the category, for example: <code>/shoes/brand</code></li>
-                <li>Add <code>/categories</code> to get a unique list of categories.</li>
-                <li>Add <code>/productID/image</code> to get an image object of a specific product.</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class='section-separation' id='how-to-query'>
-            <div class='section-separation'>
-              <h3><a href='#index'>How to do a query?</a></h3>
-              <p>
-                You can use the query parameter <code>?</code> to chain a query property in a link.<br>
-                <em>Example:</em> <code>.../api/v1/products</code> + <code>?</code> + <code>property</code>
-              </p>
-            </div>
-            <div class='section-separation' id='chaining-queries'>
-              <h3><a href='#index'>How to chain more than one query?</a></h3>
-              <p>
-                You can use the ampersand parameter <code>&</code> to chain multiple queries<br>
-                <em>Example:</em> <code>.../api/v1/products</code> + <code>?</code> + <code>property</code> + <code>&</code> + <code>property</code> ----> <code>.../api/v1/products?name=^a&brand=x</code>
-              </p>
-            </div>
-          </div>
-          
-          <div class='section-separation' id='properties-description'>
-            <h3><a href='#index'>Properties description</a></h3>
-            <ul>
-              <li><strong>name:</strong> accepts a regex value, example to use it: <code>?name=^a</code></li>
-              <li><strong>brand:</strong> only accepts brands values, example to use it: <code>?brand=nike</code></li>
-              <li><strong>category:</strong> only accepts category values, example to use it: <code>?category=shoes</code></li>
-              <li><strong>description:</strong> accepts regex value to match description content, example to use it: <code>?description=jogger</code></li>
-              <li><strong>sort:</strong> Use it to sort the products according to a property, example to use it: <code>?sort=price</code></li>
-              <li><strong>fields:</strong> Use it to get the products according to properties selected, example to use it: <code>?fields=price,name</code></li>
-              <li><strong>numFilter:</strong> Use it to filter the products according to price or rating, example to use it: <code>?numFilter=price>100, rating=4, discount=15</code></li>
-              <li><strong>page:</strong> Use it to get a page according to the default limit of products, example to use it: <code>?page=2</code></li>
-              <li><strong>limit:</strong> Use it to set the limit of products that can be shown, example to use it: <code>`?page=2`</code></li>
-            </ul>
-          </div>
+              <div class='section-separation'>
+                <span class='strong-span'>Covers</span>
+                <p>
+                  Queries: <code>brand, category, alt, sort, fields</code>.<br>
+                  Example: <code>URL</code> + <code>api/v1/covers</code> + <code>?</code> + <code>brand=nike</code>.
+                </p>
+              </div>
+
+              <div class='section-separation'>
+                <span class='strong-span'>Products</span>
+                <p>
+                  Queries: <code>text, numFilter, sort, fields, page, limit</code>.<br>
+                  Example: <code>URL</code> + <code>api/v1/product</code> + <code>?</code> + <code>text=brand=nike</code>.
+                </p>
+              </div>
+            </section>
+
+            <section class='section-separation' id='request-paramters'>
+              <h4><a href='#index'>Request parameters</a></h4>
+               
+              <section class='section-separation'>
+                <span class='strong-span'>Covers</span>
+                <ul type='none'>
+                  <li><p>Add <code>/coverID</code> to get a specific cover.<br/>Example: <code>.../api/v1/products/coverID</code>.</p></li>
+                </ul>
+              </section>
+              
+              <section class='section-separation'>
+                <span class='strong-span'>Products</span>
+                <ul class='left-spacing' type='circle'>
+                  <li><p>Add <code>/productID</code> to get a specific product.<br/>Example: <code>.../api/v1/products/productID</code>.</p></li>
+                  <li><p>Add <code>/categories</code> to get a unique list of categories.<br/>Example: <code>.../api/v1/products/categories</code>.</p></li>
+                  <li><p>Add <code>/colors</code> to get a unique list of colors.<br/>Example: <code>.../api/v1/products/colors</code>.</p></li>
+                  <li><p>Add <code>/productID/image</code> to get an image object of a specific product.<br/>Example: <code>.../api/v1/products/productID/image</code>.</p></li>
+                  <li><p>Add <code>/:category/:distinct</code> to get an array of unique values according to the category.<br/>Example: <code>.../api/v1/products/shoes/brand</code>.</p></li>
+                </ul>
+              </section>
+            </section>
+          </section>
         </section>
-      </div>
-    </div>
+
+        <section class='section-separation'>
+          <h2>How to</h2>
+
+          <section class='section-separation' id='how-to-query'>
+            <h3><a href='#index'>How to make a request query?</a></h3>
+            <p>
+              You can use the query parameter <code>?</code> to chain a query with an endpoint.<br>
+              <span>Example:</span> <code>.../api/v1/products</code> + <code>?</code> + <code>query</code>
+            </p>
+          </section>
+          
+          <section class='section-separation' id='how-to-chain-queries'>
+            <h3><a href='#index'>How to chain more than one query?</a></h3>
+            <p>
+              You can use the ampersand parameter <code>&</code> to chain multiple queries<br>
+              <span>Example 1:</span> <code>.../api/v1/products</code> + <code>?</code> + <code>query</code> + <code>&</code> + <code>query</code><br>
+              <span>Example 2:</span> <code>.../api/v1/products?text=name=^a&limit=5</code>
+            </p>
+          </section>
+        </section>
+
+        <section class='section-separation' id='descriptions-of-query-requests-and-properties'>
+          <h2><a href='#index'>Descriptions of Query Requests and properties</a></h2>
+          <h3>Products</h3>
+
+          <section>
+            <h4>To filter by property data type</h4>
+            <ol>
+              <li>
+                <section>
+                  <p>
+                    <span class='strong-span'>text:</span> Use it to filter the products according to the string properties.<br>
+                    Example: <code>?text=name=^black jogger$,brand=zara</code>.
+                  </p>
+                  <ul class='left-spacing' type='circle'>
+                    <li><p><span class='strong-span'>name:</span> accepts a regex value.<br/>Example: <code>name=^a</code>.</p></li>
+                    <li><p><span class='strong-span'>brand:</span> only accepts brands names.<br/>Example: <code>brand=nike</code>.</p></li>
+                    <li><p><span class='strong-span'>category:</span> only accepts category names.<br/>Example: <code>category=shoes</code>.</p></li>
+                    <li><p><span class='strong-span'>description:</span> accepts a regex value. Also, it has nested properties: <code>introduction</code>, <code>body</code>, <code>conclusion</code>.<br/>Example: <code>description.body=^Our new collection</code>.</p></li>
+                  </ul>
+                  <p class='note'>
+                    <span class='strong-span'>Note:</span> If there are multiple properties they must be spaced with commas.
+                  </p>
+                </section>
+              </li>
+
+              <li>
+                <section>
+                  <p>
+                    <span class='strong-span'>numFilter:</span> Use it to filter the products according to the numeric properties.<br>
+                    Example: <code>?numFilter=price&gt;100,discount=15</code>.
+                  </p>
+                  <ul class='left-spacing' type='circle'>
+                    <li><p><span class='strong-span block'>price:</span>Example: <code>price&le;80</code>.</p></li>
+                    <li><p><span class='strong-span block'>stock:</span>Example: <code>stock&gt;100</code>.</p></li>
+                    <li><p><span class='strong-span block'>discount:</span>Example: <code>discount=10</code>.</p></li>
+                    <li><p><span class='strong-span'>rating:</span> has nested properties <code>stars</code> and <code>votes</code>.<br/>Example: <code>rating.stars&le;3</code>.</p></li>
+                  </ul>
+                  <p class='note'>
+                    <span class='strong-span'>Note:</span> If there are multiple properties they must be spaced with commas.
+                    You can use the following numeric operators: <code>&gt;</code>, <code>&lt;</code>, <code>&le;</code>, <code>&ge;</code>, <code>=</code>.
+                  </p>
+                </section>
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Utilities</h3>
+            <ol start='3'>
+              <li><span class='strong-span'>sort:</span> Use it to sort products according to a property.<br/>Example: <code>?sort=price</code>.</li>
+              <li><span class='strong-span'>fields:</span> Use it to get products according to the properties selected.<br/>Example: <code>?fields=price,name</code>.</li>
+              <li><span class='strong-span'>page:</span> Use it to get a page according to the default limit of products.<br/>Example: <code>?page=2</code>.</li>
+              <li><span class='strong-span'>limit:</span> Use it to set the limit of products that can be displayed.<br/>Example: <code>?limit=2</code>.</li>
+            </ol>
+          </section>
+
+          <p class='note'>
+            <span class='strong-span'>Note:</span> covers endpoint has almost the same features except for <code>alt</code> which accepts a regex value, and it&apos;s not necessary to use <code>text</code> request query to filter string properties like <code>brand</code> or <code>category</code>.
+          </p>
+        </section>
+      </article>
+    </main>
   </body>
 </html>

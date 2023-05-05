@@ -1,23 +1,41 @@
 # E-commerce API
 
-Development with Node.js v18.15.0
-<br>
+Development with Node.js v18.15.0<br/><br/>
+
+## Table of Contents
+
+- [Brief Description](#brief-description)
+- [URL and Endpoints](#url-and-endpoints)
+- [Get User Authentication](#get-user-authentication)
+- [Usage](#usage)
+  - [1- Go to an endpoint](#go-to-an-endpoint)
+  - [2- Add request queries or request parameters to get the differents results](#add-request-queries-or-request-parameters-to-get-the-differents-results)
+    - [Request queries](#request-queries)
+    - [Request parameters](#request-parameters)
+- [How to](#how-to)
+  - [How to make a request query?](#how-to-make-a-request-query)
+  - [How to chain more than one request query?](#how-to-chain-multiple-request-queries)
+- [Descriptions of Query Requests and properties](#description-query-requests-and-properties)
+  - [To filter by property data type](#to-filter-by-property-data-type)
+  - [Utilities](#utilities)
+- [Attribution](#attribution)
+<br/>
 
 ## Brief description
 
 I built a __Node-Express__ server with different endpoints to consume the store API services.
-Implemented a __RESTful API__ architecture to handle CRUD requests. Functionality to use query parameters to filter products in GET requests.
+Implemented a __RESTful API__ architecture to handle CRUD requests. Feature to use query parameters to filter products in GET requests.
 
 Added data persistence with __MongoDB and Mongoose__. Created cloud controllers for product image data persistence in __Cloudinary__. Configured user authentication endpoints with __JWT__ to allow user login and registration. Enforced __security measures__ such as API rate limiting, CORS, query validators, etc.
 Used __Postman__ to test requests.
 
-Deployed to production in Render.
-<br><br>
+Deployed to production in __Render__.
+<br/><br/>
 
 
 ## URL and Endpoints
 The [__API Server__][0] is already up.
-<br><br>
+<br/><br/>
 
 
 ### The endpoints currently available are:
@@ -27,70 +45,113 @@ The [__API Server__][0] is already up.
 ___
 NOTE: to use POST, PATCH, DELETE request you need an API key.
 ___
-<br>
+<br/>
 
+## Get user authentication
+1. Go to the `URL` + `api/v1/auth` endpoint.
+2. Add `/register` route to register as a new user or add `\login` route to get user authentication and access in products endpoint.
+<br/>
 
 ## Usage
 
-### Get user authentication
-1. Go to the `URL` + `api/v1/auth` endpoint.
-2. Add `/register` route to register as a new user or add `\login` route to get user authentication and access in products endpoint.
-<br>
+### 1- Go to an endpoint
+* Go to the `URL` + `api/v1/products` endpoint.<br/>
+* Go to the `URL` + `api/v1/covers` endpoint.<br/><br/>
+
+### 2- Add request queries or request parameters to get the differents results
+
+#### Request queries
+  * __Covers__<br/>
+    Queries: `brand, category, alt, sort, fields`.<br/>
+    Example: `URL` + `api/v1/covers` + `?` + `brand=nike`.<br/><br/>
+
+  * __Products__<br/>
+    Queries: `text, numFilter, sort, fields, page, limit`.<br/>
+    Example `URL` + `api/v1/product` + `?` + `text=brand=nike`.<br/><br/>
 
 
-### Go to an endpoint
-* Go to the `URL` + `api/v1/products` endpoint.<br>
-* Go to the `URL` + `api/v1/covers` endpoint.<br>
+#### Request parameters
+  * __Covers__<br/>
+    * Add `/coverID` to get a specific cover.<br/>
+      Example: `.../api/v1/products/coverID`.
+
+  * __Products__<br/>
+    * Add `/productID` to get a specific product.<br/>
+      Example: `.../api/v1/products/productID`.
+    * Add `/categories` to get a unique list of categories.<br/>
+      Example: `.../api/v1/products/categories`.
+    * Add `/colors` to get a unique list of colors.<br/>
+      Example: `.../api/v1/products/colors`.
+    * Add `/:productID/image` to get a image object of a specific product.<br/>
+      Example: `.../api/v1/products/productID/image`.
+    * Add `/:category/:distinct` to get an array of unique values according to the category.<br/>
+      Example: `.../api/v1/products/shoes/brand`.<br/><br/>
 
 
-#### Query properties
-You can add one of the following properties to get the differents results:
 
-##### Covers
-Properties: `brand, category, sort, fields, numFilter`.<br>
-Example: `URL` + `api/v1/covers` + `?` + `category`.<br><br>
+## How to
+### How to make a request query?
+  * You can use the query parameter `?` to chain a query with an endpoint.<br/>
+    Example:  `.../api/v1/products` + `?` + `<query>`<br/><br/>
 
-##### Products
-Properties: `brand, category, sort, fields, numFilter, page, limit`.<br>
-Example `URL` + `api/v1/product` + `?` + `brand`.<br><br>
-
-#### Query parameters
-
-##### Covers
-* Add `/coverID` to get a specific cover.<br>
-
-##### Products
-* Add `/productID` to get a specific product.
-* Add `/:category/:distinct` to get an array of unique values according to the category, for example: `/shoes/brand`.
-* Add `/categories` to get a unique list of categories.
-* Add `/:productID/image` to get a image object of a specific product.<br><br>
+### How to chain more than one request query?
+  * You can use the ampersand parameter `&` to chain multiple queries.<br/>
+    Example 1: `.../api/v1/products` + `?` + `<query>` + `&` + `<query>`<br/>
+    Example 2: `.../api/v1/products?text=name=^a&limit=5`<br/><br/>
 
 
-## How to do a query?
-You can use the query parameter `?` to chain a query property in a link.
-* Example:  `.../api/v1/products` + `?` + `<property>`<br><br>
+## Descriptions of Query Requests and properties
+
+**Products**
+
+#### To filter by property data type
+1. __text:__ Use it to filter the products according to the string properties.<br/>
+   Example: `?text=name=^black jogger$,brand=zara`.
+    * __name:__ accepts a regex value.<br/>
+      Example: `name=^a`.
+    * __brand:__  only accepts brands values.<br/>
+      Example: `brand=nike`.
+    * __category:__ only accepts category values.<br/>
+      Example: `category=shoes`.
+    * __description:__ accepts a regex value. Also, it has nested properties: `introduction`, `body`, `conclusion`.<br/>
+      Example: `description.body=^Our new collection`.
+   ___
+   __NOTE:__ If there are multiple properties they must be spaced with commas.
+   ___
+
+2. __numFilter:__ Use it to filter the products according to the numeric properties.<br/>
+   Example: `?numFilter=price>100,discount=15`.
+    * __price:__<br/>
+      Example: `price<=80`.
+    * __stock:__<br/>
+      Example: `stock>100`.
+    * __discount:__<br/>
+      Example: `discount=10`.
+    * __rating:__ has nested properties `stars` and `votes`.<br/>
+      Example: `rating.stars<=3`.
+   ___
+   __NOTE:__ If there are multiple properties they must be spaced with commas. You can use the following numeric operators: `>`, `<`, `<=`, `>=`, `=`.
+   ___
 
 
-## How to chain more than one query?
-You can use the ampersand parameter `&` to chain multiple queries
-* Example:  `.../api/v1/products` + `?` + `<property>` + `&` + `<property>`  ----> `.../api/v1/products?name=^a&brand=x`<br><br>
+### Utilities
+3. __sort:__ Use it to sort products according to a property.<br/>
+   Example: `?sort=price`.
+4. __fields:__ Use it to get products according to the properties selected.<br/>
+   Example: `?fields=price,name`.
+5. __page:__ Use it to get a page according to the default limit of products.<br/>
+   Example: `?page=2`.
+6. __limit:__ Use it to set the limit of products that can be displayed.<br/>
+   Example: `?limit=2`.
 
+___
+__NOTE:__ cover endpoint has almost the same features except for `alt` which accepts a regex value, and it's not necessary to use `text` request query to filter string properties like `brand` or `category`.
+___
 
-## Properties description
-1. __name:__ accepts a regex value, example to use it: `?name=^a` 
-2. __brand:__  only accepts brands values, example to use it: `?brand=nike`
-3. __category:__ only accepts category values, example to use it: `?category=shoes`
-4. __description:__ accepts regex value to match description content, example to use it: `?description=jogger`
-5. __sort:__ Use it to sort the products acording to a property, example to use it: `?sort=price`
-6. __fields:__ Use it to get the products acording to a properties selected, example to use it: `?fields=price,name`
-7. __numFilter:__ Use it to filter the products according to price or rating, example to use it: `?numFilter=price>100,rating=4,discount=15`
-8. __page:__ Use it to get a page according to the default limit of products, example to use it: `?page=2`
-9. __limit:__ Use it to set the limit of products that can shows, example to use it: `?page=2`
-<br><br>
-
+<br/>
 
 ## Attribution
-I applied some tricks learned from [NodeJS & Express][1] Course developed by John Smilga!
+I applied some basics tricks learned from [NodeJS & Express][1] Course developed by John Smilga!
 
 [0]: "https://e-commerce-store-api.onrender.com/"
 [1]: https://www.youtube.com/watch?v=qwfE7fSVaZM
