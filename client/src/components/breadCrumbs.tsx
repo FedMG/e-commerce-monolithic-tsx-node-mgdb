@@ -39,7 +39,8 @@ export const BreadCrumbs: React.FC<Pick<Product, 'category' | 'brand' | 'name'>>
             </SVGElement>
             <span className='ml-1 text-sm md:text-md font-medium text-gray-500 md:ml-2 max-w-[8em] md:max-w-[10em] lg:max-w-[16em] truncate overflow-hidden'>
               <span className='hidden md:inline-block'>{setUpperCase(brand)} /</span>{' '}
-              {setUpperCase(name)}
+              <span className='hidden sm:inline-block'> {setUpperCase(name)}</span>
+              <span className='sm:hidden'>Item</span>
             </span>
           </div>
         </li>
