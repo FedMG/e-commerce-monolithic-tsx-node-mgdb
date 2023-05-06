@@ -109,7 +109,7 @@ export async function getServerSideProps ({ params }: GetServerSidePropsContext<
     const [brands, discounts, products] = await Promise.all([
       getProductData(`/${encodedParameter}/brand`),
       getProductData(`/${encodedParameter}/discount`),
-      getProductData(`?text=category=${encodedParameter}&limit=30`)
+      getProductData(`?text=category=${encodedParameter}&limit=16`)
     ])
 
     return {

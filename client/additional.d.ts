@@ -239,13 +239,17 @@ export type ProductButtonProps = AddOptional<ChildrenNode> & AddOptional<Callbac
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
 export type ProductColors = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 900' | 'stone 600' | 'slate 900' | 'white' | 'black'
 
-// export interface ProductsNumberInputProps {
-//   itemsNumber: number
-// }
+export type ProductMainInfoHeaderProps = {
+  breakpoint: string
+} & Pick<Product, 'name' | 'rating'> & Partial<ChildrenNode>
 
 export interface ProductRatingProps {
   stars: StarsRange
   votes: number
+}
+
+export interface HeartProps {
+  breakpoint?: string
 }
 
 // api/utils
