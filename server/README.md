@@ -153,5 +153,5 @@ ___
 ## Attribution
 I applied some basics tricks learned from [NodeJS & Express][1] Course developed by John Smilga!
 
-[0]: "https://e-commerce-store-api.onrender.com/"
+[0]: https://e-commerce-store-api.onrender.com/
 [1]: https://www.youtube.com/watch?v=qwfE7fSVaZM
