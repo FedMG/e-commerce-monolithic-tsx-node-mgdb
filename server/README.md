@@ -1,11 +1,14 @@
 # E-commerce API
 
-Development with Node.js v18.15.0<br/><br/>
+Development with Node.js v18.15.0<br/>
+
+The [__API Server__][0] is already up.
+<br/><br/>
 
 ## Table of Contents
 
 - [Brief Description](#brief-description)
-- [URL and Endpoints](#url-and-endpoints)
+- [Endpoints](#endpoints)
 - [Get User Authentication](#get-user-authentication)
 - [Usage](#usage)
   - [1- Go to an endpoint](#1--go-to-an-endpoint)
@@ -29,14 +32,11 @@ Implemented a __RESTful API__ architecture to handle CRUD requests. Feature to u
 Added data persistence with __MongoDB and Mongoose__. Created cloud controllers for product image data persistence in __Cloudinary__. Configured user authentication endpoints with __JWT__ to allow user login and registration. Enforced __security measures__ such as API rate limiting, CORS, query validators, etc.
 Used __Postman__ to test requests.
 
-Deployed to production in __Render__.
+Deployed to production on __Render__.
 <br/><br/>
 
 
-## URL and Endpoints
-The [__API Server__][0] is already up.
-<br/><br/>
-
+## Endpoints
 
 ### The endpoints currently available are:
 1. `api/v1/auth` to get user authentication and access into products.
