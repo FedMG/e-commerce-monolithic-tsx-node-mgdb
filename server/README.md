@@ -8,14 +8,14 @@ Development with Node.js v18.15.0<br/><br/>
 - [URL and Endpoints](#url-and-endpoints)
 - [Get User Authentication](#get-user-authentication)
 - [Usage](#usage)
-  - [1- Go to an endpoint](#go-to-an-endpoint)
-  - [2- Add request queries or request parameters to get the differents results](#add-request-queries-or-request-parameters-to-get-the-differents-results)
+  - [1- Go to an endpoint](#1--go-to-an-endpoint)
+  - [2- Add request queries or request parameters to get the differents results](#2--add-request-queries-or-request-parameters-to-get-the-differents-results)
     - [Request queries](#request-queries)
     - [Request parameters](#request-parameters)
 - [How to](#how-to)
   - [How to make a request query?](#how-to-make-a-request-query)
-  - [How to chain more than one request query?](#how-to-chain-multiple-request-queries)
-- [Descriptions of Query Requests and properties](#description-query-requests-and-properties)
+  - [How to chain multiple request queries?](#how-to-chain-multiple-request-queries)
+- [Descriptions of Query Requests and properties](#descriptions-of-query-requests-and-properties)
   - [To filter by property data type](#to-filter-by-property-data-type)
   - [Utilities](#utilities)
 - [Attribution](#attribution)
@@ -94,7 +94,7 @@ ___
   * You can use the query parameter `?` to chain a query with an endpoint.<br/>
     Example:  `.../api/v1/products` + `?` + `<query>`<br/><br/>
 
-### How to chain more than one request query?
+### How to chain multiple request queries?
   * You can use the ampersand parameter `&` to chain multiple queries.<br/>
     Example 1: `.../api/v1/products` + `?` + `<query>` + `&` + `<query>`<br/>
     Example 2: `.../api/v1/products?text=name=^a&limit=5`<br/><br/>
