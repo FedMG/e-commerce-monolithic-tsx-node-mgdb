@@ -1,6 +1,6 @@
 import Product from '../../models/product.js'
 
-import { setTextFilter } from './setTextFilter.js'
+import { setTextFilter } from './filters/setTextFilter.js'
 import { setNumericFilter } from './filters/setNumericFilter.js'
 import { setPageAndLimit } from './filters/setPageAndLimit.js'
 import { setSortQuery } from './filters/setSortQuery.js'
