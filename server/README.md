@@ -116,7 +116,7 @@ ___
     * __description:__ accepts a regex value. Also, it has nested properties: `introduction`, `body`, `conclusion`.<br/>
       Example: `description.body=^Our new collection`.
    ___
-   __NOTE:__ If there are multiple properties they must be spaced with commas.
+   __NOTE:__ The properties can be spaced with commas `?text=brand=nike,category=shoes`, also you can use `text` query multiple times `?text=brand=nike&text=category=shoes`, moreover, you can chain multiple times the same property `?text=brand=nike,brand=toppler` (but don't forget to update the limit of items displayed sometimes is necessary)
    ___
 
 2. __numFilter:__ Use it to filter the products according to the numeric properties.<br/>
@@ -130,7 +130,8 @@ ___
     * __rating:__ has nested properties `stars` and `votes`.<br/>
       Example: `rating.stars<=3`.
    ___
-   __NOTE:__ If there are multiple properties they must be spaced with commas. You can use the following numeric operators: `>`, `<`, `<=`, `>=`, `=`.
+   __NOTE:__ If there are multiple properties they must be spaced with commas.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             You can use the following numeric operators: `>`, `<`, `<=`, `>=`, `=`.
    ___
 
 
