@@ -11,7 +11,7 @@ import { isString } from '@/utils'
 
 // later refactor this code
 const HeaderLogo: FC<HeaderLogoProps> = ({ name, pathLogo }) => (
-  <Link href='/' className='flex items-center'>
+  <Link href='/' className='flex items-center' as='/'>
     <Image
       priority
       src={pathLogo}
