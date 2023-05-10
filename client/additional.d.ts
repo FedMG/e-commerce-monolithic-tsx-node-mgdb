@@ -275,3 +275,14 @@ export interface useNumberInputResult {
   reset: Callback<void>
   result: number
 }
+
+export interface PaginationReducer {
+  state: {
+    items: Product[]
+    page: number
+  }
+  action: {
+    type: string
+    chunk?: Product[]
+  }
+}
