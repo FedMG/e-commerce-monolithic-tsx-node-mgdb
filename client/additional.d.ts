@@ -195,11 +195,14 @@ export interface CategoryProps {
 
 export interface CategoryNextFilterProps {
   onChange: (filter: FilterFunction | null) => void
-  currentCategory?: string | string[]
+  currentCategory: CategoryProps['currentCategory']
 }
 
-export interface CategorySearchFilterProps extends CategoryNextFilterProps {
+export type CategorySearchFilterProps = CategoryNextFilterProps
+export type CategoryHeaderProps = ChildrenNode
+export interface CategoryHeaderInfoProps {
   productsNumber: number
+  currentCategory: CategoryProps['currentCategory']
 }
 
 export interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
@@ -274,4 +277,16 @@ export interface useNumberInputResult {
   dropItem: Callback<void>
   reset: Callback<void>
   result: number
+}
+
+export interface PaginationReducer {
+  state: {
+    items: Product[]
+    page: number
+  }
+  action: {
+    type: string
+    chunk?: Product[]
+    items?: Product[]
+  }
 }

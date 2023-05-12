@@ -8,7 +8,10 @@
   --app-bold-words-and-title-color: 31 41 55;
 }
 
-
+code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 .header,
 .index-content {
   position: sticky;

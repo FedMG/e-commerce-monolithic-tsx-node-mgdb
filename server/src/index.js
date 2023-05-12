@@ -69,7 +69,7 @@ const start = async () => {
     await connectDB(process.env.MONGO_URI)
     app.listen(PORT, () => console.log(`Listening port ${PORT}...`))
   } catch (error) {
-    throw ServiceUnvailableError('The service connection has failed')
+    throw new ServiceUnvailableError('The service connection has failed')
   }
 }
 

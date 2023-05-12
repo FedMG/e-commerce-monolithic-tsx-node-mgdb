@@ -17,7 +17,7 @@
     <header class='header'>
       <div class='header-content'>
         <h1 class='header-title'>E-commerce API</h1>
-        <p class='header-subtitle'>Development by Node.js v18.14.0</p>
+        <p class='header-subtitle'>Developed with Node.js v18.14.0</p>
       </div>
     </header>
 
@@ -196,8 +196,8 @@
                     <li><p><span class='strong-span'>category:</span> only accepts category names.<br/>Example: <code>category=shoes</code>.</p></li>
                     <li><p><span class='strong-span'>description:</span> accepts a regex value. Also, it has nested properties: <code>introduction</code>, <code>body</code>, <code>conclusion</code>.<br/>Example: <code>description.body=^Our new collection</code>.</p></li>
                   </ul>
-                  <p class='note'>
-                    <span class='strong-span'>Note:</span> If there are multiple properties they must be spaced with commas.
+                  <p class='note' style="width:100%;">
+                    <span class='strong-span'>Note:</span> The properties can be spaced with commas <code>?text=brand=nike,category=shoes</code>, also you can use <code>text</code> query multiple times <code>?text=brand=nike&text=category=shoes</code>, moreover, you can chain multiple times the same property <code>?text=brand=nike,brand=toppler</code> (but don&apos;t forget to update the limit of items displayed sometimes may be necessary)
                   </p>
                 </section>
               </li>

@@ -1,38 +1,42 @@
 import { VALID_DOMAIN } from 'src/environment'
 
-import { FC, ReactElement, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
+import { FC, ReactElement, useEffect, useMemo, useState } from 'react'
+import { useInfinitePagination } from '@/hooks/useInfinitePagination'
 
 import { Layout } from '@/components/layout'
 import { ProductsCard } from '@/components/productCard'
-import { CategoryDiscountFilter } from '@/components/discountFilter'
-import { CategorySearchFilter } from '@/components/searchFilters'
-import { CategoryBrandFilter } from '@/components/brandFilter'
-import { CategoryRatingFilter } from '@/components/sortFilter'
+import { CategoryHeader, CategoryHeaderInfo } from '@/components/categoryHeader'
+import { CategoryDiscountFilter } from '@/components/categoryDiscountFilter'
+import { CategorySearchFilter } from '@/components/categorySearchFilter'
+import { CategoryBrandFilter } from '@/components/categoryBrandFilter'
+import { CategoryRatingFilter } from '@/components/categorySortFilter'
+import { Drawer } from '@/components/Drawer'
 
 import { getEndpoint } from './api/utils'
-import { isArrayOfObjects } from '@/utils'
+import { isArrayOfObjects, isValidCategory } from '@/utils'
 import { filterStructure } from '@/refs'
 
 import type { CategoryProps, ChildrenNode, FilterFunction, ProductSortFunction } from 'additional'
-import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { NextPageWithLayout } from '_app-types'
 import { SortBy } from 'enums'
 
+const ITEMS_DISPLAYED = 12
+
 const CategoryFilters: FC<ChildrenNode> = ({ children }): ReactElement => (
-  <div className='col-span-12 lg:col-span-3 my-3 border border-solid border-gray-200'>
-    <div className='lg:flex lg:flex-col gap-y-7 pb-8 pl-6 pr-4 rounded-sm bg-[#F1F3F5] h-full shadow-[0_15px_0_15px_1_165px_#777777] text-gray-700 border-1 border-solid border-[#f5f5f5]'>
+  <div className='sticky top-0 left-0 right-0 lg:relative col-span-12 lg:col-span-4 border shadow bg-gray-100 rounded z-40'>
+    <div className='flex lg:flex-col lg:gap-y-7 p-2 lg:p-0 lg:pb-8 lg:pl-6 lg:pr-4 text-gray-700 h-full xs:justify-between lg:justify-normal'>
       {children}
     </div>
   </div>
 )
 
 const CategoryProducts: FC<Pick<CategoryProps, 'products'>> = ({ products }): ReactElement => (
-  <div className='col-span-12 lg:col-span-9 flex flex-wrap'>
+  <div className='pt-6 lg:pt-0 grid grid-cols-12 col-span-12 lg:col-span-8 gap-x-4 gap-y-6 md:gap-6'>
     {isArrayOfObjects(products) &&
       products.map(({ _id, name, price, category, rating, image, discount }) => (
-        <div key={_id} className='p-3  w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/4 xl:w-1/4'>
+        <div key={_id} className='col-span-12 min-[320px]:col-span-6 min-[500px]:col-span-4 sm:col-span-4 md:col-span-3 lg:col-span-4 xl:col-span-4'>
           <Link href='/[category]/[productId]' as={`/${category}/${_id}`}>
             <ProductsCard element={{ name, price, rating, image, discount }} />
           </Link>
@@ -51,16 +55,17 @@ export const sortFunctions: Record<string, ProductSortFunction> = {
   [SortBy.PRICE]: (a, b) => a.price - b.price
 }
 
-// refactor later with a custom hook
+// later refactor with custom hook and a reducer
 const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands, currentCategory }): ReactElement => {
   const [filters, setFilters] = useState<Record<string, null | FilterFunction>>(filterStructure)
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.RATING)
+  const items = useInfinitePagination(products, currentCategory)
 
   const searchItems = useMemo(() => {
-    if ((filters.name === null) && (filters.brand === null) && (filters.discount === null)) return [...products].sort(sortFunctions[sortBy])
+    if ((filters.name === null) && (filters.brand === null) && (filters.discount === null)) return [...items].sort(sortFunctions[sortBy])
 
     const filterFunctions = Object.values(filters).filter(Boolean)
-    let matches = products
+    let matches = items
 
     filterFunctions.forEach((callback) => {
       if (typeof callback === 'function') {
@@ -69,7 +74,7 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
     })
 
     return matches.sort(sortFunctions[sortBy])
-  }, [products, filters, sortBy])
+  }, [items, filters, sortBy])
 
   const updateNameFilter = (name: FilterFunction | null): void => setFilters(filters => ({ ...filters, name }))
   const updateBrandFilter = (brand: FilterFunction | null): void => setFilters(filters => ({ ...filters, brand }))
@@ -79,17 +84,24 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
   useEffect(() => {
     setFilters({ ...filterStructure })
     setSortBy(SortBy.RATING)
-  }, [products])
+  }, [items])
 
   return (
-    <div className='grid grid-cols-12 gap-6 lg:gap-10 w-full'>
-      <CategoryFilters>
-        <CategorySearchFilter onChange={updateNameFilter} currentCategory={currentCategory} productsNumber={searchItems.length} />
-        <CategoryBrandFilter onChange={updateBrandFilter} currentCategory={currentCategory} brands={brands} />
-        <CategoryDiscountFilter onChange={updateDiscountFilter} currentCategory={currentCategory} discounts={discounts} />
-        <CategoryRatingFilter onChange={updateRatingFilter} sortBy={sortBy} />
-      </CategoryFilters>
-      <CategoryProducts products={searchItems} />
+    <div className='py-4 px-6 sm:px-10 lg:px-16 xl:px-24 relative'>
+      <div className='grid grid-cols-12 lg:gap-5 w-full sticky top-0 left-0 right-0'>
+        <CategoryHeader>
+          <CategoryHeaderInfo currentCategory={currentCategory} productsNumber={searchItems.length} />
+          <CategoryRatingFilter onChange={updateRatingFilter} sortBy={sortBy} />
+        </CategoryHeader>
+        <CategoryFilters>
+          <CategorySearchFilter onChange={updateNameFilter} currentCategory={currentCategory} />
+          <Drawer>
+            <CategoryBrandFilter onChange={updateBrandFilter} currentCategory={currentCategory} brands={brands} />
+            <CategoryDiscountFilter onChange={updateDiscountFilter} currentCategory={currentCategory} discounts={discounts} />
+          </Drawer>
+        </CategoryFilters>
+        <CategoryProducts products={searchItems} />
+      </div>
     </div>
   )
 }
@@ -98,26 +110,28 @@ Category.getLayout = function getLayout (page, _pageProps): JSX.Element {
   return <Layout title='Category' section={page?.props?.currentCategory as string}>{page}</Layout>
 }
 
-export async function getServerSideProps ({ params }: GetServerSidePropsContext<Params>): Promise<GetServerSidePropsResult<CategoryProps>> {
-  if (params?.category === undefined || VALID_DOMAIN === undefined) return { notFound: true }
+export async function getServerSideProps ({ params }: GetServerSidePropsContext): Promise<GetServerSidePropsResult<CategoryProps>> {
+  if (VALID_DOMAIN === undefined) return { notFound: true }
 
-  const encodedParameter = encodeURI(params.category)
+  const category = params?.category ?? undefined
+  if (category === undefined || !isValidCategory(category)) return { notFound: true }
+  const encodedCategory = encodeURI(category)
+
   const getProductData = getEndpoint(`${VALID_DOMAIN}/api/v1/products`)
-
   try {
     // Implement AbortController
-    const [brands, discounts, products] = await Promise.all([
-      getProductData(`/${encodedParameter}/brand`),
-      getProductData(`/${encodedParameter}/discount`),
-      getProductData(`?text=category=${encodedParameter}&limit=16`)
+    const [brands, discounts, { products }] = await Promise.all([
+      getProductData(`/${encodedCategory}/brand`),
+      getProductData(`/${encodedCategory}/discount`),
+      getProductData(`?text=category=${encodedCategory}&limit=${ITEMS_DISPLAYED}`)
     ])
 
     return {
       props: {
-        ...products,
+        products,
         discounts: [...discounts.uniqueValues],
         brands: [...brands.uniqueValues],
-        currentCategory: params.category
+        currentCategory: category
       }
     }
   } catch (error) {
