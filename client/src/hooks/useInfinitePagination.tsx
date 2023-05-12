@@ -6,7 +6,7 @@ import type { PaginationReducer, Product } from "additional"
 
 const INITIAL_PAGE = 1
 const ITEMS_DISPLAYED = 12
-const VALID_DOMAIN = 'jlm022-4000.csb.app' // later remove it
+const API_SERVER_DOMAIN = 'e-commerce-store-api.onrender.com' // later refactor it 
 
 function reducer (state: PaginationReducer['state'], action: PaginationReducer['action']): PaginationReducer['state'] {
   switch (action.type) {
@@ -37,7 +37,7 @@ export const useInfinitePagination = (products: Product[], category: string) => 
 
   useEffect(() => {
     if (page > INITIAL_PAGE) {
-      const getProductData = getEndpoint(`${VALID_DOMAIN}/api/v1/products`)
+      const getProductData = getEndpoint(`${API_SERVER_DOMAIN}/api/v1/products`)
       getProductData(`?text=category=${category}&page=${page}&limit=${ITEMS_DISPLAYED}`).then(({ products }) => {
          if (products.length === 0) return setFinal(true)
          setPagination({ type: 'ADDED_ITEMS', chunk: products })
