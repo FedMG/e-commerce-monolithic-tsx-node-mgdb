@@ -1,5 +1,5 @@
-import type { FC, ReactElement } from "react"
-import type { DiscountInfoProps } from "additional"
+import type { FC, ReactElement } from 'react'
+import type { DiscountInfoProps } from 'additional'
 
 export const ProductCardDiscountInfo: FC<DiscountInfoProps> = ({ children, discount, price }): ReactElement | null => {
   if (children == null) return null

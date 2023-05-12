@@ -6,7 +6,7 @@ import { getPriceWithDiscount } from '@/utils'
 import type { ProductCardProps } from 'additional'
 import type { FC, ReactElement } from 'react'
 
-export const ProductsCard: FC<ProductCardProps> = ({ element: {name, image, price, discount, rating} }): ReactElement => (
+export const ProductsCard: FC<ProductCardProps> = ({ element: { name, image, price, discount, rating } }): ReactElement => (
   <div className='h-full max-h-[430px] flex flex-col bg-gray-100 border shadow-sm hover:shadow-md rounded-sm hover:bg-gray-200 hover:rounded-sm transition-transform transform duration-[100ms] easy-in-out hover:scale-[1.03]'>
     <div className='aspect-[2/3] h-full xl:max-h-[310px] lg:max-h-[295px] md:max-h-[300px] sm:max-h-[255px] xs:max-h-[240px] max-h-[310px] m-0.5 md:m-1 flex items-center from-white to-gray-300 bg-gradient-to-br border-b border-gray-300'>
       <Image height={290} width={300} sizes='100vw' className='w-auto h-full max-h-[310px] select-none overflow-hidden' src={image.src} alt={`${name} card product`} />

@@ -8,10 +8,10 @@ export const CategoryRatingFilter: React.FC<CategorySortFilterProps> = ({ onChan
   }
 
   return (
-    <div className='flex items-center w-full'>
-      <label htmlFor='sort-products-by' className='mr-4 whitespace-nowrap'>Sort By:</label>
+    <div className='flex items-center sm:w-full max-w-[240px]'>
+      <label htmlFor='sort-products-by' className='text-gray-600 font-medium mr-2 sm:mr-4 whitespace-nowrap'>Sort By:</label>
       <select
-        className='border border-gray-400 rounded p-1 w-full'
+        className='text-gray-600 bg-white border rounded-md p-1 w-full'
         name='sort-products-by'
         id='sort-products-by'
         value={sortBy}

@@ -1,4 +1,4 @@
-import { CATEGORY_KEYS } from "enums"
+import { CATEGORY_KEYS } from 'enums'
 
 export const getPriceWithDiscount = (discount: number | undefined, price: number): number => {
   if (discount === 0 || discount === null || discount === undefined) return price
@@ -16,6 +16,6 @@ export const isString = (string: unknown): boolean => (string !== null || string
 export const isValidNumber = (num: unknown): boolean => !Number.isNaN(num) && typeof num === 'number' && (num >= 0 && num <= 5)
 export const isValidRangeNumber = (num: unknown): boolean => !Number.isNaN(num) && typeof num === 'number' && (num > 0 && num < 1000)
 
-export const isValidCategory = (category: unknown): category is CATEGORY_KEYS =>  {
+export const isValidCategory = (category: unknown): category is CATEGORY_KEYS => {
   return Object.values(CATEGORY_KEYS).includes(category as CATEGORY_KEYS)
 }
