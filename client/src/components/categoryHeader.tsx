@@ -2,7 +2,7 @@ import { CategoryHeaderProps, CategoryHeaderInfoProps } from 'additional'
 
 export const CategoryHeader: React.FC<CategoryHeaderProps> = ({ children }) => {
   return (
-    <div className='sticky top-0 right-0 left-0 lg:relative col-span-12 p-2 lg:px-6 bg-gray-100 shadow-sm border rounded'>
+    <div className='sticky top-0 right-0 left-0 lg:relative col-span-12 p-2 lg:px-6 bg-gray-100 lg:shadow-sm border-y border-x lg:border rounded-t lg:rounded'>
       <div className='flex justify-between items-center'>
         {children}
       </div>
