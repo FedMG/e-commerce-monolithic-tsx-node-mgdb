@@ -13,7 +13,6 @@ import { ProductsNumberInput } from '@/components/productNumberInput'
 import { ProductButton } from '@/components/productButton'
 import { ProductMainInfoHeader } from '@/components/productMainInfoHeader'
 import { CartIcon } from '@/components/SVGIcons'
-import { Text } from '@/components/Text'
 
 import { getEndpoint } from '../api/utils'
 import { setUpperCase } from '@/utils'
