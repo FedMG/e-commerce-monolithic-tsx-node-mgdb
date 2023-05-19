@@ -3,7 +3,7 @@ import type { NextPageWithLayout } from '_app-types'
 
 const Home: NextPageWithLayout = () => {
   return (
-    <div />
+    <div/>
   )
 }
 

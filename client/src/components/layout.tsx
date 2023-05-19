@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { Header } from './structure/Header'
+import { HeaderPage } from './HeaderPage'
 import { Footer } from './structure/Footer'
 
 import { footerLinks, headerLinks } from '@/refs'
@@ -20,7 +20,7 @@ export const Layout: React.FC<RootLayout> = ({ children, title, section }) => {
         <title>{isTitleWithSection}</title>
       </Head>
       <div className='bg-gray-50 h-full relative pb-20'>
-        <Header links={headerLinks} />
+        <HeaderPage links={headerLinks} />
         <main className='h-full min-h-screen max-h-full'>{children}</main>
         <Footer links={footerLinks} />
       </div>

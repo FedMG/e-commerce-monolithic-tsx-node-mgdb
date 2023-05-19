@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react'
-import type { Callback, useNumberInputResult } from 'additional'
+
+import type { useNumberInputResult } from 'additional'
+import type { Callback } from 'utilities'
 
 const MINIMUM_RANGE = 0
 const STEP = 1
