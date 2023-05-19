@@ -1,7 +1,7 @@
 import { useNumberInput } from '@/hooks/useNumberInput'
 
 import { ProductButton } from '@/components/productButton'
-import { SVGElement, PathElement, TitleElement } from '@/components/svgElements'
+import { AddItemIcon, DropItemIcon } from './SVGIcons'
 
 import { isValidRangeNumber } from '@/utils'
 import type { Product } from 'additional'
@@ -18,17 +18,11 @@ export const ProductsNumberInput: React.FC<Pick<Product, 'stock'>> = ({ stock })
         </label>
         <div className='flex'>
           <ProductButton onMouseUpLeave={reset} onMouseDown={dropItem} rounded='rounded-l-md'>
-            <SVGElement vBox={24} className='w-5 h-5 fill-white stroke-white stroke-2'>
-              <PathElement d='M18 12H6' />
-              <TitleElement title='Drop item' />
-            </SVGElement>
+            <DropItemIcon className='w-5 h-5 fill-white stroke-white stroke-2' />
           </ProductButton>
           <span className='bg-gray-50 font-semibold px-2 sm:min-w-[40px] text-center text-gray-800 py-0.5 border'>{result}</span>
           <ProductButton onMouseUpLeave={reset} onMouseDown={addItem} rounded='rounded-r-md'>
-            <SVGElement vBox={24} className='w-5 h-5 fill-white stroke-white stroke-2'>
-              <PathElement d='M12 6v12m6-6H6' />
-              <TitleElement title='Add item' />
-            </SVGElement>
+            <AddItemIcon className='w-5 h-5 fill-white stroke-white stroke-2' />
           </ProductButton>
         </div>
       </div>

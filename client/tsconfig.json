@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "additional.d.ts", "_app-types.d.ts", "enums.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "utilities.d.ts", "additional.d.ts", "_app-types.d.ts", "enums.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

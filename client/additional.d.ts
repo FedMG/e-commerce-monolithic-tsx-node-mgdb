@@ -1,5 +1,8 @@
-import type { ChangeEvent, FormEvent, ReactElement, ReactNode } from 'react'
+import type { AriaAttributes, AriaRole, ChangeEvent, FC, FormEvent, ReactElement, ReactNode } from 'react'
+import type { AddDisplayName, AddOptional, AddStringKeyRecord, Callback, DropUndefined, DropUndefinedUnion } from 'utilities'
 import { SortBy } from 'enums'
+
+// Refactor for prepare to update architecture app folder
 
 // CONSTANTS
 export interface ChildrenNode {
@@ -17,81 +20,175 @@ interface CallbackEvents {
   onMouseUpLeave: () => void
 }
 
-// utilities
-type AddOptional<Type> = {
-  [Property in keyof Type ]+?: Type[Property]
-}
-
-type AddCallback<Type, T> = {
-  [Property in keyof Type ]+?: Callback<T>
-}
-
-type CallbackWithoutParams = () => void
-type CallbackWith<T> = (params: T) => void
-type Callback<T> = T extends unknown ? CallbackWithoutParams : CallbackWith<T>
-
-// It does inference of callback types passed through T and return (P) the parameters types
-type InferParamsType<T> = T extends (...args: infer P) => void ? P : T
-
-// SVG
-export interface SVGElementProps {
+// HEADER
+export interface HeaderProps {
   children: ReactNode
-  onClick?: () => void
-  vBox?: number
-  role?: string
-  className?: string
-  fillCurrent?: true
-  strokeCurrent?: true
-  ariaHidden?: boolean
+  labelledlby: DropUndefined<AriaAttributes, 'aria-labelledby'>
+  className: string
 }
 
-export interface PathElementProps {
-  d: string
+export interface HeaderLogoProps {
+  children: ReactNode
+  src: string
+  id: string
 }
 
-export interface TitleElementProps {
-  srOnly?: boolean
-  title: string
-}
-
-// Header
 interface Links {
   path: string
   name: string
 }
+
 export type HeaderLinks = Links & { dropdown?: Links[] }
 
-export interface HeaderProps {
+export interface HeaderPageProps {
   links: HeaderLinks[]
+}
+
+export interface HeaderMenuProps extends HeaderPageProps {
+  bgColor: string
+}
+
+export interface HeaderMenuListProps extends HeaderPageProps {
+  selectOption: () => void
   bgColor?: string
-}
-
-export interface HeaderCommonProps extends HeaderProps {
-  selectOption: Callback<void>
-  links: HeaderLinks[]
-  bgColor?: string
-}
-
-export interface HeaderButtonsProps {
-  setIsMenuOpen: (isOpen: boolean) => void
-  isMenuOpen: boolean
-}
-
-export interface HeaderLogoProps {
-  name: string
-  pathLogo: string
-}
-
-export type HeaderNavigationProps = ChildrenNode & Pick<HeaderButtonsProps, 'isMenuOpen'> & Pick<HeaderCommonProps, 'bgColor' | 'selectOption'>
-export type HeaderMenuListProps = HeaderCommonProps & {
   spacing?: boolean
 }
 
-export interface HeaderDropdownProps extends Pick<HeaderCommonProps, 'links' | 'selectOption'> {
+export interface HeaderDropdownProps extends HeaderPageProps {
+  selectOption: () => void
   label: string
 }
 
-// Footer
+// LINK-BUTTON
+export interface LinkButtonProps {
+  children: ReactNode
+  href: string
+  className: string
+  ariaLabel: DropUndefined<AriaAttributes, 'aria-label'>
+}
+
+export interface LinkEventButtonProps extends LinkButtonProps {
+  onClick: () => void
+}
+
+// LIST
+export interface ListProps {
+  children: ReactNode
+  className: string
+  role: AriaRole
+}
+
+export interface ListMainProps extends ListProps {
+  ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
+  id: string
+}
+
+export interface ListItemEventProps extends ListProps {
+  onClick: () => void
+}
+
+type ItemListType = AddDisplayName<({ ...Params }: ListProps) => ReactElement>
+type ItemListEventType = AddDisplayName<({ ...Params }: ListItemEventProps) => ReactElement>
+
+interface NextListType<T> extends FC<T> {
+  Item: ItemListType
+  ItemEvent: ItemListEventType
+}
+
+// BUTTON
+export interface ButtonProps {
+  children: ReactNode
+  onClick: () => void
+  className: string
+  ariaExpanded: DropUndefined<AriaAttributes, 'aria-expanded'>
+}
+
+export interface HamburgerDropdownProps extends ButtonProps {
+  ariaControls: DropUndefined<AriaAttributes, 'aria-controls'>
+  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
+}
+
+export interface DropdownButtonProps extends ButtonProps {
+  ariaLabel: DropUndefined<AriaAttributes, 'aria-label'>
+  ariaHaspopup: DropUndefined<AriaAttributes, 'aria-haspopup'>
+  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
+}
+
+// TEXT
+export interface TextProps {
+  as?: keyof JSX.IntrinsicElements
+  children: ReactNode
+  className: string
+}
+
+export type GradientProps = AddStringKeyRecord<undefined | string> & {
+  children: ReactNode
+}
+
+export interface TextAccessibleProps extends TextProps {
+  id: string
+  ariaLive: DropUndefinedUnion<AriaAttributes['aria-live']>
+}
+
+export type GradientTextType = AddDisplayName<({ from, via, to, children }: GradientProps) => JSX.Element>
+export type AccessibleTextType = AddDisplayName<({ ...Params }: TextAccessibleProps) => JSX.Element>
+
+export interface NextTextType<T> extends FC<T> {
+  Gradient: GradientTextType
+  Accessible: AccessibleTextType
+}
+
+// SVG
+interface PathProps { d: string }
+interface TitleProps { title: string }
+
+export type PathSVGType = AddDisplayName<({ d }: PathProps) => ReactElement>
+export type WithSVGEventType = AddDisplayName<({ ...Params }: SVGWithEventProps) => ReactElement>
+export type TitleSVGType = AddDisplayName<({ title }: TitleProps) => ReactElement>
+
+export interface NextSVGType<T> extends FC<T> {
+  Path: PathSVGType
+  WithEvent: WithSVGEventType
+  Title: TitleSVGType
+}
+
+export interface SVGElementProps {
+  children: ReactNode
+  role: string
+  className: string
+  ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
+  viewBox: string
+  labelledby: string // check
+}
+
+export interface SVGWithEventProps {
+  children: ReactNode
+  onClick: () => void
+  className: string
+  role: string
+  viewBox: string
+}
+
+export interface IconsProps {
+  className: string
+}
+
+export interface HeartIconProps extends IconsProps {
+  onClick: () => void
+}
+
+export interface HamburgerIconProps extends IconsProps {
+  ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
+}
+
+// NAVIGATION
+export interface NavigationProps {
+  children: ReactNode
+  ariaLabel: DropUndefined<AriaAttributes, 'aria-label'>
+  className: string
+}
+
+// FOOTER
 interface FooterLinkItem {
   name: string
   path: string
@@ -103,10 +200,9 @@ export interface FooterProps {
   links: FooterLinks[]
 }
 
-interface FooterLinkIconProps {
-  path: string
-  d: string
-  alt: string
+export interface FooterLinkProps {
+  children: ReactNode
+  href: string
 }
 
 // User session page
@@ -290,3 +386,5 @@ export interface PaginationReducer {
     items?: Product[]
   }
 }
+
+type useSwapEventProps = [boolean, () => void]

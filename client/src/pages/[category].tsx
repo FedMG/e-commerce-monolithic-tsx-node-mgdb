@@ -2,7 +2,7 @@ import { VALID_DOMAIN } from 'src/environment'
 
 import Link from 'next/link'
 import { FC, ReactElement, useEffect, useMemo, useState } from 'react'
-import { useInfinitePagination } from '@/hooks/useInfinitePagination'
+// import { useInfinitePagination } from '@/hooks/useInfinitePagination'
 
 import { Layout } from '@/components/layout'
 import { ProductsCard } from '@/components/productCard'
@@ -59,13 +59,13 @@ export const sortFunctions: Record<string, ProductSortFunction> = {
 const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands, currentCategory }): ReactElement => {
   const [filters, setFilters] = useState<Record<string, null | FilterFunction>>(filterStructure)
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.RATING)
-  const items = useInfinitePagination(products, currentCategory)
+  // const items = useInfinitePagination(products, currentCategory)
 
   const searchItems = useMemo(() => {
-    if ((filters.name === null) && (filters.brand === null) && (filters.discount === null)) return [...items].sort(sortFunctions[sortBy])
+    if ((filters.name === null) && (filters.brand === null) && (filters.discount === null)) return [...products].sort(sortFunctions[sortBy])
 
     const filterFunctions = Object.values(filters).filter(Boolean)
-    let matches = items
+    let matches = products
 
     filterFunctions.forEach((callback) => {
       if (typeof callback === 'function') {
@@ -74,7 +74,7 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
     })
 
     return matches.sort(sortFunctions[sortBy])
-  }, [items, filters, sortBy])
+  }, [products, filters, sortBy])
 
   const updateNameFilter = (name: FilterFunction | null): void => setFilters(filters => ({ ...filters, name }))
   const updateBrandFilter = (brand: FilterFunction | null): void => setFilters(filters => ({ ...filters, brand }))
@@ -84,7 +84,7 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
   useEffect(() => {
     setFilters({ ...filterStructure })
     setSortBy(SortBy.RATING)
-  }, [items])
+  }, [products])
 
   return (
     <div className='py-4 px-6 sm:px-10 lg:px-16 xl:px-24 relative'>
