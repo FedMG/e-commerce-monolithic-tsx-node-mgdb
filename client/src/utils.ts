@@ -10,6 +10,8 @@ export const isArrayOfObjects = (arr: object[]): boolean => isValidArray(arr) &&
 export const isArrayOfPrimitives = (arr: string[] | number[]): boolean => isValidArray(arr) && (isNumber(arr[0]) || isString(arr[0]))
 export const isArrayOfString = (arr: string[]): boolean => isValidArray(arr) && isString(arr[0])
 
+export const isValidObject = (obj: unknown): boolean => typeof obj === 'object' && obj !== null && Object.keys(obj).length > 1
+
 export const setUpperCase = (name: string): string => name[0].toLocaleUpperCase() + name.slice(1)
 export const isNumber = (num: unknown): boolean => num !== null && !Number.isNaN(num) && typeof num === 'number'
 export const isString = (string: unknown): boolean => (string !== null || string !== undefined) && typeof string === 'string'

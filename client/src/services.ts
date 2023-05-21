@@ -1,6 +1,6 @@
-import { handleError } from "@/errors/handler-error-wraper"
-import { BadFetchError } from "@/errors/customs"
-import type { Product } from "additional"
+import { handleError } from '@/errors/handler-error-wraper'
+import { BadFetchError } from '@/errors/customs'
+import type { Product } from 'additional'
 
 export const getProducts = handleError<Product>(async (endpoint: string) => {
   // const URL = '' later fill it with the URL

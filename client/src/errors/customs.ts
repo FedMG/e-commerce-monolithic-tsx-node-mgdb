@@ -11,7 +11,7 @@ export class InvalidContextError extends CustomApiError {
   }
 }
 
-export class BadRequestError extends CustomApiError {    
+export class BadRequestError extends CustomApiError {
   constructor (message: string) {
     super(message)
   }

@@ -1,8 +1,16 @@
 import type { AriaAttributes, AriaRole, ChangeEvent, FC, FormEvent, ReactElement, ReactNode } from 'react'
-import type { AddDisplayName, AddOptional, AddStringKeyRecord, Callback, DropUndefined, DropUndefinedUnion } from 'utilities'
+import type { AddDisplayName, AddOptional, Callback, DropUndefined, DropUndefinedUnion } from 'utilities'
 import { SortBy } from 'enums'
 
 // Refactor for prepare to update architecture app folder
+
+export type ASElement = keyof JSX.IntrinsicElements
+
+// ALIASES
+interface AliasComponentsProps {
+  children: ReactNode
+  className: string
+}
 
 // CONSTANTS
 export interface ChildrenNode {
@@ -80,6 +88,7 @@ export interface ListProps {
 
 export interface ListMainProps extends ListProps {
   ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
+  as?: ASElement
   id: string
 }
 
@@ -87,7 +96,11 @@ export interface ListItemEventProps extends ListProps {
   onClick: () => void
 }
 
-type ItemListType = AddDisplayName<({ ...Params }: ListProps) => ReactElement>
+export interface ListItemProps extends ListProps {
+  ariaCurrent: DropUndefined<AriaAttributes, 'aria-current'>
+}
+
+type ItemListType = AddDisplayName<({ ...Params }: ListItemProps) => ReactElement>
 type ItemListEventType = AddDisplayName<({ ...Params }: ListItemEventProps) => ReactElement>
 
 interface NextListType<T> extends FC<T> {
@@ -114,28 +127,59 @@ export interface DropdownButtonProps extends ButtonProps {
   labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
 }
 
+// ARTICLE
+export type ArticleProps = AliasComponentsProps & {
+  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
+  describedby: DropUndefined<AriaAttributes, 'aria-describedby'>
+}
+
+// SECTION
+export type SectionProps = AliasComponentsProps & {
+  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
+  describedby: DropUndefined<AriaAttributes, 'aria-describedby'>
+}
+
+// later refactor types
+type AccessibleSectionProps = AliasComponentsProps & {
+  labelledby?: AriaAttributes['aria-labelledby']
+  role?: AriaRole
+  id?: string
+}
+
+export type AccessibleSectionType = AddDisplayName<({ ...Params }: AccessibleSectionProps) => ReactElement>
+
+export interface NextSectionType<T> extends FC<T> {
+  Accessible: AccessibleSectionType
+}
+
 // TEXT
 export interface TextProps {
-  as?: keyof JSX.IntrinsicElements
+  as?: ASElement
   children: ReactNode
   className: string
 }
 
-export type GradientProps = AddStringKeyRecord<undefined | string> & {
+export type GradientTextProps = Record<'from' | 'via' | 'to', string> & {
   children: ReactNode
 }
 
-export interface TextAccessibleProps extends TextProps {
+export interface AccessibleTextProps extends TextProps {
+  id: string
+}
+
+export interface StateTextTypeProps extends TextProps {
   id: string
   ariaLive: DropUndefinedUnion<AriaAttributes['aria-live']>
 }
 
-export type GradientTextType = AddDisplayName<({ from, via, to, children }: GradientProps) => JSX.Element>
-export type AccessibleTextType = AddDisplayName<({ ...Params }: TextAccessibleProps) => JSX.Element>
+export type GradientTextType = AddDisplayName<({ from, via, to, children }: GradientTextProps) => JSX.Element>
+export type AccessibleTextType = AddDisplayName<({ ...Params }: AccessibleTextProps) => JSX.Element>
+export type StateTextType = AddDisplayName<({ ...Params }: StateTextTypeProps) => JSX.Element>
 
 export interface NextTextType<T> extends FC<T> {
   Gradient: GradientTextType
   Accessible: AccessibleTextType
+  State: StateTextType
 }
 
 // SVG
@@ -349,6 +393,25 @@ export interface ProductRatingProps {
 
 export interface HeartProps {
   breakpoint?: string
+}
+
+export type BreadCrumbProps = Pick<Product, 'category' | 'brand' | 'name'> & Pick<AliasComponentsProps, 'className'>
+export type ProductHeaderProps = AliasComponentsProps & {
+  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
+}
+export type ProductImageProps = Pick<Product, 'image'> & Pick<AliasComponentsProps, 'className'> & {
+  resolution: number
+  alt: string
+}
+export type ProductParagraphProps = Pick<Product, 'description'> & Pick<AliasComponentsProps, 'className'>
+
+export type ProductFigureProps = AliasComponentsProps
+export type ProductDescriptionProps = AliasComponentsProps
+export type ProductParagraphLabelProps = AliasComponentsProps
+export type ProductBrandLogoProps = AliasComponentsProps
+
+export type ProductSectionProps = Pick<AliasComponentsProps, 'children'> & {
+  id: string
 }
 
 // api/utils
