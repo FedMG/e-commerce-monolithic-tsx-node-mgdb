@@ -24,7 +24,7 @@ import type { ReactElement } from 'react'
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
 
 const Product: NextPageWithLayout<ProductProps> = ({ product }): ReactElement | null => {
-  if (isValidObject(product)) return null
+  if (!isValidObject(product)) return null
   const { name, brand, category, description, image, colors, sizes, stock, price, discount, rating } = product
 
   return (
