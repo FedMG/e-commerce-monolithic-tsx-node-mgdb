@@ -1,4 +1,5 @@
 import { CartProvider } from '@/contexts/cartContext'
+
 import '@/styles/globals.css'
 
 import type { AppPropsWithLayout } from '_app-types'

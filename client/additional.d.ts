@@ -382,9 +382,8 @@ export type ProductButtonProps = AddOptional<ChildrenNode> & AddOptional<Callbac
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
 export type ProductColors = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 900' | 'stone 600' | 'slate 900' | 'white' | 'black'
 
-export type ProductMainInfoHeaderProps = {
-  breakpoint: string
-} & Pick<Product, 'name' | 'rating'> & Partial<ChildrenNode>
+export type ProductHeaderProps = AliasComponentsProps & Pick<Product, 'rating'>
+export type ProductTitleProps = AliasComponentsProps
 
 export interface ProductRatingProps {
   stars: StarsRange
@@ -392,11 +391,11 @@ export interface ProductRatingProps {
 }
 
 export interface HeartProps {
-  breakpoint?: string
+  className?: AliasComponentsProps['className']
 }
 
 export type BreadCrumbProps = Pick<Product, 'category' | 'brand' | 'name'> & Pick<AliasComponentsProps, 'className'>
-export type ProductHeaderProps = AliasComponentsProps & {
+export type ProductHeaderArticleProps = AliasComponentsProps & {
   labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
 }
 export type ProductImageProps = Pick<Product, 'image'> & Pick<AliasComponentsProps, 'className'> & {
@@ -409,6 +408,11 @@ export type ProductFigureProps = AliasComponentsProps
 export type ProductDescriptionProps = AliasComponentsProps
 export type ProductParagraphLabelProps = AliasComponentsProps
 export type ProductBrandLogoProps = AliasComponentsProps
+export type ProductInfoProps = Pick<Product, 'name' | 'price' | 'rating' | 'discount'> & AliasComponentsProps
+export type ProductFormProps = Pick<Product, 'sizes' | 'colors' | 'stock'> & {
+  productId: Product['_id']
+  product: Pick<Product, 'name' | 'price' | 'discount' | 'image'>
+}
 
 export type ProductSectionProps = Pick<AliasComponentsProps, 'children'> & {
   id: string

@@ -1,10 +1,20 @@
+import { ProductRating } from './productRating'
 import { Header } from './Header'
-import type { ProductHeaderProps } from 'additional'
+import { Text } from './Text'
 
-export const ProductHeader: React.FC<ProductHeaderProps> = ({ children, className, labelledby }): React.ReactElement => {
-  return (
-    <Header className={`${className} col-span-2 flex mb-4 sm:mb-6`} labelledlby={labelledby}>
+import type { ProductHeaderProps, ProductTitleProps } from 'additional'
+
+export const ProductTitle: React.FC<ProductTitleProps> = ({ children, className }) => (
+  <Text.Accessible id='product-form-section' className={`${className} capitalize text-xl lg:text-3xl xl:text-3xl font-medium leading-tight flex-1`}>
+    {children}
+  </Text.Accessible>
+)
+
+export const ProductHeader: React.FC<ProductHeaderProps> = ({ children, rating, className }) => (
+  <Header labelledlby='product-label' className={`${className} py-2 pb-4 space-y-2`}>
+    <div className='flex flex-row' id='product-label'>
       {children}
-    </Header>
-  )
-}
+    </div>
+    <ProductRating stars={rating?.stars} votes={rating?.votes} />
+  </Header>
+)
