@@ -16,7 +16,7 @@ const addStars = (rating: number): JSX.Element[] => {
 }
 
 export const ProductRating: FC<ProductRatingProps> = ({ stars, votes }): ReactElement | null => {
-  if (!isValidNumber(stars)) return <div aria-disabled>{addStars(DEFAULT_RATING)}</div>
+  if (!isValidNumber(stars)) return <div className='flex items-center' aria-disabled>{addStars(DEFAULT_RATING)}</div>
   const rating = Math.round(stars)
 
   return (

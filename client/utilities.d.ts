@@ -1,3 +1,5 @@
+export type FetchResponse<T> = (endpoint: string) => Promise<T>
+
 export type AddStringKeyRecord<T> = Record<string, T>
 export type DropUndefined<T, K> = K extends keyof T ? Exclude<T[K], undefined> : never
 export type DropUndefinedUnion<T> = T extends undefined ? never : T

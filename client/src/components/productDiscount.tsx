@@ -15,7 +15,7 @@ export const ProductDiscountPrice: React.FC<Pick<ProductObject, 'price' | 'disco
   }
 
   return (
-    <div className='px-3 sm:px-4} py-2'>
+    <div className='px-3 sm:px-4 py-2'>
       <div className='w-full relative'>
         <p className='-ml-2 text-gray-600 text-sm sm:text-md lg:text-lg font-medium'>
           <del>${price}</del>

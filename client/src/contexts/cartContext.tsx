@@ -1,24 +1,15 @@
-import { createContext, useState } from 'react'
+import { createContext } from 'react'
 
-export interface CartContextType {
-  cartItems: object[]
-  addToCart: (item: object) => void
-  itemsAmount: number
-}
+import { useCartReducer } from '@/hooks/useCartReducer'
+import { CartContextType } from './cartContextType'
 
 export const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<object[]>([])
-
-  const addToCart = (item: object): void => {
-    setCartItems((prevCartItems) => [...prevCartItems, item])
-  }
-
-  const cartLength = cartItems.length ?? 0
+  const { cart, cartLength, addCartItem, removeCartItem, clearCart } = useCartReducer()
 
   return (
-    <CartContext.Provider value={{ itemsAmount: cartLength, cartItems, addToCart }}>
+    <CartContext.Provider value={{ cart, cartLength, addCartItem, removeCartItem, clearCart }}>
       {children}
     </CartContext.Provider>
   )
