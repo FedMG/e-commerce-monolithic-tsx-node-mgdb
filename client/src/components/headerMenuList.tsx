@@ -16,7 +16,7 @@ export const HeaderMenuList: React.FC<HeaderMenuListProps> = ({ links, bgColor, 
       {links.map(({ name, path, dropdown }) => {
         if (dropdown != null) {
           return (
-            <List.Item key={name} role='menuitem' className={`w-full ${isString(bgColor) ? bgColor as string : ''}`}>
+            <List.Item ariaCurrent='page' key={name} role='menuitem' className={`w-full ${isString(bgColor) ? bgColor as string : ''}`}>
               <HeaderDropdown label={name} links={dropdown} selectOption={selectOption} />
             </List.Item>
           )
