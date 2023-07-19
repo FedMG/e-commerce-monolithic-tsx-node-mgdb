@@ -9,7 +9,7 @@ export function cartReducer (state: CartReducerType['state'], action: CartReduce
   switch (action.type) {
     case 'ESTABLISHED_INITIAL_STATE': {
       const localStoreCart = getLocalStorageItem('e-commerce-cart')
-      if (localStoreCart === undefined || localStoreCart === null) return state
+      if (!localStoreCart) return state
 
       const parsedLocalStorage: CartInitialStatetype = JSON.parse(localStoreCart)
       const initialState: CartInitialStatetype = new Map(Object.entries(parsedLocalStorage))
