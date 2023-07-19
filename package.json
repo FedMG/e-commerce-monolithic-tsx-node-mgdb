@@ -1,23 +1,30 @@
 {
   "name": "workspace",
+  "workspaces": [
+    "frontend/*",
+    "backend/*"
+  ],
+  "private": true,
   "version": "1.0.0",
-  "description": "A project done with Node.js v18.12.1",
-  "main": "index.js",
+  "description": "E-commerce project made with the MERN stack, also with NextJS, TypeScript and TailwindCSS.",
   "scripts": {
-    "backend":"cd server && npm run dev",
-    "frontend":"cd client && npm run dev"
+    "backend:dev":"cd backend && node src/index.js",
+    "backend:lint": "cd backend && yarn lint",
+    "backend:lint:fix": "cd backend && yarn lint:fix",
+    "frontend:dev":"cd frontend && yarn run dev",
+    "frontend:build": "cd frontend && yarn build",
+    "frontend:start": "cd frontend && yarn start",
+    "frontend:lint": "cd frontend && yarn lint",
+    "frontend:ts:lint": "cd frontend && yarn ts:lint",
+    "frontend:ts:lint:fix": "cd frontend && yarn ts:lint:fix"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FedMG/node-mongo-store-api.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "FedMG",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FedMG/node-mongo-store-api/issues"
-  },
-  "homepage": "https://github.com/FedMG/node-mongo-store-api#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",

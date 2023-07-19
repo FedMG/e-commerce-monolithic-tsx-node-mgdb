@@ -1,13 +1,15 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "frontend",
+  "version": "1.0.0",
   "private": true,
+  "description": "E-commerce Frontend App made with NextJS, TypeScript and TailwindCSS, among others.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "ts-lint": "ts-standard --fix"    
+    "ts:lint": "ts-standard",
+    "ts:lint:fix": "ts-standard --fix"
   },
   "dependencies": {
     "@next/font": "13.1.2",
