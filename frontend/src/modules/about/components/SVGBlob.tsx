@@ -1,19 +1,12 @@
-import type { CreateBlobProps } from 'additional'
+import type { FC } from 'react'
+import type { BaseComponentProps } from '@/schemas'
 
-export const SVGBlobPath: React.FC<{ d: string }> = ({ d }) => (
-  <path
-    d={d}
-    fill='url(#sw-gradient)'
-    transform='translate(50, 50)'
-    width='100%'
-    height='100%'
-    strokeWidth='0'
-  />
-)
+interface SVGBlobProps extends Pick<BaseComponentProps, 'className'> {
+  d: string
+}
 
-export const CreateBlob: React.FC<CreateBlobProps> = ({ children, className }) => (
+export const SVGBlob: FC<SVGBlobProps> = ({ className, d }) => (
   <svg
-    // id='sw-js-blob-svg'
     viewBox='0 0 100 100'
     xmlns='http://www.w3.org/2000/svg'
     version='1.1'
@@ -39,7 +32,13 @@ export const CreateBlob: React.FC<CreateBlobProps> = ({ children, className }) =
         />
       </linearGradient>
     </defs>
-    <title>An abstract orange shape for decoration</title>
-    {children}
+    <path
+      d={d}
+      fill='url(#sw-gradient)'
+      transform='translate(50, 50)'
+      width='100%'
+      height='100%'
+      strokeWidth='0'
+    />
   </svg>
 )
