@@ -1,0 +1,72 @@
+{
+  "setupTasks": [
+    {
+      "name": "Install Root Dependencies",
+      "command": "yarn install"
+    },
+    {
+        "name": "Install Frontend Dependencies",
+        "command": "cd frontend && yarn install"
+    },
+    {
+        "name": "Install Backend Dependencies",
+        "command": "cd backend && yarn install"
+    }
+  ],
+  "tasks": {
+    "backend:dev": {
+      "name": "Backend dev",
+      "command": "cd backend && yarn dev",
+      "runAtStart": false,
+    //   "preview": {
+    //     "port": 4000
+    //   }
+    },
+    "backend:lint": {
+      "name": "Backend Lint",
+      "command": "cd backend && yarn lint",
+      "runAtStart": false
+    },
+    "backend:lint:fix": {
+      "name": "Backend Lint Fix",
+      "command": "cd backend && yarn lint:fix",
+      "runAtStart": false
+    },    
+    "frontend:dev": {
+      "name": "Frontend dev",
+      "command": "cd frontend && yarn dev",
+      "runAtStart": false,
+    //   "preview": {
+    //     "port": 3000
+    //   }
+    },
+    "frontend:build": {
+      "name": "Frontend Build",
+      "command": "cd frontend && yarn build",
+      "runAtStart": false
+    },
+    "frontend:start": {
+      "name": "Frontend Start",
+      "command": "cd frontend && yarn start",
+      "runAtStart": false,
+    //   "preview": {
+    //     "port": 3000
+    //   }
+    },
+    "frontend:lint": {
+      "name": "Frontend Lint",
+      "command": "cd frontend && yarn lint",
+      "runAtStart": false
+    },
+    "frontend:ts:lint": {
+      "name": "Frontend TS Lint",
+      "command": "cd frontend && yarn ts:lint",
+      "runAtStart": false
+    },
+    "frontend:ts:lint:fix": {
+      "name": "Frontend TS Lint Fix",
+      "command": "cd frontend && yarn ts:lint:fix",
+      "runAtStart": false
+    }
+  }
+}

@@ -1,26 +1,28 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "frontend",
+  "version": "1.0.0",
   "private": true,
+  "description": "E-commerce Frontend App made with NextJS, TypeScript and TailwindCSS, among others.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "ts-lint": "ts-standard --fix"    
+    "ts:lint": "ts-standard",
+    "ts:lint:fix": "ts-standard --fix"
   },
   "dependencies": {
     "@next/font": "13.1.2",
     "crypto-js": "^4.1.1",
     "next": "13.1.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.1.1",
     "@types/node": "18.11.18",
-    "@types/react": "18.0.26",
-    "@types/react-dom": "18.0.10",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
     "autoprefixer": "^10.4.14",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.2",
