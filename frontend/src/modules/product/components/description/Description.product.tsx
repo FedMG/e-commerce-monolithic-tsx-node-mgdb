@@ -1,7 +1,12 @@
-import { Section } from './Section'
-import { Text } from './Text'
+import { Text } from '@/components/Text'
+import { Section } from '@/components/Section'
 
-import type { ProductDescriptionProps, ProductParagraphLabelProps, ProductParagraphProps } from 'additional'
+import type { BaseComponentProps } from '@/schemas'
+import type { Product } from 'additional'
+
+interface ProductDescriptionProps extends BaseComponentProps {}
+interface ProductParagraphLabelProps extends BaseComponentProps {}
+type ProductParagraphProps = Pick<Product, 'description'> & Pick<BaseComponentProps, 'className'>
 
 export const ProductParagraph: React.FC<ProductParagraphProps> = ({ description, className }) => (
   <Text.Accessible as='p' id='product-description' className={`${className} space-y-5`}>

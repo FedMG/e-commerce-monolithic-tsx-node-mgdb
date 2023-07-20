@@ -1,8 +1,12 @@
-import { ProductRating } from './productRating'
-import { Header } from './Header'
-import { Text } from './Text'
+import { ProductRating } from '../form'
+import { Header } from '@/components/Header'
+import { Text } from '@/components/Text'
 
-import type { ProductHeaderProps, ProductTitleProps } from 'additional'
+import type { BaseComponentProps } from '@/schemas'
+import type { Product } from 'additional'
+
+type ProductHeaderProps = BaseComponentProps & Pick<Product, 'rating'>
+type ProductTitleProps = BaseComponentProps
 
 export const ProductTitle: React.FC<ProductTitleProps> = ({ children, className }) => (
   <Text.Accessible id='product-form-section' className={`${className} capitalize text-xl lg:text-3xl xl:text-3xl font-medium leading-tight flex-1`}>

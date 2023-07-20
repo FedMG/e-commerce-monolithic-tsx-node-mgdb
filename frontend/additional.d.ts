@@ -291,12 +291,20 @@ export interface UserSessionTools {
 }
 
 // About page
-export interface CreateBlobProps {
-  children: ReactElement
-  className: string
-}
+// export interface CreateBlobProps {
+//   children: ReactElement
+//   className: string
+// }
 
 type StarsRange = 1 | 2 | 3 | 4 | 5
+
+export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
+export type ProductColors = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 900' | 'stone 600' | 'slate 900' | 'white' | 'black'
+
+export interface ProductRatingProps {
+  stars: StarsRange
+  votes: number
+}
 
 // Product item
 export interface Product {
@@ -359,9 +367,9 @@ export interface CategoryDiscountsFilterProps extends CategoryNextFilterProps {
 }
 
 // Product id page
-export interface ProductProps {
-  product: Product
-}
+// export interface ProductProps {
+//   product: Product
+// }
 
 // Product cards
 export interface ProductCardProps {
@@ -374,49 +382,41 @@ export interface DiscountInfoProps {
   price: number
 }
 
-export type ProductButtonProps = AddOptional<ChildrenNode> & AddOptional<CallbackEvents> & {
-  name?: string
-  rounded?: string
-}
+// export type ProductButtonProps = AddOptional<ChildrenNode> & AddOptional<CallbackEvents> & {
+//   name?: string
+//   rounded?: string
+// }
 
-export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
-export type ProductColors = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 900' | 'stone 600' | 'slate 900' | 'white' | 'black'
-
-export type ProductHeaderProps = AliasComponentsProps & Pick<Product, 'rating'>
-export type ProductTitleProps = AliasComponentsProps
-
-export interface ProductRatingProps {
-  stars: StarsRange
-  votes: number
-}
+// export type ProductHeaderProps = AliasComponentsProps & Pick<Product, 'rating'>
+// export type ProductTitleProps = AliasComponentsProps
 
 export interface HeartProps {
   className?: AliasComponentsProps['className']
 }
 
-export type BreadCrumbProps = Pick<Product, 'category' | 'brand' | 'name'> & Pick<AliasComponentsProps, 'className'>
-export type ProductHeaderArticleProps = AliasComponentsProps & {
-  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
-}
-export type ProductImageProps = Pick<Product, 'image'> & Pick<AliasComponentsProps, 'className'> & {
-  resolution: number
-  alt: string
-}
-export type ProductParagraphProps = Pick<Product, 'description'> & Pick<AliasComponentsProps, 'className'>
+// export type BreadCrumbProps = Pick<Product, 'category' | 'brand' | 'name'> & Pick<AliasComponentsProps, 'className'>
+// export type ProductHeaderArticleProps = AliasComponentsProps & {
+//   labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
+// }
+// export type ProductImageProps = Pick<Product, 'image'> & Pick<AliasComponentsProps, 'className'> & {
+//   resolution: number
+//   alt: string
+// }
+// export type ProductParagraphProps = Pick<Product, 'description'> & Pick<AliasComponentsProps, 'className'>
 
-export type ProductFigureProps = AliasComponentsProps
-export type ProductDescriptionProps = AliasComponentsProps
-export type ProductParagraphLabelProps = AliasComponentsProps
-export type ProductBrandLogoProps = AliasComponentsProps
-export type ProductInfoProps = Pick<Product, 'name' | 'price' | 'rating' | 'discount'> & AliasComponentsProps
-export type ProductFormProps = Pick<Product, 'sizes' | 'colors' | 'stock'> & {
-  productId: Product['_id']
-  product: Pick<Product, 'name' | 'price' | 'discount' | 'image'>
-}
+// export type ProductFigureProps = AliasComponentsProps
+// export type ProductDescriptionProps = AliasComponentsProps
+// export type ProductParagraphLabelProps = AliasComponentsProps
+// export type ProductBrandLogoProps = AliasComponentsProps
+// export type ProductInfoProps = Pick<Product, 'name' | 'price' | 'rating' | 'discount'> & AliasComponentsProps
+// export type ProductFormProps = Pick<Product, 'sizes' | 'colors' | 'stock'> & {
+//   productId: Product['_id']
+//   product: Pick<Product, 'name' | 'price' | 'discount' | 'image'>
+// }
 
-export type ProductSectionProps = Pick<AliasComponentsProps, 'children'> & {
-  id: string
-}
+// export type ProductSectionProps = Pick<AliasComponentsProps, 'children'> & {
+//   id: string
+// }
 
 // api/utils
 export type GetEndpointResponse = (extra: string) => Promise<any>

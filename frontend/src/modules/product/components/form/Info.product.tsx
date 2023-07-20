@@ -1,9 +1,12 @@
-import { Section } from './Section'
-import { ProductHeader, ProductTitle } from './ProductHeader'
-import { ProductDiscountPrice } from './productDiscount'
-import { Heart } from './heart'
+import { Section } from '@/components/Section'
+import { ProductHeader, ProductTitle } from '../figure'
+import { ProductDiscountPrice } from './Discount.product'
+import { Heart } from '@/components/heart'
 
-import type { ProductInfoProps } from 'additional'
+import type { BaseComponentProps } from '@/schemas'
+import type { Product } from 'additional'
+
+type ProductInfoProps = Pick<Product, 'name' | 'price' | 'rating' | 'discount'> & BaseComponentProps
 
 const SEP = 'p-4 sm:p-3 md:p-6'
 const GAP = 'gap-1'

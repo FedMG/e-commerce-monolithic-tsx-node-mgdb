@@ -1,8 +1,10 @@
-import { Text } from './Text'
+import { Text } from '@/components/Text'
 import { isArrayOfString } from '@/utils'
-import type { ClothingSizes } from 'additional'
 
-export const ProductClothingSizes = ({ sizes }: { sizes: ClothingSizes[] }): React.ReactElement | null => {
+type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
+interface ProductClothingSizesProps { sizes: ClothingSizes[] }
+
+export const ProductClothingSizes: React.FC<ProductClothingSizesProps> = ({ sizes }): React.ReactElement | null => {
   if (!isArrayOfString(sizes)) return null
 
   return (

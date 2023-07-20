@@ -1,12 +1,15 @@
-import { GreaterThanIcon, HomeIcon } from './SVGIcons'
-import { Navigation } from './Navigation'
-import { LinkButton } from './LinkButton'
-import { List } from './List'
-import { Text } from './Text'
+import { GreaterThanIcon, HomeIcon } from '@/components/SVGIcons'
+import { Navigation } from '@/components/Navigation'
+import { LinkButton } from '@/components/LinkButton'
+import { List } from '@/components/List'
+import { Text } from '@/components/Text'
 
-import type { BreadCrumbProps } from 'additional'
+import type { Product } from 'additional'
+import type { BaseComponentProps } from '@/schemas'
 
-export const BreadCrumbs: React.FC<BreadCrumbProps> = ({ className, category, brand, name }) => (
+type ProductBreadCrumbProps = Pick<Product, 'category' | 'brand' | 'name'> & Pick<BaseComponentProps, 'className'>
+
+export const ProductBreadCrumbs: React.FC<ProductBreadCrumbProps> = ({ className, category, brand, name }) => (
   <Navigation className={`flex-1 flex h-full p-4 ${className}`} ariaLabel='Breadcrumb navigation'>
     <List id='breadcrumb-options' role='menu' ariaHidden={false} className='inline-flex items-center space-x-1 md:space-x-3'>
 

@@ -1,12 +1,15 @@
-import { useNumberInput } from '@/hooks/useNumberInput'
+import { useNumberInput } from '../../hooks'
 
-import { ProductButton } from '@/components/productButton'
-import { AddItemIcon, DropItemIcon } from './SVGIcons'
-
+import { ProductButton } from './Button.product'
+import { AddItemIcon, DropItemIcon } from '@/components/SVGIcons'
 import { isValidRangeNumber } from '@/utils'
+
+import type { FC, ReactElement } from 'react'
 import type { Product } from 'additional'
 
-export const ProductsNumberInput: React.FC<Pick<Product, 'stock'>> = ({ stock }): React.ReactElement => {
+interface ProductsNumberInputProps extends Pick<Product, 'stock'> {}
+
+export const ProductsNumberInput: FC<ProductsNumberInputProps> = ({ stock }): ReactElement => {
   const { addItem, dropItem, reset, result } = useNumberInput(isValidRangeNumber(stock) ? stock : 0)
 
   return (

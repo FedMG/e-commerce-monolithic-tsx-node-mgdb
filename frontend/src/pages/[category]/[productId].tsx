@@ -3,26 +3,27 @@ import { getProducts } from '@/services'
 
 import { Layout } from '@/components/layout'
 import { Article } from '@/components/Article'
-import { ProductHeaderArticle } from '@/components/ProductHeaderArticle'
-import { BreadCrumbs } from '@/components/breadCrumbs'
-import { ProductBrandLogo } from '@/components/ProductBrandLogo'
-import { ProductSection } from '@/components/ProductSection'
-import { ProductHeader, ProductTitle } from '@/components/ProductHeader'
-import { ProductFigure } from '@/components/ProductFigure'
-import { ProductImage } from '@/components/Image'
-import { ProductInfo } from '@/components/ProductInfo'
-import { ProductDescription, ProductParagraph, ProductParagraphLabel } from '@/components/ProductDescription'
+import { ProductImage } from '@/components/ProductImage'
+
+import { ProductSection } from '@/modules/product/components'
+import { ProductInfo, ProductForm } from '@/modules/product/components/form'
+import { ProductHeader, ProductTitle, ProductFigure } from '@/modules/product/components/figure'
+import { ProductHeaderArticle, ProductBrandLogo, ProductBreadCrumbs } from '@/modules/product/components/header'
+import { ProductDescription, ProductParagraph, ProductParagraphLabel } from '@/modules/product/components/description'
 
 import { isValidObject } from '@/utils'
 
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import type { NextPageWithLayout } from '_app-types'
-import type { ProductProps } from 'additional'
 import type { ReactElement } from 'react'
-import { ProductForm } from '@/components/ProductForm'
+import type { Product } from 'additional'
 
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
+
+export interface ProductProps {
+  product: Product
+}
 
 const Product: NextPageWithLayout<ProductProps> = ({ product }): ReactElement | null => {
   if (!isValidObject(product)) return null
@@ -31,7 +32,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }): ReactElement | 
   return (
     <Article className={PAGE_ALIGN_BREAKPOINT} labelledby='product-title-article' describedby='product-article'>
       <ProductHeaderArticle className='bg-gray-100 shadow-sm border rounded-xl' labelledby='product-header'>
-        <BreadCrumbs category={category} brand={brand} name={name} className='border-r-none sm:border-r capitalize text-sm md:text-md font-medium text-gray-700' />
+        <ProductBreadCrumbs category={category} brand={brand} name={name} className='border-r-none sm:border-r capitalize text-sm md:text-md font-medium text-gray-700' />
         <ProductBrandLogo className='capitalize font-extrabold sm:max-md:text-2xl md:max-xl:text-3xl xl:text-4xl'>{brand}</ProductBrandLogo>
       </ProductHeaderArticle>
 

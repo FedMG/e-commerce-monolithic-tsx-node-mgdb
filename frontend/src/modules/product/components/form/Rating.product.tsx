@@ -1,9 +1,16 @@
-import { StarIcon } from './SVGIcons'
-import { Text } from './Text'
+import { StarIcon } from '@/components/SVGIcons'
+import { Text } from '@/components/Text'
 import { isValidNumber } from '@/utils'
 
-import type { ProductRatingProps, StarsRange } from 'additional'
+import type { BaseComponentProps } from '@/schemas'
 import type { ReactElement, FC } from 'react'
+
+type StarsRange = 1 | 2 | 3 | 4 | 5
+
+export interface ProductRatingProps {
+  stars: StarsRange
+  votes: number
+}
 
 const STARS_RANGE: StarsRange[] = [1, 2, 3, 4, 5]
 const DEFAULT_RATING = 0

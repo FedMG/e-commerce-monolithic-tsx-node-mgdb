@@ -1,5 +1,12 @@
 import Image from 'next/image'
-import type { ProductImageProps } from 'additional'
+
+import type { Product } from 'additional'
+import type { BaseComponentProps } from '@/schemas'
+
+type ProductImageProps = Pick<Product, 'image'> & Pick<BaseComponentProps, 'className'> & {
+  resolution: number
+  alt: string
+}
 
 export const ProductImage: React.FC<ProductImageProps> = ({ className, resolution, alt, image }) => (
   <div className='max-sm:aspect-[4/6] sm:max-lg:aspect-[4/6] lg:max-xl:aspect-[4/4] xl:max-xl:aspect-[7/5] flex justify-center align-items select-none'>

@@ -1,14 +1,20 @@
 import { useCart } from '@/hooks/useCart'
 
-import { Section } from './Section'
-import { ProductButton } from './productButton'
-import { ProductClothingColors } from './productClothingColors'
-import { ProductClothingSizes } from './productClothingSizes'
-import { ProductsNumberInput } from './productNumberInput'
-import { CartIcon } from './SVGIcons'
-import { Text } from './Text'
+import { Section } from '@/components/Section'
+import { Text } from '@/components/Text'
 
-import type { ProductFormProps } from 'additional'
+import { ProductButton } from './Button.product'
+import { ProductClothingColors } from './ClothingColors.product'
+import { ProductClothingSizes } from './ClothingSizes.product'
+import { ProductsNumberInput } from './NumberInput.product'
+import { CartIcon } from '@/components/SVGIcons'
+
+import type { Product } from 'additional'
+
+interface ProductFormProps extends Pick<Product, 'sizes' | 'colors' | 'stock'> {
+  productId: Product['_id']
+  product: Pick<Product, 'name' | 'price' | 'discount' | 'image'>
+}
 
 export const ProductForm: React.FC<ProductFormProps> = ({ productId, product, sizes, colors, stock }) => {
   const { addCartItem } = useCart()

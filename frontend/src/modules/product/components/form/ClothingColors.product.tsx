@@ -1,8 +1,10 @@
 import { isArrayOfString } from '@/utils'
 import { productColor } from '@/refs'
-import type { ProductColors } from 'additional'
 
-export const ProductClothingColors: React.FC<{ colors: ProductColors[] }> = ({ colors }): React.ReactElement | null => {
+type ProductColors = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 900' | 'stone 600' | 'slate 900' | 'white' | 'black'
+interface ProductClothingColorsProps { colors: ProductColors[] }
+
+export const ProductClothingColors: React.FC<ProductClothingColorsProps> = ({ colors }): React.ReactElement | null => {
   if (!isArrayOfString(colors)) return null
 
   return (

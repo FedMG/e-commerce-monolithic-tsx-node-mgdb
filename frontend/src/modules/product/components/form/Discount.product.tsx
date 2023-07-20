@@ -1,7 +1,9 @@
 import { getPriceWithDiscount, isNumber } from '@/utils'
-import type { Product as ProductObject } from 'additional'
+import type { Product } from 'additional'
 
-export const ProductDiscountPrice: React.FC<Pick<ProductObject, 'price' | 'discount'>> = ({ price, discount }) => {
+interface ProductDiscountPriceProps extends Pick<Product, 'price' | 'discount'> {}
+
+export const ProductDiscountPrice: React.FC<ProductDiscountPriceProps> = ({ price, discount }) => {
   if (!isNumber(discount)) {
     return (
       <div className='py-2'>
