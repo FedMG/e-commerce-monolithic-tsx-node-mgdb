@@ -1,5 +1,5 @@
 import { useSwapEvent } from '@/hooks/useSwapEvent'
-import { HeartIcon } from './SVGIcons'
+import { HeartIcon } from '@/assets'
 
 import type { HeartProps } from 'additional'
 

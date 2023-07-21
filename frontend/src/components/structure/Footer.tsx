@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedInIcon } from '../SVGIcons'
+import { GithubIcon, LinkedInIcon } from '@/assets'
 import { isArrayOfObjects } from '@/utils'
 
 import type { FooterLinkProps, FooterProps } from 'additional'

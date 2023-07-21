@@ -212,17 +212,17 @@ export interface SVGWithEventProps {
   viewBox: string
 }
 
-export interface IconsProps {
-  className: string
-}
+// export interface IconsProps {
+//   className: string
+// }
 
-export interface HeartIconProps extends IconsProps {
-  onClick: () => void
-}
+// export interface HeartIconProps extends IconsProps {
+//   onClick: () => void
+// }
 
-export interface HamburgerIconProps extends IconsProps {
-  ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
-}
+// export interface HamburgerIconProps extends IconsProps {
+//   ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
+// }
 
 // NAVIGATION
 export interface NavigationProps {

@@ -1,7 +1,19 @@
 import { SVGElement } from '@/components/SVGElement'
 
-import type { HamburgerIconProps, HeartIconProps, IconsProps } from 'additional'
-import type { FC } from 'react'
+import type { AriaAttributes, FC } from 'react'
+import type { DropUndefined } from 'utilities'
+
+interface IconsProps {
+  className: string
+}
+
+interface HeartIconProps extends IconsProps {
+  onClick: () => void
+}
+
+interface HamburgerIconProps extends IconsProps {
+  ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
+}
 
 // later check and update all ARIA-ATTRIBUTES such as role | aria-hidden | labelledby | etc...
 export const HeartIcon: React.FC<HeartIconProps> = ({ onClick, className }): React.ReactElement => (

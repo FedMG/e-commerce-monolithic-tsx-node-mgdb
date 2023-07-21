@@ -7,7 +7,7 @@ import { ProductButton } from './Button.product'
 import { ProductClothingColors } from './ClothingColors.product'
 import { ProductClothingSizes } from './ClothingSizes.product'
 import { ProductsNumberInput } from './NumberInput.product'
-import { CartIcon } from '@/components/SVGIcons'
+import { CartIcon } from '@/assets'
 
 import type { Product } from 'additional'
 

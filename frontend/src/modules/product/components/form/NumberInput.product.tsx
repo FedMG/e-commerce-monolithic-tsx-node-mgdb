@@ -1,7 +1,7 @@
 import { useNumberInput } from '../../hooks'
 
 import { ProductButton } from './Button.product'
-import { AddItemIcon, DropItemIcon } from '@/components/SVGIcons'
+import { AddItemIcon, DropItemIcon } from '@/assets'
 import { isValidRangeNumber } from '@/utils'
 
 import type { FC, ReactElement } from 'react'

@@ -1,4 +1,4 @@
-import { StarIcon } from '@/components/SVGIcons'
+import { StarIcon } from '@/assets'
 import { Text } from '@/components/Text'
 import { isValidNumber } from '@/utils'
 

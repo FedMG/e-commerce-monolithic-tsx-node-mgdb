@@ -1,7 +1,7 @@
 import { useSwapEvent } from '@/hooks/useSwapEvent'
 
 import { DropdownButton } from './Button'
-import { DownArrowIcon } from './SVGIcons'
+import { DownArrowIcon } from '@/assets'
 import { HeaderMenuList } from './headerMenuList'
 import { List } from './List'
 import { Text } from './Text'

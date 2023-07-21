@@ -4,7 +4,7 @@ import { List } from './List'
 import { Text } from './Text'
 import { LinkEventButton } from './LinkButton'
 import { HeaderMenuList } from './headerMenuList'
-import { CloseIcon, HamburgerIcon } from './SVGIcons'
+import { CloseIcon, HamburgerIcon } from '@/assets'
 import { HamburgerDropdownButton } from './Button'
 
 import { isString } from '@/utils'

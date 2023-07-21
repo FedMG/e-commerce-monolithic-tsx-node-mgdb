@@ -1,4 +1,4 @@
-import { GreaterThanIcon, HomeIcon } from '@/components/SVGIcons'
+import { GreaterThanIcon, HomeIcon } from '@/assets'
 import { Navigation } from '@/components/Navigation'
 import { LinkButton } from '@/components/LinkButton'
 import { List } from '@/components/List'
