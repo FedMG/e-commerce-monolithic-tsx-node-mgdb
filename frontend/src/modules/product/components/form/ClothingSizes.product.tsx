@@ -1,4 +1,4 @@
-import { Text } from '@/components/Text'
+import { Text } from '@/components'
 import { isArrayOfString } from '@/utils'
 
 type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'

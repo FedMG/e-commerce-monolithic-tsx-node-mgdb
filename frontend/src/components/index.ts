@@ -1,6 +1,7 @@
 export * from './templates'
 export * from './layout'
 export * from './form'
+export * from './typography'
 
 export * from './Button'
 export * from './LinkButton'

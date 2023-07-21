@@ -1,4 +1,4 @@
-import { Text } from '@/components/Text'
+import { Text } from '@/components'
 import type { BaseComponentProps } from '@/schemas'
 
 interface ProductBrandLogoProps extends BaseComponentProps {}

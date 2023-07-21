@@ -1,5 +1,5 @@
 import { StarIcon } from '@/assets'
-import { Text } from '@/components/Text'
+import { Text } from '@/components'
 import { isValidNumber } from '@/utils'
 
 import type { ReactElement, FC } from 'react'

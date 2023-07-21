@@ -1,9 +1,7 @@
-import type { AriaAttributes, ChangeEvent, FC, ReactNode } from 'react'
-import type { AddDisplayName, Callback, DropUndefined, DropUndefinedUnion } from 'utilities'
+import type { AriaAttributes, ChangeEvent, ReactNode } from 'react'
+import type { Callback, DropUndefined } from 'utilities'
 
 // Refactor for prepare to update architecture app folder
-
-export type ASElement = keyof JSX.IntrinsicElements
 
 // ALIASES
 interface AliasComponentsProps {
@@ -56,38 +54,6 @@ export interface DropdownButtonProps extends ButtonProps {
   ariaLabel: DropUndefined<AriaAttributes, 'aria-label'>
   ariaHaspopup: DropUndefined<AriaAttributes, 'aria-haspopup'>
   labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
-}
-
-// TEXT
-export interface TextProps {
-  as?: ASElement
-  children: ReactNode
-  className: string
-}
-
-export type GradientTextProps = Record<'from' | 'via' | 'to', string> & {
-  children: ReactNode
-}
-
-export interface AccessibleTextProps extends TextProps {
-  id: string
-}
-
-export interface StateTextTypeProps extends TextProps {
-  id: string
-  ariaLive: DropUndefinedUnion<AriaAttributes['aria-live']>
-}
-
-export type GradientTextType = AddDisplayName<
-  ({ from, via, to, children }: GradientTextProps) => JSX.Element
->
-export type AccessibleTextType = AddDisplayName<({ ...Params }: AccessibleTextProps) => JSX.Element>
-export type StateTextType = AddDisplayName<({ ...Params }: StateTextTypeProps) => JSX.Element>
-
-export interface NextTextType<T> extends FC<T> {
-  Gradient: GradientTextType
-  Accessible: AccessibleTextType
-  State: StateTextType
 }
 
 // User session page
