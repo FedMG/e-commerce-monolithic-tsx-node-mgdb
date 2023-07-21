@@ -270,25 +270,6 @@ export interface SessionPageProps {
   }
 }
 
-export type SessionMode = 'login' | 'register'
-
-export interface FormTypes {
-  name?: string
-  email: string
-  password: string
-}
-
-export interface SessionRequestProps {
-  form: FormTypes
-  mode: SessionMode
-}
-
-export interface UserSessionTools {
-  form: FormTypes
-  setInput: (event: ChangeEvent<HTMLInputElement>) => void
-  setSubmit: (event: FormEvent<HTMLFormElement>) => void
-}
-
 type StarsRange = 1 | 2 | 3 | 4 | 5
 
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
@@ -334,17 +315,6 @@ export interface HeartProps {
 
 // api/utils
 export type GetEndpointResponse = (extra: string) => Promise<any>
-
-export interface GetSessionRequestsResponse {
-  url: string
-  requestOptions: {
-    method: string
-    headers: {
-      'Content-Type': string
-    }
-    body: string
-  }
-}
 
 export interface APIResponse { token: string, user?: object }
 

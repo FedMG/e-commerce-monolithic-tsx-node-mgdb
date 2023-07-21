@@ -1,5 +1,5 @@
-import { useUserSessionData } from '@/hooks/useUserSessionData'
-import { FormButton, FormRow, Input, Label } from './formInput'
+import { useUserSessionData } from '@/modules/user/hooks'
+import { FormButton, FormRow, Input, Label } from '@/components/form'
 
 const registerForm = {
   name: '',

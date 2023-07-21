@@ -4,9 +4,40 @@ import { useRouter } from 'next/router'
 import CryptoJS from 'crypto-js'
 import crypto from 'crypto'
 
-import type { APIResponse, FormTypes, GetSessionRequestsResponse, SessionRequestProps, UserSessionTools } from 'additional'
 import { setRequestToTheAPI } from '@/pages/api/utils'
 import { isString } from '@/utils'
+
+type SessionMode = 'login' | 'register'
+
+interface FormTypes {
+  name?: string
+  email: string
+  password: string
+}
+
+interface SessionRequestProps {
+  form: FormTypes
+  mode: SessionMode
+}
+
+interface UserSessionTools {
+  form: FormTypes
+  setInput: (event: ChangeEvent<HTMLInputElement>) => void
+  setSubmit: (event: FormEvent<HTMLFormElement>) => void
+}
+
+interface GetSessionRequestsResponse {
+  url: string
+  requestOptions: {
+    method: string
+    headers: {
+      'Content-Type': string
+    }
+    body: string
+  }
+}
+
+interface APIResponse { token: string, user?: object }
 
 export const KEY_TOKEN = 'ecommercencrypt' + Math.random().toString(36).substring(2, 15)
 export const SECRET_KEY = crypto.randomBytes(32).toString('hex')

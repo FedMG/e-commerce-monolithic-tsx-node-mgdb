@@ -1,24 +1,6 @@
 import type { FooterLinks, HeaderLinks } from 'additional'
 import { ProductColors } from 'enums'
 
-export const SESSIONS = Object.freeze({
-  LOGIN: 'login',
-  REGISTER: 'register'
-})
-
-export const sessions = {
-  [SESSIONS.LOGIN]: {
-    title: 'Login',
-    linkName: 'register',
-    linkText: 'Are you new here? So, sign up!'
-  },
-  [SESSIONS.REGISTER]: {
-    title: 'Register',
-    linkName: 'login',
-    linkText: 'Are you already registered? So, sign in!'
-  }
-}
-
 export const productColor: Record<ProductColors, string> = Object.freeze({
   [ProductColors.ROSE_500]: 'bg-rose-500',
   [ProductColors.ORANGE_600]: 'bg-orange-600',
