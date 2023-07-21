@@ -1,12 +1,28 @@
-import { useSwapEvent } from '@/hooks/useSwapEvent'
+import { useSwapEvent } from '@/hooks'
 
-import { DropdownButton } from './Button'
+import { DropdownButton } from '@/components/Button'
 import { DownArrowIcon } from '@/assets'
-import { HeaderMenuList } from './headerMenuList'
-import { List } from './List'
-import { Text } from './Text'
+import { HeaderMenuList } from './HeaderMenuList'
+import { List } from '@/components/List'
+import { Text } from '@/components/Text'
 
-import type { HeaderDropdownProps } from 'additional'
+// later refactor
+interface Links {
+  path: string
+  name: string
+}
+
+type HeaderLinks = Links & { dropdown?: Links[] }
+
+interface HeaderPageProps {
+  links: HeaderLinks[]
+}
+
+
+interface HeaderDropdownProps extends HeaderPageProps {
+  selectOption: () => void
+  label: string
+}
 
 export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links, selectOption }) => {
   const [isDropdownOpen, openDropdown] = useSwapEvent()

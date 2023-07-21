@@ -1,4 +1,4 @@
-import { useSwapEvent } from '@/hooks/useSwapEvent'
+import { useSwapEvent } from '@/hooks'
 import { HeartIcon } from '@/assets'
 
 import type { HeartProps } from 'additional'

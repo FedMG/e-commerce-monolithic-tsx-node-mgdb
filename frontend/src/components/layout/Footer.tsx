@@ -1,7 +1,22 @@
 import { GithubIcon, LinkedInIcon } from '@/assets'
 import { isArrayOfObjects } from '@/utils'
 
-import type { FooterLinkProps, FooterProps } from 'additional'
+interface FooterLinkItem {
+  name: string
+  path: string
+}
+
+export type FooterLinks = FooterLinkItem & { links?: FooterLinkItem[] }
+
+export interface FooterProps {
+  links: FooterLinks[]
+}
+
+export interface FooterLinkProps {
+  children: React.ReactNode
+  href: string
+}
+
 
 // later refactor all this code
 const FooterLink: React.FC<FooterLinkProps> = ({ children, href = '#' }) => (

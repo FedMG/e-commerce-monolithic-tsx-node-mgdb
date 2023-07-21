@@ -1,6 +1,11 @@
 import Image from 'next/image'
-import { LinkButton } from './LinkButton'
-import type { HeaderLogoProps } from 'additional'
+import { LinkButton } from '@/components/LinkButton'
+
+interface HeaderLogoProps {
+  children: React.ReactNode
+  src: string
+  id: string
+}
 
 export const HeaderLogo: React.FC<HeaderLogoProps> = ({ children, src, id }) => (
   <LinkButton href='/' className='flex items-center' ariaLabel='Go to Homepage'>

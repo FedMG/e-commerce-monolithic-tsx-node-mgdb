@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
 import { HeaderPage } from './HeaderPage'
-import { Footer } from './structure/Footer'
+import { Footer } from './Footer'
 
-import { footerLinks, headerLinks } from '@/refs'
+import { footerLinks, headerLinks } from './refs'
 import { isString, setUpperCase } from '@/utils'
 
 import type { RootLayout } from '_app-types'

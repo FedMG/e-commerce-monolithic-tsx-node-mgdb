@@ -1,11 +1,28 @@
 import Link from 'next/link'
 
-import { List } from './List'
-import { Text } from './Text'
+import { List } from '@/components/List'
+import { Text } from '@/components/Text'
 import { HeaderDropdown } from './HeaderDropdown'
 
 import { isArrayOfObjects, isString } from '@/utils'
-import type { HeaderMenuListProps } from 'additional'
+
+// later refactor
+interface Links {
+  path: string
+  name: string
+}
+
+type HeaderLinks = Links & { dropdown?: Links[] }
+
+interface HeaderPageProps {
+  links: HeaderLinks[]
+}
+
+interface HeaderMenuListProps extends HeaderPageProps {
+  selectOption: () => void
+  bgColor?: string
+  spacing?: boolean
+}
 
 // later remove all bgColor props
 export const HeaderMenuList: React.FC<HeaderMenuListProps> = ({ links, bgColor, selectOption, spacing }) => {

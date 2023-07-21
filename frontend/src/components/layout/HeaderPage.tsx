@@ -1,12 +1,20 @@
-import { Text } from './Text'
-import { Header } from './Header'
-import { Navigation } from './Navigation'
-import { HeaderLogo } from './HeaderLogo'
-import { HeaderMenu } from './HeaderMenu'
-import { LinkButton } from './LinkButton'
-import { HeaderLinkCartButton } from './HeaderLinkCartButton'
+import { Text } from '@/components/Text'
+import { Header } from '@/components/Header'
+import { Navigation } from '@/components/Navigation'
+import { HeaderLogo, HeaderMenu, HeaderLinkCartButton } from './header'
+import { LinkButton } from '@/components/LinkButton'
 
-import type { HeaderPageProps } from 'additional'
+// later refactor
+interface Links {
+  path: string
+  name: string
+}
+
+export type HeaderLinks = Links & { dropdown?: Links[] }
+
+export interface HeaderPageProps {
+  links: HeaderLinks[]
+}
 
 // later replace with a context
 const PAGE_ALIGN_BREAKPOINT = 'px-6 sm:px-10 lg:px-16 xl:px-24 py-2.5'

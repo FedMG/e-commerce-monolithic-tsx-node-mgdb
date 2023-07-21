@@ -27,45 +27,6 @@ interface CallbackEvents {
   onMouseUpLeave: () => void
 }
 
-// HEADER
-export interface HeaderProps {
-  children: ReactNode
-  labelledlby: DropUndefined<AriaAttributes, 'aria-labelledby'>
-  className: string
-}
-
-export interface HeaderLogoProps {
-  children: ReactNode
-  src: string
-  id: string
-}
-
-interface Links {
-  path: string
-  name: string
-}
-
-export type HeaderLinks = Links & { dropdown?: Links[] }
-
-export interface HeaderPageProps {
-  links: HeaderLinks[]
-}
-
-export interface HeaderMenuProps extends HeaderPageProps {
-  bgColor: string
-}
-
-export interface HeaderMenuListProps extends HeaderPageProps {
-  selectOption: () => void
-  bgColor?: string
-  spacing?: boolean
-}
-
-export interface HeaderDropdownProps extends HeaderPageProps {
-  selectOption: () => void
-  label: string
-}
-
 // LINK-BUTTON
 export interface LinkButtonProps {
   children: ReactNode
@@ -212,40 +173,11 @@ export interface SVGWithEventProps {
   viewBox: string
 }
 
-// export interface IconsProps {
-//   className: string
-// }
-
-// export interface HeartIconProps extends IconsProps {
-//   onClick: () => void
-// }
-
-// export interface HamburgerIconProps extends IconsProps {
-//   ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
-// }
-
 // NAVIGATION
 export interface NavigationProps {
   children: ReactNode
   ariaLabel: DropUndefined<AriaAttributes, 'aria-label'>
   className: string
-}
-
-// FOOTER
-interface FooterLinkItem {
-  name: string
-  path: string
-}
-
-export type FooterLinks = FooterLinkItem & { links?: FooterLinkItem[] }
-
-export interface FooterProps {
-  links: FooterLinks[]
-}
-
-export interface FooterLinkProps {
-  children: ReactNode
-  href: string
 }
 
 // User session page

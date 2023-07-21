@@ -1,4 +1,4 @@
-import { useCart } from '@/hooks/useCart'
+import { useCart } from '@/hooks'
 
 import { Section } from '@/components/Section'
 import { Text } from '@/components/Text'

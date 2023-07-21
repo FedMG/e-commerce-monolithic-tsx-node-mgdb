@@ -1,8 +1,8 @@
-import { useCart } from '@/hooks/useCart'
+import { useCart } from '@/hooks'
 
-import { LinkButton } from './LinkButton'
+import { LinkButton } from '@/components/LinkButton'
 import { CartPageIcon } from '@/assets'
-import { Text } from './Text'
+import { Text } from '@/components/Text'
 
 export const HeaderLinkCartButton = (): React.ReactElement => {
   const { cartLength } = useCart()
