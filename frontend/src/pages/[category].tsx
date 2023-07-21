@@ -5,26 +5,41 @@ import { FC, ReactElement, useEffect, useMemo, useState } from 'react'
 // import { useInfinitePagination } from '@/hooks/useInfinitePagination'
 
 import { Layout } from '@/components/layout'
-import { ProductsCard } from '@/components/productCard'
-import { CategoryHeader, CategoryHeaderInfo } from '@/components/categoryHeader'
-import { CategoryDiscountFilter } from '@/components/categoryDiscountFilter'
-import { CategorySearchFilter } from '@/components/categorySearchFilter'
-import { CategoryBrandFilter } from '@/components/categoryBrandFilter'
-import { CategoryRatingFilter } from '@/components/categorySortFilter'
 import { Drawer } from '@/components/Drawer'
+
+import { ProductsCard } from '@/modules/category/components/card'
+import { CategoryHeader, CategoryHeaderInfo } from '@/modules/category/components/header'
+import { CategoryDiscountFilter, CategorySearchFilter, CategoryBrandFilter, CategoryRatingFilter } from '@/modules/category/components/filters'
 
 import { getEndpoint } from './api/utils'
 import { isArrayOfObjects, isValidCategory } from '@/utils'
 import { filterStructure } from '@/refs'
 
-import type { CategoryProps, ChildrenNode, FilterFunction, ProductSortFunction } from 'additional'
+import type { Product } from 'additional'
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { NextPageWithLayout } from '_app-types'
-import { SortBy } from 'enums'
+import type { BaseComponentProps } from '@/schemas'
 
 const ITEMS_DISPLAYED = 12
 
-const CategoryFilters: FC<ChildrenNode> = ({ children }): ReactElement => (
+export enum SortBy {
+  DATE = 'date',
+  RATING = 'rating',
+  PRICE = 'price'
+}
+
+interface CategoryProps {
+  products: Product[]
+  discounts: number[]
+  brands: string[]
+  currentCategory: string
+}
+
+type ProductSortFunction = (a: Product, b: Product) => number
+type FilterFunction = ((product: Product) => boolean)
+type CategoryFiltersProp = Pick<BaseComponentProps, 'children'>
+
+const CategoryFilters: FC<CategoryFiltersProp> = ({ children }): ReactElement => (
   <div className='sticky top-0 left-0 right-0 lg:relative col-span-12 lg:col-span-4 border-b border-x lg:border lg:shadow bg-gray-100 rounded-b lg:rounded z-40'>
     <div className='flex lg:flex-col lg:gap-y-7 p-2 lg:p-0 lg:pb-8 lg:pl-6 lg:pr-4 text-gray-700 h-full xs:justify-between lg:justify-normal'>
       {children}

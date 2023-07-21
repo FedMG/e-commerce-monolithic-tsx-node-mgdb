@@ -1,5 +1,22 @@
 import { useEffect, useState } from 'react'
-import type { CategorySearchFilterProps } from 'additional'
+import type { Product } from 'additional'
+
+// later refactor
+type FilterFunction = ((product: Product) => boolean)
+
+interface CategoryProps {
+  products: Product[]
+  discounts: number[]
+  brands: string[]
+  currentCategory: string
+}
+
+interface CategoryNextFilterProps {
+  onChange: (filter: FilterFunction | null) => void
+  currentCategory: CategoryProps['currentCategory']
+}
+
+type CategorySearchFilterProps = CategoryNextFilterProps
 
 export const CategorySearchFilter: React.FC<CategorySearchFilterProps> = ({ onChange, currentCategory }) => {
   const [productSearch, setSearch] = useState('')

@@ -1,5 +1,14 @@
-import type { CategorySortFilterProps } from 'additional'
-import { SortBy } from 'enums'
+
+enum SortBy {
+  DATE = 'date',
+  RATING = 'rating',
+  PRICE = 'price'
+}
+
+interface CategorySortFilterProps {
+  onChange: (sortType: SortBy) => void
+  sortBy: SortBy
+}
 
 export const CategoryRatingFilter: React.FC<CategorySortFilterProps> = ({ onChange, sortBy }) => {
   const productSortedHandler = (e: React.ChangeEvent<HTMLSelectElement>): void => {

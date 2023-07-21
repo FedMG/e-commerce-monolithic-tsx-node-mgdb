@@ -1,6 +1,5 @@
 import type { AriaAttributes, AriaRole, ChangeEvent, FC, FormEvent, ReactElement, ReactNode } from 'react'
 import type { AddDisplayName, AddOptional, Callback, DropUndefined, DropUndefinedUnion } from 'utilities'
-import { SortBy } from 'enums'
 
 // Refactor for prepare to update architecture app folder
 
@@ -290,12 +289,6 @@ export interface UserSessionTools {
   setSubmit: (event: FormEvent<HTMLFormElement>) => void
 }
 
-// About page
-// export interface CreateBlobProps {
-//   children: ReactElement
-//   className: string
-// }
-
 type StarsRange = 1 | 2 | 3 | 4 | 5
 
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
@@ -330,93 +323,14 @@ export interface Product {
   __v: number
 }
 
-// Category page
-export type ProductSortFunction = (a: Product, b: Product) => number
-type FilterFunction = ((product: Product) => boolean)
-
-export interface CategoryProps {
-  products: Product[]
-  discounts: number[]
-  brands: string[]
-  currentCategory: string
-}
-
-export interface CategoryNextFilterProps {
-  onChange: (filter: FilterFunction | null) => void
-  currentCategory: CategoryProps['currentCategory']
-}
-
-export type CategorySearchFilterProps = CategoryNextFilterProps
-export type CategoryHeaderProps = ChildrenNode
-export interface CategoryHeaderInfoProps {
-  productsNumber: number
-  currentCategory: CategoryProps['currentCategory']
-}
-
-export interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
-  brands: string[]
-}
-
-export interface CategorySortFilterProps {
-  onChange: (sortType: SortBy) => void
-  sortBy: SortBy
-}
-
-export interface CategoryDiscountsFilterProps extends CategoryNextFilterProps {
-  discounts: number[]
-}
-
-// Product id page
-// export interface ProductProps {
-//   product: Product
-// }
-
 // Product cards
 export interface ProductCardProps {
   element: Pick<Product, 'name' | 'rating' | 'price' | 'discount' | 'image'>
 }
 
-export interface DiscountInfoProps {
-  children: ReactElement[]
-  discount?: number
-  price: number
-}
-
-// export type ProductButtonProps = AddOptional<ChildrenNode> & AddOptional<CallbackEvents> & {
-//   name?: string
-//   rounded?: string
-// }
-
-// export type ProductHeaderProps = AliasComponentsProps & Pick<Product, 'rating'>
-// export type ProductTitleProps = AliasComponentsProps
-
 export interface HeartProps {
   className?: AliasComponentsProps['className']
 }
-
-// export type BreadCrumbProps = Pick<Product, 'category' | 'brand' | 'name'> & Pick<AliasComponentsProps, 'className'>
-// export type ProductHeaderArticleProps = AliasComponentsProps & {
-//   labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
-// }
-// export type ProductImageProps = Pick<Product, 'image'> & Pick<AliasComponentsProps, 'className'> & {
-//   resolution: number
-//   alt: string
-// }
-// export type ProductParagraphProps = Pick<Product, 'description'> & Pick<AliasComponentsProps, 'className'>
-
-// export type ProductFigureProps = AliasComponentsProps
-// export type ProductDescriptionProps = AliasComponentsProps
-// export type ProductParagraphLabelProps = AliasComponentsProps
-// export type ProductBrandLogoProps = AliasComponentsProps
-// export type ProductInfoProps = Pick<Product, 'name' | 'price' | 'rating' | 'discount'> & AliasComponentsProps
-// export type ProductFormProps = Pick<Product, 'sizes' | 'colors' | 'stock'> & {
-//   productId: Product['_id']
-//   product: Pick<Product, 'name' | 'price' | 'discount' | 'image'>
-// }
-
-// export type ProductSectionProps = Pick<AliasComponentsProps, 'children'> & {
-//   id: string
-// }
 
 // api/utils
 export type GetEndpointResponse = (extra: string) => Promise<any>

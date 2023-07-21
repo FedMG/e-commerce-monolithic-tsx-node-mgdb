@@ -1,9 +1,3 @@
-export enum SortBy {
-  DATE = 'date',
-  RATING = 'rating',
-  PRICE = 'price'
-}
-
 export enum ProductColors {
   ROSE_500 = 'rose 500',
   ORANGE_600 = 'orange 600',

@@ -1,10 +1,14 @@
 import Image from 'next/image'
 
-import { ProductCardDiscountInfo } from './productCardDiscountInfo'
+import { ProductCardDiscountInfo } from './ProductDiscountInfo.category'
 import { getPriceWithDiscount } from '@/utils'
 
-import type { ProductCardProps } from 'additional'
+import type { Product } from 'additional'
 import type { FC, ReactElement } from 'react'
+
+interface ProductCardProps {
+  element: Pick<Product, 'name' | 'rating' | 'price' | 'discount' | 'image'>
+}
 
 export const ProductsCard: FC<ProductCardProps> = ({ element: { name, image, price, discount, rating } }): ReactElement => (
   <div className='h-full max-h-[430px] flex flex-col bg-gray-100 border shadow-sm hover:shadow-md rounded-sm hover:bg-gray-200 hover:rounded-sm transition-transform transform duration-[100ms] easy-in-out hover:scale-[1.03]'>

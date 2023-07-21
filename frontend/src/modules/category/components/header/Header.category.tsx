@@ -1,4 +1,26 @@
-import { CategoryHeaderProps, CategoryHeaderInfoProps } from 'additional'
+import type { BaseComponentProps } from '@/schemas'
+import type { Product } from 'additional'
+
+// later refactor
+type FilterFunction = ((product: Product) => boolean)
+
+interface CategoryProps {
+  products: Product[]
+  discounts: number[]
+  brands: string[]
+  currentCategory: string
+}
+
+interface CategoryNextFilterProps {
+  onChange: (filter: FilterFunction | null) => void
+  currentCategory: CategoryProps['currentCategory']
+}
+
+type CategoryHeaderProps = Pick<BaseComponentProps, 'children'>
+interface CategoryHeaderInfoProps {
+  productsNumber: number
+  currentCategory: CategoryProps['currentCategory']
+}
 
 export const CategoryHeader: React.FC<CategoryHeaderProps> = ({ children }) => {
   return (

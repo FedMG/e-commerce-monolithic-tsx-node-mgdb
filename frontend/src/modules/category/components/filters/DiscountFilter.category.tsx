@@ -1,7 +1,26 @@
 import { useEffect, useState } from 'react'
 
 import { isArrayOfPrimitives, isNumber } from '@/utils'
-import type { CategoryDiscountsFilterProps } from 'additional'
+import { Product } from 'additional'
+
+// later refactor
+type FilterFunction = ((product: Product) => boolean)
+
+interface CategoryProps {
+  products: Product[]
+  discounts: number[]
+  brands: string[]
+  currentCategory: string
+}
+
+interface CategoryNextFilterProps {
+  onChange: (filter: FilterFunction | null) => void
+  currentCategory: CategoryProps['currentCategory']
+}
+
+interface CategoryDiscountsFilterProps extends CategoryNextFilterProps {
+  discounts: number[]
+}
 
 export const CategoryDiscountFilter: React.FC<CategoryDiscountsFilterProps> = ({ onChange, discounts, currentCategory }) => {
   const [selecteds, setSelected] = useState<Set<number>>(() => new Set())

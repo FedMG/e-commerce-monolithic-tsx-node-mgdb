@@ -1,71 +1,57 @@
 {
+  // These tasks will run in order when initializing your CodeSandbox project.
   "setupTasks": [
     {
-      "name": "Install Root Dependencies",
+      "name": "Install Dependencies",
       "command": "yarn install"
-    },
-    {
-        "name": "Install Frontend Dependencies",
-        "command": "cd frontend && yarn install"
-    },
-    {
-        "name": "Install Backend Dependencies",
-        "command": "cd backend && yarn install"
     }
   ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
   "tasks": {
     "backend:dev": {
-      "name": "Backend dev",
-      "command": "cd backend && yarn dev",
-      "runAtStart": false,
-    //   "preview": {
-    //     "port": 4000
-    //   }
+      "name": "backend:dev",
+      "command": "yarn backend:dev",
+      "runAtStart": false
     },
     "backend:lint": {
-      "name": "Backend Lint",
-      "command": "cd backend && yarn lint",
+      "name": "backend:lint",
+      "command": "yarn backend:lint",
       "runAtStart": false
     },
     "backend:lint:fix": {
-      "name": "Backend Lint Fix",
-      "command": "cd backend && yarn lint:fix",
+      "name": "backend:lint:fix",
+      "command": "yarn backend:lint:fix",
       "runAtStart": false
-    },    
+    },
     "frontend:dev": {
-      "name": "Frontend dev",
-      "command": "cd frontend && yarn dev",
-      "runAtStart": false,
-    //   "preview": {
-    //     "port": 3000
-    //   }
+      "name": "frontend:dev",
+      "command": "yarn frontend:dev",
+      "runAtStart": false
     },
     "frontend:build": {
-      "name": "Frontend Build",
-      "command": "cd frontend && yarn build",
-      "runAtStart": false
+      "name": "frontend:build",
+      "command": "yarn frontend:build",
+      "runAtStart": true
     },
     "frontend:start": {
-      "name": "Frontend Start",
-      "command": "cd frontend && yarn start",
-      "runAtStart": false,
-    //   "preview": {
-    //     "port": 3000
-    //   }
+      "name": "frontend:start",
+      "command": "yarn frontend:start",
+      "runAtStart": false
     },
     "frontend:lint": {
-      "name": "Frontend Lint",
-      "command": "cd frontend && yarn lint",
+      "name": "frontend:lint",
+      "command": "yarn frontend:lint",
       "runAtStart": false
     },
     "frontend:ts:lint": {
-      "name": "Frontend TS Lint",
-      "command": "cd frontend && yarn ts:lint",
+      "name": "frontend:ts:lint",
+      "command": "yarn frontend:ts:lint",
       "runAtStart": false
     },
     "frontend:ts:lint:fix": {
-      "name": "Frontend TS Lint Fix",
-      "command": "cd frontend && yarn ts:lint:fix",
+      "name": "frontend:ts:lint:fix",
+      "command": "yarn frontend:ts:lint:fix",
       "runAtStart": false
     }
   }

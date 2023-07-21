@@ -1,5 +1,10 @@
 import type { FC, ReactElement } from 'react'
-import type { DiscountInfoProps } from 'additional'
+
+interface DiscountInfoProps {
+  children: ReactElement[]
+  discount?: number
+  price: number
+}
 
 export const ProductCardDiscountInfo: FC<DiscountInfoProps> = ({ children, discount, price }): ReactElement | null => {
   if (children == null) return null
