@@ -1,5 +1,5 @@
 import { Text } from '@/components/Text'
-import { Section } from '@/components/Section'
+import { Section } from '@/components/templates'
 
 import type { BaseComponentProps } from '@/schemas'
 import type { Product } from 'additional'

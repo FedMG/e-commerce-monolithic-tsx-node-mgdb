@@ -2,7 +2,6 @@ import { StarIcon } from '@/assets'
 import { Text } from '@/components/Text'
 import { isValidNumber } from '@/utils'
 
-import type { BaseComponentProps } from '@/schemas'
 import type { ReactElement, FC } from 'react'
 
 type StarsRange = 1 | 2 | 3 | 4 | 5

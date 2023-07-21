@@ -1,7 +1,7 @@
-import { Section } from '@/components/Section'
+import { Section } from '@/components/templates'
 import { ProductHeader, ProductTitle } from '../figure'
 import { ProductDiscountPrice } from './Discount.product'
-import { Heart } from '@/components/heart'
+import { Heart } from '@/components'
 
 import type { BaseComponentProps } from '@/schemas'
 import type { Product } from 'additional'

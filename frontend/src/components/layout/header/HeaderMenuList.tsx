@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { List } from '@/components/List'
+import { List } from '@/components/templates'
 import { Text } from '@/components/Text'
 import { HeaderDropdown } from './HeaderDropdown'
 

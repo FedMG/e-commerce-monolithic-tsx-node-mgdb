@@ -3,7 +3,7 @@ import { useSwapEvent } from '@/hooks'
 import { DropdownButton } from '@/components/Button'
 import { DownArrowIcon } from '@/assets'
 import { HeaderMenuList } from './HeaderMenuList'
-import { List } from '@/components/List'
+import { List } from '@/components/templates'
 import { Text } from '@/components/Text'
 
 // later refactor

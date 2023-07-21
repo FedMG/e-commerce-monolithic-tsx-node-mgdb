@@ -2,7 +2,7 @@ import { VALID_DOMAIN } from '@/environment'
 import { getProducts } from '@/services'
 
 import { Layout } from '@/components/layout'
-import { Article } from '@/components/Article'
+import { Article } from '@/components/templates'
 import { ProductImage } from '@/components/ProductImage'
 
 import { ProductSection } from '@/modules/product/components'

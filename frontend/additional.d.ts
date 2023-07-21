@@ -1,5 +1,5 @@
-import type { AriaAttributes, AriaRole, ChangeEvent, FC, FormEvent, ReactElement, ReactNode } from 'react'
-import type { AddDisplayName, AddOptional, Callback, DropUndefined, DropUndefinedUnion } from 'utilities'
+import type { AriaAttributes, ChangeEvent, FC, ReactNode } from 'react'
+import type { AddDisplayName, Callback, DropUndefined, DropUndefinedUnion } from 'utilities'
 
 // Refactor for prepare to update architecture app folder
 
@@ -39,35 +39,6 @@ export interface LinkEventButtonProps extends LinkButtonProps {
   onClick: () => void
 }
 
-// LIST
-export interface ListProps {
-  children: ReactNode
-  className: string
-  role: AriaRole
-}
-
-export interface ListMainProps extends ListProps {
-  ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
-  as?: ASElement
-  id: string
-}
-
-export interface ListItemEventProps extends ListProps {
-  onClick: () => void
-}
-
-export interface ListItemProps extends ListProps {
-  ariaCurrent: DropUndefined<AriaAttributes, 'aria-current'>
-}
-
-type ItemListType = AddDisplayName<({ ...Params }: ListItemProps) => ReactElement>
-type ItemListEventType = AddDisplayName<({ ...Params }: ListItemEventProps) => ReactElement>
-
-interface NextListType<T> extends FC<T> {
-  Item: ItemListType
-  ItemEvent: ItemListEventType
-}
-
 // BUTTON
 export interface ButtonProps {
   children: ReactNode
@@ -85,31 +56,6 @@ export interface DropdownButtonProps extends ButtonProps {
   ariaLabel: DropUndefined<AriaAttributes, 'aria-label'>
   ariaHaspopup: DropUndefined<AriaAttributes, 'aria-haspopup'>
   labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
-}
-
-// ARTICLE
-export type ArticleProps = AliasComponentsProps & {
-  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
-  describedby: DropUndefined<AriaAttributes, 'aria-describedby'>
-}
-
-// SECTION
-export type SectionProps = AliasComponentsProps & {
-  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
-  describedby: DropUndefined<AriaAttributes, 'aria-describedby'>
-}
-
-// later refactor types
-type AccessibleSectionProps = AliasComponentsProps & {
-  labelledby?: AriaAttributes['aria-labelledby']
-  role?: AriaRole
-  id?: string
-}
-
-export type AccessibleSectionType = AddDisplayName<({ ...Params }: AccessibleSectionProps) => ReactElement>
-
-export interface NextSectionType<T> extends FC<T> {
-  Accessible: AccessibleSectionType
 }
 
 // TEXT
@@ -132,7 +78,9 @@ export interface StateTextTypeProps extends TextProps {
   ariaLive: DropUndefinedUnion<AriaAttributes['aria-live']>
 }
 
-export type GradientTextType = AddDisplayName<({ from, via, to, children }: GradientTextProps) => JSX.Element>
+export type GradientTextType = AddDisplayName<
+  ({ from, via, to, children }: GradientTextProps) => JSX.Element
+>
 export type AccessibleTextType = AddDisplayName<({ ...Params }: AccessibleTextProps) => JSX.Element>
 export type StateTextType = AddDisplayName<({ ...Params }: StateTextTypeProps) => JSX.Element>
 
@@ -140,44 +88,6 @@ export interface NextTextType<T> extends FC<T> {
   Gradient: GradientTextType
   Accessible: AccessibleTextType
   State: StateTextType
-}
-
-// SVG
-interface PathProps { d: string }
-interface TitleProps { title: string }
-
-export type PathSVGType = AddDisplayName<({ d }: PathProps) => ReactElement>
-export type WithSVGEventType = AddDisplayName<({ ...Params }: SVGWithEventProps) => ReactElement>
-export type TitleSVGType = AddDisplayName<({ title }: TitleProps) => ReactElement>
-
-export interface NextSVGType<T> extends FC<T> {
-  Path: PathSVGType
-  WithEvent: WithSVGEventType
-  Title: TitleSVGType
-}
-
-export interface SVGElementProps {
-  children: ReactNode
-  role: string
-  className: string
-  ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
-  viewBox: string
-  labelledby: string // check
-}
-
-export interface SVGWithEventProps {
-  children: ReactNode
-  onClick: () => void
-  className: string
-  role: string
-  viewBox: string
-}
-
-// NAVIGATION
-export interface NavigationProps {
-  children: ReactNode
-  ariaLabel: DropUndefined<AriaAttributes, 'aria-label'>
-  className: string
 }
 
 // User session page
@@ -205,7 +115,21 @@ export interface SessionPageProps {
 type StarsRange = 1 | 2 | 3 | 4 | 5
 
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
-export type ProductColors = 'rose 500' | 'orange 600' | 'yellow 400' | 'lime 400' | 'green 500' | 'cyan 600' | 'violet 600' | 'fuchsia 500' | 'pink 600' | 'neutral 900' | 'stone 600' | 'slate 900' | 'white' | 'black'
+export type ProductColors =
+  | 'rose 500'
+  | 'orange 600'
+  | 'yellow 400'
+  | 'lime 400'
+  | 'green 500'
+  | 'cyan 600'
+  | 'violet 600'
+  | 'fuchsia 500'
+  | 'pink 600'
+  | 'neutral 900'
+  | 'stone 600'
+  | 'slate 900'
+  | 'white'
+  | 'black'
 
 export interface ProductRatingProps {
   stars: StarsRange
@@ -248,7 +172,10 @@ export interface HeartProps {
 // api/utils
 export type GetEndpointResponse = (extra: string) => Promise<any>
 
-export interface APIResponse { token: string, user?: object }
+export interface APIResponse {
+  token: string
+  user?: object
+}
 
 // hooks
 export interface useNumberInputResult {

@@ -1,4 +1,4 @@
-import { SVGElement } from '@/components/SVGElement'
+import { SVGElement } from '@/components/templates'
 
 import type { AriaAttributes, FC } from 'react'
 import type { DropUndefined } from 'utilities'

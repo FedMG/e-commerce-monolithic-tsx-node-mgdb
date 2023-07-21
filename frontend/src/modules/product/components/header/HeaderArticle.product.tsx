@@ -1,4 +1,4 @@
-import { Header } from '@/components/Header'
+import { Header } from '@/components/templates'
 
 import type { AriaAttributes, FC, ReactElement } from 'react'
 import type { BaseComponentProps } from '@/schemas'

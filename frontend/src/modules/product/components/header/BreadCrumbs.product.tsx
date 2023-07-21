@@ -1,7 +1,6 @@
 import { GreaterThanIcon, HomeIcon } from '@/assets'
-import { Navigation } from '@/components/Navigation'
-import { LinkButton } from '@/components/LinkButton'
-import { List } from '@/components/List'
+import { Navigation, List } from '@/components/templates'
+import { LinkButton } from '@/components'
 import { Text } from '@/components/Text'
 
 import type { Product } from 'additional'

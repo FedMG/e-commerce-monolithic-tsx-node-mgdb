@@ -1,5 +1,5 @@
 import { ProductRating } from '../form'
-import { Header } from '@/components/Header'
+import { Header } from '@/components/templates'
 import { Text } from '@/components/Text'
 
 import type { BaseComponentProps } from '@/schemas'

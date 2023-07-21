@@ -1,4 +1,4 @@
-import { useNumberInput } from '../../hooks'
+import { useNumberInput } from '@/modules/product/hooks'
 
 import { ProductButton } from './Button.product'
 import { AddItemIcon, DropItemIcon } from '@/assets'

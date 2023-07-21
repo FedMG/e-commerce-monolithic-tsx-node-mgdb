@@ -1,6 +1,5 @@
 import { Text } from '@/components/Text'
-import { Header } from '@/components/Header'
-import { Navigation } from '@/components/Navigation'
+import { Header, Navigation } from '@/components/templates'
 import { HeaderLogo, HeaderMenu, HeaderLinkCartButton } from './header'
 import { LinkButton } from '@/components/LinkButton'
 

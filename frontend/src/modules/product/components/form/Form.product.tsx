@@ -1,6 +1,6 @@
 import { useCart } from '@/hooks'
 
-import { Section } from '@/components/Section'
+import { Section } from '@/components/templates'
 import { Text } from '@/components/Text'
 
 import { ProductButton } from './Button.product'
