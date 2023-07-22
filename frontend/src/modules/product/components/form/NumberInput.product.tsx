@@ -5,7 +5,7 @@ import { AddItemIcon, DropItemIcon } from '@/assets'
 import { isValidRangeNumber } from '@/utils'
 
 import type { FC, ReactElement } from 'react'
-import type { Product } from 'additional'
+import type { Product } from '@/models'
 
 interface ProductsNumberInputProps extends Pick<Product, 'stock'> {}
 

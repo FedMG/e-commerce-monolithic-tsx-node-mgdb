@@ -4,7 +4,7 @@ import { ProductDiscountPrice } from './Discount.product'
 import { Heart } from '@/components'
 
 import type { BaseComponentProps } from '@/schemas'
-import type { Product } from 'additional'
+import type { Product } from '@/models'
 
 type ProductInfoProps = Pick<Product, 'name' | 'price' | 'rating' | 'discount'> & BaseComponentProps
 

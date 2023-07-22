@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { ProductCardDiscountInfo } from './ProductDiscountInfo.category'
 import { getPriceWithDiscount } from '@/utils'
 
-import type { Product } from 'additional'
 import type { FC, ReactElement } from 'react'
+import { Product } from '@/models'
 
 interface ProductCardProps {
   element: Pick<Product, 'name' | 'rating' | 'price' | 'discount' | 'image'>

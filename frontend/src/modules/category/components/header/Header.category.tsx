@@ -1,11 +1,11 @@
 import type { BaseComponentProps } from '@/schemas'
-import type { Product } from 'additional'
+import type { ProductCard } from '@/models'
 
 // later refactor
-type FilterFunction = ((product: Product) => boolean)
+type FilterFunction = ((product: ProductCard) => boolean)
 
 interface CategoryProps {
-  products: Product[]
+  products: ProductCard[]
   discounts: number[]
   brands: string[]
   currentCategory: string

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import type { Product } from 'additional'
 import type { BaseComponentProps } from '@/schemas'
+import { Product } from '@/models'
 
 type ProductImageProps = Pick<Product, 'image'> & Pick<BaseComponentProps, 'className'> & {
   resolution: number

@@ -11,14 +11,15 @@ import { ProductsCard } from '@/modules/category/components/card'
 import { CategoryHeader, CategoryHeaderInfo } from '@/modules/category/components/header'
 import { CategoryDiscountFilter, CategorySearchFilter, CategoryBrandFilter, CategoryRatingFilter } from '@/modules/category/components/filters'
 
-import { getEndpoint } from './api/utils'
-import { isArrayOfObjects, isValidCategory } from '@/utils'
+import { isArrayOfObjects } from '@/utils'
 import { filterStructure } from '@/refs'
 
-import type { Product } from 'additional'
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { NextPageWithLayout } from '_app-types'
 import type { BaseComponentProps } from '@/schemas'
+import { fetchAllProductData } from '@/services'
+import type { ProductCard } from '@/models'
+import { isValidCategory } from '@/utils/isValidCategory.utility'
 
 const ITEMS_DISPLAYED = 12
 
@@ -29,14 +30,14 @@ export enum SortBy {
 }
 
 interface CategoryProps {
-  products: Product[]
+  products: ProductCard[]
   discounts: number[]
   brands: string[]
   currentCategory: string
 }
 
-type ProductSortFunction = (a: Product, b: Product) => number
-type FilterFunction = ((product: Product) => boolean)
+type ProductSortFunction = (a: ProductCard, b: ProductCard) => number
+type FilterFunction = ((product: ProductCard) => boolean)
 type CategoryFiltersProp = Pick<BaseComponentProps, 'children'>
 
 const CategoryFilters: FC<CategoryFiltersProp> = ({ children }): ReactElement => (
@@ -50,9 +51,9 @@ const CategoryFilters: FC<CategoryFiltersProp> = ({ children }): ReactElement =>
 const CategoryProducts: FC<Pick<CategoryProps, 'products'>> = ({ products }): ReactElement => (
   <div className='pt-6 lg:pt-0 grid grid-cols-12 col-span-12 lg:col-span-8 gap-x-4 gap-y-6 md:gap-6'>
     {isArrayOfObjects(products) &&
-      products.map(({ _id, name, price, category, rating, image, discount }) => (
-        <div key={_id} className='col-span-12 min-[320px]:col-span-6 min-[500px]:col-span-4 sm:col-span-4 md:col-span-3 lg:col-span-4 xl:col-span-4'>
-          <Link href='/[category]/[productId]' as={`/${category}/${_id}`}>
+      products.map(({ id, name, price, category, rating, image, discount }) => (
+        <div key={id} className='col-span-12 min-[320px]:col-span-6 min-[500px]:col-span-4 sm:col-span-4 md:col-span-3 lg:col-span-4 xl:col-span-4'>
+          <Link href='/[category]/[productId]' as={`/${category}/${id}`}>
             <ProductsCard element={{ name, price, rating, image, discount }} />
           </Link>
         </div>
@@ -129,26 +130,22 @@ export async function getServerSideProps ({ params }: GetServerSidePropsContext)
   if (VALID_DOMAIN === undefined) return { notFound: true }
 
   const category = params?.category ?? undefined
-  if (category === undefined || !isValidCategory(category)) return { notFound: true }
+  if (category === undefined || !isValidCategory(category))  return { notFound: true }
   const encodedCategory = encodeURI(category)
 
-  const getProductData = getEndpoint(`${VALID_DOMAIN}/api/v1/products`)
   try {
     // Implement AbortController
-    const [brands, discounts, { products }] = await Promise.all([
-      getProductData(`/${encodedCategory}/brand`),
-      getProductData(`/${encodedCategory}/discount`),
-      getProductData(`?text=category=${encodedCategory}&limit=${ITEMS_DISPLAYED}`)
-    ])
+    const [brands, discounts, products] = await fetchAllProductData(encodedCategory)
 
     return {
       props: {
         products,
-        discounts: [...discounts.uniqueValues],
-        brands: [...brands.uniqueValues],
+        discounts,
+        brands,
         currentCategory: category
       }
     }
+
   } catch (error) {
     return { notFound: true }
   }

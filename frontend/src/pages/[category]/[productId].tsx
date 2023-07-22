@@ -1,5 +1,5 @@
 import { VALID_DOMAIN } from '@/environment'
-import { getProducts } from '@/services'
+import { getProducts } from '@/service'
 
 import { Layout } from '@/components/layout'
 import { Article } from '@/components/templates'
@@ -17,7 +17,7 @@ import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import type { NextPageWithLayout } from '_app-types'
 import type { ReactElement } from 'react'
-import type { Product } from 'additional'
+import { Product } from '@/models'
 
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
 
@@ -27,7 +27,7 @@ export interface ProductProps {
 
 const Product: NextPageWithLayout<ProductProps> = ({ product }): ReactElement | null => {
   if (!isValidObject(product)) return null
-  const { _id, name, brand, category, description, image, colors, sizes, stock, price, discount, rating } = product
+  const { id, name, brand, category, description, image, colors, sizes, stock, price, discount, rating } = product
 
   return (
     <Article className={PAGE_ALIGN_BREAKPOINT} labelledby='product-title-article' describedby='product-article'>
@@ -45,7 +45,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }): ReactElement | 
         </ProductFigure>
 
         <ProductInfo className='bg-gray-100 border shadow-sm rounded-b-xl sm:rounded-xl' {...{ name, rating, price, discount }}>
-          <ProductForm productId={_id} product={{ name, image, price, discount }} sizes={sizes} colors={colors} stock={stock} />
+          <ProductForm productId={id} product={{ name, image, price, discount }} sizes={sizes} colors={colors} stock={stock} />
         </ProductInfo>
 
         <ProductDescription className='bg-gray-100 rounded-xl shadow-sm border'>

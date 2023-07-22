@@ -1,5 +1,5 @@
 import { getPriceWithDiscount, isNumber } from '@/utils'
-import type { Product } from 'additional'
+import type { Product } from '@/models'
 
 interface ProductDiscountPriceProps extends Pick<Product, 'price' | 'discount'> {}
 

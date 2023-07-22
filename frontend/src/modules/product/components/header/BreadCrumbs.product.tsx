@@ -1,7 +1,7 @@
 import { GreaterThanIcon, HomeIcon } from '@/assets'
 import { Navigation, List, Text, LinkButton } from '@/components'
 
-import type { Product } from 'additional'
+import type { Product } from '@/models'
 import type { BaseComponentProps } from '@/schemas'
 
 type ProductBreadCrumbProps = Pick<Product, 'category' | 'brand' | 'name'> & Pick<BaseComponentProps, 'className'>

@@ -8,10 +8,10 @@ import { ProductClothingSizes } from './ClothingSizes.product'
 import { ProductsNumberInput } from './NumberInput.product'
 import { CartIcon } from '@/assets'
 
-import type { Product } from 'additional'
+import type { Product } from '@/models'
 
 interface ProductFormProps extends Pick<Product, 'sizes' | 'colors' | 'stock'> {
-  productId: Product['_id']
+  productId: Product['id']
   product: Pick<Product, 'name' | 'price' | 'discount' | 'image'>
 }
 
