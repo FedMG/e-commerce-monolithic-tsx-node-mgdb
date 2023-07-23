@@ -4,10 +4,10 @@ import { ProductCardDiscountInfo } from './ProductDiscountInfo.category'
 import { getPriceWithDiscount } from '@/utils'
 
 import type { FC, ReactElement } from 'react'
-import { Product } from '@/models'
+import { ProductCard } from '@/models'
 
 interface ProductCardProps {
-  element: Pick<Product, 'name' | 'rating' | 'price' | 'discount' | 'image'>
+  element: Pick<ProductCard, 'name' | 'rating' | 'price' | 'discount' | 'image'>
 }
 
 export const ProductsCard: FC<ProductCardProps> = ({ element: { name, image, price, discount, rating } }): ReactElement => (

@@ -1,53 +1,14 @@
-import { useEffect, useState } from 'react'
-
+import { useBrandFilter } from '@/modules/category/hooks'
 import { isArrayOfPrimitives, setUpperCase } from '@/utils'
-import { ProductCard } from '@/models'
-
-
-// later refactor
-type FilterFunction = ((product: ProductCard) => boolean)
-
-interface CategoryProps {
-  products: ProductCard[]
-  discounts: number[]
-  brands: string[]
-  currentCategory: string
-}
-
-interface CategoryNextFilterProps {
-  onChange: (filter: FilterFunction | null) => void
-  currentCategory: CategoryProps['currentCategory']
-}
+import type { CategoryNextFilterProps } from '../../schemas'
 
 interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
   brands: string[]
 }
 
 export const CategoryBrandFilter: React.FC<CategoryBrandsFilterProps> = ({ brands, onChange, currentCategory }): React.ReactElement => {
-  const [selecteds, setSelected] = useState<Set<string>>(() => new Set())
-
-  const handleChange = (brandName: string, isChecked: boolean): void => {
-    const selectedBrands = structuredClone(selecteds)
-
-    if (isChecked) {
-      selectedBrands.add(brandName)
-    } else {
-      selectedBrands.delete(brandName)
-    }
-
-    if (selectedBrands.size > 0) {
-      onChange(product => selectedBrands.has(product.brand))
-      setSelected(selectedBrands)
-      return undefined
-    }
-    onChange(null)
-    setSelected(selectedBrands)
-  }
-
-  useEffect(() => {
-    setSelected(() => new Set())
-  }, [currentCategory])
-
+  const { handleChange, selecteds } = useBrandFilter({onChange, currentCategory})
+  
   return (
     <div className='flex flex-col'>
       <span className='text-gray-700 font-semibold mb-2'>Brands</span>

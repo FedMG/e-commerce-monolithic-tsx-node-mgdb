@@ -1,9 +1,4 @@
-
-enum SortBy {
-  DATE = 'date',
-  RATING = 'rating',
-  PRICE = 'price'
-}
+import { SortBy } from "@/modules/category/enums"
 
 interface CategorySortFilterProps {
   onChange: (sortType: SortBy) => void

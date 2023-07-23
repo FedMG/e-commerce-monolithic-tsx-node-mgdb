@@ -1,22 +1,8 @@
 import type { BaseComponentProps } from '@/schemas'
-import type { ProductCard } from '@/models'
-
-// later refactor
-type FilterFunction = ((product: ProductCard) => boolean)
-
-interface CategoryProps {
-  products: ProductCard[]
-  discounts: number[]
-  brands: string[]
-  currentCategory: string
-}
-
-interface CategoryNextFilterProps {
-  onChange: (filter: FilterFunction | null) => void
-  currentCategory: CategoryProps['currentCategory']
-}
+import type { CategoryProps } from '../../schemas'
 
 type CategoryHeaderProps = Pick<BaseComponentProps, 'children'>
+
 interface CategoryHeaderInfoProps {
   productsNumber: number
   currentCategory: CategoryProps['currentCategory']

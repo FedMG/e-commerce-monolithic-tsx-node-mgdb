@@ -9,7 +9,7 @@ interface DiscountInfoProps {
 export const ProductCardDiscountInfo: FC<DiscountInfoProps> = ({ children, discount, price }): ReactElement | null => {
   if (children == null) return null
 
-  if (discount === 0 || discount === undefined) {
+  if (discount === 0 || discount === undefined || discount === null) {
     return (
       <div className='w-full relative'>
         <span className='apect-ratio -ml-1' />
