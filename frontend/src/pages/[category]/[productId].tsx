@@ -1,10 +1,7 @@
 import { VALID_DOMAIN } from '@/environment'
-import { getProducts } from '@/service'
+import { fetchProductId } from '@/services'
 
-import { Layout } from '@/components/layout'
-import { Article } from '@/components/templates'
-import { ProductImage } from '@/components/ProductImage'
-
+import { Layout, Article, ProductImage } from '@/components'
 import { ProductSection } from '@/modules/product/components'
 import { ProductInfo, ProductForm } from '@/modules/product/components/form'
 import { ProductHeader, ProductTitle, ProductFigure } from '@/modules/product/components/figure'
@@ -13,11 +10,11 @@ import { ProductDescription, ProductParagraph, ProductParagraphLabel } from '@/m
 
 import { isValidObject } from '@/utils'
 
+import type { Product } from '@/models'
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import type { NextPageWithLayout } from '_app-types'
 import type { ReactElement } from 'react'
-import { Product } from '@/models'
 
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
 
@@ -66,7 +63,7 @@ export async function getServerSideProps ({ params }: GetServerSidePropsContext<
   const encodedID = encodeURI(params.productId)
 
   try {
-    const product = await getProducts(`https://${VALID_DOMAIN}/api/v1/products/${encodedID}`)
+    const product = await fetchProductId(encodedID)
     return { props: { ...product } }
   } catch (error) {
     return { notFound: true }

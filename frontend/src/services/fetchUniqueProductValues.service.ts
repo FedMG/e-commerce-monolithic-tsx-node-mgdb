@@ -1,4 +1,4 @@
-import { getAdaptedProductProperty } from '@/adapters'
+import { adaptUniqueProductValues } from '@/adapters'
 import { ProductPropertyResponse } from '@/models'
 
 export const fetchUniqueProductValues = async <T>( category: string, property: string ): Promise<T[]> => {
@@ -6,5 +6,5 @@ export const fetchUniqueProductValues = async <T>( category: string, property: s
   const res = await fetch(url)
   const data: ProductPropertyResponse<T> = await res.json()
 
-  return getAdaptedProductProperty<T>(data)
+  return adaptUniqueProductValues<T>(data)
 }

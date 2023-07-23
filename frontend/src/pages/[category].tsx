@@ -1,5 +1,3 @@
-import { VALID_DOMAIN } from 'src/environment'
-
 import Link from 'next/link'
 import { FC, ReactElement, useEffect, useMemo, useState } from 'react'
 // import { useInfinitePagination } from '@/hooks/useInfinitePagination'
@@ -14,14 +12,13 @@ import { CategoryDiscountFilter, CategorySearchFilter, CategoryBrandFilter, Cate
 import { isArrayOfObjects } from '@/utils'
 import { filterStructure } from '@/refs'
 
-import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
+import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import type { NextPageWithLayout } from '_app-types'
 import type { BaseComponentProps } from '@/schemas'
-import { fetchAllProductData } from '@/services'
-import type { ProductCard } from '@/models'
-import { isValidCategory } from '@/utils/isValidCategory.utility'
 
-const ITEMS_DISPLAYED = 12
+import { fetchAllCategoryData } from '@/services'
+import type { ProductCard } from '@/models'
+import { CATEGORY_VALUES, isValidCategory } from '@/utils/isValidCategory.utility'
 
 export enum SortBy {
   DATE = 'date',
@@ -126,16 +123,25 @@ Category.getLayout = function getLayout (page, _pageProps): JSX.Element {
   return <Layout title='Category' section={page?.props?.currentCategory as string}>{page}</Layout>
 }
 
-export async function getServerSideProps ({ params }: GetServerSidePropsContext): Promise<GetServerSidePropsResult<CategoryProps>> {
-  if (VALID_DOMAIN === undefined) return { notFound: true }
+export async function getStaticPaths (): Promise<GetStaticPathsResult> {
+  const paths = CATEGORY_VALUES.map((category) => ({
+    params: { category: category }
+  }))
 
-  const category = params?.category ?? undefined
-  if (category === undefined || !isValidCategory(category))  return { notFound: true }
-  const encodedCategory = encodeURI(category)
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+
+export async function getStaticProps ({ params }: GetStaticPropsContext): Promise<GetStaticPropsResult<CategoryProps>> {
+ const category = params?.category
+ if (category === undefined || !isValidCategory(category))  return { notFound: true }
+ const encodedCategory = encodeURIComponent(category)
 
   try {
-    // Implement AbortController
-    const [brands, discounts, products] = await fetchAllProductData(encodedCategory)
+    const [brands, discounts, products] = await fetchAllCategoryData(encodedCategory)
 
     return {
       props: {

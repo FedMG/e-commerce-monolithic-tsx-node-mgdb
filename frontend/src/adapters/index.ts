@@ -1,3 +1,4 @@
-export * from './getAdaptedProduct.adapter'
-export * from './getAdaptedProductCard.adapter'
-export * from './getAdaptedProductProperty.adapter'
+export * from './adaptAllProductCards.adapter'
+export * from './adaptAllProducts.adapter'
+export * from './adaptProduct.adapter'
+export * from './adaptUniqueProductValues.adapter'  

@@ -40,7 +40,7 @@ export interface Product {
   description: Description
   stock: number
   price: number
-  discount?: number
+  discount?: number | null
   colors: ProductColors[]
   sizes: ClothingSizes[]
   rating: ProductRatingProps
@@ -54,6 +54,11 @@ export interface ProductsResponse {
   products: EndpointProduct[],
   numHits: number
 }
+
+export interface ProductIdResponse {
+  product: EndpointProduct  
+}
+
 
 export interface EndpointProduct {
   _id: string

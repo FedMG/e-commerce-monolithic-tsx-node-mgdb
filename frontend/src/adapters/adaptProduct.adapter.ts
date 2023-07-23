@@ -1,9 +1,8 @@
-import { ProductsResponse, Product } from '@/models'
+import { Product, ProductIdResponse } from '@/models'
 
-export const getAdaptedProduct = (response: ProductsResponse): Product[] => {
-  const { products } = response
-
-  return products.map(product => ({
+export const adaptProduct = (response: ProductIdResponse): Product => {
+  const { product } = response
+  return {
     id: product._id,
     name: product.name,
     image: product.image,
@@ -17,6 +16,5 @@ export const getAdaptedProduct = (response: ProductsResponse): Product[] => {
     sizes: product.sizes,
     rating: product.rating,
     createdAt: product.createdAt
-  }))
+  }
 }
-

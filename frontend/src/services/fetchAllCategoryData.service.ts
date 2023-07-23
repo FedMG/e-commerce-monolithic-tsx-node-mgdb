@@ -1,12 +1,12 @@
 import { ProductCard } from "@/models"
-import { fetchProducts, fetchUniqueProductValues } from "@/services"
+import { fetchAllProducts, fetchUniqueProductValues } from "@/services"
 
 type FetchResponse = [string[], number[], ProductCard[]]
 
-export const fetchAllProductData = (encodedCategory: string): Promise<FetchResponse> => {
-  return Promise.all([
+export const fetchAllCategoryData = async (encodedCategory: string): Promise<FetchResponse> => {
+  return await Promise.all([
     fetchUniqueProductValues<string>(encodedCategory, 'brand'),
     fetchUniqueProductValues<number>(encodedCategory, 'discount'),
-    fetchProducts(encodedCategory)
+    fetchAllProducts(encodedCategory)
   ])
 }

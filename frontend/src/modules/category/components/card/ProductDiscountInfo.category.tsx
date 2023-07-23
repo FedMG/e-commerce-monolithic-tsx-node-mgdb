@@ -2,7 +2,7 @@ import type { FC, ReactElement } from 'react'
 
 interface DiscountInfoProps {
   children: ReactElement[]
-  discount?: number
+  discount?: number | null
   price: number
 }
 

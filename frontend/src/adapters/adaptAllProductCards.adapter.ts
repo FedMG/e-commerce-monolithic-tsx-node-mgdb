@@ -1,6 +1,6 @@
 import { ProductCard, ProductsResponse } from "@/models"
 
-export const getAdaptedProductCard = (response: ProductsResponse): ProductCard[] => {
+export const adaptAllProductCards = (response: ProductsResponse): ProductCard[] => {
   const { products } = response
 
   return products.map(product => ({
@@ -10,7 +10,7 @@ export const getAdaptedProductCard = (response: ProductsResponse): ProductCard[]
     category: product.category,
     brand: product.brand,
     price: product.price,
-    discount: product.discount,
+    discount: product.discount || null,
     rating: product.rating,
     createdAt: product.createdAt
   }))
