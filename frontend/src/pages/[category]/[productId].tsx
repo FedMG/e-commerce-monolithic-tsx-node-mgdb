@@ -1,4 +1,4 @@
-import { VALID_DOMAIN } from '@/environment'
+// import { VALID_DOMAIN } from '@/environment'
 import { fetchProductId } from '@/services'
 
 import { Layout, Article, ProductImage } from '@/components'
@@ -13,8 +13,7 @@ import { isValidObject } from '@/utils'
 import type { Product } from '@/models'
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
-import type { NextPageWithLayout } from '_app-types'
-import type { ReactElement } from 'react'
+import type { NextPageWithLayout } from '@/next-pages'
 
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
 
@@ -22,7 +21,7 @@ export interface ProductProps {
   product: Product
 }
 
-const Product: NextPageWithLayout<ProductProps> = ({ product }): ReactElement | null => {
+const Product: NextPageWithLayout<ProductProps> = ({ product }): React.ReactElement | null => {
   if (!isValidObject(product)) return null
   const { id, name, brand, category, description, image, colors, sizes, stock, price, discount, rating } = product
 
@@ -58,13 +57,13 @@ Product.getLayout = function getLayout (page, pageProps): JSX.Element {
   return <Layout title='Product' section={pageProps?.product?.name}>{page}</Layout>
 }
 
-export async function getServerSideProps ({ params }: GetServerSidePropsContext<Params>): Promise<GetServerSidePropsResult<ProductProps['product']>> {
-  if (params?.productId === undefined || VALID_DOMAIN === undefined) return { notFound: true }
-  const encodedID = encodeURI(params.productId)
+export async function getServerSideProps ({ params }: GetServerSidePropsContext<Params>): Promise<GetServerSidePropsResult<ProductProps>> {
+  if (params?.productId === undefined) return { notFound: true }
+  const encodedID = encodeURIComponent(params.productId)
 
   try {
     const product = await fetchProductId(encodedID)
-    return { props: { ...product } }
+    return { props: { product }}
   } catch (error) {
     return { notFound: true }
   }

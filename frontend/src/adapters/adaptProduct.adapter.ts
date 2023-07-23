@@ -11,7 +11,7 @@ export const adaptProduct = (response: ProductIdResponse): Product => {
     description: product.description,
     stock: product.stock,
     price: product.price,
-    discount: product.discount,
+    discount: product.discount || null,
     colors: product.colors,
     sizes: product.sizes,
     rating: product.rating,

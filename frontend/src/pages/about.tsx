@@ -3,7 +3,7 @@ import { SVGBlob } from '@/modules/about/components'
 
 import { Inter } from '@next/font/google'
 
-import type { NextPageWithLayout } from '_app-types'
+import type { NextPageWithLayout } from '@/next-pages'
 
 const inter = Inter({
   subsets: ['latin'],

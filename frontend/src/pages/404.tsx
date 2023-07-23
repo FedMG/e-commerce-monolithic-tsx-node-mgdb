@@ -1,5 +1,5 @@
 import { Layout } from '@/components/layout'
-import type { NextPageWithLayout } from '_app-types'
+import type { NextPageWithLayout } from '@/next-pages'
 
 const NotFound: NextPageWithLayout = (): React.ReactElement => {
   return (

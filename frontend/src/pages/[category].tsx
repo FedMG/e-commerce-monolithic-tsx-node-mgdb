@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { FC, ReactElement, useEffect, useMemo, useState } from 'react'
-// import { useInfinitePagination } from '@/hooks/useInfinitePagination'
 
 import { Layout } from '@/components/layout'
 import { Drawer } from '@/components/Drawer'
@@ -10,10 +9,9 @@ import { CategoryHeader, CategoryHeaderInfo } from '@/modules/category/component
 import { CategoryDiscountFilter, CategorySearchFilter, CategoryBrandFilter, CategoryRatingFilter } from '@/modules/category/components/filters'
 
 import { isArrayOfObjects } from '@/utils'
-import { filterStructure } from '@/refs'
 
 import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
-import type { NextPageWithLayout } from '_app-types'
+import type { NextPageWithLayout } from '@/next-pages'
 import type { BaseComponentProps } from '@/schemas'
 
 import { fetchAllCategoryData } from '@/services'
@@ -26,7 +24,7 @@ export enum SortBy {
   PRICE = 'price'
 }
 
-interface CategoryProps {
+export interface CategoryProps {
   products: ProductCard[]
   discounts: number[]
   brands: string[]
@@ -68,7 +66,12 @@ export const sortFunctions: Record<string, ProductSortFunction> = {
   [SortBy.PRICE]: (a, b) => a.price - b.price
 }
 
-// later refactor with custom hook and a reducer
+const filterStructure = {
+  name: null,
+  brand: null,
+  discount: null
+}
+
 const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands, currentCategory }): ReactElement => {
   const [filters, setFilters] = useState<Record<string, null | FilterFunction>>(filterStructure)
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.RATING)

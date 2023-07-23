@@ -16,9 +16,3 @@ export const productColor: Record<ProductColors, string> = Object.freeze({
   [ProductColors.WHITE]: 'bg-white',
   [ProductColors.BLACK]: 'bg-black'
 })
-
-export const filterStructure = {
-  name: null,
-  brand: null,
-  discount: null
-}
