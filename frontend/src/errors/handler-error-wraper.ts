@@ -1,5 +1,5 @@
 import { BadRequestError } from './customs'
-import type { FetchResponse } from 'utilities'
+import type { FetchResponse } from '@/utilities'
 
 export function handleError<T> (callback: FetchResponse<T>): FetchResponse<T> {
   return async function (endpoint: string) {

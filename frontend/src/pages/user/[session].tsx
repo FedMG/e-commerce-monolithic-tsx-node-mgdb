@@ -1,15 +1,20 @@
 import Link from 'next/link'
 
 import { Layout } from '@/components/layout'
-import { LoginForm } from '@/components/login'
-import { RegisterForm } from '@/components/register'
+import { LoginForm, RegisterForm } from '@/modules/user/components'
+import { sessions, SESSIONS } from '@/modules/user/refs'
 
-import { sessions, SESSIONS } from '@/refs'
-
-import type { NextPageWithLayout } from '_app-types'
+import type { NextPageWithLayout } from '@/next-pages'
 import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
-import type { SessionPageProps } from 'additional'
+
+export interface SessionPageProps {
+  session: {
+    title: string
+    linkName: string
+    linkText: string
+  }
+}
 
 const SessionPage: NextPageWithLayout<SessionPageProps> = ({ session }) => {
   return (

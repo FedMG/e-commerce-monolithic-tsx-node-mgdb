@@ -1,5 +1,5 @@
 import { InvalidArgumentError } from '@/errors/customs'
-import { updateLocalStore, getLocalStorageItem } from '@/utils/localStorage'
+import { updateLocalStore, getLocalStorageItem } from '@/utils'
 import { CartInitialStatetype, CartReducerType } from './cartReducerType'
 
 const updateLocalCartStore = updateLocalStore('e-commerce-cart')
