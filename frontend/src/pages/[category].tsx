@@ -38,15 +38,13 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
   )
 }
 
-
 Category.getLayout = function getLayout (page, _pageProps): JSX.Element {
   return <Layout title='Category' section={page?.props?.currentCategory as string}>{page}</Layout>
 }
 
-
 export async function getStaticPaths (): Promise<GetStaticPathsResult> {
   const paths = CATEGORY_VALUES.map((category) => ({
-    params: { category: category }
+    params: { category }
   }))
 
   return {
@@ -55,11 +53,10 @@ export async function getStaticPaths (): Promise<GetStaticPathsResult> {
   }
 }
 
-
 export async function getStaticProps ({ params }: GetStaticPropsContext): Promise<GetStaticPropsResult<CategoryProps>> {
- const category = params?.category
- if (category === undefined || !isValidCategory(category))  return { notFound: true }
- const encodedCategory = encodeURIComponent(category)
+  const category = params?.category
+  if (category === undefined || !isValidCategory(category)) return { notFound: true }
+  const encodedCategory = encodeURIComponent(category)
 
   try {
     const [brands, discounts, products] = await fetchAllCategoryData(encodedCategory)
@@ -72,7 +69,6 @@ export async function getStaticProps ({ params }: GetStaticPropsContext): Promis
         currentCategory: category
       }
     }
-
   } catch (error) {
     return { notFound: true }
   }

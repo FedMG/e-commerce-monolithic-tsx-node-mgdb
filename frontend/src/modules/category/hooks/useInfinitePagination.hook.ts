@@ -1,6 +1,18 @@
 export {}
 // import { useEffect, useReducer, useState } from 'react'
 
+// export interface PaginationReducer {
+//   state: {
+//     items: Product[]
+//     page: number
+//   }
+//   action: {
+//     type: string
+//     chunk?: Product[]
+//     items?: Product[]
+//   }
+// }
+
 // import { getEndpoint } from '@/pages/api/utils'
 // import { isArrayOfObjects, isValidCategory } from '@/utils'
 // import type { PaginationReducer, Product } from 'additional'

@@ -1,33 +1,22 @@
+import { Colors } from '@/modules/product/enums'
+import type { GetValues } from '@/utilities'
+
 export type StarsRange = 1 | 2 | 3 | 4 | 5
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
-export type ProductColors =
-  | 'rose 500'
-  | 'orange 600'
-  | 'yellow 400'
-  | 'lime 400'
-  | 'green 500'
-  | 'cyan 600'
-  | 'violet 600'
-  | 'fuchsia 500'
-  | 'pink 600'
-  | 'neutral 900'
-  | 'stone 600'
-  | 'slate 900'
-  | 'white'
-  | 'black'
+export type ProductColors = GetValues<typeof Colors>
 
-export type ProductRatingProps = {
+export interface ProductRatingProps {
   stars: StarsRange
   votes: number
 }
 
-type Description = {
+interface Description {
   introduction: string
   body: string
   conclusion: string
 }
 
-type Image = {
+interface Image {
   src: string
 }
 
@@ -51,14 +40,13 @@ export type ProductCard = Omit<Product, 'colors' | 'sizes' | 'description' | 'st
 
 // External services response
 export interface ProductsResponse {
-  products: EndpointProduct[],
+  products: EndpointProduct[]
   numHits: number
 }
 
 export interface ProductIdResponse {
-  product: EndpointProduct  
+  product: EndpointProduct
 }
-
 
 export interface EndpointProduct {
   _id: string

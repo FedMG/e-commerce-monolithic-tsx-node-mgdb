@@ -1,5 +1,5 @@
-import { AriaAttributes, FC, ReactNode } from "react"
-import { AddDisplayName, DropUndefinedUnion } from "utilities"
+import { AriaAttributes, FC, ReactNode } from 'react'
+import { AddDisplayName, DropUndefinedUnion } from '@/utilities'
 
 export type ASElement = keyof JSX.IntrinsicElements
 
@@ -23,7 +23,7 @@ export interface StateTextTypeProps extends TextProps {
 }
 
 export type GradientTextType = AddDisplayName<
-  ({ from, via, to, children }: GradientTextProps) => JSX.Element
+({ from, via, to, children }: GradientTextProps) => JSX.Element
 >
 export type AccessibleTextType = AddDisplayName<({ ...Params }: AccessibleTextProps) => JSX.Element>
 export type StateTextType = AddDisplayName<({ ...Params }: StateTextTypeProps) => JSX.Element>
@@ -33,7 +33,6 @@ export interface NextTextType<T> extends FC<T> {
   Accessible: AccessibleTextType
   State: StateTextType
 }
-
 
 export const Text: NextTextType<TextProps> = ({ className, as: Element = 'span', children }) => {
   return <Element className={className}>{children}</Element>

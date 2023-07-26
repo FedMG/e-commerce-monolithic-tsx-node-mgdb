@@ -1,5 +1,5 @@
-import type { AriaAttributes } from "react"
-import type { DropUndefined } from "utilities"
+import type { AriaAttributes } from 'react'
+import type { DropUndefined } from '@/utilities'
 
 interface NavigationProps {
   children: React.ReactNode

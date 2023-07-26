@@ -1,18 +1,17 @@
-import { StarIcon } from '@/assets'
 import { Text } from '@/components'
 import { isValidNumber } from '@/utils'
+import { StarIcon } from '@/assets'
 
+import type { StarsRange } from '@/models'
 import type { ReactElement, FC } from 'react'
 
-type StarsRange = 1 | 2 | 3 | 4 | 5
+const STARS_RANGE: StarsRange[] = [1, 2, 3, 4, 5]
+const DEFAULT_RATING = 0
 
 export interface ProductRatingProps {
   stars: StarsRange
   votes: number
 }
-
-const STARS_RANGE: StarsRange[] = [1, 2, 3, 4, 5]
-const DEFAULT_RATING = 0
 
 const addStars = (rating: number): JSX.Element[] => {
   return STARS_RANGE.map((star: StarsRange) => {

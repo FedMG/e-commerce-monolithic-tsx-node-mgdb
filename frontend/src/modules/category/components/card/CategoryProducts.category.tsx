@@ -1,9 +1,9 @@
-import Link from "next/link"
-import { ProductsCard } from "@/modules/category/components/card"
+import Link from 'next/link'
+import { ProductsCard } from '@/modules/category/components/card'
 
-import { isArrayOfObjects } from "@/utils"
-import type { FC, ReactElement } from "react"
-import type { CategoryProps } from "../../schemas"
+import { isArrayOfObjects } from '@/utils'
+import type { FC, ReactElement } from 'react'
+import type { CategoryProps } from '../../schemas'
 
 type CategoryProductsProps = Pick<CategoryProps, 'products'>
 

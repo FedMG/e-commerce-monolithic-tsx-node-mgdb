@@ -1,5 +1,5 @@
 import type { AriaAttributes, AriaRole, FC, ReactElement, ReactNode } from 'react'
-import type { AddDisplayName, DropUndefined } from 'utilities'
+import type { AddDisplayName, DropUndefined } from '@/utilities'
 
 type ASElement = keyof JSX.IntrinsicElements
 

@@ -7,8 +7,8 @@ interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
 }
 
 export const CategoryBrandFilter: React.FC<CategoryBrandsFilterProps> = ({ brands, onChange, currentCategory }): React.ReactElement => {
-  const { handleChange, selecteds } = useBrandFilter({onChange, currentCategory})
-  
+  const { handleChange, selecteds } = useBrandFilter({ onChange, currentCategory })
+
   return (
     <div className='flex flex-col'>
       <span className='text-gray-700 font-semibold mb-2'>Brands</span>

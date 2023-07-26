@@ -1,10 +1,15 @@
 import { useRef, useState } from 'react'
-
-import type { useNumberInputResult } from 'additional'
-import type { Callback } from 'utilities'
+import type { Callback } from '@/utilities'
 
 const MINIMUM_RANGE = 0
 const STEP = 1
+
+export interface useNumberInputResult {
+  addItem: Callback<void>
+  dropItem: Callback<void>
+  reset: Callback<void>
+  result: number
+}
 
 export const useNumberInput = (itemsNumber: number): useNumberInputResult => {
   const heldButtonInterval = useRef<ReturnType<typeof setInterval> | null>(null)

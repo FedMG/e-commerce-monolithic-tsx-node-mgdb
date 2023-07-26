@@ -1,4 +1,4 @@
-export enum ProductColors {
+export enum Colors {
   ROSE_500 = 'rose 500',
   ORANGE_600 = 'orange 600',
   YELLOW_400 = 'yellow 400',
@@ -14,10 +14,3 @@ export enum ProductColors {
   WHITE = 'white',
   BLACK = 'black'
 }
-
-// export enum CATEGORY_KEYS {
-//   MEN_S_CLOTHING = 'men\'s clothing',
-//   WOMEN_S_CLOTHING = 'women\'s clothing',
-//   ACCESSORY = 'accessory',
-//   SHOES = 'shoes'
-// }

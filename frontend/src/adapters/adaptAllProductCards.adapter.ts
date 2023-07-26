@@ -1,4 +1,4 @@
-import { ProductCard, ProductsResponse } from "@/models"
+import { ProductCard, ProductsResponse } from '@/models'
 
 export const adaptAllProductCards = (response: ProductsResponse): ProductCard[] => {
   const { products } = response

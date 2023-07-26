@@ -1,5 +1,5 @@
-import type { AriaAttributes } from "react"
-import type { DropUndefined } from "utilities"
+import type { AriaAttributes } from 'react'
+import type { DropUndefined } from '@/utilities'
 import type { BaseComponentProps } from '@/schemas'
 
 type ArticleProps = BaseComponentProps & {

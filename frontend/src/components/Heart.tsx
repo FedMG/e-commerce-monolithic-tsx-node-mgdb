@@ -1,7 +1,10 @@
 import { useSwapEvent } from '@/hooks'
 import { HeartIcon } from '@/assets'
+import type { BaseComponentProps } from '@/schemas'
 
-import type { HeartProps } from 'additional'
+export interface HeartProps {
+  className?: BaseComponentProps['className']
+}
 
 export const Heart: React.FC<HeartProps> = ({ className }): React.ReactElement => {
   const [isLike, handleLikeEvent] = useSwapEvent()

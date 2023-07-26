@@ -1,6 +1,6 @@
-import { useMemo, useState } from "react"
-import type { ProductCard } from "@/models"
-import { SortBy } from "../enums"
+import { useMemo, useState } from 'react'
+import type { ProductCard } from '@/models'
+import { SortBy } from '../enums'
 
 type ProductSortFunction = (a: ProductCard, b: ProductCard) => number
 type SortMethods = Record<string, ProductSortFunction>
@@ -18,7 +18,7 @@ const sortMethods: SortMethods = {
 export const useProductSort = (products: ProductCard[]) => {
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.RATING)
   const sortedProducts = useMemo(() => [...products].sort(sortMethods[sortBy]), [sortBy, products])
-  
+
   const updateSortBy = (sortType: SortBy): void => setSortBy(sortType)
   return { sortBy, updateSortBy, sortedProducts }
 }

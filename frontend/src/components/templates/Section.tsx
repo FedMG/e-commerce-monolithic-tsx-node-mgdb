@@ -1,6 +1,6 @@
 import type { BaseComponentProps } from '@/schemas'
 import type { AriaAttributes, AriaRole } from 'react'
-import type { AddDisplayName, DropUndefined } from 'utilities'
+import type { AddDisplayName, DropUndefined } from '@/utilities'
 
 type AccessibleSectionProps = BaseComponentProps & {
   labelledby?: AriaAttributes['aria-labelledby']

@@ -1,7 +1,7 @@
 import { SVGElement } from '@/components/templates'
 
 import type { AriaAttributes, FC } from 'react'
-import type { DropUndefined } from 'utilities'
+import type { DropUndefined } from '@/utilities'
 
 interface IconsProps {
   className: string

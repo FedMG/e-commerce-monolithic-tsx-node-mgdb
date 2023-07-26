@@ -1,5 +1,5 @@
 import type { AriaAttributes, FC, ReactElement, ReactNode } from 'react'
-import type { AddDisplayName, DropUndefined } from 'utilities'
+import type { AddDisplayName, DropUndefined } from '@/utilities'
 
 interface PathProps { d: string }
 interface TitleProps { title: string }

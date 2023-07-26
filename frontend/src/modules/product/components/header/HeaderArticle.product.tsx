@@ -2,7 +2,7 @@ import { Header } from '@/components/templates'
 
 import type { AriaAttributes, FC, ReactElement } from 'react'
 import type { BaseComponentProps } from '@/schemas'
-import type { DropUndefined } from 'utilities'
+import type { DropUndefined } from '@/utilities'
 
 interface ProductHeaderArticleProps extends BaseComponentProps {
   labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>

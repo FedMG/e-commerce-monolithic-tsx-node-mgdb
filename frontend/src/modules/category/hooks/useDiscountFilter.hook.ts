@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import type { CategoryNextFilterProps } from "../schemas"
-import { isNumber } from "@/utils"
+import { useEffect, useState } from 'react'
+import type { CategoryNextFilterProps } from '../schemas'
+import { isNumber } from '@/utils'
 
-export const useDiscountFilter = ({ onChange, currentCategory}: CategoryNextFilterProps) => {
+export const useDiscountFilter = ({ onChange, currentCategory }: CategoryNextFilterProps) => {
   const [selecteds, setSelected] = useState<Set<number>>(() => new Set())
 
   const handleSelectedOptions = (discountType: number, isChecked: boolean): void => {

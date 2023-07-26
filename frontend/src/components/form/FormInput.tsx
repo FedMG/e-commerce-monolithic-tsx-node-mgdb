@@ -1,6 +1,20 @@
-import type { ChildrenNode, InputProps, LabelProps } from 'additional'
+import { BaseComponentProps } from '@/schemas'
+import { ChangeEvent } from 'react'
 
-export const FormRow: React.FC<ChildrenNode> = ({ children }) => (
+export interface InputProps {
+  value?: string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  auto: string
+  placeholder?: string
+  type: 'text' | 'email' | 'password'
+}
+
+export interface LabelProps {
+  id: 'name' | 'email' | 'password'
+  name: string
+}
+
+export const FormRow: React.FC<Pick<BaseComponentProps, 'children'>> = ({ children }) => (
   <div className='flex flex-col mb-5'>{children}</div>
 )
 
@@ -25,7 +39,7 @@ export const Input: React.FC<InputProps> = ({ value, onChange, auto, placeholder
 )
 
 export const FormButton: React.FC<{ name: string }> = ({ name }) => (
-  <button className='p-3 w-full rounded-md bg-black text-white border-none font-semibold cursor-pointer hover:bg-gray-900  active:bg-primary-600 bg-primary-700 hover:bg-primary-800' type='submit'>
+  <button className='p-3 w-full rounded-md text-white border-none font-semibold cursor-pointer active:bg-primary-600 bg-primary-700 hover:bg-primary-800' type='submit'>
     {name}
   </button>
 )

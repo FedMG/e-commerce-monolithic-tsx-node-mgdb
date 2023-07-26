@@ -4,8 +4,9 @@ import { useRouter } from 'next/router'
 import CryptoJS from 'crypto-js'
 import crypto from 'crypto'
 
-import { setRequestToTheAPI } from '@/pages/api/utils'
 import { isString } from '@/utils'
+
+// later refactor all this...
 
 type SessionMode = 'login' | 'register'
 
@@ -45,6 +46,11 @@ export const SECRET_KEY = crypto.randomBytes(32).toString('hex')
 const route = {
   login: 'login',
   register: '/'
+}
+
+export const setRequestToTheAPI = async (endpoint: string, requestOptions?: RequestInit): Promise<APIResponse> => {
+  const res = await fetch(endpoint, requestOptions)
+  return await res.json()
 }
 
 const getSessionRequests = ({ form, mode }: SessionRequestProps): GetSessionRequestsResponse => ({

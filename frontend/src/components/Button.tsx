@@ -1,4 +1,17 @@
-import type { DropdownButtonProps, HamburgerDropdownProps } from 'additional'
+import type { ButtonProps } from '@/schemas'
+import type { AriaAttributes } from 'react'
+import type { DropUndefined } from '@/utilities'
+
+export interface HamburgerDropdownProps extends ButtonProps {
+  ariaControls: DropUndefined<AriaAttributes, 'aria-controls'>
+  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
+}
+
+export interface DropdownButtonProps extends ButtonProps {
+  ariaLabel: DropUndefined<AriaAttributes, 'aria-label'>
+  ariaHaspopup: DropUndefined<AriaAttributes, 'aria-haspopup'>
+  labelledby: DropUndefined<AriaAttributes, 'aria-labelledby'>
+}
 
 export const HamburgerDropdownButton: React.FC<HamburgerDropdownProps> = ({ children, onClick, className, ariaControls, ariaExpanded }) => {
   return (

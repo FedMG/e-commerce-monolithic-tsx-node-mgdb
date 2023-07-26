@@ -1,4 +1,4 @@
-import type { FilterField, FilterValue } from "@/modules/category/schemas"
+import type { FilterField, FilterValue } from '@/modules/category/schemas'
 
 export const initialState = {
   name: null,
@@ -14,7 +14,7 @@ export interface ProductFilterReducer {
   }
 }
 
-export function productFiltersReducer(
+export function productFiltersReducer (
   state: ProductFilterReducer['state'],
   action: ProductFilterReducer['action']
 ) {

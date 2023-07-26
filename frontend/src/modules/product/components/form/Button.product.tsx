@@ -1,5 +1,5 @@
 import type { CallbackEvents } from '@/schemas'
-import type { AddOptional } from 'utilities'
+import type { AddOptional } from '@/utilities'
 
 interface ProductButtonProps extends AddOptional<CallbackEvents> {
   children?: React.ReactNode

@@ -1,4 +1,4 @@
-import { isNumber, isString } from "@/utils"
+import { isNumber, isString } from '@/utils'
 
 export const isValidArray = (arr: unknown[]): boolean => Array.isArray(arr) && arr.length > 0
 export const isArrayOfObjects = (arr: object[]): boolean => isValidArray(arr) && typeof arr[0] === 'object'

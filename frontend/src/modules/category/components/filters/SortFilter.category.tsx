@@ -1,4 +1,4 @@
-import { SortBy } from "@/modules/category/enums"
+import { SortBy } from '@/modules/category/enums'
 
 interface CategorySortFilterProps {
   onChange: (sortType: SortBy) => void

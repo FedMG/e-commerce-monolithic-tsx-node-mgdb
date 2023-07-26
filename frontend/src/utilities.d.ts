@@ -1,5 +1,10 @@
 export type FetchResponse<T> = (endpoint: string) => Promise<T>
 
+// get all values as union type // must be used with typeof
+export type GetValues<T> = (T)[keyof T]
+// get all keys as union type // must be used with typeof
+export type GetKeys<T> = keyof T
+
 export type AddStringKeyRecord<T> = Record<string, T>
 export type DropUndefined<T, K> = K extends keyof T ? Exclude<T[K], undefined> : never
 export type DropUndefinedUnion<T> = T extends undefined ? never : T

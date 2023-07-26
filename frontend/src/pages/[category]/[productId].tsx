@@ -63,7 +63,7 @@ export async function getServerSideProps ({ params }: GetServerSidePropsContext<
 
   try {
     const product = await fetchProductId(encodedID)
-    return { props: { product }}
+    return { props: { product } }
   } catch (error) {
     return { notFound: true }
   }

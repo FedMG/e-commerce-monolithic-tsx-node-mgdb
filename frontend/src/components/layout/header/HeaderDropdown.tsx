@@ -15,7 +15,6 @@ interface HeaderPageProps {
   links: HeaderLinks[]
 }
 
-
 interface HeaderDropdownProps extends HeaderPageProps {
   selectOption: () => void
   label: string

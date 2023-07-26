@@ -1,7 +1,7 @@
 import { Text } from '@/components'
+import type { ClothingSizes } from '@/models'
 import { isArrayOfString } from '@/utils'
 
-type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
 interface ProductClothingSizesProps { sizes: ClothingSizes[] }
 
 export const ProductClothingSizes: React.FC<ProductClothingSizesProps> = ({ sizes }): React.ReactElement | null => {
