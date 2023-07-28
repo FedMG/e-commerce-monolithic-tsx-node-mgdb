@@ -1,6 +1,8 @@
-import { InvalidArgumentError } from '@/errors/customs'
+import { InvalidArgumentError } from '@/errors'
 import { updateLocalStore, getLocalStorageItem } from '@/utils'
 import { CartInitialStatetype, CartReducerType } from './cartReducerType'
+
+const ORIGIN = 'cartReducer'
 
 const updateLocalCartStore = updateLocalStore('e-commerce-cart')
 export const initialState: CartInitialStatetype = new Map(null)
@@ -17,10 +19,10 @@ export function cartReducer (state: CartReducerType['state'], action: CartReduce
     }
 
     case 'ADDED_CART_ITEM': {
-      if ((action?.payload) == null) throw new InvalidArgumentError('cartReducer', 'action.payload is missing in ADDED_CART_ITEM option')
+      if ((action?.payload) == null) throw new InvalidArgumentError({ origin: ORIGIN, message: 'action.payload is missing in ADDED_CART_ITEM option'})
 
       const { productId, product } = action.payload
-      if (productId === undefined || product === undefined) throw new InvalidArgumentError('cartReducer', 'action.payload is missing productId or product in ADDED_CART_ITEM option')
+      if (productId === undefined || product === undefined) throw new InvalidArgumentError({ origin: ORIGIN, message: 'action.payload is missing productId or product in ADDED_CART_ITEM option'})
 
       if (state.has(productId)) return state
 
@@ -33,10 +35,10 @@ export function cartReducer (state: CartReducerType['state'], action: CartReduce
     }
 
     case 'REMOVED_CART_ITEM': {
-      if ((action?.payload) == null) throw new InvalidArgumentError('cartReducer', 'action.payload is missing in REMOVED_CART_ITEM option')
+      if ((action?.payload) == null) throw new InvalidArgumentError({ origin: ORIGIN, message: 'action.payload is missing in REMOVED_CART_ITEM option'})
 
       const { productId } = action.payload
-      if (productId === undefined) throw new InvalidArgumentError('cartReducer', 'action.payload is missing productId argument in REMOVED_CART_ITEM option')
+      if (productId === undefined) throw new InvalidArgumentError({ origin: ORIGIN, message: 'action.payload is missing productId argument in REMOVED_CART_ITEM option'})
 
       const productClone = structuredClone(state)
       productClone.delete(productId)
