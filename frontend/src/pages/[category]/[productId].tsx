@@ -14,6 +14,7 @@ import type { Product } from '@/models'
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import type { NextPageWithLayout } from '@/next-pages'
+import { StatusApiError } from '@/errors'
 
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
 
@@ -65,6 +66,10 @@ export async function getServerSideProps ({ params }: GetServerSidePropsContext<
     const product = await fetchProductId(encodedID)
     return { props: { product } }
   } catch (error) {
+    if (error instanceof StatusApiError) {
+      console.error(error.getMessage())
+    }
+
     return { notFound: true }
   }
 }

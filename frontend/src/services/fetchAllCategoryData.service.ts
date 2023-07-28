@@ -5,8 +5,8 @@ type FetchResponse = [string[], number[], ProductCard[]]
 
 export const fetchAllCategoryData = async (encodedCategory: string): Promise<FetchResponse> => {
   return await Promise.all([
-    fetchUniqueProductValues<string>(encodedCategory, 'brand'),
-    fetchUniqueProductValues<number>(encodedCategory, 'discount'),
+    fetchUniqueProductValues<string>({ category: encodedCategory, property: 'brand' }),
+    fetchUniqueProductValues<number>({ category: encodedCategory, property: 'discount'}),
     fetchAllProducts(encodedCategory)
   ])
 }

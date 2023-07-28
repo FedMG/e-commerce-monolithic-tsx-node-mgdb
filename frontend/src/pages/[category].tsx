@@ -13,6 +13,7 @@ import type { NextPageWithLayout } from '@/next-pages'
 import type { ReactElement } from 'react'
 
 import { CATEGORY_VALUES, isValidCategory } from '@/utils'
+import { StatusApiError } from '@/errors'
 
 const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands, currentCategory }): ReactElement => {
   const { updateFilter, updateSortBy, sortBy, sortedProducts } = useManagementState(products)
@@ -70,6 +71,9 @@ export async function getStaticProps ({ params }: GetStaticPropsContext): Promis
       }
     }
   } catch (error) {
+    if (error instanceof StatusApiError) {
+      console.error(error.getMessage())
+    }
     return { notFound: true }
   }
 }
