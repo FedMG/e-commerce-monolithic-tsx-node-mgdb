@@ -27,17 +27,23 @@
     "frontend:dev": {
       "name": "frontend:dev",
       "command": "yarn frontend:dev",
-      "runAtStart": false
+      "runAtStart": false,
+      "preview": {
+        "port": 3000
+      }
     },
     "frontend:build": {
       "name": "frontend:build",
       "command": "yarn frontend:build",
-      "runAtStart": true
+      "runAtStart": false
     },
     "frontend:start": {
       "name": "frontend:start",
       "command": "yarn frontend:start",
-      "runAtStart": false
+      "runAtStart": false,
+      "preview": {
+        "port": 4000
+      }
     },
     "frontend:lint": {
       "name": "frontend:lint",
