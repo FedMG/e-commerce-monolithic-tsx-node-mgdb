@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
-import type { Callback } from '@/utilities'
+import type { AddVoidCallback } from '@/utilities'
 
 const MINIMUM_RANGE = 0
 const STEP = 1
 
 export interface useNumberInputResult {
-  addItem: Callback<void>
-  dropItem: Callback<void>
-  reset: Callback<void>
+  addItem: AddVoidCallback<undefined>
+  dropItem: AddVoidCallback<undefined>
+  reset: AddVoidCallback<undefined>
   result: number
 }
 
@@ -15,7 +15,7 @@ export const useNumberInput = (itemsNumber: number): useNumberInputResult => {
   const heldButtonInterval = useRef<ReturnType<typeof setInterval> | null>(null)
   const [items, setItemsNumber] = useState(0)
 
-  const handleMouseDown = (callback: Callback<void>): void => {
+  const handleMouseDown = (callback: AddVoidCallback<undefined>): void => {
     callback()
     heldButtonInterval.current = setInterval(callback, 200)
   }

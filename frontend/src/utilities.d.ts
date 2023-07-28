@@ -1,4 +1,4 @@
-// export type FetchResponse<T> = (endpoint: string) => Promise<T>
+export type AddReactComponent<T> = React.ComponentType<T>
 
 // get all values as union type // must be used with typeof
 export type GetValues<T> = (T)[keyof T]
@@ -14,17 +14,14 @@ export type AddOptional<Type> = {
   [Property in keyof Type ]+?: Type[Property]
 }
 
-export type AddCallback<I, T> = {
-  [Property in keyof I ]+?: Callback<T>
+export type AddSetCallbacks<I, T> = {
+  [Property in keyof I ]+?: AddCallback<T>
 }
 
-export type CallbackWithoutParams = () => void
-export type CallbackWith<T> = (params: T) => void
-export type Callback<T> = T extends unknown ? CallbackWithoutParams : CallbackWith<T>
+type CallbackWithoutParams = () => void
+type CallbackWithParams<T> = (params: T) => void
+export type AddVoidCallback<T> = T extends undefined ? CallbackWithoutParams : CallbackWithParams<T>
+export type AddCallback<T> = () => T
 
 // It does inference of callback types passed through T and return (P) the parameters types
 type InferParamsType<T> = T extends (...args: infer P) => void ? P : T
-
-// later
-// const getType = <T, K>(type: DropUndefined<T, K>): DropUndefined<T, K> => type
-// type ResponseReturned = ReturnType<typeof getType>

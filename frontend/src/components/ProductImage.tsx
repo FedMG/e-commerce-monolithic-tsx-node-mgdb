@@ -13,6 +13,7 @@ export const ProductImage: React.FC<ProductImageProps> = ({ className, resolutio
     <Image
       role='img'
       priority
+      quality={50}
       src={image?.src}
       width={resolution}
       height={resolution}
