@@ -1,5 +1,5 @@
 import type { CartProduct } from '@/contexts/cartContextType'
-import type { CART_ACTIONS } from '@/hooks/cartActions'
+import type { CART_ACTIONS } from '@/hooks'
 import type { Product } from '@/models'
 
 export type CartInitialStatetype = Map<Product['id'], CartProduct['product']>

@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-import { useCartReducer } from '@/hooks/useCartReducer'
+import { useCartReducer } from '@/hooks'
 import { CartContextType } from './cartContextType'
 
 export const CartContext = createContext<CartContextType | undefined>(undefined)

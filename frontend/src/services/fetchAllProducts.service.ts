@@ -2,7 +2,7 @@ import { adaptAllProductCards } from '@/adapters'
 import { errorHandler, FetchAPIError } from '@/errors'
 import type { ProductCard, ProductsResponse } from '@/models'
 
-const ITEMS_DISPLAYED = 12
+const ITEMS_DISPLAYED = 7
 type FetchAllProductsParams = { category: string, signal: AbortSignal }
 
 const _fetchAllProducts = async (params: FetchAllProductsParams): Promise<ProductCard[]> => {

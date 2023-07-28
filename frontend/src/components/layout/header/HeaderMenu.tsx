@@ -1,6 +1,6 @@
 import { useSwapEvent } from '@/hooks'
-
-import { List, Text, LinkEventButton, HamburgerDropdownButton } from '@/components'
+import { HamburgerDropdownButton } from './DropdownButtons'
+import { List, Text, LinkEventButton } from '@/components'
 import { HeaderMenuList } from './HeaderMenuList'
 import { CloseIcon, HamburgerIcon } from '@/assets'
 

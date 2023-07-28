@@ -18,9 +18,9 @@ interface SVGElementProps {
   children: ReactNode
   role: string
   className: string
-  ariaHidden: DropUndefined<AriaAttributes, 'aria-hidden'>
   viewBox: string
-  labelledby: string // check
+  ariaHidden?: DropUndefined<AriaAttributes, 'aria-hidden'>
+  labelledby?: DropUndefined<AriaAttributes, 'aria-labelledby'>
 }
 
 interface SVGWithEventProps {
