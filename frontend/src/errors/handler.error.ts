@@ -28,6 +28,11 @@ export function errorHandler<P, T>(service: FetchParamsResponse<P, T>): FetchPar
           throw new InternalServerError({ origin, message: 'something went wrong with the server' })
       }
 
+      // later fix it
+      if ((error as any).name === 'AbortError') {
+        console.error('Request was aborted')
+      }
+
       throw new Error(`Something went wrong! ${error}`)
     }
   }

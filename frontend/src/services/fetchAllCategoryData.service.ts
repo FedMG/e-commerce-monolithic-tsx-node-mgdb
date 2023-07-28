@@ -3,10 +3,10 @@ import { fetchAllProducts, fetchUniqueProductValues } from '@/services'
 
 type FetchResponse = [string[], number[], ProductCard[]]
 
-export const fetchAllCategoryData = async (encodedCategory: string): Promise<FetchResponse> => {
+export const fetchAllCategoryData = async (category: string, signal: AbortSignal): Promise<FetchResponse> => {
   return await Promise.all([
-    fetchUniqueProductValues<string>({ category: encodedCategory, property: 'brand' }),
-    fetchUniqueProductValues<number>({ category: encodedCategory, property: 'discount'}),
-    fetchAllProducts(encodedCategory)
+    fetchUniqueProductValues<string>({ category, property: 'brand', signal }),
+    fetchUniqueProductValues<number>({ category, property: 'discount', signal }),
+    fetchAllProducts({ category, signal })
   ])
 }

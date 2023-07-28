@@ -1,4 +1,3 @@
-// import { VALID_DOMAIN } from '@/environment'
 import { fetchProductId } from '@/services'
 
 import { Layout, Article, ProductImage } from '@/components'
@@ -8,7 +7,7 @@ import { ProductHeader, ProductTitle, ProductFigure } from '@/modules/product/co
 import { ProductHeaderArticle, ProductBrandLogo, ProductBreadCrumbs } from '@/modules/product/components/header'
 import { ProductDescription, ProductParagraph, ProductParagraphLabel } from '@/modules/product/components/description'
 
-import { isValidObject } from '@/utils'
+import { getRequestAbort, isValidObject } from '@/utils'
 
 import type { Product } from '@/models'
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
@@ -17,6 +16,7 @@ import type { NextPageWithLayout } from '@/next-pages'
 import { StatusApiError } from '@/errors'
 
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
+const TIMEOUT_ABORT = 10000
 
 export interface ProductProps {
   product: Product
@@ -58,19 +58,28 @@ Product.getLayout = function getLayout (page, pageProps): JSX.Element {
   return <Layout title='Product' section={pageProps?.product?.name}>{page}</Layout>
 }
 
+
 export async function getServerSideProps ({ params }: GetServerSidePropsContext<Params>): Promise<GetServerSidePropsResult<ProductProps>> {
   if (params?.productId === undefined) return { notFound: true }
-  const encodedID = encodeURIComponent(params.productId)
+  const id = encodeURIComponent(params.productId)
+  const { signal, abort } = getRequestAbort()
+
+  const timeout = setTimeout(() => {
+    abort()
+  }, TIMEOUT_ABORT)
 
   try {
-    const product = await fetchProductId(encodedID)
+    const product = await fetchProductId({ id, signal })
     return { props: { product } }
-  } catch (error) {
+
+  } catch (error) {    
     if (error instanceof StatusApiError) {
       console.error(error.getMessage())
     }
 
     return { notFound: true }
-  }
+  } finally {
+    clearTimeout(timeout)
+  } 
 }
 export default Product
