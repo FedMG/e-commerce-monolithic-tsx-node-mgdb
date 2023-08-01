@@ -1,6 +1,6 @@
 import { FetchAPIError } from './api'
 import { StatusCodes } from './enums.error'
-import { BadRequestError, InternalServerError, NotFoundError, UnauthorizedError } from './responses'
+import { AbortError, BadRequestError, InternalServerError, NotFoundError, UnauthorizedError } from './responses'
 
 type FetchParamsResponse<P, T> = (params: P) => Promise<T>
 
@@ -30,7 +30,7 @@ export function errorHandler<P, T>(service: FetchParamsResponse<P, T>): FetchPar
 
       // later fix it
       if ((error as any).name === 'AbortError') {
-        console.error('Request was aborted')
+        throw new AbortError({ origin, message: 'Request user has been aborted.'})
       }
 
       throw new Error(`Something went wrong! ${error}`)

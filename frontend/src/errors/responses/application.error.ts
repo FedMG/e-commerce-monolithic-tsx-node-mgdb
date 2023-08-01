@@ -11,3 +11,9 @@ export class InvalidArgumentError extends ApiError {
     super({ name: 'Invalid Argument', message, origin })
   }
 }
+
+export class AbortError extends ApiError {
+  constructor({ origin, message }: TypeErrorsProps) {
+    super({ name: 'AbortError', message, origin })
+  }
+}
