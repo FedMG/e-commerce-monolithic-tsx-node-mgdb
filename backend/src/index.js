@@ -43,7 +43,7 @@ cloudinary.v2.config({
 })
 
 const corsConfig = {
-  origin: [`https://${VALID_DOMAIN}`],
+  origin: [`https://${VALID_DOMAIN}`, 'https://astrashop.vercel.app'],
   optionsSuccessStatus: StatusCodes.OK
 }
 
