@@ -1,4 +1,4 @@
-import { getPriceWithDiscount, isNumber } from '@/utils'
+import { applyDiscount, isNumber } from '@/utils'
 import type { Product } from '@/models'
 
 interface ProductDiscountPriceProps extends Pick<Product, 'price' | 'discount'> {}
@@ -9,7 +9,7 @@ export const ProductDiscountPrice: React.FC<ProductDiscountPriceProps> = ({ pric
       <div className='py-2'>
         <div className='w-full relative'>
           <span className='text-gray-900 font-semibold text-lg md:text-2xl'>
-            ${getPriceWithDiscount(discount, price)}
+            ${applyDiscount({discount, price})}
           </span>
         </div>
       </div>
@@ -25,7 +25,7 @@ export const ProductDiscountPrice: React.FC<ProductDiscountPriceProps> = ({ pric
         <div className='flex w-full justify-content align-items'>
           <div className='flex gap-1 sm:gap-3'>
             <span className='text-gray-900 font-semibold text-lg md:text-2xl'>
-              ${getPriceWithDiscount(discount, price)}
+              ${applyDiscount({discount, price})}
             </span>
             <span className='text-green-600 font-medium text-sm sm:text-md lg:text-lg'>
               -{discount}% OFF

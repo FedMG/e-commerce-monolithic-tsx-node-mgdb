@@ -1,36 +1,38 @@
-import Image from 'next/image'
+import Link from 'next/link'
 
-import { ProductCardDiscountInfo } from './ProductDiscountInfo.category'
-import { getPriceWithDiscount } from '@/utils'
+import { Heart, Text } from '@/components'
+import { ProductDetails } from './ProductDetails.category'
+import { ProductImage } from './ProductImage.category'
 
-import type { FC, ReactElement } from 'react'
-import { ProductCard } from '@/models'
+import type { ProductCard } from '@/models'
+import type { ElementRef, FC, ReactElement } from 'react'
+import type { BaseComponentProps } from '@/schemas'
 
-interface ProductCardProps {
-  element: Pick<ProductCard, 'name' | 'rating' | 'price' | 'discount' | 'image'>
+type ProductCardProps = Pick<BaseComponentProps, 'className'> & {
+  element: Pick<
+    ProductCard,
+    'name' | 'rating' | 'price' | 'discount' | 'image' | 'brand' | 'id' | 'category'
+  >
 }
 
-export const ProductsCard: FC<ProductCardProps> = ({ element: { name, image, price, discount, rating } }): ReactElement => (
-  <div className='h-full max-h-[430px] flex flex-col bg-gray-100 border shadow-sm hover:shadow-md rounded-sm hover:bg-gray-200 hover:rounded-sm transition-transform transform duration-[100ms] easy-in-out hover:scale-[1.03]'>
-    <div className='relative aspect-[2/3] h-full xl:max-h-[310px] lg:max-h-[295px] md:max-h-[300px] sm:max-h-[255px] xs:max-h-[240px] max-h-[310px] m-0.5 md:m-1 flex items-center from-white to-gray-300 bg-gradient-to-br border-b border-gray-300'>
-    <Image priority sizes='100vw' quality={20} fill className='w-auto h-full max-h-[310px] select-none overflow-hidden object-cover' src={image.src} alt={`${name} card product`} />
-    </div>
-
-    <div className='w-full p-[0.3em] pt-0 pb-1 sm:p-[0.5em] sm:pt-0 sm:pb-1.1 md:p-[0.6em] md:pt-1 md:pb-2 flex-end  '>
-      <ProductCardDiscountInfo discount={discount} price={price}>
-        <p className='font-bold text-md lg:text-lg text-gray-800 leading-tight'>
-          ${getPriceWithDiscount(discount, price)}
-        </p>
-
-        <span className='leading-normal text-gray-700 font-medium text-md md:text-lg'>
-          <span className='text-orange-600'>⭐</span>
-          {rating.stars}
+export const ProductsCard: FC<ProductCardProps> = ({
+  element: { name, image, price, discount, rating, brand, category, id },
+  className
+}): ReactElement => {
+  const handleClick = (e: React.MouseEvent<ElementRef<'span'>>) => e.preventDefault()
+  return (
+    <Link href='/[category]/[productId]' as={`/${category}/${id}`}>
+      <div
+        className={`group/card bg-gray-100 hover:bg-gray-200 border shadow-sm hover:shadow-md rounded-sm hover:rounded-sm transition-transform transform duration-[100ms] easy-in-out hover:scale-[1.03] ${className} h-full flex flex-col relative`}>
+        <Text className='hidden group-hover/card:block bg-gray-100 group-hover/card:bg-gray-200 capitalize absolute top-[0.9%] left-[1.4%] md:top-[1%] md:left-[1.7%] z-30 rounded-br-md px-1 max-lg:text-sm lg:text-md font-semibold text-stone-700 border-r border-b shadow-b shadow-r'>
+          {brand}
+        </Text>
+        <span onClick={handleClick}>
+          <Heart className='absolute top-[3%] right-[5%] w-7 h-7 lg:w-8 lg:h-8 z-20 hidden group-hover/card:block' />
         </span>
-      </ProductCardDiscountInfo>
-
-      <p className='text-gray-700 capitalize leading-normal max-lg:text-md lg:text-lg pt-1 lg:pt-1.5 line-clamp-2 truncate'>
-        {name}
-      </p>
-    </div>
-  </div>
-)
+        <ProductImage image={image} />
+        <ProductDetails price={price} discount={discount} rating={rating} name={name} />
+      </div>
+    </Link>
+  )
+}
