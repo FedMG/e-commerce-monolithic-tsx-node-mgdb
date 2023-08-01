@@ -138,3 +138,10 @@ export const RightArrowIcon: FC<IconsProps> = ({ className }) => (
     <SVGElement.Path d='M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z' />
   </SVGElement>
 )
+
+export const NavigateArrowIcon: FC<IconsProps> = ({ className }) => (
+  <SVGElement role='presentation'  className={`w-6 h-6 fill-none stroke-current stroke-2 ${className}`} viewBox="0 0 24 24">
+    <SVGElement.Path  d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
+    {/* <SVGElement.Path  d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" /> different direction */}
+  </SVGElement>
+)

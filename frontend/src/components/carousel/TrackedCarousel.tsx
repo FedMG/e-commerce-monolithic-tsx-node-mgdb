@@ -1,4 +1,4 @@
-import { useCarouselEffect } from '@/hooks'
+import { useCarouselEffect } from '@/modules/home/hooks'
 import { CarouselButton } from './CarouselButton'
 import { LeftArrowIcon, RightArrowIcon } from '@/assets'
 

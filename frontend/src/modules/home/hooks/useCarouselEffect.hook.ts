@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useCallback, MutableRefObject } from 'react'
-import { nextControl, previousControl } from './carouselControls'
+import { nextControl, previousControl } from '@/hooks/carousel/carouselControls'
 import type { AddVoidCallback } from '@/utilities'
 
 const SLIDE_INTERVAL = 6000
