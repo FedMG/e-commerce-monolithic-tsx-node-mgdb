@@ -28,7 +28,8 @@ export const useFetcher = <T>({ fetcher, config }: UseFetcherParam<T>): T | [] =
       })
 
     return () => controller.abort()
-  }, [fetcher, config])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return items
 }
