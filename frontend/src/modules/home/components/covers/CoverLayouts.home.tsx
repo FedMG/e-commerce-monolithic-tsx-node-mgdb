@@ -67,7 +67,7 @@ export const FourthCover = ({ props: { category, brand, discount }, highlight }:
       <OnProducts className={highlight}>{brand}</OnProducts>
     </TextContainer>
 
-    <TextContainer className='absolute right-[0%] bottom-[4%] text-justify'>
+    <TextContainer className='absolute right-[0%] lg:right-[3%] bottom-[4%] text-justify'>
       <span className='flex flex-col gap-y-[1.2px] md:gap-y-2 lg:gap-y-3'>
         <BadgeUpTo className={highlight}>{discount}% OFF</BadgeUpTo>
         <BadgeUpTo className={highlight}>3 Installments</BadgeUpTo>
