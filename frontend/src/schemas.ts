@@ -1,5 +1,5 @@
-import type { AriaAttributes, ReactNode } from 'react'
-import type { DropUndefined } from '@/utilities'
+import type { AriaAttributes, ElementRef, MutableRefObject, ReactNode } from 'react'
+import type { AddVoidCallback, DropUndefined } from '@/utilities'
 
 export interface BaseComponentProps {
   children: ReactNode
@@ -17,4 +17,16 @@ export interface ButtonProps {
   onClick: () => void
   className: string
   ariaExpanded: DropUndefined<AriaAttributes, 'aria-expanded'>
+}
+
+export type CarouselReference = ElementRef<'div'> | null
+export interface CarouselEffect {
+  next: AddVoidCallback<undefined>
+  prev: AddVoidCallback<undefined>
+  ref: MutableRefObject<CarouselReference>
+}
+
+export interface CarouselItemsResult {
+  items: HTMLCollection
+  container: HTMLDivElement
 }

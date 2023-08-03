@@ -17,7 +17,10 @@ module.exports = {
       },
       dropShadow: {
         'black': '0 0.8px 1.3px rgba(20, 17, 20, 0.8)',
-        'white': '0 0.8px 1.3px rgba(250, 250, 250, 0.6)',
+        'white': '0 0.8px 1.3px rgba(250, 250, 250, 0.6)'
+      },
+      boxShadow: {
+        bottom: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
       },
       keyframes: {
         bounces: {

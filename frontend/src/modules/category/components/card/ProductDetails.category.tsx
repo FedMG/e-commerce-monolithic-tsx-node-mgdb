@@ -34,7 +34,7 @@ const ProductDiscount: FC<Children> = ({ children }) => (
 )
 
 const ProductName: FC<Children> = ({ children }) => (
-  <div className='truncate hidden group-hover/card:block'>
+  <div className='shadow-bottom absolute -bottom-3 left-0 w-full px-2 pb-1 opacity-0 group-hover/card:opacity-100 bg-gray-200 truncate border-b rounded-bl-md rounded-br-md border-x'>
     <Text className='text-gray-700 capitalize leading-normal max-lg:text-md lg:text-lg pt-1 lg:pt-1.5'>
       {children}
     </Text>
@@ -50,7 +50,7 @@ export const ProductDetails: FC<ProductDetailsProps> = ({
   if (!discount) {
     return (
       <div className='w-full p-[0.3em] pt-0 pb-1 sm:p-[0.5em] sm:pt-0 sm:pb-1.1 md:p-[0.6em] md:pt-1 md:pb-2 flex-end'>
-        <div className='w-full relative'>
+        <div className='w-full relative pb-3'>
           <span className='apect-ratio -ml-1' />
           <div className='w-full flex justify-between items-center'>
             <ProductPrice>${price}</ProductPrice>
@@ -64,7 +64,7 @@ export const ProductDetails: FC<ProductDetailsProps> = ({
 
   return (
     <div className='w-full p-[0.3em] pt-0 pb-1 sm:p-[0.5em] sm:pt-0 sm:pb-1.1 md:p-[0.6em] md:pt-1 md:pb-2 flex-end'>
-      <div className='w-full relative'>
+      <div className='w-full relative pb-3'>
         <ProductOldPrice>{price}</ProductOldPrice>
         <div className='w-full flex justify-between items-center'>
           <div className='flex items-center'>

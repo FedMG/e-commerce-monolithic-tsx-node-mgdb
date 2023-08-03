@@ -12,10 +12,10 @@ import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult 
 import type { NextPageWithLayout } from '@/next-pages'
 import type { ReactElement } from 'react'
 
-import { CATEGORY_VALUES, getRequestAbort, isValidCategory } from '@/utils'
+import { CATEGORY_VALUES, isValidCategory } from '@/utils'
 import { StatusApiError } from '@/errors'
 
-const TIMEOUT_ABORT = 10000
+const TIMEOUT_ABORT = 30000
 
 const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands, currentCategory }): ReactElement => {
   const { updateFilter, updateSortBy, sortBy, sortedProducts } = useManagementState(products)
@@ -60,14 +60,14 @@ export async function getStaticProps ({ params }: GetStaticPropsContext): Promis
   const category = params?.category
   if (category === undefined || !isValidCategory(category)) return { notFound: true }
   const encodedCategory = encodeURIComponent(category)
-  const { signal, abort } =  getRequestAbort() 
+  const controller = new AbortController()
 
   const timeout = setTimeout(() => {
-    abort()
+    controller.abort()
   }, TIMEOUT_ABORT)
 
   try {
-    const [brands, discounts, products] = await fetchAllCategoryData(encodedCategory, signal)
+    const [brands, discounts, products] = await fetchAllCategoryData(encodedCategory, controller.signal)
 
     return {
       props: {

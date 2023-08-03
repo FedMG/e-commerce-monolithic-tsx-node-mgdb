@@ -1,21 +1,8 @@
-import { useRef, useCallback, MutableRefObject, ElementRef } from 'react'
+import { useRef } from 'react'
 import { nextControl, previousControl } from './carouselControls'
-import type { AddVoidCallback } from '@/utilities'
+import type { CarouselEffect, CarouselItemsResult, CarouselReference } from '@/schemas'
 
-type CarouselReference = ElementRef<'div'> | null
-
-interface CarouselEffectResult {
-  next: AddVoidCallback<undefined>
-  prev: AddVoidCallback<undefined>
-  ref: MutableRefObject<CarouselReference>
-}
-
-export interface CarouselItemsResult {
-  items: HTMLCollection
-  container: HTMLDivElement
-}
-
-export const useCardCarouselEffect = (): CarouselEffectResult => {
+export const useCardCarouselEffect = (): CarouselEffect => {
   const carousel = useRef<CarouselReference>(null)
 
   const carouselItems = (): CarouselItemsResult => {
@@ -25,8 +12,9 @@ export const useCardCarouselEffect = (): CarouselEffectResult => {
       container: carousel.current
     })
   }
+
   const prevItemHandler = (): void => previousControl(carouselItems)
-  const nextItemHadler = useCallback(() => nextControl(carouselItems), [])
+  const nextItemHadler = (): void => nextControl(carouselItems)
 
   return { prev: prevItemHandler, next: nextItemHadler, ref: carousel }
 }
