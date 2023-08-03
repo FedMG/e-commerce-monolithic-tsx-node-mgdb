@@ -11,10 +11,10 @@ export const CoverImage: React.FC<CoverImageProps> = ({ src, alt }) => (
     role='img'
     alt={alt}
     src={src}
-    quality={25}
+    quality={40}
     width={300}
     height={300}
     sizes='100vw'
-    className='object-cover w-full min-w-full'
+    className='object-scale-down object-top md:object-cover w-full min-w-full h-full'
   />
 )

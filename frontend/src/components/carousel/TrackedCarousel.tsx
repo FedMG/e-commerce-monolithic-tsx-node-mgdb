@@ -19,7 +19,7 @@ interface TrackedCarouselProps extends BaseComponentProps {
 export const TrackedCarousel: React.FC<TrackedCarouselProps> = ({ children, className, btnIcons = defaultBtnIcons, ItemsTracker }) => {
   const { prev, next, ref, position } = useCarouselEffect()
   return (
-    <div className={`max-w-full h-[350px] ${className} w-full m-auto select-none relative group block overflow-x-hidden`}>
+    <div className={`max-w-full ${className} w-full m-auto select-none relative group block overflow-x-hidden`}>
       <div className='h-full flex flex-nowrap' ref={ref}>
         {children}
       </div>

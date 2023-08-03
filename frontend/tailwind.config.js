@@ -15,6 +15,10 @@ module.exports = {
       backgroundColor: {
         'gray-300-opacity-45': 'rgba(222, 226, 230, 0.45)'
       },
+      dropShadow: {
+        'black': '0 0.8px 1.3px rgba(20, 17, 20, 0.8)',
+        'white': '0 0.8px 1.3px rgba(250, 250, 250, 0.6)',
+      },
       keyframes: {
         bounces: {
           '0%': {

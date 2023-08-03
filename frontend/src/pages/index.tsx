@@ -2,7 +2,6 @@ import { Layout } from '@/components/layout'
 import { CardCarousel, CoverCarousel } from '@/modules/home/'
 import { fetchAllCovers } from '@/services'
 import { StatusApiError } from '@/errors'
-import { getRequestAbort } from '@/utils'
 
 import type { Cover } from '@/models'
 import type { NextPageWithLayout } from '@/next-pages'
@@ -20,7 +19,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ covers }) => {
     <main>
       <CoverCarousel items={covers} />
       <div className={`${PAGE_ALIGN_BREAKPOINT} space-y-10`}>
-      <CardCarousel section={"men's clothing"}>Men&apos;s clothing</CardCarousel>
+        <CardCarousel section={"men's clothing"}>Men&apos;s clothing</CardCarousel>
       <CardCarousel section={"women's clothing"}>Women&apos;s clothing</CardCarousel>
       <CardCarousel section={"shoes"}>Shoes</CardCarousel>
       </div>
@@ -33,15 +32,14 @@ Home.getLayout = function getLayout(page, _pageProps) {
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<HomeProps>> {
-  const { signal, abort } = getRequestAbort()
+  const controller = new AbortController()
 
   const timeout = setTimeout(() => {
-    abort()
+    controller.abort()
   }, TIMEOUT_ABORT)
 
   try {
-    const covers = await fetchAllCovers({ signal })
-
+    const covers = await fetchAllCovers({ signal: controller.signal })
     return {
       props: {
         covers

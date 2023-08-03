@@ -27,11 +27,11 @@ enum COLORSCHEME {
 export function withTrackerPosition ({ IconComponent, carouselLength, positionColor }: WithTrackerPositionParams): FC<EnhancedIconComponentProps> {
   const range = generateRange(0, carouselLength)
   const EnhancedIconComponent: FC<EnhancedIconComponentProps> = ({ position }) => (
-    <div className='flex justify-center absolute top-[90%] w-full'>
+    <div className='flex justify-center absolute bottom-[8%] w-full'>
       {range.map(id => (
         <IconComponent
           key={id}
-          className={`${id === position ? positionColor[COLORSCHEME.ACTIVE] : positionColor[COLORSCHEME.DEFAULT]} w-4 h-4`}
+          className={`${id === position ? positionColor[COLORSCHEME.ACTIVE] : positionColor[COLORSCHEME.DEFAULT]} w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6`}
         />
       ))}
     </div>
