@@ -1,4 +1,6 @@
 export * from './cart'
 export * from './carousel'
-export * from './useSwapEvent.hook'
-export * from './useFetcher.hook'
+
+export { useSwapEvent } from './useSwapEvent.hook'
+export { useFetcher } from './useFetcher.hook'
+export { useLoading } from './useLoading.hook'
