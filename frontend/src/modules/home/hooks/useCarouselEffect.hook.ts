@@ -1,25 +1,15 @@
-import { useRef, useEffect, useState, useCallback, MutableRefObject } from 'react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { nextControl, previousControl } from '@/hooks/carousel/carouselControls'
-import type { AddVoidCallback } from '@/utilities'
+import type { CarouselEffect, CarouselItemsResult, CarouselReference } from '@/schemas'
 
 const SLIDE_INTERVAL = 6000
 
-type CarouselReferenceType = HTMLDivElement | null
-
-interface CarouselEffectResult {
-  next: AddVoidCallback<undefined>
-  prev: AddVoidCallback<undefined>
-  ref: MutableRefObject<CarouselReferenceType>
+interface CarouselEffectResult extends CarouselEffect {
   position: number
 }
 
-export interface CarouselItemsResult {
-  items: HTMLCollection
-  container: HTMLDivElement
-}
-
 export const useCarouselEffect = (): CarouselEffectResult => {
-  const carousel = useRef<CarouselReferenceType>(null)
+  const carousel = useRef<CarouselReference>(null)
   const [itemPosition, setItemPosition] = useState(0)
 
   const carouselItems = (): CarouselItemsResult => {

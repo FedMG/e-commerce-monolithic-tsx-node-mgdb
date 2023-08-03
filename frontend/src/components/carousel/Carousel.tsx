@@ -1,4 +1,6 @@
+import { useTouchEffect } from '@/hooks'
 import { useCardCarouselEffect } from '@/hooks/carousel'
+
 import { CarouselButton } from './CarouselButton'
 import { LeftArrowIcon, RightArrowIcon } from '@/assets'
 import type { BaseComponentProps } from '@/schemas'
@@ -22,10 +24,17 @@ export const Carousel: React.FC<CarouselProps> = ({
   btnIcons = defaultBtnIcons
 }) => {
   const { prev, next, ref } = useCardCarouselEffect()
+  const { start, move, end } = useTouchEffect({ prev, next, ref })
+
   return (
     <div className='group relative px-2 py-1'>
-      <div className='max-w-full h-[230px] sm:h-[270px] md:h-[300px] lg:h-[350px] w-full m-auto select-none relative block overflow-hidden'>
-        <div className={`gap-2 sm:gap-4 ${className} h-full flex flex-nowrap`} ref={ref}>
+      <div className='max-w-full h-[250px] sm:h-[290px] md:h-[320px] lg:h-[370px] w-full m-auto select-none relative block overflow-hidden'>
+        <div
+          className={`gap-2 sm:gap-4 ${className} h-full flex flex-nowrap`}
+          ref={ref}
+          onTouchStart={start}
+          onTouchMove={move}
+          onTouchEnd={end}>
           {children}
         </div>
       </div>
@@ -33,7 +42,10 @@ export const Carousel: React.FC<CarouselProps> = ({
       <CarouselButton onClick={prev} className='-left-8' ariaLabel='Slide item to the left'>
         {btnIcons.left}
       </CarouselButton>
-      <CarouselButton onClick={next} className='-right-8' ariaLabel='Slide item to the right'>
+      <CarouselButton
+        onClick={next}
+        className='-right-8'
+        ariaLabel='Slide item to the right'>
         {btnIcons.right}
       </CarouselButton>
     </div>

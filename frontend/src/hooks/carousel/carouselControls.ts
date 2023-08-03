@@ -1,4 +1,4 @@
-import { CarouselItemsResult as CarouselItems } from '@/modules/home/hooks'
+import type { CarouselItemsResult as CarouselItems } from '@/schemas'
 import type { AddCallback } from '@/utilities'
 
 type CarouselItemsParameter = AddCallback<CarouselItems>
