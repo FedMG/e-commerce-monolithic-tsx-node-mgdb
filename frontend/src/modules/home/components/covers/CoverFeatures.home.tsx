@@ -16,10 +16,13 @@ export const BadgeUpTo: React.FC<BaseComponentProps> = ({ children, className })
     </span>
   </span>
 )
+type OnProducts = BaseComponentProps & {
+  word?: string
+}
 
-export const OnProducts: React.FC<BaseComponentProps> = ({ children, className }) => (
+export const OnProducts: React.FC<OnProducts> = ({ children, className, word }) => (
   <span>
-    on
+    {word || 'on'}
     <span className={className}> {children} </span>
     products
   </span>
