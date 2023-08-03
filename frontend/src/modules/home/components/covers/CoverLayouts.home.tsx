@@ -62,9 +62,9 @@ export const ThirdCover = ({ props: { category, brand, discount }, highlight }: 
 export const FourthCover = ({ props: { category, brand, discount }, highlight }: CoverLayout) => (
   <>
     <TextContainer className='absolute left-[1%] top-[0%] md:top-[2%] lg:top-[4%]'>
-      <span>The best on</span>
+      <span>The best in</span>
       <span className={highlight}>{category}</span>
-      <OnProducts className={highlight}>{brand}</OnProducts>
+      <OnProducts word='in' className={highlight}>{brand}</OnProducts>
     </TextContainer>
 
     <TextContainer className='absolute right-[0%] lg:right-[3%] bottom-[4%] text-justify'>
@@ -80,7 +80,7 @@ export const FourthCover = ({ props: { category, brand, discount }, highlight }:
 export const FifthCover = ({ props: { category, brand, discount }, highlight }: CoverLayout) => (
   <>
     <TextContainer className='absolute left-[3%] bottom-[8%]'>
-      <span>Featured on</span>
+      <span>Featured in</span>
       <span className={highlight}>{category}</span>
     </TextContainer>
 
