@@ -7,7 +7,7 @@ import type { Cover } from '@/models'
 import type { NextPageWithLayout } from '@/next-pages'
 import type { GetStaticPropsResult } from 'next'
 
-const TIMEOUT_ABORT = 15000
+const TIMEOUT_ABORT = 30000
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
 
 interface HomeProps {
@@ -20,8 +20,8 @@ const Home: NextPageWithLayout<HomeProps> = ({ covers }) => {
       <CoverCarousel items={covers} />
       <div className={`${PAGE_ALIGN_BREAKPOINT} space-y-10`}>
         <CardCarousel section={"men's clothing"}>Men&apos;s clothing</CardCarousel>
-      <CardCarousel section={"women's clothing"}>Women&apos;s clothing</CardCarousel>
-      <CardCarousel section={"shoes"}>Shoes</CardCarousel>
+        <CardCarousel section={"women's clothing"}>Women&apos;s clothing</CardCarousel>
+        <CardCarousel section={'shoes'}>Shoes</CardCarousel>
       </div>
     </main>
   )
