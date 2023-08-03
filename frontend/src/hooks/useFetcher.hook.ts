@@ -1,20 +1,27 @@
-import { useEffect, useState } from "react"
-import { StatusApiError } from "@/errors"
+import { useEffect, useState } from 'react'
+import { StatusApiError } from '@/errors'
 
-interface UseFetcherParam<T> {
-  fetcher: (params: any) => Promise<T>  // later fix it
-  config: object
+interface UseFetcherParam<P, T> {
+  fetcher: (params: P) => Promise<T>
+  config: Omit<P, 'signal'>
 }
 
-export const useFetcher = <T>({ fetcher, config }: UseFetcherParam<T>): T | [] => {
+type UseFetcherResult<T> = {
+  items: T | []
+  isLoading: boolean
+}
+
+const useFetcher = <P, T>({ fetcher, config }: UseFetcherParam<P, T>): UseFetcherResult<T> => {
   const [items, setItems] = useState<T | []>([])
+  const [isLoading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const controller = new AbortController()
 
-    fetcher({ ...config, signal: controller.signal })
+    fetcher({ ...(config as P), signal: controller.signal })
       .then(items => {
         setItems(items)
+        setLoading(!isLoading)
       })
       .catch(error => {
         if (error instanceof StatusApiError) {
@@ -31,5 +38,7 @@ export const useFetcher = <T>({ fetcher, config }: UseFetcherParam<T>): T | [] =
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return items
+  return { items, isLoading }
 }
+
+export { useFetcher }
