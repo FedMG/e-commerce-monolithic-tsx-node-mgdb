@@ -1,4 +1,7 @@
-import { CoverImage } from '@/modules/home'
+import { useLoading } from '@/hooks'
+
+import { CoverCarouselSkeleton } from './CoverCarouselSkeleton.home'
+import { CoverImage } from './CoverImage.home'
 import { TrackedCarousel } from '@/components/carousel'
 import { withTrackerPosition } from '@/hocs'
 import { CoverInstances } from './covers'
@@ -17,6 +20,9 @@ interface CoverCarouselProps {
 }
 
 export const CoverCarousel: React.FC<CoverCarouselProps> = ({ items }): JSX.Element => {
+  const isLoading = useLoading({ items })
+  if (isLoading) return <CoverCarouselSkeleton />
+
   const carouselLength = items.length - 1
   const SquareIconsWihTrackerPosition = withTrackerPosition({
     IconComponent,
