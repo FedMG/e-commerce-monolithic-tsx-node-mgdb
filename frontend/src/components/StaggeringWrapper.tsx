@@ -1,5 +1,5 @@
 import { useStaggeringDelay } from '@/hooks'
-import { BaseComponentProps } from '@/schemas'
+import type { BaseComponentProps } from '@/schemas'
 
 type StaggeringWrapperProps = Pick<BaseComponentProps, 'children'> & { time: number }
 

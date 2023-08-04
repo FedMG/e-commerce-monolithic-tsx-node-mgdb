@@ -1,2 +1,5 @@
-export * from './carouselControls'
-export * from './useCardCarouselEffect.hook'
+// hooks
+export { useCardCarouselEffect } from './useCardCarouselEffect.hook'
+
+// methods
+export { nextControl, previousControl } from './carouselControls'

@@ -1,3 +1,5 @@
+// later refactor and update all
+
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -6,7 +8,6 @@ import crypto from 'crypto'
 
 import { isString } from '@/utils'
 
-// later refactor all this...
 
 type SessionMode = 'login' | 'register'
 
@@ -40,8 +41,8 @@ interface GetSessionRequestsResponse {
 
 interface APIResponse { token: string, user?: object }
 
-export const KEY_TOKEN = 'ecommercencrypt' + Math.random().toString(36).substring(2, 15)
-export const SECRET_KEY = crypto.randomBytes(32).toString('hex')
+const KEY_TOKEN = 'ecommercencrypt' + Math.random().toString(36).substring(2, 15)
+const SECRET_KEY = crypto.randomBytes(32).toString('hex')
 
 const route = {
   login: 'login',

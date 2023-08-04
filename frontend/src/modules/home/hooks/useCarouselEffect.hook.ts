@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
-import { nextControl, previousControl } from '@/hooks/carousel/carouselControls'
+import { nextControl, previousControl } from '@/hooks'
+
 import type { CarouselEffect, CarouselItemsResult, CarouselReference } from '@/schemas'
 
 const SLIDE_INTERVAL = 6000

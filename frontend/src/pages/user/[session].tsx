@@ -1,8 +1,7 @@
 import Link from 'next/link'
 
-import { Layout } from '@/components/layout'
-import { LoginForm, RegisterForm } from '@/modules/user/components'
-import { sessions, SESSIONS } from '@/modules/user/refs'
+import { LoginForm, RegisterForm, SESSIONS, sessions } from '@/modules/user'
+import { Layout } from '@/components'
 
 import type { NextPageWithLayout } from '@/next-pages'
 import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'

@@ -2,15 +2,14 @@ import Link from 'next/link'
 
 import type { AriaAttributes } from 'react'
 import type { DropUndefined } from '@/utilities'
+import type { BaseComponentProps } from '@/schemas'
 
-export interface LinkButtonProps {
-  children: React.ReactNode
+interface LinkButtonProps extends BaseComponentProps {
   href: string
-  className: string
   ariaLabel: DropUndefined<AriaAttributes, 'aria-label'>
 }
 
-export interface LinkEventButtonProps extends LinkButtonProps {
+interface LinkEventButtonProps extends LinkButtonProps {
   onClick: () => void
 }
 

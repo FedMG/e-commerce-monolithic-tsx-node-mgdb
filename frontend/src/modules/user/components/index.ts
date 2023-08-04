@@ -1,2 +1,3 @@
-export * from './Login.user'
-export * from './Register.user'
+// components
+export { LoginForm } from './Login.user'
+export { RegisterForm } from './Register.user'

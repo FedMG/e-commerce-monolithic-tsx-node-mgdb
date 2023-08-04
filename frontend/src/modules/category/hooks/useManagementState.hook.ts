@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
-import { useProductFilters, useProductSort } from '@/modules/category/hooks'
+import { useProductFilters } from './useProductFilters.hook'
+import { useProductSort } from './useProductSort.hook'
+
 import type { ProductCard } from '@/models'
 import { SortBy } from '../enums'
 

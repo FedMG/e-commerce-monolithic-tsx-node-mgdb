@@ -1,4 +1,4 @@
-import type { FilterField, FilterValue } from '@/modules/category/schemas'
+import { FilterField, FilterValue } from "../schemas"
 
 export const initialState = {
   name: null,

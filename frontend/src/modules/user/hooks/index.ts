@@ -1,1 +1,5 @@
-export * from './useUserSessionData.hook'
+// hooks
+export { useUserSessionData } from './useUserSessionData.hook'
+
+// methods
+export { setRequestToTheAPI } from './useUserSessionData.hook'

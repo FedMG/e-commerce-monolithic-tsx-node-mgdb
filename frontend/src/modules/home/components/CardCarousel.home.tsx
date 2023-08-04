@@ -1,15 +1,14 @@
 import { useFetcher } from '@/hooks'
 import { FetchAllProductsParams, fetchAllProducts } from '@/services'
 
-import { Carousel } from '@/components/carousel'
-import { CardCarouselTitle } from './CardCarouselTitle.home'
+import { Carousel, ProductsCard, StaggeringWrapper } from '@/components'
 import { CardCarouselSkeleton } from './CardCarouselSkeleton.home'
-import { ProductsCard } from '@/modules/category/components/card'
+import { CardCarouselTitle } from './CardCarouselTitle.home'
+
 import { sanatize } from '@/utils'
 
 import type { BaseComponentProps } from '@/schemas'
 import type { ProductCard } from '@/models'
-import { StaggeringWrapper } from '@/components/StaggeringWrapper'
 
 type CarouselProductCard = Omit<ProductCard, 'createdAt' | 'category'>
 export type CardCarouselProps = Pick<BaseComponentProps, 'children'> & {

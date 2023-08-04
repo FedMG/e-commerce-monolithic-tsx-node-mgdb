@@ -1,5 +1,5 @@
 import { useTouchEffect } from '@/hooks'
-import { useCarouselEffect } from '@/modules/home/hooks'
+import { useCarouselEffect } from '@/modules/home'
 
 import { CarouselButton } from './CarouselButton'
 import { LeftArrowIcon, RightArrowIcon } from '@/assets'

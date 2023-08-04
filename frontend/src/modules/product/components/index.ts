@@ -1,1 +1,2 @@
-export * from './Section.product'
+// components
+export { ProductSection } from './Section.product'

@@ -2,7 +2,7 @@ import { useLoading } from '@/hooks'
 
 import { CoverCarouselSkeleton } from './CoverCarouselSkeleton.home'
 import { CoverImage } from './CoverImage.home'
-import { TrackedCarousel } from '@/components/carousel'
+import { TrackedCarousel } from '@/components'
 import { withTrackerPosition } from '@/hocs'
 import { CoverInstances } from './covers'
 

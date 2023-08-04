@@ -1,1 +1,5 @@
-export * from './withTrackerPosition.hoc'
+// hocs
+export { withTrackerPosition } from './withTrackerPosition.hoc'
+
+// types
+export type { EnhancedIconComponentProps } from './withTrackerPosition.hoc'

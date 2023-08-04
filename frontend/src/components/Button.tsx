@@ -1,5 +1,5 @@
 import type { AriaAttributes } from 'react'
-import type { BaseComponentProps } from '../schemas'
+import type { BaseComponentProps } from '@/schemas'
 import type { AddVoidCallback, DropUndefined } from '@/utilities'
 
 interface ButtonProps extends BaseComponentProps {

@@ -1,6 +1,6 @@
 import { generateRange } from '@/utils'
 
-import type { BaseComponentProps } from '../schemas'
+import type { BaseComponentProps } from '@/schemas'
 import type { AddReactComponent } from '@/utilities'
 import type { FC } from 'react'
 

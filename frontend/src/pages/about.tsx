@@ -1,4 +1,4 @@
-import { Layout } from '@/components/layout'
+import { Layout } from '@/components'
 import { SVGBlob } from '@/modules/about/components'
 
 import { Inter } from '@next/font/google'

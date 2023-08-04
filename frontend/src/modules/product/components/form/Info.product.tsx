@@ -1,7 +1,6 @@
-import { Section } from '@/components/templates'
-import { ProductHeader, ProductTitle } from '../figure'
 import { ProductDiscountPrice } from './Discount.product'
-import { Heart } from '@/components'
+import { Heart, Section } from '@/components'
+import { ProductHeader, ProductTitle } from '../figure'
 
 import type { BaseComponentProps } from '@/schemas'
 import type { Product } from '@/models'

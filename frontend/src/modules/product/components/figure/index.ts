@@ -1,2 +1,4 @@
-export * from './Header.product'
-export * from './Figure.product'
+// components
+export { ProductHeader, ProductTitle } from './Header.product'
+export { ProductFigure } from './Figure.product'
+export { ProductImage } from './Image.product'

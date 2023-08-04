@@ -1,1 +1,2 @@
-export * from './Description.product'
+// components
+export { ProductDescription, ProductParagraph, ProductParagraphLabel } from './Description.product'

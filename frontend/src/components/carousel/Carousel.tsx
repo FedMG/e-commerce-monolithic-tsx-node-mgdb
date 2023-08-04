@@ -1,8 +1,7 @@
-import { useTouchEffect } from '@/hooks'
-import { useCardCarouselEffect } from '@/hooks/carousel'
-
+import { useCardCarouselEffect, useTouchEffect } from '@/hooks'
 import { CarouselButton } from './CarouselButton'
 import { LeftArrowIcon, RightArrowIcon } from '@/assets'
+
 import type { BaseComponentProps } from '@/schemas'
 
 const defaultBtnIcons = {
@@ -42,10 +41,7 @@ export const Carousel: React.FC<CarouselProps> = ({
       <CarouselButton onClick={prev} className='-left-8' ariaLabel='Slide item to the left'>
         {btnIcons.left}
       </CarouselButton>
-      <CarouselButton
-        onClick={next}
-        className='-right-8'
-        ariaLabel='Slide item to the right'>
+      <CarouselButton onClick={next} className='-right-8' ariaLabel='Slide item to the right'>
         {btnIcons.right}
       </CarouselButton>
     </div>

@@ -1,5 +1,9 @@
+// folders
 export * from './api'
 export * from './responses'
 
-export * from './handler.error'
-export * from './enums.error'
+// wrapper
+export { errorHandler } from './handler.error'
+
+// enums
+export { StatusCodes } from './enums.error'

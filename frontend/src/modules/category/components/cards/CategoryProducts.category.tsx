@@ -1,8 +1,8 @@
-import { ProductsCard } from '@/modules/category/components/card'
+import { ProductsCard } from '@/components'
 import { isArrayOfObjects } from '@/utils'
 
 import type { FC, ReactElement } from 'react'
-import type { CategoryProps } from '../../schemas'
+import { CategoryProps } from '../../schemas'
 
 type CategoryProductsProps = Pick<CategoryProps, 'products'>
 

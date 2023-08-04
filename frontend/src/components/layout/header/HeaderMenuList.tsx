@@ -1,7 +1,9 @@
 import Link from 'next/link'
 
-import { List, Text } from '@/components'
+import { List } from '@/components/templates'
+import { Text } from '@/components/typography'
 import { HeaderDropdown } from './HeaderDropdown'
+
 import { isArrayOfObjects, isString } from '@/utils'
 
 // later refactor

@@ -1,4 +1,4 @@
-import { Section } from '@/components/templates'
+import { Section } from '@/components'
 import type { BaseComponentProps } from '@/schemas'
 
 interface ProductFigureProps extends BaseComponentProps {}

@@ -1,5 +1,5 @@
-import { BaseComponentProps } from '@/schemas'
-import { ChangeEvent } from 'react'
+import type { BaseComponentProps } from '@/schemas'
+import type { ChangeEvent } from 'react'
 
 export interface InputProps {
   value?: string

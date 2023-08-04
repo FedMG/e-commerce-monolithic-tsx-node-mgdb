@@ -1,4 +1,4 @@
-import { BaseComponentProps } from '@/schemas'
+import type { BaseComponentProps } from '@/schemas'
 
 type CardCarouselSkeleton = Pick<BaseComponentProps, 'className'>
 

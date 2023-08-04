@@ -1,4 +1,4 @@
-import { Colors } from '@/modules/product/enums'
+import { Colors } from '@/modules/product'
 import type { GetValues } from '@/utilities'
 
 export type StarsRange = 1 | 2 | 3 | 4 | 5

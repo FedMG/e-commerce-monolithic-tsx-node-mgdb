@@ -1,1 +1,2 @@
-export * from './Header.category'
+// components
+export { CategoryHeader, CategoryHeaderInfo } from './Header.category'

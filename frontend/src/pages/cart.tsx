@@ -1,6 +1,6 @@
 // import { useCart } from '@/hooks/useCart'
 
-import { Layout } from '@/components/layout'
+import { Layout } from '@/components'
 import type { NextPageWithLayout } from '@/next-pages'
 // import Image from 'next/image'
 // import { ProductDiscountPrice } from '@/components/productDiscount'

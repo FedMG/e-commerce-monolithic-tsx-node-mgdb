@@ -1,17 +1,29 @@
 import { GreaterThanIcon, HomeIcon } from '@/assets'
-import { Navigation, List, Text, LinkButton } from '@/components'
+import { LinkButton, List, Navigation, Text } from '@/components'
 
 import type { Product } from '@/models'
 import type { BaseComponentProps } from '@/schemas'
 
-type ProductBreadCrumbProps = Pick<Product, 'category' | 'brand' | 'name'> & Pick<BaseComponentProps, 'className'>
+type ProductBreadCrumbProps = Pick<Product, 'category' | 'brand' | 'name'> &
+  Pick<BaseComponentProps, 'className'>
 
-export const ProductBreadCrumbs: React.FC<ProductBreadCrumbProps> = ({ className, category, brand, name }) => (
+export const ProductBreadCrumbs: React.FC<ProductBreadCrumbProps> = ({
+  className,
+  category,
+  brand,
+  name
+}) => (
   <Navigation className={`flex-1 flex h-full p-4 ${className}`} ariaLabel='Breadcrumb navigation'>
-    <List id='breadcrumb-options' role='menu' ariaHidden={false} className='inline-flex items-center space-x-1 md:space-x-3'>
-
+    <List
+      id='breadcrumb-options'
+      role='menu'
+      ariaHidden={false}
+      className='inline-flex items-center space-x-1 md:space-x-3'>
       <List.Item role='menuitem' ariaCurrent={false} className='flex items-center'>
-        <LinkButton href='/' ariaLabel='Go to Homepage' className='inline-flex items-center hover:text-blue-600'>
+        <LinkButton
+          href='/'
+          ariaLabel='Go to Homepage'
+          className='inline-flex items-center hover:text-blue-600'>
           <HomeIcon />
           Home
         </LinkButton>
@@ -19,8 +31,11 @@ export const ProductBreadCrumbs: React.FC<ProductBreadCrumbProps> = ({ className
 
       <GreaterThanIcon />
       <List.Item role='menuitem' ariaCurrent={false} className='flex items-center'>
-        <LinkButton ariaLabel={`Go to ${category} page`} href={`/${category}`} className='hover:text-blue-600'>
-          <Text className='hidden md:inline-block'>Products /</Text>{' '}{category}
+        <LinkButton
+          ariaLabel={`Go to ${category} page`}
+          href={`/${category}`}
+          className='hover:text-blue-600'>
+          <Text className='hidden md:inline-block'>Products /</Text> {category}
         </LinkButton>
       </List.Item>
 

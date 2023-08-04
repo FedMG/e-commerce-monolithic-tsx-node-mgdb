@@ -1,19 +1,20 @@
 import { fetchProductId } from '@/services'
 
-import { Layout, Article, ProductImage } from '@/components'
-import { ProductSection } from '@/modules/product/components'
-import { ProductInfo, ProductForm } from '@/modules/product/components/form'
-import { ProductHeader, ProductTitle, ProductFigure } from '@/modules/product/components/figure'
-import { ProductHeaderArticle, ProductBrandLogo, ProductBreadCrumbs } from '@/modules/product/components/header'
+import { Article, Layout } from '@/components'
+import { ProductSection } from '@/modules/product'
+import { ProductForm, ProductInfo } from '@/modules/product/components/form'
+import { ProductFigure, ProductHeader, ProductImage, ProductTitle } from '@/modules/product/components/figure'
+import { ProductBrandLogo, ProductBreadCrumbs, ProductHeaderArticle } from '@/modules/product/components/header'
 import { ProductDescription, ProductParagraph, ProductParagraphLabel } from '@/modules/product/components/description'
 
+import { StatusApiError } from '@/errors'
 import { isValidObject } from '@/utils'
 
 import type { Product } from '@/models'
+import type { NextPageWithLayout } from '@/next-pages'
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
-import type { NextPageWithLayout } from '@/next-pages'
-import { StatusApiError } from '@/errors'
+
 
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
 const TIMEOUT_ABORT = 30000
@@ -32,7 +33,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }): React.ReactElem
         <ProductBreadCrumbs category={category} brand={brand} name={name} className='border-r-none sm:border-r capitalize text-sm md:text-md font-medium text-gray-700' />
         <ProductBrandLogo className='capitalize font-extrabold sm:max-md:text-2xl md:max-xl:text-3xl xl:text-4xl'>{brand}</ProductBrandLogo>
       </ProductHeaderArticle>
-
+      
       <ProductSection id='product-article'>
         <ProductFigure className='bg-gray-100 rounded-t-xl sm:rounded-xl border shadow-sm'>
           <ProductHeader className='block sm:hidden' rating={rating}>

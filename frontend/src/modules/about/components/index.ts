@@ -1,1 +1,2 @@
-export * from './SVGBlob'
+// components
+export { SVGBlob } from './SVGBlob'

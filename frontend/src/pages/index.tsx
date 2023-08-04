@@ -1,6 +1,7 @@
-import { Layout } from '@/components/layout'
-import { CardCarousel, CoverCarousel } from '@/modules/home/'
 import { fetchAllCovers } from '@/services'
+
+import { Layout } from '@/components'
+import { CardCarousel, CoverCarousel } from '@/modules/home'
 import { StatusApiError } from '@/errors'
 
 import type { Cover } from '@/models'

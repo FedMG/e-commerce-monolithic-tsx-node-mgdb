@@ -1,4 +1,5 @@
-export * from './adaptAllProductCards.adapter'
-export * from './adaptProduct.adapter'
-export * from './adaptUniqueProductValues.adapter'
-export * from './adaptAllCovers.adapter'
+// adapters
+export { adaptAllProductCards } from './adaptAllProductCards.adapter'
+export { adaptProduct } from './adaptProduct.adapter'
+export { adaptUniqueProductValues } from './adaptUniqueProductValues.adapter'
+export { adaptAllCovers } from './adaptAllCovers.adapter'

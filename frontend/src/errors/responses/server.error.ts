@@ -1,4 +1,4 @@
-import { ApiErrorProps, StatusApiError } from '@/errors'
+import { ApiErrorProps, StatusApiError } from "../api"
 
 export interface TypeErrorsProps extends Pick<ApiErrorProps, 'message' | 'origin'> {}
 

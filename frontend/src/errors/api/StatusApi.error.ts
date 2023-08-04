@@ -1,4 +1,4 @@
-import { ApiError, ApiErrorProps } from "@/errors/api"
+import { ApiError, ApiErrorProps } from "./Api.error"
 
 interface StatusApiErrorProps extends ApiErrorProps {
   status: number

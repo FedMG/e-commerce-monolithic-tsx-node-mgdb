@@ -1,3 +1,4 @@
-export * from './CarouselButton'
-export * from './TrackedCarousel'
-export * from './Carousel'
+// components
+export { CarouselButton } from './CarouselButton'
+export { TrackedCarousel } from './TrackedCarousel'
+export { Carousel } from './Carousel'

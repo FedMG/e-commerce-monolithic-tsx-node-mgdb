@@ -1,6 +1,7 @@
-import type { ProductColors } from '@/models'
+import { colorOptions } from './refs'
 import { isArrayOfString } from '@/utils'
-import { colorOptions } from '@/modules/product/components/form/refs'
+
+import type { ProductColors } from '@/models'
 
 interface ProductClothingColorsProps { colors: ProductColors[] }
 

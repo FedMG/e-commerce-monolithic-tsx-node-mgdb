@@ -1,8 +1,11 @@
-import { useSwapEvent } from '@/hooks'
-import { HeaderMenuList } from './HeaderMenuList'
-import { DropdownButton } from './DropdownButtons'
-import { List, Text } from '@/components'
-import { DownArrowIcon } from '@/assets'
+import { useSwapEvent } from "@/hooks"
+
+import { HeaderMenuList } from "./HeaderMenuList"
+import { DropdownButton } from "./DropdownButtons"
+import { List } from "@/components/templates"
+import { Text } from "@/components/typography"
+
+import { DownArrowIcon } from "@/assets"
 
 // later refactor
 interface Links {

@@ -1,5 +1,5 @@
 import { useMemo, useReducer } from 'react'
-import { initialState, productFiltersReducer } from '@/modules/category/reducers'
+import { initialState, productFiltersReducer } from '../reducers'
 
 import type { ProductCard } from '@/models'
 import type { UpdateFilterParameters } from '../schemas'

@@ -1,12 +1,13 @@
 import Link from 'next/link'
 
-import { Heart, Text } from '@/components'
-import { ProductDetails } from './ProductDetails.category'
-import { ProductImage } from './ProductImage.category'
+import { ProductImage } from './ProductImage'
+import { ProductDetails } from './ProductDetails'
+import { Text } from '../typography'
+import { Heart } from '../Heart'
 
-import type { ProductCard } from '@/models'
 import type { ElementRef, FC, ReactElement } from 'react'
 import type { BaseComponentProps } from '@/schemas'
+import type { ProductCard } from '@/models'
 
 type ProductCardProps = Pick<BaseComponentProps, 'className'> & {
   element: Pick<

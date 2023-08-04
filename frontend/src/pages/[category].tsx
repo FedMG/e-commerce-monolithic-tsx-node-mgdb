@@ -1,19 +1,18 @@
-import { useManagementState } from '@/modules/category/hooks'
+import { useManagementState } from '@/modules/category'
 import { fetchAllCategoryData } from '@/services'
 
-import { Layout } from '@/components/layout'
-import { Drawer } from '@/components/Drawer'
+import { Drawer, Layout } from '@/components'
 import { CategoryHeader, CategoryHeaderInfo } from '@/modules/category/components/header'
-import { CategoryDiscountFilter, CategorySearchFilter, CategoryBrandFilter, CategoryRatingFilter, CategoryFilters } from '@/modules/category/components/filters'
-import { CategoryProducts } from '@/modules/category/components/card'
+import { CategoryBrandFilter, CategoryDiscountFilter, CategoryFilters, CategoryRatingFilter, CategorySearchFilter } from '@/modules/category/components/filters'
+import { CategoryProducts } from '@/modules/category/components/cards'
+
+import { CATEGORY_VALUES, isValidCategory } from '@/utils'
+import { StatusApiError } from '@/errors'
 
 import type { CategoryProps } from '@/modules/category/schemas'
 import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import type { NextPageWithLayout } from '@/next-pages'
 import type { ReactElement } from 'react'
-
-import { CATEGORY_VALUES, isValidCategory } from '@/utils'
-import { StatusApiError } from '@/errors'
 
 const TIMEOUT_ABORT = 30000
 
@@ -43,6 +42,7 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
 
 Category.getLayout = function getLayout (page, _pageProps): JSX.Element {
   return <Layout title='Category' section={page?.props?.currentCategory as string}>{page}</Layout>
+  
 }
 
 export async function getStaticPaths (): Promise<GetStaticPathsResult> {

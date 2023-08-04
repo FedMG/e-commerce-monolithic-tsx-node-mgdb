@@ -1,4 +1,5 @@
-import { ApiError, TypeErrorsProps } from "@/errors"
+import { TypeErrorsProps } from "./server.error"
+import { ApiError } from "../api"
 
 export class InvalidContextError extends ApiError {
   constructor({ origin, message }: TypeErrorsProps) {

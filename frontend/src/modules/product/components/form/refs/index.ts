@@ -1,1 +1,2 @@
-export * from './ClothingColors.ref'
+// objects
+export { colorOptions } from './ClothingColors.ref'
