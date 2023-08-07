@@ -1,6 +1,7 @@
 # E-commerce API
 
-Development with Node.js v18.15.0<br/>
+<img src="../public/e-commerce-api.webp" alt="An image of the API homepage" width="500" />
+
 
 The [__API Server__][0] is already up.
 <br/><br/>
