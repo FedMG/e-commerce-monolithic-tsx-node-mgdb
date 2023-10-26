@@ -1,5 +1,5 @@
-import { ProductCard } from '@/models'
 import { fetchAllProducts, fetchUniqueProductValues } from '@/services'
+import type { ProductCard } from '@/models'
 
 type FetchResponse = [string[], number[], ProductCard[]]
 
