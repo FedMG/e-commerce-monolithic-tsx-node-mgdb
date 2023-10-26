@@ -7,7 +7,7 @@ import type { ElementRef } from 'react'
 
 const handleClick = (e: React.MouseEvent<ElementRef<'div'>>) => e.preventDefault()
 
-export const CardCarouselTitle: React.FC<CardCarouselProps> = ({ children, section: category }) => (
+export const CardCarouselTitle: React.FC<Omit<CardCarouselProps, 'data'>> = ({ children, section: category }) => (
   <Link
     className='mx-2 px-4 bg-gray-100 rounded-t-lg shadow-sm border py-1 flex justify-between align-items group/category'
     href='/[category]'

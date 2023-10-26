@@ -4,7 +4,7 @@ import type { ProductCard, ProductsResponse } from '@/models'
 
 const ITEMS_DISPLAYED = 7
 
-export type FetchAllProductsParams = { category: string; signal: AbortSignal }
+export type FetchAllProductsParams = { category: string; signal?: AbortSignal }
 
 const _fetchAllProducts = async (params: FetchAllProductsParams): Promise<ProductCard[]> => {
   const { category, signal } = params

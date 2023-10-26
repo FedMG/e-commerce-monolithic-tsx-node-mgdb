@@ -1,1 +1,3 @@
-export * from './useCarouselEffect.hook'
+// hooks
+export { useCarouselEffect } from './useCarouselEffect.hook'
+export { useLoadingProduct } from './useLoadingProduct.hook'
