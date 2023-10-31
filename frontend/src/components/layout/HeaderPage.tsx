@@ -1,7 +1,7 @@
-import { Text } from '@/components/typography'
-import { Header, Navigation } from '@/components/templates'
-import { LinkButton } from '@/components'
-import { HeaderLogo, HeaderMenu, HeaderLinkCartButton } from './header'
+import { LinkButton } from '../LinkButton'
+import { Header, Navigation } from '../templates'
+import { Text } from '../typography'
+import { HeaderLinkCartButton, HeaderLogo, HeaderMenu } from './header'
 
 // later refactor
 interface Links {

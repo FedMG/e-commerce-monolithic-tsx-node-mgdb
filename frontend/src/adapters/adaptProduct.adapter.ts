@@ -14,7 +14,6 @@ export const adaptProduct = (response: ProductIdResponse): Product => {
     discount: product.discount || null,
     colors: product.colors,
     sizes: product.sizes,
-    rating: product.rating,
-    createdAt: product.createdAt
+    rating: product.rating
   }
 }

@@ -1,6 +1,5 @@
-export * from './HeaderDropdown'
-export * from './HeaderLinkCartButton'
-export * from './HeaderLogo'
-export * from './HeaderMenu'
-export * from './HeaderMenuList'
-export * from './DropdownButtons'
+// components
+export { HeaderMenu } from './HeaderMenu'
+export { HeaderLogo } from './HeaderLogo'
+export { HeaderLinkCartButton } from './HeaderLinkCartButton'
+

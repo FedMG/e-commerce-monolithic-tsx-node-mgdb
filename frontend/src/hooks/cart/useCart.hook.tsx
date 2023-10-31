@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 
 import { InvalidContextError } from '@/errors'
-import { CartContext } from '@/contexts/cartContext'
-import type { CartContextType } from '@/contexts/cartContextType'
+import { CartContext } from '@/contexts'
+import { Cart } from '@/models'
 
-export const useCart = (): CartContextType => {
+export const useCart = (): Cart => {
   const cartContext = useContext(CartContext)
-  if (cartContext == null) {
+  if (!cartContext) {
     throw new InvalidContextError({ origin: 'useCart', message:'useCart must be used within a CartProvider'})
   }
   return cartContext

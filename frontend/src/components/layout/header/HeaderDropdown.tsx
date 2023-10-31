@@ -1,7 +1,9 @@
 import { useSwapEvent } from '@/hooks'
-import { HeaderMenuList } from './HeaderMenuList'
+
+import { Text } from '@/components/typography'
+import { List } from '@/components/templates'
 import { DropdownButton } from './DropdownButtons'
-import { List, Text } from '@/components'
+
 import { DownArrowIcon } from '@/assets'
 
 // later refactor
@@ -16,12 +18,19 @@ interface HeaderPageProps {
   links: HeaderLinks[]
 }
 
+interface HeaderMenuListProps extends HeaderPageProps {
+  selectOption: () => void
+  bgColor?: string
+  spacing?: boolean
+}
+
 interface HeaderDropdownProps extends HeaderPageProps {
   selectOption: () => void
   label: string
+  WithMenuList: React.FC<HeaderMenuListProps>
 }
 
-export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links, selectOption }) => {
+export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links, selectOption, WithMenuList }) => {
   const [isDropdownOpen, openDropdown] = useSwapEvent()
 
   // later find out a way to refactor this, maybe by using a reducer or remaking the two committed components to avoid passed a another handlerState through the props
@@ -45,7 +54,7 @@ export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ label, links, se
       </DropdownButton>
 
       <List id='dropdown-menu' role='menu' ariaHidden={!isDropdownOpen} className={`z-10 ${isDropdownOpen ? 'block' : 'hidden'} w-full lg:w-44 bg-inherit absolute top-full left-0 right-0 rounded-lg lg:shadow`}>
-        <HeaderMenuList links={links} selectOption={selectDropdownOption} spacing />
+        <WithMenuList links={links} selectOption={selectDropdownOption} spacing />
       </List>
     </div>
   )

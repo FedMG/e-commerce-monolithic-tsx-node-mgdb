@@ -1,6 +1,8 @@
-import { Text, Section } from '@/components'
-import { Product } from '@/models'
+import { Text } from '@/components/typography'
+import { Section } from '@/components/templates'
 
+
+import type { Product } from '@/models'
 import type { BaseComponentProps } from '@/schemas'
 
 interface ProductDescriptionProps extends BaseComponentProps {}

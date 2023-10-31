@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Text } from '@/components'
+import { Text } from '@/components/typography'
 import { NavigateArrowIcon } from '@/assets'
 import { CardCarouselProps } from './CardCarousel.home'
 import type { ElementRef } from 'react'
@@ -15,7 +15,7 @@ export const CardCarouselTitle: React.FC<Omit<CardCarouselProps, 'data'>> = ({ c
     <Text.Accessible
       as='h2'
       id={`home-label-${category}`}
-      className='text-gray-800 text-md md:text-lg lg:text-xl font-semibold group-active/category:text-gray-800 group-hover/category:text-primary-700 w-full max-w-fit'>
+      className='capitalize text-gray-800 text-md md:text-lg lg:text-xl font-semibold group-active/category:text-gray-800 group-hover/category:text-primary-700 w-full max-w-fit'>
       {children}
     </Text.Accessible>
     <div className='w-full group-hover/category:cursor-default' onClick={handleClick} />

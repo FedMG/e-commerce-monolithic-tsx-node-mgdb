@@ -1,6 +1,9 @@
 import { fetchProductId } from '@/services'
 
-import { Layout, Article, ProductImage } from '@/components'
+import { Article } from '@/components/templates'
+import { Layout } from '@/components/layout'
+import { ProductImage } from '@/components'
+
 import { ProductSection } from '@/modules/product/components'
 import { ProductInfo, ProductForm } from '@/modules/product/components/form'
 import { ProductHeader, ProductTitle, ProductFigure } from '@/modules/product/components/figure'
@@ -25,7 +28,6 @@ export interface ProductProps {
 const Product: NextPageWithLayout<ProductProps> = ({ product }): React.ReactElement | null => {
   if (!isValidObject(product)) return null
   const { id, name, brand, category, description, image, colors, sizes, stock, price, discount, rating } = product
-
   return (
     <Article className={PAGE_ALIGN_BREAKPOINT} labelledby='product-title-article' describedby='product-article'>
       <ProductHeaderArticle className='bg-gray-100 shadow-sm border rounded-xl' labelledby='product-header'>
@@ -41,8 +43,8 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }): React.ReactElem
           <ProductImage className='rounded-t-xl sm:rounded-xl' image={image} alt={name} resolution={390} />
         </ProductFigure>
 
-        <ProductInfo className='bg-gray-100 border shadow-sm rounded-b-xl sm:rounded-xl' {...{ name, rating, price, discount }}>
-          <ProductForm productId={id} product={{ name, image, price, discount }} sizes={sizes} colors={colors} stock={stock} />
+        <ProductInfo className='bg-gray-100 border shadow-sm rounded-b-xl sm:rounded-xl' {...{name, rating, price, discount}}>
+          <ProductForm productId={id} product={{ name, image, price, discount, category }} sizes={sizes} colors={colors} stock={stock} />
         </ProductInfo>
 
         <ProductDescription className='bg-gray-100 rounded-xl shadow-sm border'>
@@ -82,4 +84,5 @@ export async function getServerSideProps ({ params }: GetServerSidePropsContext<
     clearTimeout(timeout)
   } 
 }
+
 export default Product

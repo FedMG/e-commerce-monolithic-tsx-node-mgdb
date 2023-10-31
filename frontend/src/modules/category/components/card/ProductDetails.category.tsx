@@ -1,4 +1,4 @@
-import { Text } from '@/components'
+import { Text } from '@/components/typography'
 import { applyDiscount } from '@/utils'
 import { StarIcon } from '@/assets'
 

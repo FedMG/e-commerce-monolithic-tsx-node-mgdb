@@ -1,1 +1,2 @@
-export * from './Text'
+// components
+export { Text } from './Text'

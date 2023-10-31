@@ -1,1 +1,2 @@
-export * from './FormInput'
+// components
+export { FormButton, FormRow, Input, Label } from './FormInput'

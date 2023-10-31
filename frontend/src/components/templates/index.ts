@@ -1,6 +1,7 @@
-export * from './Header'
-export * from './Article'
-export * from './List'
-export * from './Navigation'
-export * from './Section'
-export * from './SVGElement'
+// components
+export { Header } from './Header'
+export { Article } from './Article'
+export { List } from './List'
+export { Navigation } from './Navigation'
+export { Section } from './Section'
+export { SVGElement } from './SVGElement'

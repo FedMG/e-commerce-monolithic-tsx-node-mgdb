@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
-import { Heart, Text } from '@/components'
+import { Text } from '@/components/typography'
+import { Heart } from '@/components'
 import { ProductDetails } from './ProductDetails.category'
 import { ProductImage } from './ProductImage.category'
 

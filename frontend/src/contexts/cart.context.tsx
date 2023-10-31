@@ -1,9 +1,10 @@
 import { createContext } from 'react'
 
-import { useCartReducer } from '@/hooks'
-import { CartContextType } from './cartContextType'
+import type { Cart } from '@/models'
+import { useCartReducer } from '@/modules/cart/hooks'
 
-export const CartContext = createContext<CartContextType | undefined>(undefined)
+type CartContext = Cart | undefined
+export const CartContext = createContext<CartContext>(undefined)
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { cart, cartLength, addCartItem, removeCartItem, clearCart } = useCartReducer()

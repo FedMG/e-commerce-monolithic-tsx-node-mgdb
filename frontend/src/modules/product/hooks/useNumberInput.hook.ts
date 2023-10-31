@@ -1,17 +1,27 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { AddVoidCallback } from '@/utilities'
+import type { ClearWarningType, ItemsNumber, ItemsNumberWithNull } from '../schema'
 
 const MINIMUM_RANGE = 0
 const STEP = 1
 
-export interface useNumberInputResult {
+type Params = ItemsNumberWithNull<false> & {
+  selectCartItemsNumber: AddVoidCallback<ItemsNumber>
+  clearWarning: ClearWarningType['onChange']
+}
+
+type Result = {
   addItem: AddVoidCallback<undefined>
   dropItem: AddVoidCallback<undefined>
   reset: AddVoidCallback<undefined>
   result: number
 }
 
-export const useNumberInput = (itemsNumber: number): useNumberInputResult => {
+export const useNumberInput = ({
+  itemsNumber,
+  selectCartItemsNumber,
+  clearWarning
+}: Params): Result => {
   const heldButtonInterval = useRef<ReturnType<typeof setInterval> | null>(null)
   const [items, setItemsNumber] = useState(0)
 
@@ -26,12 +36,18 @@ export const useNumberInput = (itemsNumber: number): useNumberInputResult => {
   }
 
   const handleAddItem = (): void => {
-    return setItemsNumber(item => item + STEP > itemsNumber ? itemsNumber : item + STEP)
+    return setItemsNumber(item => (item + STEP > itemsNumber ? itemsNumber : item + STEP))
   }
 
   const handleDropItem = (): void => {
-    return setItemsNumber(item => item - STEP < MINIMUM_RANGE ? MINIMUM_RANGE : item - STEP)
+    return setItemsNumber(item => (item - STEP < MINIMUM_RANGE ? MINIMUM_RANGE : item - STEP))
   }
+
+  useEffect(() => {
+    selectCartItemsNumber({ itemsNumber: items })
+    clearWarning({ property: 'itemsNumberMessage' })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items])
 
   return {
     addItem: () => handleMouseDown(handleAddItem),
