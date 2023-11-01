@@ -6,6 +6,7 @@ import type { AddVoidCallback } from '@/utilities'
 import type { ClearWarningType, Color } from '../../schema'
 
 type Props = {
+  colorSelected: ProductColors | null
   colors: ProductColors[]
   onClick: AddVoidCallback<Color>
 } & ClearWarningType
@@ -13,7 +14,8 @@ type Props = {
 export const ProductClothingColors = ({
   colors,
   onClick,
-  onChange
+  onChange,
+  colorSelected
 }: Props): React.ReactElement | null => {
   if (!isArrayOfString(colors)) return null // later update it to return a default element
 
@@ -31,7 +33,7 @@ export const ProductClothingColors = ({
         <span
           key={color}
           onClick={() => selectColor({ color })}
-          className={`flex-2 p-2 sm:p-3 rounded-md border hover:opacity-80 ${colorOptions[color]} w-full max-w-[30px] md:max-w-[40px] lg:max-w-[50px] xl:max-w-[60px]`}
+          className={`${color === colorSelected && 'ring-2 ring-green-500 border-green-500' } hover:ring-2 active:ring-4 hover:opacity-80 flex-2 p-2 sm:p-3 rounded-md border ${colorOptions[color]} w-full max-w-[30px] md:max-w-[40px] lg:max-w-[50px] xl:max-w-[60px]`}
           title={color}
         />
       ))}

@@ -12,12 +12,24 @@ const Title = () => (
   </div>
 )
 
+const ArrowUpIcon = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    fill='none'
+    viewBox='0 0 24 24'
+    strokeWidth={1.5}
+    stroke='currentColor'
+    className='w-6 h-6'>
+    <path strokeLinecap='round' strokeLinejoin='round' d='M4.5 15.75l7.5-7.5 7.5 7.5' />
+  </svg>
+)
+
 const Cart: NextPageWithLayout = () => {
   const { clearCart } = useCart()
 
   return (
-    <div className={`${PAGE_ALIGN_BREAKPOINT}`}>
-      <div className='bg-gray-100 shadow-sm border rounded-xl     min-h-screen max-h-fit  flex flex-col p-2 space-y-2'>
+    <div className={`relative ${PAGE_ALIGN_BREAKPOINT}`}>
+      <div className='bg-gray-100 shadow-sm border rounded-xl     min-h-screen max-h-fit  flex flex-col sm:p-2 space-y-2'>
         <Title />
         <CartContainer />
       </div>

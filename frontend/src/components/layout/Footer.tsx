@@ -19,7 +19,7 @@ export interface FooterLinkProps {
 
 // later refactor all this code
 const FooterLink: React.FC<FooterLinkProps> = ({ children, href = '#' }) => (
-  <a href={href} className='w-full h-full max-h-[35px] max-w-[35px] text-white hover:bg-gray-50 hover:text-black p-1 rounded-md active:bg-black active:text-white'>
+  <a href={href} rel="noopener noreferrer" target='_blank' className='w-full h-full max-h-[35px] max-w-[35px] text-white hover:bg-gray-50 hover:text-black p-1 rounded-md active:bg-black active:text-white'>
     {children}
   </a>
 )

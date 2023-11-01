@@ -13,14 +13,14 @@ import type { Product } from '@/models'
 type Props = Pick<Product, 'sizes' | 'colors' | 'stock'> & ProductCartItem
 
 export const ProductForm = ({ productId, product, sizes, colors, stock }: Props) => {
-  const { addItem, selectColor, selectSize, selectQuantity, warnings, clearWarning } =
+  const { preferences, addItem, selectColor, selectSize, selectQuantity, warnings, clearWarning } =
     useCartFormManagement()
   const { status, buyNow, close } = useBuyRequirements() // later update it with user-logging context
 
   return (
     <form className='flex flex-col gap-1 h-full' onSubmit={e => e.preventDefault()}>
-      <ProductClothingSizes sizes={sizes} onClick={selectSize} onChange={clearWarning} />
-      <ProductClothingColors colors={colors} onClick={selectColor} onChange={clearWarning} />
+      <ProductClothingSizes sizes={sizes} sizeSelected={preferences?.size} onClick={selectSize} onChange={clearWarning} />
+      <ProductClothingColors colors={colors}  colorSelected={preferences?.color} onClick={selectColor} onChange={clearWarning} />
       <ProductsNumberInput stock={stock} onClick={selectQuantity} onChange={clearWarning} />
 
       <Section.Accessible

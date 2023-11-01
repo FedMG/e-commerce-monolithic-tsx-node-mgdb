@@ -4,9 +4,10 @@ import { useWarningManagement } from './useWarningManagement.hook'
 
 import type { Product } from '@/models'
 
+// later refactor this type with its own cart model
 export type ProductCartItem = {
   productId: Product['id']
-  product: Pick<Product, 'name' | 'price' | 'discount' | 'image' | 'category'>
+  product: Pick<Product, 'name' | 'price' | 'discount' | 'image' | 'category' | 'brand' | 'rating'>
 }
 
 export const useCartFormManagement = () => {
@@ -35,5 +36,5 @@ export const useCartFormManagement = () => {
     }
   }
 
-  return { ...warningFeatures, ...selectors, addItem: addItemHandler }
+  return { ...warningFeatures, ...selectors, addItem: addItemHandler, preferences }
 }

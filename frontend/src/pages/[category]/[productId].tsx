@@ -44,7 +44,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }): React.ReactElem
         </ProductFigure>
 
         <ProductInfo className='bg-gray-100 border shadow-sm rounded-b-xl sm:rounded-xl' {...{name, rating, price, discount}}>
-          <ProductForm productId={id} product={{ name, image, price, discount, category }} sizes={sizes} colors={colors} stock={stock} />
+          <ProductForm productId={id} product={{ name, image, price, discount, category, brand, rating }} sizes={sizes} colors={colors} stock={stock} />
         </ProductInfo>
 
         <ProductDescription className='bg-gray-100 rounded-xl shadow-sm border'>

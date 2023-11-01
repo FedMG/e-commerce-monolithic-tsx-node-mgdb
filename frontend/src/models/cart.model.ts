@@ -1,7 +1,7 @@
 import type { AddVoidCallback } from '@/utilities'
 import type { ClothingSizes, Product, ProductColors } from './product.model'
 
-export type CartProduct = Pick<Product, 'name' | 'image' | 'price' | 'discount' | 'category'>
+export type CartProduct = Pick<Product, 'name' | 'image' | 'price' | 'discount' | 'category' | 'rating' | 'brand'>
 
 type CartProductFeatures = {
   size: ClothingSizes

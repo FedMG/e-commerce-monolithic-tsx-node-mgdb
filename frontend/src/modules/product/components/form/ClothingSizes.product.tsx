@@ -6,6 +6,7 @@ import type { AddVoidCallback } from '@/utilities'
 import type { ClearWarningType, Size } from '../../schema'
 
 type Props = {
+  sizeSelected: ClothingSizes | null
   sizes: ClothingSizes[]
   onClick: AddVoidCallback<Size>
 } & ClearWarningType
@@ -13,7 +14,8 @@ type Props = {
 export const ProductClothingSizes = ({
   sizes,
   onClick,
-  onChange
+  onChange,
+  sizeSelected
 }: Props): React.ReactElement | null => {
   if (!isArrayOfString(sizes)) return null // later update it to return a default element
 
@@ -31,7 +33,7 @@ export const ProductClothingSizes = ({
         <span
           key={size}
           onClick={() => selectSize({ size })}
-          className='flex-2 text-gray-700 text-xs font-semibold uppercase p-1 rounded-md border bg-gray-50 text-center w-full max-w-[30px] md:max-w-[40px] lg:max-w-[50px] xl:max-w-[60px]'>
+          className={`${size === sizeSelected && 'bg-green-100 ring-2 ring-green-500' } hover:ring-2 active:ring-4 flex-2 text-gray-700 text-xs font-semibold uppercase p-1 rounded-md border bg-gray-50 text-center w-full max-w-[30px] md:max-w-[40px] lg:max-w-[50px] xl:max-w-[60px]`}>
           {size}
         </span>
       ))}

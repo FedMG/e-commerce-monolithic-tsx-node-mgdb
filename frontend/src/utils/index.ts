@@ -10,3 +10,4 @@ export { CATEGORY_KEYS, CATEGORY_VALUES, isValidCategory } from './isValidCatego
 export { applyDiscount } from './applyDiscount.utility'
 export { generateRange } from './generateRange.utility'
 export { sanatize } from './sanatize.utility'
+export { generateRandomNumber } from './generateRandomNumber.utility'
