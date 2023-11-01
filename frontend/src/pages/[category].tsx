@@ -3,6 +3,7 @@ import { fetchAllCategoryData } from '@/services'
 
 import { Layout } from '@/components/layout'
 import { Drawer } from '@/components/Drawer'
+import { GoToTop } from '@/components'
 import { CategoryHeader, CategoryHeaderInfo } from '@/modules/category/components/header'
 import { CategoryDiscountFilter, CategorySearchFilter, CategoryBrandFilter, CategoryRatingFilter, CategoryFilters } from '@/modules/category/components/filters'
 import { CategoryProducts } from '@/modules/category/components/card'
@@ -22,7 +23,7 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
   // const items = useInfinitePagination(products, currentCategory)
 
   return (
-    <div className='py-4 px-6 sm:px-10 lg:px-16 xl:px-24 relative'>
+    <div className='py-4 px-6 sm:px-10 lg:px-16 xl:px-24 relative' id='category-top'>
       <div className='grid grid-cols-12 lg:gap-5 w-full sticky top-0 left-0 right-0'>
         <CategoryHeader>
           <CategoryHeaderInfo currentCategory={currentCategory} productsNumber={sortedProducts.length} />
@@ -37,6 +38,7 @@ const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, bran
         </CategoryFilters>
         <CategoryProducts products={sortedProducts} />
       </div>
+      <GoToTop href='#category-top' />
     </div>
   )
 }
@@ -61,7 +63,7 @@ export async function getStaticProps ({ params }: GetStaticPropsContext): Promis
   if (category === undefined || !isValidCategory(category)) return { notFound: true }
   const encodedCategory = encodeURIComponent(category)
   const controller = new AbortController()
-
+  // later remove this useless abortcontroller
   const timeout = setTimeout(() => {
     controller.abort()
   }, TIMEOUT_ABORT)

@@ -11,7 +11,7 @@ type ProductDetailsProps = Pick<ProductCard, 'price' | 'discount' | 'rating' | '
 type Children = Pick<BaseComponentProps, 'children'>
 
 const ProductOldPrice: FC<Children> = ({ children }) => (
-  <Text className='-ml-1 select-none text-gray-600 font-semibold text-sm lg:text-md'>
+  <Text className='transition duration-400 easy-in-out group-hover/card:opacity-100 opacity-0 -ml-1 select-none text-gray-600 font-semibold text-sm lg:text-md'>
     <del>${children}</del>
   </Text>
 )
@@ -28,13 +28,13 @@ const ProductPrice: FC<Children> = ({ children }) => (
 )
 
 const ProductDiscount: FC<Children> = ({ children }) => (
-  <Text className='pb-[0.3rem] pl-0.5 lg:pl-1 text-green-600 text-xs lg:text-sm font-medium'>
+  <Text className='transition duration-400 easy-in-out group-hover/card:opacity-100 opacity-0 pb-[0.3rem] pl-0.5 lg:pl-1 text-green-600 text-xs lg:text-sm font-medium'>
     -{children}% OFF
   </Text>
 )
 
 const ProductName: FC<Children> = ({ children }) => (
-  <div className='shadow-bottom absolute -bottom-3 left-0 w-full px-2 pb-1 opacity-0 group-hover/card:opacity-100 bg-gray-200 truncate border-b rounded-bl-md rounded-br-md border-x'>
+  <div className='w-full pb-1 truncate'>
     <Text className='text-gray-700 capitalize leading-normal max-lg:text-md lg:text-lg pt-1 lg:pt-1.5'>
       {children}
     </Text>
