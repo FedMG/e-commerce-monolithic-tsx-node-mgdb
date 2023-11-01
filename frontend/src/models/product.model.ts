@@ -33,10 +33,19 @@ export interface Product {
   colors: ProductColors[]
   sizes: ClothingSizes[]
   rating: ProductRatingProps
-  createdAt: Date
 }
 
-export type ProductCard = Omit<Product, 'colors' | 'sizes' | 'description' | 'stock'>
+export interface ProductCard {
+  id: string
+  name: string
+  image: Image
+  category: string
+  brand: string
+  price: number
+  discount?: number | null
+  rating: ProductRatingProps
+  createdAt: Date
+}
 
 // External services response
 export interface ProductsResponse {

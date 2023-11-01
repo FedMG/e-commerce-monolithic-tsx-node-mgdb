@@ -1,20 +1,27 @@
 import { InvalidArgumentError } from '@/errors'
 import { updateLocalStore, getLocalStorageItem } from '@/utils'
-import { CartInitialStatetype, CartReducerType } from './cartReducerType'
+
+import type { CART_ACTIONS } from '@/modules/cart/enums'
+import type { CartInitialState, CartItem } from '@/models'
+
+export interface CartReducer {
+  state: CartInitialState
+  action: { type: CART_ACTIONS, payload?: CartItem | Partial<CartItem> }
+}
 
 const ORIGIN = 'cartReducer'
 
 const updateLocalCartStore = updateLocalStore('e-commerce-cart')
-export const initialState: CartInitialStatetype = new Map(null)
+export const initialState: CartInitialState = new Map(null)
 
-export function cartReducer (state: CartReducerType['state'], action: CartReducerType['action']): CartInitialStatetype {
+export function cartReducer (state: CartReducer['state'], action: CartReducer['action']): CartInitialState {
   switch (action.type) {
     case 'ESTABLISHED_INITIAL_STATE': {
       const localStoreCart = getLocalStorageItem('e-commerce-cart')
       if (!localStoreCart) return state
 
-      const parsedLocalStorage: CartInitialStatetype = JSON.parse(localStoreCart)
-      const initialState: CartInitialStatetype = new Map(Object.entries(parsedLocalStorage))
+      const parsedLocalStorage: CartInitialState = JSON.parse(localStoreCart)
+      const initialState: CartInitialState = new Map(Object.entries(parsedLocalStorage))
       return initialState
     }
 

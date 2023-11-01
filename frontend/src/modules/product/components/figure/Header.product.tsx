@@ -1,7 +1,8 @@
 import { ProductRating } from '../form'
-import { Header, Text } from '@/components'
-import { Product } from '@/models'
+import { Header } from '@/components/templates'
+import { Text } from '@/components/typography'
 
+import type { Product } from '@/models'
 import type { BaseComponentProps } from '@/schemas'
 
 type ProductHeaderProps = BaseComponentProps & Pick<Product, 'rating'>

@@ -1,27 +1,26 @@
 import { useSwapEvent } from '@/hooks'
-import { HamburgerDropdownButton } from './DropdownButtons'
-import { List, Text, LinkEventButton } from '@/components'
-import { HeaderMenuList } from './HeaderMenuList'
-import { CloseIcon, HamburgerIcon } from '@/assets'
 
+import { Text } from "@/components/typography"
+import { List } from '@/components/templates'
+import { HamburgerDropdownButton } from "./DropdownButtons"
+import { HeaderMenuList } from './HeaderMenuList'
+import { LinkEventButton } from '@/components/LinkButton'
+
+import { CloseIcon, HamburgerIcon } from "@/assets"
 import { isString } from '@/utils'
 
-interface Links {
+type Links = {
   path: string
   name: string
 }
-
 type HeaderLinks = Links & { dropdown?: Links[] }
 
-interface HeaderPageProps {
+type Props = {
   links: HeaderLinks[]
-}
-
-interface HeaderMenuProps extends HeaderPageProps {
   bgColor: string
 }
 
-export const HeaderMenu: React.FC<HeaderMenuProps> = ({ links, bgColor }) => {
+export const HeaderMenu = ({ links, bgColor }: Props) => {
   const [isMenuOpen, selectPage] = useSwapEvent()
 
   return (
