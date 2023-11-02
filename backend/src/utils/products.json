@@ -139,7 +139,7 @@
     },
     "price": 93,
     "category": "women's clothing",
-    "brand": "channel",
+    "brand": "chanel",
     "stock": 104,
     "sizes": ["S", "M", "L", "XL"],
     "colors": ["cyan 600", "yellow 400", "rose 500", "pink 600"],
@@ -184,7 +184,7 @@
     },
     "price": 162,
     "category": "men's clothing",
-    "brand": "toppler",
+    "brand": "topper",
     "discount": 15,
     "stock": 104,
     "sizes": ["S", "M", "L", "XL"],
@@ -462,7 +462,7 @@
       "stars": 4,
       "votes": 77
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our collection of stylish hats, available in a variety of colors to suit your unique style.",
       "body": "Our hats are made from high-quality materials and feature a comfortable and adjustable fit to ensure maximum comfort. Choose from a range of colors including classic black, versatile gray, and trendy blue to match your outfit and mood. Our hats are perfect for any occasion, whether you're running errands, relaxing at the beach, or out for a night on the town.",
@@ -526,7 +526,7 @@
       "stars": 4,
       "votes": 252
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.",
       "body": "The matching yellow jumpsuit is perfect for a day out or a casual evening, with its lightweight and flowy fabric that drapes beautifully on the body. The jumpsuit features a flattering V-neckline and short sleeves, with a cinched waist that accentuates your figure.",
@@ -548,7 +548,7 @@
       "stars": 5,
       "votes": 117
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.",
       "body": "The matching yellow jumpsuit is perfect for a day out or a casual evening, with its lightweight and flowy fabric that drapes beautifully on the body. The jumpsuit features a flattering V-neckline and short sleeves, with a cinched waist that accentuates your figure.",
@@ -658,7 +658,7 @@
       "stars": 4,
       "votes": 137
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest product, the White Sports Shoes! Our shoes come in a clean and classic shade of white that is perfect for any athletic or casual occasion.",
       "body": "The body of our White Sports Shoes is made from a lightweight and breathable synthetic material, which allows your feet to stay cool and dry even during intense physical activities. The insoles are cushioned for extra comfort and support, ensuring that your feet stay protected and pain-free. The design of the shoes features a non-slip sole that provides excellent traction, making them perfect for any type of physical activity.",
@@ -680,7 +680,7 @@
       "stars": 3,
       "votes": 57
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest sunglasses collection, featuring a variety of colors to suit any style and preference.",
       "body": "Our sunglasses are crafted from high-quality materials that are designed to provide optimal durability and protection. The collection features a range of colors, from classic black to trendy pastel hues, so you can choose the perfect shade to complement your outfit. The lenses are polarized to provide excellent glare reduction and UV protection, making them perfect for outdoor activities.",
@@ -724,7 +724,7 @@
       "stars": 4,
       "votes": 261
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest product, the White Sports Shoes! Our shoes come in a clean and classic shade of white that is perfect for any athletic or casual occasion.",
       "body": "The body of our White Sports Shoes is made from a lightweight and breathable synthetic material, which allows your feet to stay cool and dry even during intense physical activities. The insoles are cushioned for extra comfort and support, ensuring that your feet stay protected and pain-free. The design of the shoes features a non-slip sole that provides excellent traction, making them perfect for any type of physical activity.",
@@ -746,7 +746,7 @@
       "stars": 5,
       "votes": 127
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest t-shirt collection featuring a variety of vibrant colors to suit any style and occasion.",
       "body": "Our t-shirts are made from a high-quality cotton blend that is soft, breathable, and comfortable to wear all day long. The fabric is also durable and easy to care for, ensuring that your t-shirt will look great wash after wash. Each t-shirt features a classic fit with a crew neckline and short sleeves, making them versatile and easy to style with a variety of outfits. With a range of colors to choose from, including bold hues and classic neutrals, you're sure to find a t-shirt that fits your style.",
@@ -836,7 +836,7 @@
       "stars": 3,
       "votes": 136
     },
-    "brand": "toppler",
+    "brand": "topper",
     "colors": ["black", "neutral 900", "stone 600", "slate 900"],
     "description": {
       "introduction": "Introducing our latest collection of pants, featuring a range of styles to suit any occasion. Our collection includes black, gray, and blue pants, as well as jeans and jogging pants.",
@@ -1019,7 +1019,7 @@
       "stars": 3,
       "votes": 199
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our latest sunglasses collection, featuring a variety of colors to suit any style and preference.",
       "body": "Our sunglasses are crafted from high-quality materials that are designed to provide optimal durability and protection. The collection features a range of colors, from classic black to trendy pastel hues, so you can choose the perfect shade to complement your outfit. The lenses are polarized to provide excellent glare reduction and UV protection, making them perfect for outdoor activities.",
@@ -1042,7 +1042,7 @@
       "stars": 5,
       "votes": 307
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our new fashion yellow jacket - the perfect addition to your wardrobe for any season.",
       "body": "Made from high-quality materials, our jacket features a bold and vibrant yellow color that is sure to turn heads. The lightweight and breathable fabric make it a versatile piece that can be worn all year round. The jacket features a comfortable and flattering fit, with a zip-up front and two side pockets for added convenience. Pair it with your favorite jeans and a t-shirt for a casual look, or dress it up with a skirt and heels for a night out.",
@@ -1329,7 +1329,7 @@
     },
     "price": 93,
     "category": "women's clothing",
-    "brand": "channel",
+    "brand": "chanel",
     "discount": 5,
     "stock": 91,
     "sizes": ["S", "L", "XL"],
@@ -1375,7 +1375,7 @@
     },
     "price": 162,
     "category": "men's clothing",
-    "brand": "toppler",
+    "brand": "topper",
     "discount": 15,
     "stock": 87,
     "sizes": ["S", "L", "XL"],
@@ -1655,7 +1655,7 @@
       "stars": 4,
       "votes": 194
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our collection of stylish hats, available in a variety of colors to suit your unique style.",
       "body": "Our hats are made from high-quality materials and feature a comfortable and adjustable fit to ensure maximum comfort. Choose from a range of colors including classic black, versatile gray, and trendy blue to match your outfit and mood. Our hats are perfect for any occasion, whether you're running errands, relaxing at the beach, or out for a night on the town.",
@@ -1722,7 +1722,7 @@
       "stars": 4,
       "votes": 139
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.",
       "body": "The matching yellow jumpsuit is perfect for a day out or a casual evening, with its lightweight and flowy fabric that drapes beautifully on the body. The jumpsuit features a flattering V-neckline and short sleeves, with a cinched waist that accentuates your figure.",
@@ -1744,7 +1744,7 @@
       "stars": 4,
       "votes": 155
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.",
       "body": "The matching yellow jumpsuit is perfect for a day out or a casual evening, with its lightweight and flowy fabric that drapes beautifully on the body. The jumpsuit features a flattering V-neckline and short sleeves, with a cinched waist that accentuates your figure.",
@@ -1856,7 +1856,7 @@
       "stars": 3,
       "votes": 235
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest product, the White Sports Shoes! Our shoes come in a clean and classic shade of white that is perfect for any athletic or casual occasion.",
       "body": "The body of our White Sports Shoes is made from a lightweight and breathable synthetic material, which allows your feet to stay cool and dry even during intense physical activities. The insoles are cushioned for extra comfort and support, ensuring that your feet stay protected and pain-free. The design of the shoes features a non-slip sole that provides excellent traction, making them perfect for any type of physical activity.",
@@ -1879,7 +1879,7 @@
       "stars": 2,
       "votes": 175
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest sunglasses collection, featuring a variety of colors to suit any style and preference.",
       "body": "Our sunglasses are crafted from high-quality materials that are designed to provide optimal durability and protection. The collection features a range of colors, from classic black to trendy pastel hues, so you can choose the perfect shade to complement your outfit. The lenses are polarized to provide excellent glare reduction and UV protection, making them perfect for outdoor activities.",
@@ -1921,7 +1921,7 @@
       "stars": 4,
       "votes": 191
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest product, the White Sports Shoes! Our shoes come in a clean and classic shade of white that is perfect for any athletic or casual occasion.",
       "body": "The body of our White Sports Shoes is made from a lightweight and breathable synthetic material, which allows your feet to stay cool and dry even during intense physical activities. The insoles are cushioned for extra comfort and support, ensuring that your feet stay protected and pain-free. The design of the shoes features a non-slip sole that provides excellent traction, making them perfect for any type of physical activity.",
@@ -1943,7 +1943,7 @@
       "stars": 4,
       "votes": 104
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest t-shirt collection featuring a variety of vibrant colors to suit any style and occasion.",
       "body": "Our t-shirts are made from a high-quality cotton blend that is soft, breathable, and comfortable to wear all day long. The fabric is also durable and easy to care for, ensuring that your t-shirt will look great wash after wash. Each t-shirt features a classic fit with a crew neckline and short sleeves, making them versatile and easy to style with a variety of outfits. With a range of colors to choose from, including bold hues and classic neutrals, you're sure to find a t-shirt that fits your style.",
@@ -2034,7 +2034,7 @@
       "stars": 5,
       "votes": 241
     },
-    "brand": "toppler",
+    "brand": "topper",
     "colors": ["black", "neutral 900", "stone 600", "slate 900"],
     "description": {
       "introduction": "Introducing our latest collection of pants, featuring a range of styles to suit any occasion. Our collection includes black, gray, and blue pants, as well as jeans and jogging pants.",
@@ -2218,7 +2218,7 @@
       "stars": 3,
       "votes": 191
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our latest sunglasses collection, featuring a variety of colors to suit any style and preference.",
       "body": "Our sunglasses are crafted from high-quality materials that are designed to provide optimal durability and protection. The collection features a range of colors, from classic black to trendy pastel hues, so you can choose the perfect shade to complement your outfit. The lenses are polarized to provide excellent glare reduction and UV protection, making them perfect for outdoor activities.",
@@ -2241,7 +2241,7 @@
       "stars": 4,
       "votes": 167
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our new fashion yellow jacket - the perfect addition to your wardrobe for any season.",
       "body": "Made from high-quality materials, our jacket features a bold and vibrant yellow color that is sure to turn heads. The lightweight and breathable fabric make it a versatile piece that can be worn all year round. The jacket features a comfortable and flattering fit, with a zip-up front and two side pockets for added convenience. Pair it with your favorite jeans and a t-shirt for a casual look, or dress it up with a skirt and heels for a night out.",
@@ -2527,7 +2527,7 @@
     },
     "price": 93,
     "category": "women's clothing",
-    "brand": "channel",
+    "brand": "chanel",
     "stock": 104,
     "sizes": ["S", "M", "L", "XL"],
     "colors": ["cyan 600", "yellow 400", "rose 500", "pink 600"],
@@ -2572,7 +2572,7 @@
     },
     "price": 162,
     "category": "men's clothing",
-    "brand": "toppler",
+    "brand": "topper",
     "discount": 15,
     "stock": 104,
     "sizes": ["S", "M", "L", "XL"],
@@ -2850,7 +2850,7 @@
       "stars": 4,
       "votes": 77
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our collection of stylish hats, available in a variety of colors to suit your unique style.",
       "body": "Our hats are made from high-quality materials and feature a comfortable and adjustable fit to ensure maximum comfort. Choose from a range of colors including classic black, versatile gray, and trendy blue to match your outfit and mood. Our hats are perfect for any occasion, whether you're running errands, relaxing at the beach, or out for a night on the town.",
@@ -2914,7 +2914,7 @@
       "stars": 4,
       "votes": 252
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.",
       "body": "The matching yellow jumpsuit is perfect for a day out or a casual evening, with its lightweight and flowy fabric that drapes beautifully on the body. The jumpsuit features a flattering V-neckline and short sleeves, with a cinched waist that accentuates your figure.",
@@ -2936,7 +2936,7 @@
       "stars": 5,
       "votes": 117
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.",
       "body": "The matching yellow jumpsuit is perfect for a day out or a casual evening, with its lightweight and flowy fabric that drapes beautifully on the body. The jumpsuit features a flattering V-neckline and short sleeves, with a cinched waist that accentuates your figure.",
@@ -3046,7 +3046,7 @@
       "stars": 4,
       "votes": 137
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest product, the White Sports Shoes! Our shoes come in a clean and classic shade of white that is perfect for any athletic or casual occasion.",
       "body": "The body of our White Sports Shoes is made from a lightweight and breathable synthetic material, which allows your feet to stay cool and dry even during intense physical activities. The insoles are cushioned for extra comfort and support, ensuring that your feet stay protected and pain-free. The design of the shoes features a non-slip sole that provides excellent traction, making them perfect for any type of physical activity.",
@@ -3068,7 +3068,7 @@
       "stars": 3,
       "votes": 57
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest sunglasses collection, featuring a variety of colors to suit any style and preference.",
       "body": "Our sunglasses are crafted from high-quality materials that are designed to provide optimal durability and protection. The collection features a range of colors, from classic black to trendy pastel hues, so you can choose the perfect shade to complement your outfit. The lenses are polarized to provide excellent glare reduction and UV protection, making them perfect for outdoor activities.",
@@ -3112,7 +3112,7 @@
       "stars": 4,
       "votes": 261
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest product, the White Sports Shoes! Our shoes come in a clean and classic shade of white that is perfect for any athletic or casual occasion.",
       "body": "The body of our White Sports Shoes is made from a lightweight and breathable synthetic material, which allows your feet to stay cool and dry even during intense physical activities. The insoles are cushioned for extra comfort and support, ensuring that your feet stay protected and pain-free. The design of the shoes features a non-slip sole that provides excellent traction, making them perfect for any type of physical activity.",
@@ -3134,7 +3134,7 @@
       "stars": 5,
       "votes": 127
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest t-shirt collection featuring a variety of vibrant colors to suit any style and occasion.",
       "body": "Our t-shirts are made from a high-quality cotton blend that is soft, breathable, and comfortable to wear all day long. The fabric is also durable and easy to care for, ensuring that your t-shirt will look great wash after wash. Each t-shirt features a classic fit with a crew neckline and short sleeves, making them versatile and easy to style with a variety of outfits. With a range of colors to choose from, including bold hues and classic neutrals, you're sure to find a t-shirt that fits your style.",
@@ -3224,7 +3224,7 @@
       "stars": 3,
       "votes": 136
     },
-    "brand": "toppler",
+    "brand": "topper",
     "colors": ["black", "neutral 900", "stone 600", "slate 900"],
     "description": {
       "introduction": "Introducing our latest collection of pants, featuring a range of styles to suit any occasion. Our collection includes black, gray, and blue pants, as well as jeans and jogging pants.",
@@ -3407,7 +3407,7 @@
       "stars": 3,
       "votes": 199
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our latest sunglasses collection, featuring a variety of colors to suit any style and preference.",
       "body": "Our sunglasses are crafted from high-quality materials that are designed to provide optimal durability and protection. The collection features a range of colors, from classic black to trendy pastel hues, so you can choose the perfect shade to complement your outfit. The lenses are polarized to provide excellent glare reduction and UV protection, making them perfect for outdoor activities.",
@@ -3430,7 +3430,7 @@
       "stars": 5,
       "votes": 307
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our new fashion yellow jacket - the perfect addition to your wardrobe for any season.",
       "body": "Made from high-quality materials, our jacket features a bold and vibrant yellow color that is sure to turn heads. The lightweight and breathable fabric make it a versatile piece that can be worn all year round. The jacket features a comfortable and flattering fit, with a zip-up front and two side pockets for added convenience. Pair it with your favorite jeans and a t-shirt for a casual look, or dress it up with a skirt and heels for a night out.",
@@ -3717,7 +3717,7 @@
     },
     "price": 93,
     "category": "women's clothing",
-    "brand": "channel",
+    "brand": "chanel",
     "discount": 5,
     "stock": 91,
     "sizes": ["S", "L", "XL"],
@@ -3763,7 +3763,7 @@
     },
     "price": 162,
     "category": "men's clothing",
-    "brand": "toppler",
+    "brand": "topper",
     "discount": 15,
     "stock": 87,
     "sizes": ["S", "L", "XL"],
@@ -4043,7 +4043,7 @@
       "stars": 4,
       "votes": 194
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our collection of stylish hats, available in a variety of colors to suit your unique style.",
       "body": "Our hats are made from high-quality materials and feature a comfortable and adjustable fit to ensure maximum comfort. Choose from a range of colors including classic black, versatile gray, and trendy blue to match your outfit and mood. Our hats are perfect for any occasion, whether you're running errands, relaxing at the beach, or out for a night on the town.",
@@ -4110,7 +4110,7 @@
       "stars": 4,
       "votes": 139
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.",
       "body": "The matching yellow jumpsuit is perfect for a day out or a casual evening, with its lightweight and flowy fabric that drapes beautifully on the body. The jumpsuit features a flattering V-neckline and short sleeves, with a cinched waist that accentuates your figure.",
@@ -4132,7 +4132,7 @@
       "stars": 4,
       "votes": 155
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our vibrant and stylish clothing set for women, featuring a bold and cheerful yellow jogging pants, a matching yellow jumpsuit, and a pair of crisp white shoes.",
       "body": "The matching yellow jumpsuit is perfect for a day out or a casual evening, with its lightweight and flowy fabric that drapes beautifully on the body. The jumpsuit features a flattering V-neckline and short sleeves, with a cinched waist that accentuates your figure.",
@@ -4244,7 +4244,7 @@
       "stars": 3,
       "votes": 235
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest product, the White Sports Shoes! Our shoes come in a clean and classic shade of white that is perfect for any athletic or casual occasion.",
       "body": "The body of our White Sports Shoes is made from a lightweight and breathable synthetic material, which allows your feet to stay cool and dry even during intense physical activities. The insoles are cushioned for extra comfort and support, ensuring that your feet stay protected and pain-free. The design of the shoes features a non-slip sole that provides excellent traction, making them perfect for any type of physical activity.",
@@ -4267,7 +4267,7 @@
       "stars": 2,
       "votes": 175
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest sunglasses collection, featuring a variety of colors to suit any style and preference.",
       "body": "Our sunglasses are crafted from high-quality materials that are designed to provide optimal durability and protection. The collection features a range of colors, from classic black to trendy pastel hues, so you can choose the perfect shade to complement your outfit. The lenses are polarized to provide excellent glare reduction and UV protection, making them perfect for outdoor activities.",
@@ -4309,7 +4309,7 @@
       "stars": 4,
       "votes": 191
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest product, the White Sports Shoes! Our shoes come in a clean and classic shade of white that is perfect for any athletic or casual occasion.",
       "body": "The body of our White Sports Shoes is made from a lightweight and breathable synthetic material, which allows your feet to stay cool and dry even during intense physical activities. The insoles are cushioned for extra comfort and support, ensuring that your feet stay protected and pain-free. The design of the shoes features a non-slip sole that provides excellent traction, making them perfect for any type of physical activity.",
@@ -4331,7 +4331,7 @@
       "stars": 4,
       "votes": 104
     },
-    "brand": "toppler",
+    "brand": "topper",
     "description": {
       "introduction": "Introducing our latest t-shirt collection featuring a variety of vibrant colors to suit any style and occasion.",
       "body": "Our t-shirts are made from a high-quality cotton blend that is soft, breathable, and comfortable to wear all day long. The fabric is also durable and easy to care for, ensuring that your t-shirt will look great wash after wash. Each t-shirt features a classic fit with a crew neckline and short sleeves, making them versatile and easy to style with a variety of outfits. With a range of colors to choose from, including bold hues and classic neutrals, you're sure to find a t-shirt that fits your style.",
@@ -4422,7 +4422,7 @@
       "stars": 5,
       "votes": 241
     },
-    "brand": "toppler",
+    "brand": "topper",
     "colors": ["black", "neutral 900", "stone 600", "slate 900"],
     "description": {
       "introduction": "Introducing our latest collection of pants, featuring a range of styles to suit any occasion. Our collection includes black, gray, and blue pants, as well as jeans and jogging pants.",
@@ -4606,7 +4606,7 @@
       "stars": 3,
       "votes": 191
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our latest sunglasses collection, featuring a variety of colors to suit any style and preference.",
       "body": "Our sunglasses are crafted from high-quality materials that are designed to provide optimal durability and protection. The collection features a range of colors, from classic black to trendy pastel hues, so you can choose the perfect shade to complement your outfit. The lenses are polarized to provide excellent glare reduction and UV protection, making them perfect for outdoor activities.",
@@ -4629,7 +4629,7 @@
       "stars": 4,
       "votes": 167
     },
-    "brand": "channel",
+    "brand": "chanel",
     "description": {
       "introduction": "Introducing our new fashion yellow jacket - the perfect addition to your wardrobe for any season.",
       "body": "Made from high-quality materials, our jacket features a bold and vibrant yellow color that is sure to turn heads. The lightweight and breathable fabric make it a versatile piece that can be worn all year round. The jacket features a comfortable and flattering fit, with a zip-up front and two side pockets for added convenience. Pair it with your favorite jeans and a t-shirt for a casual look, or dress it up with a skirt and heels for a night out.",

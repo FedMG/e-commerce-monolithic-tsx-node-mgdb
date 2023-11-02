@@ -3,13 +3,13 @@ import mongoose from 'mongoose'
 const brands = [
   'addidas',
   'nike',
-  'toppler',
+  'topper',
   'gucci',
   'zara',
   'calvin klein',
   'versace',
   'puma',
-  'channel',
+  'chanel',
   'converse'
 ]
 
