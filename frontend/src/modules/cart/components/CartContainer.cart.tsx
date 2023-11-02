@@ -36,7 +36,7 @@ export const CartContainer = () => {
 
   return (
     <Cart>
-      <div className='p-0 sm:p-1 md:p-2 space-y-2'>
+      <div className='pb-2 space-y-2'>
         <div className='flex justify-end'>
           <button
             className='text-sm sm:text-md flex items-center gap-x-1 p-1 md:p-2 rounded-md text-red-600 hover:text-red-500  font-medium active:text-gray-50 active:bg-red-600'
@@ -121,7 +121,7 @@ export const CartContainer = () => {
                               <Link
                                 href='/[category]/[productId]'
                                 as={`/${category}/${productId}`}
-                                className='p-1 rounded-md text-gray-800 hover:text-primary-800 active:text-primary-700'>
+                                className='p-1 rounded-md text-gray-800 hover:text-primary-800 active:text-primary-700 active:bg-gray-100 active:border active:inner-shadow'>
                                 <span className='sr-only'>Go to product page</span>
                                 <GoToProductPageIcon />
                               </Link>
@@ -129,7 +129,7 @@ export const CartContainer = () => {
 
                             <button
                               onClick={() => removeCartItem({ productId })}
-                              className='text-sm sm:text-md flex items-center gap-x-1 p-1 rounded-md text-red-600 hover:text-red-500  font-medium active:bg-primary-700'>
+                              className='text-sm sm:text-md flex items-center gap-x-1 p-1 rounded-md text-red-600 hover:text-red-500  font-medium active:text-gray-50 active:bg-red-600'>
                               Drop
                               <span>
                                 <BucketTrashIcon />
