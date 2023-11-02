@@ -2,12 +2,14 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useCart } from '@/hooks'
 
+// later fix imports to other modules
 import { Cart } from './templates'
 import { ProductImage } from './CartImage.cart'
 import { ProductRating } from '@/modules/product/components/form'
 import { VendorInformation } from './VendorInformation.cart'
-import { applyDiscount } from '@/utils'
+import { PaymentInformation } from './PaymentInformation.cart'
 import { colorOptions } from '@/modules/product/components/form/refs'
+import { applyDiscount } from '@/utils'
 import {
   BucketTrashIcon,
   ChatBubbleIcon,
@@ -17,7 +19,7 @@ import {
 } from '@/assets'
 
 // later refactor this component
-const className = 'bg-gray-50 rounded-xl  '
+const className = 'bg-gray-50 rounded-xl'
 
 export const CartContainer = () => {
   const { cart, removeCartItem, clearCart } = useCart()
@@ -215,7 +217,7 @@ export const CartContainer = () => {
                         </Cart.Image>
 
                         <Cart.Details>
-                          <div className='flex-1 truncate space-y-6 p-1 md:p-4'>
+                          <div className='flex-1 truncate space-y-8 p-1 md:p-4'>
                             <div className='space-y-2'>
                               <span className='block max-w-[100px] text-gray-900 capitalize text-xl md:text-2xl font-semibold leading-tight'>
                                 {name}
@@ -234,14 +236,14 @@ export const CartContainer = () => {
                               </div>
                             </div>
 
-                            <div className=''>
+                            <div>
                               <h4 className='text-gray-700 text-md md:text-lg font-medium pt-1 mb-4 border-b border-gray-200'>
                                 Seller&apos;s information
                               </h4>
                               <VendorInformation />
                             </div>
 
-                            <div className=''>
+                            <div>
                               <h4 className='text-gray-700 text-md font-medium pt-1 mb-4 border-b border-gray-200'>
                                 Product Rating
                               </h4>
@@ -291,6 +293,13 @@ export const CartContainer = () => {
                                   <ChatBubbleIcon />
                                 </span>
                               </p>
+                            </div>
+
+                            <div>
+                              <h4 className='text-gray-700 text-md md:text-lg font-medium pt-1 mb-4 border-b border-gray-200'>
+                                Payment&apos;s information
+                              </h4>
+                              <PaymentInformation />
                             </div>
                           </div>
                         </Cart.Details>
