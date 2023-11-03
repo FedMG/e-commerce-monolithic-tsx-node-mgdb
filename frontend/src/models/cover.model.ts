@@ -1,10 +1,12 @@
+import type { Brands } from "./product.model"
+
 type Image = {
   src: string
 }
 
 export interface Cover {
   id: string
-  brand: string
+  brand: Brands
   image: Image
   alt: string
   category: string
@@ -13,7 +15,7 @@ export interface Cover {
 
 export interface EndpointCover {
   _id: string
-  brand: string
+  brand: Brands
   image: Image
   alt: string
   category: string

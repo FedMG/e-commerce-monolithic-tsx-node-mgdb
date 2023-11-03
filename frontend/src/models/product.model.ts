@@ -4,6 +4,18 @@ import type { GetValues } from '@/utilities'
 export type StarsRange = 1 | 2 | 3 | 4 | 5
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL' | 'XXL'
 export type ProductColors = GetValues<typeof Colors>
+export type Brands =
+| 'nike'
+| 'puma'
+| 'zara'
+| 'versace'
+| 'gucci'
+| 'calvin klein'
+| 'converse'
+| 'topper'
+| 'chanel'
+| 'addidas'
+
 
 export interface ProductRatingProps {
   stars: StarsRange
@@ -25,7 +37,7 @@ export interface Product {
   name: string
   image: Image
   category: string
-  brand: string
+  brand: Brands
   description: Description
   stock: number
   price: number
@@ -40,7 +52,7 @@ export interface ProductCard {
   name: string
   image: Image
   category: string
-  brand: string
+  brand: Brands
   price: number
   discount?: number | null
   rating: ProductRatingProps
@@ -62,7 +74,7 @@ export interface EndpointProduct {
   name: string
   image: Image
   category: string
-  brand: string
+  brand: Brands
   description: Description
   stock: number
   price: number
