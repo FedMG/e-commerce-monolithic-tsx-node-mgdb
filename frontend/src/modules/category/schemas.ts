@@ -1,4 +1,4 @@
-import type { ProductCard } from '@/models'
+import type { Brands, ProductCard } from '@/models'
 
 export type FilterFunction = (product: ProductCard) => boolean
 export type FilterField = 'name' | 'brand' | 'discount'
@@ -12,7 +12,7 @@ export interface UpdateFilterParameters {
 export interface CategoryProps {
   products: ProductCard[]
   discounts: number[]
-  brands: string[]
+  brands: Brands[]
   currentCategory: string
 }
 

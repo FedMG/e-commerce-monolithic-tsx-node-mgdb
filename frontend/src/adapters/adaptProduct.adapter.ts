@@ -1,4 +1,4 @@
-import { Product, ProductIdResponse } from '@/models'
+import type { Product, ProductIdResponse } from '@/models'
 
 export const adaptProduct = (response: ProductIdResponse): Product => {
   const { product } = response

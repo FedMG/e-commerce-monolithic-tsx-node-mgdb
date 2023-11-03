@@ -1,9 +1,10 @@
 import { useBrandFilter } from '@/modules/category/hooks'
 import { isArrayOfPrimitives, setUpperCase } from '@/utils'
 import type { CategoryNextFilterProps } from '../../schemas'
+import type { Brands } from '@/models'
 
 interface CategoryBrandsFilterProps extends CategoryNextFilterProps {
-  brands: string[]
+  brands: Brands[]
 }
 
 export const CategoryBrandFilter: React.FC<CategoryBrandsFilterProps> = ({ brands, onChange, currentCategory }): React.ReactElement => {
