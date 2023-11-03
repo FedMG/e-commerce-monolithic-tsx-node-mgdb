@@ -11,12 +11,13 @@ import { ProductHeaderArticle, ProductBrandLogo, ProductBreadCrumbs } from '@/mo
 import { ProductDescription, ProductParagraph, ProductParagraphLabel } from '@/modules/product/components/description'
 
 import { isValidObject } from '@/utils'
+import { BRANDS_LOGO } from '@/assets'
+import { StatusApiError } from '@/errors'
 
 import type { Product } from '@/models'
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import type { NextPageWithLayout } from '@/next-pages'
-import { StatusApiError } from '@/errors'
 
 const PAGE_ALIGN_BREAKPOINT = 'py-4 px-6 sm:px-10 lg:px-16 xl:px-24'
 const TIMEOUT_ABORT = 30000
@@ -32,7 +33,9 @@ const Product: NextPageWithLayout<ProductProps> = ({ product }): React.ReactElem
     <Article className={PAGE_ALIGN_BREAKPOINT} labelledby='product-title-article' describedby='product-article'>
       <ProductHeaderArticle className='bg-gray-100 shadow-sm border rounded-xl' labelledby='product-header'>
         <ProductBreadCrumbs category={category} brand={brand} name={name} className='border-r-none sm:border-r capitalize text-sm md:text-md font-medium text-gray-700' />
-        <ProductBrandLogo className='capitalize font-extrabold sm:max-md:text-2xl md:max-xl:text-3xl xl:text-4xl'>{brand}</ProductBrandLogo>
+        <ProductBrandLogo className='capitalize font-extrabold sm:max-md:text-2xl md:max-xl:text-3xl xl:text-4xl'>
+          {BRANDS_LOGO[brand]}
+        </ProductBrandLogo>
       </ProductHeaderArticle>
 
       <ProductSection id='product-article'>

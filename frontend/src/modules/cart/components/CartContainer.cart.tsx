@@ -11,6 +11,7 @@ import { PaymentInformation } from './PaymentInformation.cart'
 import { colorOptions } from '@/modules/product/components/form/refs'
 import { applyDiscount } from '@/utils'
 import {
+    BRANDS_LOGO,
   BucketTrashIcon,
   ChatBubbleIcon,
   DoubleArrowUpIcon,
@@ -173,7 +174,7 @@ export const CartContainer = () => {
                         <Cart.Image>
                           <div className='relative group/item'>
                             <span className='bg-gray-50 capitalize font-bold absolute top-[0%] left-[0%] z-10 rounded-tl-lg rounded-br-md py-1 px-2 max-lg:text-md lg:text-xl text-gray-800 border-r border-b shadow-b shadow-r'>
-                              {brand}
+                              {BRANDS_LOGO[brand]}
                             </span>
                             <ProductImage
                               quality={45}
