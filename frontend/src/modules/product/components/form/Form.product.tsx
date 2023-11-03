@@ -6,7 +6,7 @@ import { ProductButton } from './Button.product'
 import { ProductClothingColors } from './ClothingColors.product'
 import { ProductClothingSizes } from './ClothingSizes.product'
 import { ProductsNumberInput } from './NumberInput.product'
-import { CartIcon } from '@/assets'
+import { BanknotesIcon, CartIcon } from '@/assets'
 
 import type { Product } from '@/models'
 
@@ -19,8 +19,18 @@ export const ProductForm = ({ productId, product, sizes, colors, stock }: Props)
 
   return (
     <form className='flex flex-col gap-1 h-full' onSubmit={e => e.preventDefault()}>
-      <ProductClothingSizes sizes={sizes} sizeSelected={preferences?.size} onClick={selectSize} onChange={clearWarning} />
-      <ProductClothingColors colors={colors}  colorSelected={preferences?.color} onClick={selectColor} onChange={clearWarning} />
+      <ProductClothingSizes
+        sizes={sizes}
+        sizeSelected={preferences?.size}
+        onClick={selectSize}
+        onChange={clearWarning}
+      />
+      <ProductClothingColors
+        colors={colors}
+        colorSelected={preferences?.color}
+        onClick={selectColor}
+        onChange={clearWarning}
+      />
       <ProductsNumberInput stock={stock} onClick={selectQuantity} onChange={clearWarning} />
 
       <Section.Accessible
@@ -29,10 +39,13 @@ export const ProductForm = ({ productId, product, sizes, colors, stock }: Props)
         <Text as='h2' className='sr-only'>
           Button section
         </Text>
-        <ProductButton name='Buy now' onClick={buyNow} />
+        <ProductButton name='Buy now' onClick={buyNow}>
+          <BanknotesIcon />
+          <Text className='sr-only'>Banknotes icon button</Text>
+        </ProductButton>
         <ProductButton name='Add to cart' onClick={() => addItem({ productId, product })}>
           <CartIcon />
-          <Text className='sr-only'>Cart icon of the button</Text>
+          <Text className='sr-only'>Cart icon button</Text>
         </ProductButton>
       </Section.Accessible>
 
@@ -47,7 +60,6 @@ export const ProductForm = ({ productId, product, sizes, colors, stock }: Props)
     </form>
   )
 }
-
 
 // <div className='relative'>
 //   <div className='relative'>
