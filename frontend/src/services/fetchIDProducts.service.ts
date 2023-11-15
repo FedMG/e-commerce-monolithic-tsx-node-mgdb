@@ -8,7 +8,7 @@ type Params = { limit: number }
 const _fetchIDProducts = async (params: Params): Promise<ProductCard[]> => {
   const { limit } = params
   const url = 'https://e-commerce-store-api.onrender.com/api/v1/products'
-  const query = `?limit=${limit}&field=_id,category`
+  const query = `?fields=_id,category&limit=${limit}`
   const res = await fetch(url + query)
 
   const { status, ok } = res

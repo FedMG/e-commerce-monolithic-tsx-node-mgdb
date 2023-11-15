@@ -10,4 +10,4 @@ export { fetchAllCategoryData } from './fetchAllCategoryData.service'
 export { fetchAllCarouselData } from '@/services/fetchAllCarouselData.service'
 
 // types
-export type { FetchAllProductsParams } from './fetchAllProducts.service'
+export type { Params } from './fetchAllProducts.service'
