@@ -2,15 +2,13 @@ import { adaptAllProductCards } from '@/adapters'
 import { errorHandler, FetchAPIError } from '@/errors'
 import type { ProductCard, ProductsResponse } from '@/models'
 
-// const ITEMS_DISPLAYED = 7
+export type Params = { category: string; signal?: AbortSignal, limit: number  }
 
-export type FetchAllProductsParams = { category: string; signal?: AbortSignal, field?: string, itemsDisplayed?: number  }
+const _fetchAllProducts = async (params: Params): Promise<ProductCard[]> => {
+  const { category, signal, limit } = params
 
-const _fetchAllProducts = async (params: FetchAllProductsParams): Promise<ProductCard[]> => {
-  const { category, signal, itemsDisplayed, field } = params
-  const isField = field ? '&' + field : ''
   const url = 'https://e-commerce-store-api.onrender.com/api/v1/products'
-  const query = `?text=category=${category}&limit=${itemsDisplayed}${isField}`
+  const query = `?text=category=${category}&limit=${limit}`
   const res = await fetch(url + query, { signal })
 
   const { status, ok } = res
@@ -20,6 +18,6 @@ const _fetchAllProducts = async (params: FetchAllProductsParams): Promise<Produc
   return adaptAllProductCards(data)
 }
 
-export const fetchAllProducts = errorHandler<FetchAllProductsParams, ProductCard[]>(
+export const fetchAllProducts = errorHandler<Params, ProductCard[]>(
   _fetchAllProducts
 )

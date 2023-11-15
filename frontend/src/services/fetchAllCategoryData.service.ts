@@ -8,6 +8,6 @@ export const fetchAllCategoryData = async (category: string, signal?: AbortSigna
   return await Promise.all([
     fetchUniqueProductValues<Brands>({ category, property: 'brand', signal }),
     fetchUniqueProductValues<number>({ category, property: 'discount', signal }),
-    fetchAllProducts({ category, signal, itemsDisplayed: ITEMS_DISPLAYED })
+    fetchAllProducts({ category, signal, limit: ITEMS_DISPLAYED })
   ])
 }

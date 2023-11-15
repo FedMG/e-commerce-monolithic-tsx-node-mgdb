@@ -127,11 +127,11 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
       }
     })
 
+    // console.log(paths)
     return {
       paths,
       fallback: false
     }
-
     // console.log('Paths generated successfully:', paths);
   } catch (error) {
     console.error('Error generating paths: ', error)
@@ -142,6 +142,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 export async function getStaticProps({
   params
 }: GetStaticPropsContext<Params>): Promise<GetStaticPropsResult<ProductProps>> {
+  // console.log(params)
   if (params?.productId === undefined) return { notFound: true }
   const id = encodeURIComponent(params.productId)
 
