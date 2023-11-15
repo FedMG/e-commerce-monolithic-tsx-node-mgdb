@@ -17,7 +17,7 @@ export const useCartFormManagement = () => {
 
   const addItemHandler = ({ productId, product }: ProductCartItem): void => {
     const { color, itemsNumber, size } = preferences
-    console.log(preferences)
+    // console.log(preferences)
 
     if (color === null) {
       addWarning({ colorMessage: 'You must select at least 1 color option.' })

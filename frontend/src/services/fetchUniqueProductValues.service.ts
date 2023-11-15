@@ -2,7 +2,7 @@ import { adaptUniqueProductValues } from '@/adapters'
 import { errorHandler, FetchAPIError } from '@/errors'
 import type { ProductPropertyResponse } from '@/models'
 
-type FetchUPVParams = { category: string, property: string, signal: AbortSignal }
+type FetchUPVParams = { category: string, property: string, signal?: AbortSignal }
 
 const _fetchUniqueProductValues = async <T>(params: FetchUPVParams): Promise<T[]> => {
   const { category, property, signal } = params

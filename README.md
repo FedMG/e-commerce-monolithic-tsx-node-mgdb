@@ -1,6 +1,6 @@
 # E-commerce Full-Stack
 ___
-NOTE: Cart page page and infinite scroll pagination* are under development. 
+NOTE: infinite scroll pagination* are under development. 
 *The category page does not yet have infinite scroll pagination due to a bug.
 ___
 
