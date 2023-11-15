@@ -1,4 +1,4 @@
-import { fetchAllProducts, fetchProductId } from '@/services'
+import { fetchIDProducts, fetchProductId } from '@/services'
 
 import { Article } from '@/components/templates'
 import { Layout } from '@/components/layout'
@@ -18,7 +18,7 @@ import {
   ProductParagraphLabel
 } from '@/modules/product/components/description'
 
-import { CATEGORY_VALUES, isValidObject } from '@/utils'
+import { isValidObject } from '@/utils'
 import { BRANDS_LOGO } from '@/assets'
 import { StatusApiError } from '@/errors'
 
@@ -115,44 +115,33 @@ Product.getLayout = function getLayout(page, pageProps): JSX.Element {
   )
 }
 
-type ProductPaths = { params: { category: Product['category']; productId: Product['id'] } }[]
-
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   try {
-    const categories = CATEGORY_VALUES.map(category => category);
-    const paths: ProductPaths = [];
-
-    const voidPromises = await Promise.all(
-      categories.map(async category => {
-        const products = await fetchAllProducts({ category, field: '_id', itemsDisplayed: 100 });
-
-        products.forEach(({ id }) => {
-          paths.push({
-            params: {
-              category,
-              productId: id,
-            },
-          });
-        });
-      })
-    );
-
-    // console.log('Paths generated successfully:', paths);
+    const products = await fetchIDProducts({ limit: 212 })
+    const paths = products.map(({ id, category }) => {
+      return {
+        params: {
+          productId: id,
+          category
+        }
+      }
+    })
 
     return {
       paths,
-      fallback: false,
-    };
+      fallback: false
+    }
+
+    // console.log('Paths generated successfully:', paths);
   } catch (error) {
-    console.error('Error generating paths:', error);
-    throw error;
+    console.error('Error generating paths: ', error)
+    throw error
   }
 }
 
 export async function getStaticProps({
   params
 }: GetStaticPropsContext<Params>): Promise<GetStaticPropsResult<ProductProps>> {
-  // console.log('params:', params)
   if (params?.productId === undefined) return { notFound: true }
   const id = encodeURIComponent(params.productId)
 
