@@ -2,9 +2,9 @@ import { adaptProduct } from '@/adapters'
 import { errorHandler, FetchAPIError } from '@/errors'
 import type { Product, ProductIdResponse } from '@/models'
 
-type FetchProductIdParams = { id: string, signal: AbortSignal }
+type Params = { id: string, signal?: AbortSignal }
 
-const _fetchProductId = async (params: FetchProductIdParams): Promise<Product> => {
+const _fetchProductId = async (params: Params): Promise<Product> => {
   const { id, signal } = params
   const url = `https://e-commerce-store-api.onrender.com/api/v1/products/${id}`
   const res = await fetch(url, { signal })
@@ -16,4 +16,4 @@ const _fetchProductId = async (params: FetchProductIdParams): Promise<Product> =
   return adaptProduct(data)
 }
 
-export const fetchProductId = errorHandler<FetchProductIdParams, Product>(_fetchProductId)
+export const fetchProductId = errorHandler<Params, Product>(_fetchProductId)

@@ -16,7 +16,6 @@ import type { ReactElement } from 'react'
 import { CATEGORY_VALUES, isValidCategory } from '@/utils'
 import { StatusApiError } from '@/errors'
 
-const TIMEOUT_ABORT = 30000
 
 const Category: NextPageWithLayout<CategoryProps> = ({ products, discounts, brands, currentCategory }): ReactElement => {
   const { updateFilter, updateSortBy, sortBy, sortedProducts } = useManagementState(products)
@@ -62,14 +61,9 @@ export async function getStaticProps ({ params }: GetStaticPropsContext): Promis
   const category = params?.category
   if (category === undefined || !isValidCategory(category)) return { notFound: true }
   const encodedCategory = encodeURIComponent(category)
-  const controller = new AbortController()
-  // later remove this useless abortcontroller
-  const timeout = setTimeout(() => {
-    controller.abort()
-  }, TIMEOUT_ABORT)
 
   try {
-    const [brands, discounts, products] = await fetchAllCategoryData(encodedCategory, controller.signal)
+    const [brands, discounts, products] = await fetchAllCategoryData(encodedCategory)
 
     return {
       props: {
@@ -85,8 +79,6 @@ export async function getStaticProps ({ params }: GetStaticPropsContext): Promis
       console.error(error.getMessage())
     }
     return { notFound: true }
-  } finally {
-    clearTimeout(timeout)
   }
 }
 
